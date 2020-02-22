@@ -26,7 +26,38 @@ $MangaStory-theme: mat-light-theme($MangaStory-primary, $MangaStory-accent, $Man
 // that you are using.
 @include angular-material-theme($MangaStory-theme);
 
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@include mat-core();
+$MangaStory-primary: mat-palette($mat-indigo);
+$MangaStory-accent: mat-palette($mat-pink, A200, A100, A400);
 
-html, body { height: 100%; background-color: #262626;}
+$MangaStory-warn: mat-palette($mat-red);
+$MangaStory-theme: mat-light-theme($MangaStory-primary, $MangaStory-accent, $MangaStory-warn);
+
+@include angular-material-theme($MangaStory-theme);
+
+html,
+body {
+  height: 100%;
+  background-color: #ffffff;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  a {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1220px;
+  }
+}
+
+html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
