@@ -20,4 +20,12 @@ export class UserService {
     }
     return this.http.post("http://localhost:8080/api/data/msg", body);
   }
+
+  createNewAccount(user: any): Observable<any> {
+    return this.http.post("http://api.manga.net:2111/user/signup", user);
+  }
+
+  loginAccount(account: any): Observable<any> {
+    return this.http.post("http://api.manga.net:2111/user/signin", account);
+  }
 }

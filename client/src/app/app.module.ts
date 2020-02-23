@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { HotMangaComponent } from './components/home-page/aside/hot-manga/hot-ma
 import { GenreComponent } from './components/home-page/aside/genre/genre.component';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatCardModule,
         HttpClientModule,
         BrowserAnimationsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -9,8 +9,12 @@ const routes: Routes = [
     component: HomePageComponent,
   },
   {
-    path: 'login',
-    loadChildren: () => import('./components/authentication/authentication.module').then(m => m.AuthenticationModule)
+    path: 'user',
+    loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'manga',
+    loadChildren: () => import('./components/manga/manga.module').then(m => m.MangaModule)
   }
 ];
 

@@ -1,10 +1,10 @@
 <div class="header">
   <div class="container">
-    <div class="row">
+    <div class="row d-flex justify-content-between">
       <div class="col-4">
         <div class="logo">
           <h1>
-            <a href="/">
+            <a routerLink=''>
               <img src="https://mangakatana.com/static/img/logo.png" alt="">
             </a>
           </h1>
@@ -16,12 +16,18 @@
         </div>
       </div>
       <div class="col-4">
-        <div class="login-signup">
+        <div class="login-signup d-flex d-flex justify-content-end">
           <div class="signup">
-            Sign Up
+            <a mat-button (click)="openDialogSignUp()">
+              <i class="fas fa-user-plus"></i>
+              Sign Up
+            </a>
           </div>
           <div class="login">
-            Log In
+            <a mat-button (click)="openDialogLogin()">
+              <i class="fas fa-sign-in-alt"></i>
+              Log In
+            </a>
           </div>
         </div>
       </div>
