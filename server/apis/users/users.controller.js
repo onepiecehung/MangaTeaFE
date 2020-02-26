@@ -1,6 +1,4 @@
 var User = require("./users.model");
-// let Teacher = require("../teacher/teacher.model");
-// let Student = require("../student/student.model");
 let Member = require("../member/member.model")
 var jwt = require("jsonwebtoken");
 var config = require("../../config/database");

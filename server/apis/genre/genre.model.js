@@ -3,12 +3,12 @@ var autoIncrement = require("mongoose-plugin-autoinc")
 var Schema = mongoose.Schema;
 
 var GenreSchema = new Schema({
-    index: {
-        type: Number,
-        unique: true,
-        required: true,
-        // default: Date.now()
-    },
+    // index: {
+    //     type: Number,
+    //     unique: true,
+    //     required: true,
+    //     // default: Date.now()
+    // },
     name: {
         type: String,
         default: "Unknown name"
@@ -20,7 +20,7 @@ var GenreSchema = new Schema({
 })
 GenreSchema.plugin(autoIncrement.plugin, {
     model: 'GenreSchema',
-    field: 'index'
+    field: '_id'
 });
 
 module.exports = mongoose.model('Genre', GenreSchema);
