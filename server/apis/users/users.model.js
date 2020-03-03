@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcryptjs');
-var autoIncrement = require("mongoose-plugin-autoinc")
+// var autoIncrement = require("mongoose-plugin-autoinc")
 
 
 const validateEmail = email => {
@@ -100,8 +100,8 @@ UserSchema.methods.comparePassword = function (passw, cb) {
     });
 };
 
-UserSchema.plugin(autoIncrement.plugin, {
-    model: 'UserSchema',
-    field: '_id'
-});
+// UserSchema.plugin(autoIncrement.plugin, {
+//     model: 'UserSchema',
+//     field: '_id'
+// });
 module.exports = mongoose.model('User', UserSchema);

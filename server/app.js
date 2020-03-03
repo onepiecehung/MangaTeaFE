@@ -10,6 +10,9 @@ const router = require("./routes/index")
 const api = require("./routes/api")
 const subdomain = require('express-subdomain');// TODO create subdomain
 const passport = require("passport");
+const CONSTANTS = require("./config/constants");
+
+
 
 //TODO i dont know what is this
 const followRedirects = require("follow-redirects");
@@ -25,6 +28,8 @@ app.use(express.static(path.resolve(__dirname, "build")));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 // TODO setup database
 mongoose.Promise = global.Promise;
 
@@ -35,7 +40,9 @@ mongoose
         useUnifiedTopology: true
     })
     .then(
-        () => console.log("[ Database =>] Connection to the database successful."),
+        () => console.log(`[ Database =>] Connection to the database successful.
+                            \n=> The APIs service running on port ${CONSTANTS.PORT}
+                            \n=> Document API: http://api.yourdomain.com/documents or http://api.manga.net:${CONSTANTS.PORT}/documents`),
         err => console.log("[ Database =>] The connection to the database failed.")
     );
 
@@ -80,5 +87,8 @@ if (process.env.NODE_ENV === "production") {
         res.send(err.message);
     });
 }
+
+
+
 
 module.exports = app;
