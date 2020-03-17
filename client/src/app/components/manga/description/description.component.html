@@ -7,7 +7,7 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row">
-          <div class="col-4">
+          <div class="col-4" (click)="handleGoToMangaDetail(1)">
             <img class="w-100 h-100" src="https://material.angular.io/assets/img/examples/shiba2.jpg"
               alt="Photo of a Shiba Inu">
           </div>
@@ -36,7 +36,13 @@
                 Artist:
               </div>
               <div class="col-9">
-                <a href="#">Fujimaru Mamenosuke</a>
+                <mat-chip-list aria-label="Fish selection">
+                  <mat-chip>One fish</mat-chip>
+                  <mat-chip>Two fish</mat-chip>
+                  <mat-chip color="primary" selected>Primary fish</mat-chip>
+                  <mat-chip color="accent" selected>Accent fish</mat-chip>
+                </mat-chip-list>
+               
               </div>
             </div>
 
@@ -156,5 +162,45 @@
         </div>
       </mat-card-content>
     </mat-card>
+
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="First">
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+      <mat-tab label="Second">Content 2</mat-tab>
+      <mat-tab label="Third">Content 3</mat-tab>
+    </mat-tab-group>
+ 
   </div>
 </div>

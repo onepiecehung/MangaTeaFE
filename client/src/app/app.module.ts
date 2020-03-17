@@ -21,6 +21,8 @@ import { GenreComponent } from './components/home-page/aside/genre/genre.compone
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatButtonModule,
         MatDialogModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatChipsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

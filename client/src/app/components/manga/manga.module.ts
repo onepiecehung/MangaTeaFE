@@ -5,6 +5,8 @@ import { MangaRoutingModule } from './manga-routing.module';
 import { DescriptionComponent } from './description/description.component';
 import { DetailComponent } from './detail/detail.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     CommonModule,
     MangaRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatChipsModule
   ]
 })
 export class MangaModule { }
