@@ -6,13 +6,18 @@
 const debug = require("debug")("3manga:server");
 const http = require("http");
 const app = require("../app");
-const CONSTANTS = require("../config/constants");
+
+
+import {
+    SERVER
+} from "../config/constants"
+// const SERVER = require("../config/constants");
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(CONSTANTS.PORT);
+const port = normalizePort(SERVER.PORT);
 app.set("port", port);
 
 /**
@@ -84,3 +89,4 @@ function onListening() {
     const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
     debug(`Listening on ${bind}`);
 }
+module.exports = server;

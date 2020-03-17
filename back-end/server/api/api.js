@@ -10,12 +10,12 @@ router.use(function timeLog(req, res, next) {
     next()
 })
 //TODO this for test
-const usersRouter = require("../apis/users/users.routes")
-const genreRouter = require("../apis/genre/genre.routes")
+// const usersRouter = require("./users/users.routes")
+// const genreRouter = require("./genre/genre.routes")
 
 
-router.use('/user', usersRouter);
-router.use('/genre', genreRouter);
+// router.use('/user', usersRouter);
+// router.use('/genre', genreRouter);
 
 
 router.get('/', function (req, res) {

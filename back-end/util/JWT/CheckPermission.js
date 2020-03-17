@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const config = require("./database");
+const config = require("../../server/config/database");
 // let Teacher = require("../api/teacher/teacher.model");
 // let Student = require("../api/student/student.model");
 
