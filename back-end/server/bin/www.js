@@ -5,4 +5,6 @@ const dotEnvConfigs = {
 require('@babel/register');
 require('@babel/polyfill');
 require('dotenv').config(dotEnvConfigs);
+require("colors")
+// require("../../database/redis/client")
 require("./server")

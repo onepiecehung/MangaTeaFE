@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 import router from "./routes/index"
 import api from "./api/api"
 import subdomain from 'express-subdomain';// TODO create subdomain
-import passport from "passport";
 import {
     SERVER, DATABASE, API_PATH
 } from "./config/constants";
@@ -15,23 +14,6 @@ import {
     MAX_TIME_SESSION
 } from "../globalConstant/index"
 
-
-import {
-    createQueue, createWorkers
-} from './connector/rabbitmq';
-import {
-    testAMQP
-} from './connector/rabbitmq/__test__/__test__.worker';
-
-
-createQueue().then(() => {
-    setTimeout(() => {
-        createWorkers(),
-            testAMQP();
-    }, 5000);
-}).catch(error => {
-    console.error('Error init rabbit : ', error);
-});
 
 
 const app = express();
@@ -41,8 +23,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 // TODO setup database
@@ -55,10 +35,12 @@ mongoose
         useUnifiedTopology: true
     })
     .then(
-        () => console.log(`[ Database =>] Connection to the database successful.
-                            \n=> The APIs service running on port ${SERVER.PORT}
-                            \n=> Document API: http://${API_PATH}.yourdomain.com/${SERVER.DOCS_PATH} or http://${SERVER.URL_API_HOST}:${SERVER.PORT}/${SERVER.DOCS_PATH}`),
-        err => console.log("[ Database =>] The connection to the database failed.")
+        () => {
+            console.log(`[ Database =>] Connection to the database successful. ${DATABASE.URL_DB_LOCAL ? DATABASE.URL_DB_LOCAL : DATABASE.URL_DB}`.yellow)
+            console.log(`The APIs service running on port ${SERVER.PORT}`.cyan.bold)
+            console.log(`Document API: http://${API_PATH}.yourdomain.com/${SERVER.DOCS_PATH} or http://${SERVER.URL_API_HOST}:${SERVER.PORT}/${SERVER.DOCS_PATH}`.cyan)
+        },
+        err => console.log(`[ Database =>] The connection to the database failed: ${err}.`.red)
     );
 
 //TODO setup session

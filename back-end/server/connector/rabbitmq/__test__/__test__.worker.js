@@ -1,7 +1,7 @@
 const RABBIT = require('../init');
-import {
+const {
   JOB_NAME
-} from "../../../../globalConstant/index"
+} = require("../config/index")
 
 function testAMQP() {
   RABBIT.sendDataToRabbit(JOB_NAME.TEST_RABBIT, { msg: '[RABBIT] Test ampq success.' });

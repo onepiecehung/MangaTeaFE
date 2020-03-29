@@ -1,11 +1,12 @@
 var mongoose = require("mongoose")
-var autoIncrement = require("mongoose-plugin-autoinc")
 var Schema = mongoose.Schema;
+const autoIncrement = require('mongoose-auto-increment');
+const UserModel = require("./user.model")
 
 var MemberSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: UserModel
     },
     chapterUpload: [{
         id_chapter: {
@@ -32,11 +33,10 @@ var MemberSchema = new Schema({
     linkSocail: [{
         type: String,
         default: "Unknown"
-    }],
-    point: {
-        type: Number,
-        default: 0
-    }
+    }]
 })
-
+MemberSchema.plugin(autoIncrement.plugin, {
+    model: 'Users',
+    startAt: 10
+});
 module.exports = mongoose.model('Member', MemberSchema);

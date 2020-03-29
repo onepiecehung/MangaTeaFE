@@ -1,20 +1,27 @@
 const express = require("express");
-
 const router = express.Router();
 const swaggerSpec = require('../bin/docs');
 const swaggerUI = require("swagger-ui-express");
+const { detect } = require('detect-browser');
+const { getIP, getClientIp } = require("../../util/help")
+const UserRouter = require("../../packages/user/user.routes")
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
-    console.log('[ ⇩ Subdomain ⇩ ] ⇨ Time request: ', new Date().toLocaleString() + " from the APIs web service")
+    var browser = detect(req.headers['user-agent']);
+    if (browser) {
+        browser = `${browser.name}, version: ${browser.version}, os: ${browser.os}, type: ${browser.type}` + `${browser.bot ? (", bot: ") + browser : "".random}`
+    } else {
+        browser = req.headers['user-agent']
+    }
+    // console.log(getClientIp());
+    console.log(`[API]`.magenta.bold + ` Time request: ${new Date().toLocaleString()} by ${browser.cyan} from IP: ${getClientIp() ? getClientIp() + " - " + (getIP(req)) : getIP(req)}, `)
     next()
 })
-//TODO this for test
-// const usersRouter = require("./users/users.routes")
-// const genreRouter = require("./genre/genre.routes")
 
 
-// router.use('/user', usersRouter);
+
+router.use('/user', UserRouter);
 // router.use('/genre', genreRouter);
 
 

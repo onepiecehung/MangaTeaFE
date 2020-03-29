@@ -1,7 +1,5 @@
 const RABBIT = require("../init");
-import {
-  JOB_NAME
-} from "../../../../globalConstant/index"
+const JOB_NAME = require("../config/index").JOB_NAME
 
 RABBIT.consumeData(JOB_NAME.TEST_RABBIT, async (msg, channel) => {
   try {

@@ -1,7 +1,5 @@
 const amqp = require('amqplib');
-import {
-  RABBIT_URL
-} from "../../../config/constants"
+const RABBIT_URL = require("../config/index").RABBIT_URL
 
 class RABBIT {
   constructor() {
@@ -23,8 +21,8 @@ class RABBIT {
         this.channel = channel;
         return resolve(channel);
       }).catch(error => {
-        console.error('amqp connection failed, please check it carefully:');
-        console.error(error);
+        console.log('amqp connection failed, please check it carefully:');
+        console.log(error);
         return reject(error);
       });
     })
@@ -39,8 +37,8 @@ class RABBIT {
     try {
       channel = this.getChannel();
     } catch (error) {
-      console.error('initQueue error:');
-      console.error(error);
+      console.log('initQueue error:');
+      console.log(error);
       throw error;
     }
 
@@ -65,8 +63,8 @@ class RABBIT {
       this.channel.sendToQueue(queueName, Buffer.from(data));
     } catch (error) {
       // Do your stuff to handle this error
-      console.error('sendDataToRabbit error:');
-      console.error(error);
+      console.log('sendDataToRabbit error:');
+      console.log(error);
       throw error;
     }
   }

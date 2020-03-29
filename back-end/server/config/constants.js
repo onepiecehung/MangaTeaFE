@@ -38,9 +38,3 @@ export const DATABASE = {
     URL_DB: process.env.URL_DB || `mongodb+srv://${USER_DB}:${PASSWORD_DB}@${URL_HOST}/${NAME_DB}?retryWrites=true&w=majority` || URL_DB_LOCAL
 }
 
-/**
- * @param RABBIT
- * @param RABBIT.URL
- */
-
-export const RABBIT_URL = process.env.RABBIT_URL || `amqp://user:bitnami@localhost:5672`;

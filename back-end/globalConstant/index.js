@@ -63,3 +63,15 @@ export const JOB_NAME = {
   FORGOT_PASSWORD: "FORGOT_PASSWORD",
   RESEND_OTP: "RESEND_OTP"
 };
+
+
+export const CONFIG = {
+  jwt_expiration: 60 * 60 * 24 * 7,
+  jwt_encryption: `abc`
+}
+
+
+export const USER_ERROR = {
+  EMAIL_HAS_EXISTS: "EMAIL_HAS_EXISTS",
+  USERNAME_HAS_EXISTS: "USERNAME_HAS_EXISTS"
+}
