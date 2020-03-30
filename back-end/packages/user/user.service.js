@@ -1,4 +1,5 @@
 const UserRepository = require("../repository/user.repository")
+const MemberRepository = require("../repository/member.repository")
 const logger = require("../../util/logger")
 const { USER_ERROR } = require("../../globalConstant/index")
 
@@ -13,6 +14,7 @@ export async function Register(userInfo) {
             return Promise.reject(USER_ERROR.USERNAME_HAS_EXISTS);
         }
         let data = await UserRepository.create(userInfo)
+        await MemberRepository.create({ userID: data._id })
         return data
     } catch (error) {
         logger.error(error);

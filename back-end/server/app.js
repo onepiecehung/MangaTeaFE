@@ -15,7 +15,6 @@ import {
 } from "../globalConstant/index"
 
 
-
 const app = express();
 
 app.use(logger("dev"));

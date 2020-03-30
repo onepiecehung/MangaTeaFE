@@ -147,10 +147,10 @@ UserSchema.methods.getJWT = function () {
     }
 };
 
-UserSchema.plugin(autoIncrement.plugin, {
-    model: 'Users',
-    startAt: 10
-});
+// UserSchema.plugin(autoIncrement.plugin, {
+//     model: 'Users',
+//     startAt: 10
+// });
 
 
 module.exports = mongoose.model('Users', UserSchema);

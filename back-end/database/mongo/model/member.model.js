@@ -1,12 +1,13 @@
 var mongoose = require("mongoose")
 var Schema = mongoose.Schema;
-const autoIncrement = require('mongoose-auto-increment');
+const autoIncrement = require('mongoose-plugin-autoinc');
 const UserModel = require("./user.model")
 
 var MemberSchema = new Schema({
-    user: {
+    userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: UserModel
+        ref: UserModel,
+        required: true
     },
     chapterUpload: [{
         id_chapter: {
@@ -18,12 +19,20 @@ var MemberSchema = new Schema({
         id_manga: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Manga'
+        },
+        timeSaved: {
+            type: Date,
+            default: Date.now()
         }
     }],
     historyRead: [{
         id_chapter: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Manga'
+        },
+        timeRead: {
+            type: Date,
+            default: Date.now()
         }
     }],
     about: {
@@ -36,7 +45,7 @@ var MemberSchema = new Schema({
     }]
 })
 MemberSchema.plugin(autoIncrement.plugin, {
-    model: 'Users',
+    model: 'Member',
     startAt: 10
 });
 module.exports = mongoose.model('Member', MemberSchema);
