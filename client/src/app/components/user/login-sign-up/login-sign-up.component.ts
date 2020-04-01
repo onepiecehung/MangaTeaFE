@@ -12,7 +12,8 @@ export class LoginSignUpComponent implements OnInit {
 
   title: string = '';
   btnSubmit: string = '';
-  formLoginSignUp: FormGroup
+  formLoginSignUp: FormGroup;
+  hide = true;
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<LoginSignUpComponent>,
