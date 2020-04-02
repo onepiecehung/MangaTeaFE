@@ -1,27 +1,27 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-plugin-autoinc');
-const UserModel = require("./user.model")
-const ChapterModel = require("./chapter.model")
-const MangaModel = require("./manga.model")
-const GroupTranslationModel = require("./groupTranslation.model")
+// const UserModel = require("./user.model")
+// const ChapterModel = require("./chapter.model")
+// const MangaModel = require("./manga.model")
+// const GroupTranslationModel = require("./groupTranslation.model")
 
 const CommentSchema = new Schema({
     chapterID: {
         type: mongoose.Schema.Types.Number,
-        ref: ChapterModel
+        ref: "Chapter"
     },
     mangaID: {
         type: mongoose.Schema.Types.Number,
-        ref: MangaModel
+        ref: "Manga"
     },
     groupTranslationID: {
         type: mongoose.Schema.Types.Number,
-        ref: GroupTranslationModel
+        ref: "GroupTranslation"
     },
     userID: {
         type: mongoose.Schema.Types.Number,
-        ref: UserModel
+        ref: "Users"
     },
     commentContent: {
         type: String,

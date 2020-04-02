@@ -1,36 +1,36 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-plugin-autoinc');
-const UserModel = require("./user.model")
-const RatingModel = require("./rating.model")
-const CountryModel = require("./country.model")
-const StatusModel = require("./status.model")
-const PermissionModel = require("./permission.model")
-const MangaModel = require("./manga.model")
+// const UserModel = require("./user.model")
+// const RatingModel = require("./rating.model")
+// const CountryModel = require("./country.model")
+// const StatusModel = require("./status.model")
+// const PermissionModel = require("./permission.model")
+// const MangaModel = require("./manga.model")
 
 const GroupTranslationSchema = new Schema({
     name: { type: String, required: true },
     userOwerID: {
         type: mongoose.Schema.Types.Number,
-        ref: UserModel,
+        ref: "Users",
         required: true
     },
     userMemberID: {
         type: mongoose.Schema.type.Number,
-        ref: UserModel,
+        ref: "Users",
         required: true
     },
     mangaID: {
         type: mongoose.Schema.Types.Number,
-        ref: MangaModel
+        ref: "Manga"
     },
     rate: {
         type: mongoose.Schema.Types.Number,
-        ref: RatingModel
+        ref: "Rating"
     },
     langauge: {
         type: mongoose.Schema.Types.Number,
-        ref: CountryModel
+        ref: "Country"
     },
     cover: { type: String },
     avatar: { type: String },
@@ -38,11 +38,11 @@ const GroupTranslationSchema = new Schema({
     about: { type: String, default: "About your group" },
     status: {
         type: mongoose.Schema.Types.Number,
-        ref: StatusModel
+        ref: "Status"
     },
     permission: {
         type: mongoose.Schema.Types.Number,
-        ref: PermissionModel
+        ref: "Permission"
 
     }
 }, {

@@ -3,11 +3,11 @@ import { CONFIG } from '../../../globalConstant'
 const bcrypt = require("bcrypt");
 const autoIncrement = require('mongoose-plugin-autoinc');
 const moment = require("moment");
-const StatusModel = require("./status.model")
-const RoleModel = require("./role.model")
-const PermissionModel = require("./permission.model")
-const CountryModel = require("./country.model")
-const AppellationModel = require("./appellation.model")
+// const StatusModel = require("./status.model")
+// const RoleModel = require("./role.model")
+// const PermissionModel = require("./permission.model")
+// const CountryModel = require("./country.model")
+// const AppellationModel = require("./appellation.model")
 
 const UserSchema = new mongoose.Schema({
     // index: { type: Number, unique: true, required: true },
@@ -18,11 +18,12 @@ const UserSchema = new mongoose.Schema({
     phoneNumber: { type: String, },
     status: {
         type: mongoose.Schema.Types.Number,
-        ref: StatusModel
+        ref: "Status"
     },
     role: {
-        type: mongoose.Schema.Types.Number,
-        ref: RoleModel
+        type: mongoose.Schema.Types.String,
+        ref: "Role",
+        default: "Member"
     },
     sex: {
         type: String,
@@ -41,16 +42,16 @@ const UserSchema = new mongoose.Schema({
     avatar: { type: String },
     permission: [{
         type: mongoose.Schema.Types.Number,
-        ref: PermissionModel
+        ref: "Permission"
     }],
     fromCountry: {
         type: mongoose.Schema.Types.Number,
-        ref: CountryModel,
+        ref: "Country"
         // default: "Unknown_ID"
     },
     appellation: [{
         type: mongoose.Schema.Types.Number,
-        ref: AppellationModel,
+        ref: "Appellation"
         // default: "Unknown_ID"
     }],
 }, {

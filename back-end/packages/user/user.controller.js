@@ -1,6 +1,7 @@
 const response = require("../../util/response.json")
 const UserValidator = require("./user.validation")
 const UserService = require("./user.service")
+const utils = require("../../util/help")
 
 export async function Register(req, res) {
     try {
@@ -17,4 +18,17 @@ export async function Register(req, res) {
     }
 }
 
-
+export async function Login(req, res) {
+    try {
+        let validateResult = UserValidator.validateLogin(req.body);
+        if (validateResult.error) {
+            return response.error(res, req, {
+                message: validateResult.error.details[0].message
+            });
+        }
+        let data = await UserService.Login(req.body, (utils.getClientIp() ? utils.getClientIp() : utils.getIP(req)))
+        return response.success(res, data)
+    } catch (error) {
+        return response.error(res, req, error)
+    }
+}

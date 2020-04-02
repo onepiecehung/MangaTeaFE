@@ -13,4 +13,10 @@ router.route('/register')
         UserController.Register
     );
 
+router.route('/login')
+    .post(
+        UserController.Login
+    );
+
+
 module.exports = router

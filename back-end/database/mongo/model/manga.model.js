@@ -1,14 +1,14 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-plugin-autoinc');
-const UserModel = require("./user.model")
-const AuthorAndArtistModel = require("./author.model")
-const GroupTranslateModel = require("./groupTranslation.model")
-const GenreModel = require("./genre.model")
-const RatingModel = require("./rating.model")
-const StatusModel = require("./status.model")
-const ChapterModel = require("./chapter.model")
-const PermissionModel = require("./permission.model")
+// const UserModel = require("./user.model")
+// const AuthorAndArtistModel = require("./author.model")
+// const GroupTranslateModel = require("./groupTranslation.model")
+// const GenreModel = require("./genre.model")
+// const RatingModel = require("./rating.model")
+// const StatusModel = require("./status.model")
+// const ChapterModel = require("./chapter.model")
+// const PermissionModel = require("./permission.model")
 
 const MangaSchema = new Schema({
     name: {
@@ -17,42 +17,42 @@ const MangaSchema = new Schema({
     },
     author: {
         type: mongoose.Schema.Types.Number,
-        ref: AuthorAndArtistModel
+        ref: "Author_Artist"
     },
     artist: {
         type: mongoose.Schema.Types.Number,
-        ref: AuthorAndArtistModel
+        ref: "Author_Artist"
     },
     groupTranslationID: [{
         type: mongoose.Schema.Types.Number,
-        ref: GroupTranslateModel
+        ref: "GroupTranslation"
     }],
     createByUserID: {
         type: mongoose.Schema.Types.Number,
-        ref: UserModel
+        ref: "Users"
     },
     userFollowedID: [{
         type: mongoose.Schema.Types.Number,
-        ref: UserModel
+        ref: "Users"
     }],
     cover: {
         type: String
     },
     genre: {
         type: mongoose.Schema.Types.String,
-        ref: GenreModel
+        ref: "Genre"
     },
     rate: {
         type: mongoose.Schema.Types.String,
-        ref: RatingModel
+        ref: "Rating"
     },
     status: {
         type: mongoose.Schema.Types.Number,
-        ref: StatusModel
+        ref: "Status"
     },
     permission: {
         type: mongoose.Schema.Types.Number,
-        ref: PermissionModel
+        ref: "Permission"
     },
     descripttion: { type: String, default: "Manga descripttion" },
     source: [{
@@ -60,7 +60,7 @@ const MangaSchema = new Schema({
     }],
     chapter: [{
         type: mongoose.Schema.Types.Number,
-        ref: ChapterModel
+        ref: "Chapter"
     }],
     lastReadAt: {
         type: Date,

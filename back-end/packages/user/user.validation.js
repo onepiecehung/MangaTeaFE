@@ -55,6 +55,10 @@ const loginSchema = Joi.object({
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
         .error(() => "Invalid email"),
+    username: Joi.string()
+        .allow('')
+        .min(6)
+        .max(30),
     password: Joi.string()
         .required()
         .min(6)

@@ -1,23 +1,23 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-plugin-autoinc');
-const CountryModel = require("./country.model")
-const RoleModel = require("./role.model")
-const MangaModel = require("./manga.model")
+// const CountryModel = require("./country.model")
+// const RoleModel = require("./role.model")
+// const MangaModel = require("./manga.model")
 
 const Author_ArtistSchema = new Schema({
     name: { type: String, required: true, unique: true },
     manga: [{
         type: mongoose.Schema.Types.Number,
-        ref: MangaModel
+        ref: "Manga"
     }],
     role: {
         type: mongoose.Schema.Types.String,
-        ref: RoleModel
+        ref: "Role"
     },
     country: [{
         type: mongoose.Schema.Types.Number,
-        ref: CountryModel
+        ref: "Country"
     }],
     sex: {
         type: String,

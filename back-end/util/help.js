@@ -7,7 +7,7 @@ function getIP(req) {
 }
 
 
-function getClientIp(req) {
+function getClientIp() {
     var
         // Local ip address that we're trying to calculate
         address

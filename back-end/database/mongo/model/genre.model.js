@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const autoIncrement = require("mongoose-plugin-autoinc")
 const Schema = mongoose.Schema;
-const UserModel = require("./user.model")
+// const UserModel = require("./user.model")
 
 const GenreSchema = new Schema({
     name: {
@@ -16,7 +16,7 @@ const GenreSchema = new Schema({
     },
     createBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: UserModel,
+        ref: "Users",
     },
 }, {
     timestamps: true

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose")
 const autoIncrement = require("mongoose-plugin-autoinc")
 const Schema = mongoose.Schema;
-const UserModel = require("./user.model")
-const GroupTranslationModel = require("./groupTranslation.model")
-const StatusModel = require("./status.model")
-const PermissionModel = require("./permission.model")
-const MangaModel = require("./manga.model")
-const LangaugeModel = require("./country.model")
+// const UserModel = require("./user.model")
+// const GroupTranslationModel = require("./groupTranslation.model")
+// const StatusModel = require("./status.model")
+// const PermissionModel = require("./permission.model")
+// const MangaModel = require("./manga.model")
+// const LangaugeModel = require("./country.model")
 
 
 const ChapterSchema = new Schema({
@@ -17,15 +17,15 @@ const ChapterSchema = new Schema({
     },
     uploadBy: {
         type: mongoose.Schema.Types.Number,
-        ref: UserModel,
+        ref: "Users",
     },
     groupTranslation: {
         type: mongoose.Schema.Types.String,
-        ref: GroupTranslationModel
+        ref: "GroupTranslation"
     },
     langauge: {
         type: mongoose.Schema.Types.Number,
-        ref: LangaugeModel
+        ref: "Country"
     },
     photo: [{
         type: String
@@ -36,15 +36,15 @@ const ChapterSchema = new Schema({
     },
     mangaID: {
         type: mongoose.Schema.Types.Number,
-        ref: MangaModel
+        ref: "Manga"
     },
     status: {
         type: mongoose.Schema.Types.String,
-        ref: StatusModel
+        ref: "Status"
     },
     permission: {
         type: mongoose.Schema.Types.Number,
-        ref: PermissionModel
+        ref: "Permission"
     },
     lastReadAt: {
         type: Date,
