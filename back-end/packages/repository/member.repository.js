@@ -9,3 +9,11 @@ export async function create(memberInfo) {
 export async function findByIdAndUpdateUserId(memberID, userID) {
     return MemberRepository.findByIdAndUpdate({ _id: memberID }, { userID: userID })
 }
+
+export async function findById(id) {
+    return MemberRepository.findById(id)
+}
+
+export async function findByIdAndPopulate(id) {
+    return MemberRepository.findById(id).populate("userID")
+}

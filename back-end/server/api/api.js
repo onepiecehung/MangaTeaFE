@@ -5,6 +5,8 @@ const swaggerUI = require("swagger-ui-express");
 const { detect } = require('detect-browser');
 const { getIP, getClientIp } = require("../../util/help")
 const UserRouter = require("../../packages/user/user.routes")
+const MemberRouter = require("../../packages/menber/member.routes")
+const CountryRouter = require("../../packages/country/country.routes")
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -22,6 +24,8 @@ router.use(function timeLog(req, res, next) {
 
 
 router.use('/user', UserRouter);
+router.use("/member", MemberRouter)
+router.use("/country", CountryRouter)
 // router.use('/genre', genreRouter);
 
 

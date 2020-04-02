@@ -3,21 +3,30 @@ import { CONFIG } from '../../../globalConstant'
 const bcrypt = require("bcrypt");
 const autoIncrement = require('mongoose-plugin-autoinc');
 const moment = require("moment");
-
+const StatusModel = require("./status.model")
+const RoleModel = require("./role.model")
+const PermissionModel = require("./permission.model")
+const CountryModel = require("./country.model")
+const AppellationModel = require("./appellation.model")
 
 const UserSchema = new mongoose.Schema({
+    // index: { type: Number, unique: true, required: true },
     email: { type: String, required: true, unique: true, index: 1 },
     fullname: { type: String, },
     username: { type: String, required: true },
     password: { type: String, required: true },
     phoneNumber: { type: String, },
     status: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Status'
+        type: mongoose.Schema.Types.Number,
+        ref: StatusModel
     },
     role: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
+        type: mongoose.Schema.Types.Number,
+        ref: RoleModel
+    },
+    sex: {
+        type: String,
+        enum: ["Male", "Female", "Other"]
     },
     birthday: { type: Date },
     address: { type: String, default: "" },
@@ -30,19 +39,18 @@ const UserSchema = new mongoose.Schema({
     loginCount: { type: Number, default: 0 },
     lastLoginAt: { type: Date },
     avatar: { type: String },
-    permission: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Permission"
-        }],
+    permission: [{
+        type: mongoose.Schema.Types.Number,
+        ref: PermissionModel
+    }],
     fromCountry: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Langauge',
+        type: mongoose.Schema.Types.Number,
+        ref: CountryModel,
         // default: "Unknown_ID"
     },
     appellation: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Appellation',
+        type: mongoose.Schema.Types.Number,
+        ref: AppellationModel,
         // default: "Unknown_ID"
     }],
 }, {
@@ -147,10 +155,11 @@ UserSchema.methods.getJWT = function () {
     }
 };
 
-// UserSchema.plugin(autoIncrement.plugin, {
-//     model: 'Users',
-//     startAt: 10
-// });
+UserSchema.plugin(autoIncrement.plugin, {
+    model: 'Users',
+    // field: "indexID",
+    startAt: 10
+});
 
 
 module.exports = mongoose.model('Users', UserSchema);
