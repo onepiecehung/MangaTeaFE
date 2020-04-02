@@ -34,10 +34,15 @@ export async function Register(userInfo) {
 }
 
 
-async function generateToken(userId, role) {
+
+/**
+ * 
+ * @param {*} user 
+ */
+async function generateToken(user) {
     try {
         let expiration_time = parseInt(CONFIG.jwt_expiration);
-        return jwt.sign({ _id: userId, role: role }, CONFIG.jwt_encryption, {
+        return jwt.sign({ _id: user._id, email: user.email, username: user.username, role: user.role }, CONFIG.jwt_encryption, {
             expiresIn: expiration_time
         });
     } catch (error) {
@@ -46,7 +51,11 @@ async function generateToken(userId, role) {
 }
 
 
-
+/**
+ * 
+ * @param {*} loginInfo 
+ * @param {*} ip 
+ */
 export async function Login(loginInfo, ip) {
     try {
         const userInfo = await UserRepository.findByEmail(loginInfo.email);
@@ -62,7 +71,7 @@ export async function Login(loginInfo, ip) {
         userInfo.set("loginCount", userInfo.loginCount ? userInfo.loginCount + 1 : 1);
         userInfo.set("lastLoginAt", new Date());
         await UserRepository.save(userInfo);
-        const token = await generateToken(userInfo._id, userInfo.role);
+        const token = await generateToken(userInfo);
         return { user: userInfo, token: token };
     } catch (error) {
         logger.error(error);
@@ -71,3 +80,12 @@ export async function Login(loginInfo, ip) {
 }
 
 
+export async function getUserById(id) {
+    try {
+        let data = await UserRepository.findById(id)
+        return data
+    } catch (error) {
+        logger.error(error);
+        return Promise.reject(error);
+    }
+}

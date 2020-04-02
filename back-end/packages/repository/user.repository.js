@@ -20,3 +20,7 @@ export async function findByUsername(username) {
 export async function checkPassword(password) {
     return UserModel.comparePassword(password)
 }
+
+export async function findById(id) {
+    return UserModel.findById(id)
+}
