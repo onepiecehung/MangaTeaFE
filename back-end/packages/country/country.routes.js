@@ -1,6 +1,6 @@
 const { Router } = require("express")
 const router = new Router();
-const MemberController = require("./member.controller")
+const CountryController = require("./country.controller")
 
 // authen
 // multer
@@ -8,10 +8,10 @@ const MemberController = require("./member.controller")
 // service
 
 
-router.route('/:id')
+router.route('/')
     .get(
-        MemberController.getMemberById
+        CountryController.addAllCountry
     );
-    
+
 
 module.exports = router

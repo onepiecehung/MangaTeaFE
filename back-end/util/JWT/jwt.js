@@ -1,86 +1,34 @@
-import { JWT, CreateAuth } from "@k-will/core-authencation";
-import UserModel from '../../database/mongo/model/user.model';
-import { ROLE_ACCEPT_ADMIN_PAGE, ROLES } from "../../globalConstant";
+const jwt = require("jsonwebtoken")
+const response = require("../../util/response.json")
+const { CONFIG } = require("../../globalConstant/index")
+const { CODE } = require("../../globalConstant/error")
 
-export const jwt = new JWT({
-  jwtKey: 'abc',
-  expiredTime: 2592000000
-});
-/**
- * JWT User
- * */
-export const isUser = new CreateAuth('user', jwt.getJWTKey(), 'jwt', async (token, done) => {
-  try {
-    let user = await UserModel.findOne({ _id: token._id, role: ROLES.USER }).lean();
-    if (!user) {
-      return done(null, false);
+function getToken(headers) {
+    if (headers && headers.authorization || headers['x-access-token']) {
+        let token = headers.authorization || headers['x-access-token'];
+        if (token.startsWith(`manga `)) {
+            token = token.slice(6, token.length);
+            return token
+        } else {
+            return token
+        }
+    } else {
+        return null
     }
-    delete user.passWord;
-    return done(null, user);
-  } catch (e) {
-    return done(e);
-  }
-});
+}
 
-/**
- * JWT Full Admin
- * */
-export const isFullAdmin = new CreateAuth('fullAdmin', jwt.getJWTKey(), 'jwt', async (token, done) => {
-  try {
-    let isFullAdmin = await UserModel.findOne({ _id: token._id, role: { $in: ROLE_ACCEPT_ADMIN_PAGE } }).lean();
-    if (!isFullAdmin) {
-      return done(null, false);
+export async function Authentication(req, res, next) {
+    let token = getToken(req.headers)
+    if (token) {
+        jwt.verify(token, CONFIG.jwt_encryption, (error, decoded) => {
+            if (error) {
+                return response.error(res, req, error, 403)
+            } else {
+                req.user = decoded
+                next()
+            }
+        })
+    } else {
+        return response.error(res, req, CODE.TOKEN_HAS_EXPIRED, 403)
     }
-    delete isFullAdmin.passWord;
-    return done(null, isFullAdmin);
-  } catch (error) {
-    return done(error)
-  }
-});
-
-/**
- * JWT Admin
- * */
-export const isAdmin = new CreateAuth('admin', jwt.getJWTKey(), 'jwt', async (token, done) => {
-  try {
-    let admin = await UserModel.findOne({ _id: token._id, role: { $in: [ROLES.ROOT, ROLES.ADMIN] } }).lean();
-    if (!admin) {
-      return done(null, false);
-    }
-    delete admin.passWord;
-    return done(null, admin);
-  } catch (error) {
-    return done(error)
-  }
-});
-
-/**
- * JWT Root
- * */
-export const isRoot = new CreateAuth('root', jwt.getJWTKey(), 'jwt', async (token, done) => {
-  try {
-    let root = await UserModel.findOne({ _id: token._id, role: ROLES.ROOT }).lean();
-    if (!root) {
-      return done(null, false);
-    }
-    delete root.passWord;
-    return done(null, root);
-  } catch (error) {
-    return done(error)
-  }
-});
-/**
- * JWT Root
- * */
-export const isFullAuth = new CreateAuth('fullAuth', jwt.getJWTKey(), 'jwt', async (token, done) => {
-  try {
-    let isFullAuth = await UserModel.findById(token._id).lean();
-    if (!isFullAuth) {
-      return done(null, false);
-    }
-    delete isFullAuth.passWord;
-    return done(null, isFullAuth);
-  } catch (error) {
-    return done(error)
-  }
-});
+}

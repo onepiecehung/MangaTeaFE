@@ -1,8 +1,9 @@
-var mongoose = require("mongoose")
-var autoIncrement = require("mongoose-plugin-autoinc")
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const autoIncrement = require("mongoose-plugin-autoinc")
+const Schema = mongoose.Schema;
+// const UserModel = require("./user.model")
 
-var GenreSchema = new Schema({
+const GenreSchema = new Schema({
     name: {
         type: String,
         default: "Unknown name",
@@ -13,22 +14,16 @@ var GenreSchema = new Schema({
         default: "Unknown detail",
         require: true,
     },
-    createAt:{
-        type: Date,
-        default: Date.now()
-    },
-    updateAt:{
-        type: Date,
-        default: Date.now()
-    },
     createBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "Users",
     },
+}, {
+    timestamps: true
 })
 GenreSchema.plugin(autoIncrement.plugin, {
     model: 'GenreSchema',
-    field: '_id'
+    startAt: 1
 });
 
 module.exports = mongoose.model('Genre', GenreSchema);

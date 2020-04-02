@@ -9,10 +9,18 @@ export async function create(userInfo) {
     return userClass.save();
 }
 
-export async function findEmail(email) {
-    return UserModel.find({ email: email })
+export async function findByEmail(email) {
+    return UserModel.findOne({ email: email.toLowerCase() })
 }
 
-export async function findUsername(username) {
-    return UserModel.find({ username: username })
+export async function findByUsername(username) {
+    return UserModel.findOne({ username: username })
+}
+
+export async function checkPassword(password) {
+    return UserModel.comparePassword(password)
+}
+
+export async function findById(id) {
+    return UserModel.findById(id)
 }

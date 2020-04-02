@@ -1,36 +1,39 @@
 var mongoose = require("mongoose")
 var Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-plugin-autoinc');
-const UserModel = require("./user.model")
+// const UserModel = require("./user.model")
+// const ChapterModel = require("./chapter.model")
+// const MangaModel = require("./manga.model")
 
 var MemberSchema = new Schema({
     userID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: UserModel,
-        required: true
+        type: mongoose.Schema.Types.Number,
+        ref: "Users",
+        required: true,
+        unique: true
     },
     chapterUpload: [{
         id_chapter: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Chapter'
+            type: mongoose.Schema.Types.Number,
+            ref: "Chapter"
         }
     }],
     mangaSaved: [{
         id_manga: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Manga'
+            type: mongoose.Schema.Types.Number,
+            ref: "Manga"
         },
-        timeSaved: {
+        timeSavedAt: {
             type: Date,
             default: Date.now()
         }
     }],
     historyRead: [{
         id_chapter: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Manga'
+            type: mongoose.Schema.Types.Number,
+            ref: "Manga"
         },
-        timeRead: {
+        timeReadAt: {
             type: Date,
             default: Date.now()
         }
@@ -43,6 +46,9 @@ var MemberSchema = new Schema({
         type: String,
         default: "Unknown"
     }]
+}, {
+    timestamps: true,
+
 })
 MemberSchema.plugin(autoIncrement.plugin, {
     model: 'Member',
