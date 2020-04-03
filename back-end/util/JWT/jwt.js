@@ -2,6 +2,10 @@ const jwt = require("jsonwebtoken")
 const response = require("../../util/response.json")
 const { CONFIG } = require("../../globalConstant/index")
 const { CODE } = require("../../globalConstant/error")
+const UserRepository = require("../../packages/repository/user.repository")
+
+
+
 
 function getToken(headers) {
     if (headers && headers.authorization || headers['x-access-token']) {
@@ -20,11 +24,11 @@ function getToken(headers) {
 export async function Authentication(req, res, next) {
     let token = getToken(req.headers)
     if (token) {
-        jwt.verify(token, CONFIG.jwt_encryption, (error, decoded) => {
+        jwt.verify(token, CONFIG.jwt_encryption, async (error, decoded) => {
             if (error) {
                 return response.error(res, req, error, 403)
             } else {
-                req.user = decoded
+                req.user = await UserRepository.findById(decoded._id)
                 next()
             }
         })

@@ -29,11 +29,6 @@ export const NAME_DB = process.env.NAME_DB || `truyentranh`
 export const URL_HOST = process.env.NAME_DB || `3hmanga-p9tow.gcp.mongodb.net`
 
 export const DATABASE = {
-    SECRET: process.env.SECRET || 'F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgV',
-    USER_DB: process.env.USER_DB || `onepiecehung`,
-    PASSWORD_DB: process.env.PASSWORD_DB || `Hung01684657540`,
-    NAME_DB: process.env.NAME_DB || `truyentranh`,
-    URL_HOST: process.env.NAME_DB || `3hmanga-p9tow.gcp.mongodb.net`,
     URL_DB_LOCAL: process.env.URL_DB_LOCAL || `mongodb://localhost:27017/${NAME_DB}`,
     URL_DB: process.env.URL_DB || `mongodb+srv://${USER_DB}:${PASSWORD_DB}@${URL_HOST}/${NAME_DB}?retryWrites=true&w=majority` || URL_DB_LOCAL
 }

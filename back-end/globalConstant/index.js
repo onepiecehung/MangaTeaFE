@@ -77,3 +77,21 @@ export const USER_ERROR = {
   USERNAME_HAS_EXISTS: "USERNAME_HAS_EXISTS",
   PASSWORD_INVALID: "PASSWORD_INVALID"
 }
+
+
+
+export function ALLOW_URL(origin, callback) {
+  let whitelist = process.env.SERVER_ORIGIN.split(' ') || "*"
+  if (whitelist.indexOf(origin) !== -1) {
+    callback(null, true)
+  } else {
+    callback(new Error('Access Denied'))
+  }
+}
+
+export const CORS = {
+  // Find and fill your options here: https://github.com/expressjs/cors#configuration-options
+  origin: ALLOW_URL,
+  methods: 'GET,PUT,POST,DELETE',
+  allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization,Accept-Language,User-Agent,Connection',
+}

@@ -42,7 +42,7 @@ export async function Register(userInfo) {
 async function generateToken(user) {
     try {
         let expiration_time = parseInt(CONFIG.jwt_expiration);
-        return jwt.sign({ _id: user._id, email: user.email, username: user.username, role: user.role }, CONFIG.jwt_encryption, {
+        return jwt.sign({ _id: user._id, role: user.role }, CONFIG.jwt_encryption, {
             expiresIn: expiration_time
         });
     } catch (error) {
@@ -79,7 +79,10 @@ export async function Login(loginInfo, ip) {
     }
 }
 
-
+/**
+ * 
+ * @param {*} id 
+ */
 export async function getUserById(id) {
     try {
         let data = await UserRepository.findById(id)
