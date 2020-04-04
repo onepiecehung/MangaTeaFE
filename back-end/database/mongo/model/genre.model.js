@@ -15,7 +15,7 @@ const GenreSchema = new Schema({
         require: true,
     },
     createBy: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.Number,
         ref: "Users",
     },
 }, {

@@ -15,6 +15,11 @@ const ChapterSchema = new Schema({
         default: "Unknown name",
         required: true
     },
+    chapterNumber: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     uploadBy: {
         type: mongoose.Schema.Types.Number,
         ref: "Users",
@@ -54,7 +59,7 @@ const ChapterSchema = new Schema({
     timestamps: true
 })
 ChapterSchema.plugin(autoIncrement.plugin, {
-    model: 'ChapterSchema',
+    model: 'Chapter',
     startAt: 1
 });
 

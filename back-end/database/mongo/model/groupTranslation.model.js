@@ -15,23 +15,23 @@ const GroupTranslationSchema = new Schema({
         ref: "Users",
         required: true
     },
-    userMemberID: {
+    userMemberID: [{
         type: mongoose.Schema.type.Number,
         ref: "Users",
         required: true
-    },
-    mangaID: {
+    }],
+    mangaID: [{
         type: mongoose.Schema.Types.Number,
         ref: "Manga"
-    },
-    rate: {
+    }],
+    rate: [{
         type: mongoose.Schema.Types.Number,
         ref: "Rating"
-    },
-    langauge: {
+    }],
+    langauge: [{
         type: mongoose.Schema.Types.Number,
         ref: "Country"
-    },
+    }],
     cover: { type: String },
     avatar: { type: String },
     web: { type: String },

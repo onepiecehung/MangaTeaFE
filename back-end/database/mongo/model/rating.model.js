@@ -16,13 +16,14 @@ const RatingSchema = new Schema({
     },
     userID: {
         type: mongoose.Schema.Types.Number,
-        ref: "Users"
+        ref: "Users",
+        required: [true, 'Rating model need user id']
     },
     rateNumber: {
         type: Number,
         required: [true, 'Need point rating'],
         max: [10, 'Rating from 1 to 10'],
-        min: [1, 'Rating from 1 to 10']
+        min: [1, 'Rating from 1 to 10'],
     },
     rateContent: {
         type: String

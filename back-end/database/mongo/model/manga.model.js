@@ -15,14 +15,14 @@ const MangaSchema = new Schema({
         type: String,
         required: true
     },
-    author: {
+    author: [{
         type: mongoose.Schema.Types.Number,
         ref: "Author_Artist"
-    },
-    artist: {
+    }],
+    artist: [{
         type: mongoose.Schema.Types.Number,
         ref: "Author_Artist"
-    },
+    }],
     groupTranslationID: [{
         type: mongoose.Schema.Types.Number,
         ref: "GroupTranslation"
@@ -38,14 +38,14 @@ const MangaSchema = new Schema({
     cover: {
         type: String
     },
-    genre: {
+    genre: [{
         type: mongoose.Schema.Types.String,
         ref: "Genre"
-    },
-    rate: {
-        type: mongoose.Schema.Types.String,
+    }],
+    rate: [{
+        type: mongoose.Schema.Types.Number,
         ref: "Rating"
-    },
+    }],
     status: {
         type: mongoose.Schema.Types.Number,
         ref: "Status"

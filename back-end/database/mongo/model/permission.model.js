@@ -5,7 +5,7 @@ const autoIncrement = require('mongoose-plugin-autoinc');
 const PermissionSchema = new Schema({
     name: { type: String, required: true, unique: true },
     code: { type: Number, required: true, unique: true },
-    detail: { type: String, required: true, unique: true },
+    detail: { type: String, required: true },
 }, {
     timestamps: true,
 })
