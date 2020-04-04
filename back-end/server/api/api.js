@@ -8,7 +8,7 @@ const UserRouter = require("../../packages/user/user.routes")
 const MemberRouter = require("../../packages/menber/member.routes")
 const CountryRouter = require("../../packages/country/country.routes")
 const StatusRouter = require("../../packages/status/status.routes")
-
+const GenreRouter = require('../../packages/genre/genre.routes');
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
     var browser = detect(req.headers['user-agent']);
@@ -28,7 +28,7 @@ router.use('/user', UserRouter);
 router.use("/member", MemberRouter)
 router.use("/country", CountryRouter)
 router.use("/status", StatusRouter)
-// router.use('/genre', genreRouter);
+router.use('/genre', GenreRouter);
 
 
 router.get('/', function (req, res) {

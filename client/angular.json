@@ -29,11 +29,27 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/constants/constant-api.ts",
+                  "with": "src/constants/constant-api.dev.ts"
+                }
+              ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/constants/constant-api.ts",
+                  "with": "src/constants/constant-api.test.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/constants/constant-api.ts",
+                  "with": "src/constants/constant-api.prod.ts"
                 }
               ],
               "optimization": true,
