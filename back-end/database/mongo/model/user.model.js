@@ -18,7 +18,8 @@ const UserSchema = new mongoose.Schema({
     phoneNumber: { type: String, },
     status: {
         type: mongoose.Schema.Types.Number,
-        ref: "Status"
+        ref: "Status",
+        default: "INACTIVE"
     },
     role: {
         type: mongoose.Schema.Types.String,
@@ -27,7 +28,8 @@ const UserSchema = new mongoose.Schema({
     },
     sex: {
         type: String,
-        enum: ["Male", "Female", "Other"]
+        enum: ["Male", "Female", "Other"],
+        default: "Male"
     },
     birthday: { type: Date },
     address: { type: String, default: "" },

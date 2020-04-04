@@ -4,7 +4,7 @@ const schema = Joi.object({
     email: Joi.string()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
     username: Joi.string()
         .required()
         .min(6)
@@ -39,7 +39,7 @@ const registerSchema = schema.keys({
     email: Joi.string()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
     password: Joi.string()
         .required()
         .min(6)
@@ -54,7 +54,7 @@ const loginSchema = Joi.object({
     email: Joi.string().trim()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
     username: Joi.string()
         .allow('')
         .min(6)
@@ -124,7 +124,7 @@ const checkEmail = Joi.object({
     email: Joi.string()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
 });
 
 
@@ -141,7 +141,7 @@ const resetPassword = Joi.object({
     email: Joi.string()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
     password: Joi.string()
         .required()
         .min(6)
@@ -165,7 +165,7 @@ const OTP = Joi.object({
     email: Joi.string()
         .required()
         .regex(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,10}/i)
-        .error(() => "Invalid email"),
+        .error(() => { throw new Error("Invalid email") }),
     otp: Joi.required()
 })
 

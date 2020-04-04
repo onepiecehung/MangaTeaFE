@@ -1,7 +1,12 @@
+# Project structure
+![](https://i.imgur.com/QBDrq5w.png)
+
+
 ## Introduction: 
 - This template backend write by nodejs
 - Demo: Admin Manage User. (Add, Edit, Delete, Get) User 
 - Test api in swagger [API docs](http://localhost:3001/api-docs)
+
 ### 1. Setup Environment:
   - File `.env`
 ````

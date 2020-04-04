@@ -36,7 +36,9 @@ export const CODE_ERROR = {
   INVALID_PARAMS: 'INVALID_PARAMS',
   NOT_PERMISSION: 'NOT_PERMISSION',
   FORBIDDEN: 'FORBIDDEN',
-  NOT_MATCH: 'NOT_MATCH'
+  NOT_MATCH: 'NOT_MATCH',
+  NAME_STATUS_IS_ALREADY: "NAME_STATUS_IS_ALREADY",
+  CODE_STATUS_IS_ALREADY: "CODE_STATUS_IS_ALREADY"
 };
 
 export const CODE_USER_ERROR = {
@@ -81,7 +83,7 @@ export const USER_ERROR = {
 
 
 export function ALLOW_URL(origin, callback) {
-  let whitelist = process.env.SERVER_ORIGIN.split(' ') || "*"
+  let whitelist = process.env.SERVER_ORIGIN || "*"
   if (whitelist.indexOf(origin) !== -1) {
     callback(null, true)
   } else {
@@ -89,9 +91,13 @@ export function ALLOW_URL(origin, callback) {
   }
 }
 
+
+/**
+ * CORS
+ */
 export const CORS = {
   // Find and fill your options here: https://github.com/expressjs/cors#configuration-options
-  origin: ALLOW_URL,
-  methods: 'GET,PUT,POST,DELETE',
-  allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization,Accept-Language,User-Agent,Connection',
+  origin: "*" || ALLOW_URL,
+  methods: 'GET,PUT,POST,DELETE'
 }
+

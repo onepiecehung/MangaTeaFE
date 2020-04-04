@@ -28,6 +28,11 @@ const CommentSchema = new Schema({
         required: true,
         max: [10000, "Max comment 10000 words"]
     },
+    status: {
+        type: mongoose.Schema.Types.String,
+        ref: "Status",
+        default: "ACTIVE"
+    },
     reply: [{
         type: mongoose.Schema.Types.Number,
         ref: 'Comment'

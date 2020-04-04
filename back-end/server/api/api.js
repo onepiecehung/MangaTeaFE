@@ -7,6 +7,7 @@ const { getIP, getClientIp } = require("../../util/help")
 const UserRouter = require("../../packages/user/user.routes")
 const MemberRouter = require("../../packages/menber/member.routes")
 const CountryRouter = require("../../packages/country/country.routes")
+const StatusRouter = require("../../packages/status/status.routes")
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -26,6 +27,7 @@ router.use(function timeLog(req, res, next) {
 router.use('/user', UserRouter);
 router.use("/member", MemberRouter)
 router.use("/country", CountryRouter)
+router.use("/status", StatusRouter)
 // router.use('/genre', genreRouter);
 
 

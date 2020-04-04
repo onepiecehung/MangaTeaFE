@@ -17,11 +17,11 @@ const bcrypt = require("bcrypt")
 export async function Register(userInfo) {
     try {
         let UserEmail = await UserRepository.findByEmail(userInfo.email)
-        if (UserEmail.length > 0) {
+        if (UserEmail) {
             return Promise.reject(USER_ERROR.EMAIL_HAS_EXISTS);
         }
         let UserName = await UserRepository.findByUsername(userInfo.username)
-        if (UserName.length > 0) {
+        if (UserName) {
             return Promise.reject(USER_ERROR.USERNAME_HAS_EXISTS);
         }
         let data = await UserRepository.create(userInfo)
