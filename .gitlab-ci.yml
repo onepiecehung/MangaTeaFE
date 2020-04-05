@@ -7,9 +7,8 @@ build_client-artifacts:
   image: trion/ng-cli
   before_script:
     - cd client
-    - npm ci
-  script:
     - npm install
+  script:
     - npm run build:prod
   artifacts:
     expire_in: 7 day
