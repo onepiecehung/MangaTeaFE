@@ -35,3 +35,12 @@ export async function findByName(name) {
 export async function findByUserIdCreate(id) {
     return GenreModel.find({ createBy: id })
 }
+
+
+/**
+ * 
+ * @param {ArrayObject} genreInfoArray 
+ */
+export async function createMultiple(genreInfoArray) {
+    return await GenreModel.insertMany(genreInfoArray)
+}

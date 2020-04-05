@@ -24,12 +24,12 @@ const UserSchema = new mongoose.Schema({
     role: {
         type: mongoose.Schema.Types.String,
         ref: "Role",
-        default: "Member"
+        default: "MEMBER"
     },
     sex: {
         type: String,
-        enum: ["Male", "Female", "Other"],
-        default: "Male"
+        enum: ["MALE", "FEMALE", "OTHER"],
+        default: "MALE"
     },
     birthday: { type: Date },
     address: { type: String, default: "" },
@@ -70,6 +70,11 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
+UserSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This user already exists, please try again'));
+    else next(error);
+});
 
 UserSchema.methods.comparePassword = async function (password) {
     try {

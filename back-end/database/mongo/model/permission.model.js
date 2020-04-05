@@ -9,6 +9,22 @@ const PermissionSchema = new Schema({
 }, {
     timestamps: true,
 })
+
+
+
+
+PermissionSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
+
+
+
+
+
 PermissionSchema.plugin(autoIncrement.plugin, {
     model: 'Permission',
     startAt: 1

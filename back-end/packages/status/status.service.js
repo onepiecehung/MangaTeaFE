@@ -19,3 +19,14 @@ export async function create(statusInfo) {
         return Promise.reject(error);
     }
 }
+
+
+export async function insertMultiple(statusInfoArray) {
+    try {
+        let data = await StatusRepository.createMultiple(statusInfoArray)
+        return data
+    } catch (error) {
+        logger.error(error);
+        return Promise.reject(error);
+    }
+}

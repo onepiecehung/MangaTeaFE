@@ -9,6 +9,15 @@ const StatusSchema = new Schema({
 }, {
     timestamps: true,
 })
+
+
+StatusSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
 StatusSchema.plugin(autoIncrement.plugin, {
     model: 'Status',
     startAt: 1

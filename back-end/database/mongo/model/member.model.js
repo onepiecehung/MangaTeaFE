@@ -50,6 +50,22 @@ var MemberSchema = new Schema({
     timestamps: true,
 
 })
+
+
+
+
+
+MemberSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
+
+
+
+
 MemberSchema.plugin(autoIncrement.plugin, {
     model: 'Member',
     startAt: 10

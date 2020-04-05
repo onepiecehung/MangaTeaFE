@@ -24,6 +24,15 @@ export async function findByName(name) {
  * 
  * @param {Number} code 
  */
-export async function findByName(code) {
+export async function findByCode(code) {
     return RoleModel.findOne({ code: code })
+}
+
+
+/**
+ * 
+ * @param {ArrayObject} roleInfoArray 
+ */
+export async function createMultiple(roleInfoArray) {
+    return await RoleModel.insertMany(roleInfoArray)
 }

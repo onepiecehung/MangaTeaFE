@@ -11,4 +11,9 @@ router.route("/create")
     );
 
 
+router.route("/all")
+    .post(
+        StatusController.autoCreateAllStatus
+    )
+
 module.exports = router
