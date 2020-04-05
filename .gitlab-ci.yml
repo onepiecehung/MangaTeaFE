@@ -1,16 +1,12 @@
 stages:
   - build
   - deploy
-cache:
-  untracked: true
-  paths:
-    - client/node_modules/
+
 build_client-artifacts:
   stage: build
   image: trion/ng-cli
   before_script:
     - cd client
-    - rm -rf node_modules
     - npm ci
   script:
     - npm install
