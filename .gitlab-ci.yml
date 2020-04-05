@@ -10,6 +10,7 @@ build_client-artifacts:
   image: trion/ng-cli
   before_script:
     - cd client
+    - rm -rf node_modules
     - npm ci
   script:
     - npm install
