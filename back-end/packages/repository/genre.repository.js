@@ -35,3 +35,8 @@ export async function findByName(name) {
 export async function findByUserIdCreate(id) {
     return GenreModel.find({ createBy: id })
 }
+
+
+export async function findAll(){
+    return GenreModel.findAll();
+}
