@@ -36,6 +36,22 @@ const Author_ArtistSchema = new Schema({
 }, {
     timestamps: true,
 })
+
+
+
+
+Author_ArtistSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
+
+
+
+
+
 Author_ArtistSchema.plugin(autoIncrement.plugin, {
     model: 'Author_Artist',
     startAt: 1

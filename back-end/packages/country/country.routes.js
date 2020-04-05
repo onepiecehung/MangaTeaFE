@@ -8,8 +8,8 @@ const CountryController = require("./country.controller")
 // service
 
 
-router.route('/')
-    .get(
+router.route('/all') 
+    .post(
         CountryController.addAllCountry
     );
 

@@ -25,3 +25,12 @@ export async function findByName(name) {
 export async function findByCode(code) {
     return StatusModel.findOne({ code: code })
 }
+
+
+/**
+ * 
+ * @param {ArrayObject} statusInfoArray 
+ */
+export async function createMultiple(statusInfoArray) {
+    return await StatusModel.insertMany(statusInfoArray)
+}

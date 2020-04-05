@@ -40,3 +40,10 @@ export async function findByUserIdCreate(id) {
 export async function findAll(){
     return GenreModel.findAll();
 }
+/**
+ * 
+ * @param {ArrayObject} genreInfoArray 
+ */
+export async function createMultiple(genreInfoArray) {
+    return await GenreModel.insertMany(genreInfoArray)
+}

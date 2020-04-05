@@ -58,6 +58,20 @@ const ChapterSchema = new Schema({
 }, {
     timestamps: true
 })
+
+
+
+
+ChapterSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
+
+
+
 ChapterSchema.plugin(autoIncrement.plugin, {
     model: 'Chapter',
     startAt: 1

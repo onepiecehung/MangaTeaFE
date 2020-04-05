@@ -9,6 +9,22 @@ const AppellationSchema = new Schema({
 }, {
     timestamps: true,
 })
+
+
+
+
+AppellationSchema.post('save', function (error, doc, next) {
+    if (error.name === 'MongoError' && error.code === 11000)
+        next(new Error('This doccument is already exists, please try again'));
+    else next(error);
+});
+
+
+
+
+
+
+
 AppellationSchema.plugin(autoIncrement.plugin, {
     model: 'Appellation',
     startAt: 1

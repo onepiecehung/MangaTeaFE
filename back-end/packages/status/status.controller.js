@@ -1,6 +1,7 @@
 const response = require("../../util/response.json")
 const StatusValidator = require("./status.validatation")
 const StatusService = require("./status.service")
+const { STATUS } = require("../../database/mongo/data/status.data")
 
 
 
@@ -14,6 +15,16 @@ export async function create(req, res) {
             });
         }
         let data = await StatusService.create(req.body)
+        return response.success(res, data, 201)
+    } catch (error) {
+        return response.error(res, req, error)
+    }
+}
+
+
+export async function autoCreateAllStatus(req, res) {
+    try {
+        let data = await StatusService.insertMultiple(STATUS)
         return response.success(res, data, 201)
     } catch (error) {
         return response.error(res, req, error)
