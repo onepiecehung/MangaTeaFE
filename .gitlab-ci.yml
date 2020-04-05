@@ -11,7 +11,7 @@ build_client-artifacts:
   script:
     - npm run build:prod
   artifacts:
-    expire_in: 7 day
+    expire_in: 2 day
     paths:
       - client/dist/
   only:
