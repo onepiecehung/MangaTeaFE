@@ -9,6 +9,7 @@ build_client-artifacts:
     - cd client
     - npm ci
   script:
+    - npm install
     - npm run build:prod
   artifacts:
     expire_in: 7 day
