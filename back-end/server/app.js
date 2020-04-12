@@ -59,7 +59,7 @@ mongoose
             console.log(`The APIs service running on port ${SERVER.PORT}`.cyan.bold)
             console.log(`Document API: http://${API_PATH}.yourdomain.com/${SERVER.DOCS_PATH} or http://${SERVER.URL_API_HOST}:${SERVER.PORT}/${SERVER.DOCS_PATH}`.cyan)
         },
-        err => console.log(`[ Database =>] The connection to the database failed: ${err}.`.red)
+        err => console.log(`[ Database =>] The connection to the database failed: ${err}. = ${DATABASE.URL_DB ? DATABASE.URL_DB : DATABASE.URL_DB_LOCAL}`.red)
     );
 
 

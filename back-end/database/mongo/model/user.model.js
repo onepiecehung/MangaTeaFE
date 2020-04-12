@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     phoneNumber: { type: String, },
     status: {
-        type: mongoose.Schema.Types.Number,
+        type: mongoose.Schema.Types.String,
         ref: "Status",
         default: "INACTIVE"
     },
