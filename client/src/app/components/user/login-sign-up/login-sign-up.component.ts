@@ -46,10 +46,15 @@ export class LoginSignUpComponent implements OnInit {
     }
 
     if (this.data.type === 'login') {
-      this.userService.loginAccount(this.formLoginSignUp.value).subscribe(response => {
-        console.log(response);
+      // this.userService.loginAccount(this.formLoginSignUp.value).subscribe(response => {
+      //   // console.log(response);
+      //   localStorage.setItem('token', 'token');
 
-      });
+      // });
+      localStorage.setItem('token', 'token');
+      this.dialogRef.close();
+      
+      console.log("LoginSignUpComponent -> submitFormLoginSignUp -> localStorage.getItem('token')", localStorage.getItem('token'))
     }
   }
   onNoClick(): void {

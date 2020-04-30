@@ -8,7 +8,7 @@
     "start:prod": "ng serve --configuration=production --open --port=4200",
     "build:dev": "ng build  --configuration=development",
     "build:test": "ng build --configuration=test",
-    "build:prod": "ng build --configuration=production",
+    "build:prod": "ng build --configuration=production --aot=true --commonChunk=true --buildOptimizer=true --deleteOutputPath=true --optimization=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

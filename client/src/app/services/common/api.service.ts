@@ -21,6 +21,10 @@ export class ApiService {
     return this.http.post(url, body);
   }
 
+  login(url, body): Observable<any> {
+    return this.http.post(url, body);
+  }
+
   update(url, id, body): Observable<any> {
     return this.http.put(`${url}/${id}`, body);
   }
