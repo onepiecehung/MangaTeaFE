@@ -4,5 +4,6 @@ export namespace CONSTANT_API {
     LOGIN:'',
     SIGNUP: '',
     USER_ME:'',
+    MANGA: ''
   }
 }

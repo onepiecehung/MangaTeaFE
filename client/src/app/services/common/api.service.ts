@@ -11,7 +11,7 @@ export class ApiService {
     private http: HttpClient,
   ) { }
 
-  getAll(url): Observable<any> {
+  get(url): Observable<any> {
     return this.http.get(url);
   }
   getById(url, id): Observable<any> {

@@ -1,3 +1,5 @@
+import { Manga } from './../../../types/manga';
+import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class MainPageComponent implements OnInit {
   listManga = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  constructor() { }
+  constructor(
+    private mangaService: MangaService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+    var response = await this.mangaService.loadManga(0, 0);
+    console.log("MainPageComponent -> ngOnInit -> response", response)
   }
 
 }
