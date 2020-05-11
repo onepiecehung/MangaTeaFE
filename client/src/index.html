@@ -23,6 +23,29 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
   </script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBkjuC3ZhBPdIhQ2xx2_RMKadZ8KkOzLj8",
+      authDomain: "manga-web-app.firebaseapp.com",
+      databaseURL: "https://manga-web-app.firebaseio.com",
+      projectId: "manga-web-app",
+      storageBucket: "manga-web-app.appspot.com",
+      messagingSenderId: "1012558545495",
+      appId: "1:1012558545495:web:bcd473439987bf43601912",
+      measurementId: "G-6FYJHZELEP"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
 
 </html>
