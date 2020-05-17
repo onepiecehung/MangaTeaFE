@@ -2,12 +2,12 @@
   <div class="title">{{title}}</div>
   <div>
     <form [formGroup]="formLoginSignUp">
-      <mat-form-field class="w-100" appearance="outline">
+      <mat-form-field *ngIf="data.type ==='sign_up'" class="w-100" appearance="outline">
         <mat-label>Enter Username</mat-label>
         <input matInput placeholder="Input username" formControlName="username" autocomplete="off">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
-      <mat-form-field *ngIf="data.type ==='sign_up'" class="w-100" appearance="outline">
+      <mat-form-field  class="w-100" appearance="outline">
         <mat-label>Enter your email</mat-label>
         <input matInput placeholder="Input email" formControlName="email" autocomplete="off">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>

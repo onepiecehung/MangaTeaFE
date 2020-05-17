@@ -15,15 +15,20 @@
           <input type="text">
         </div>
       </div>
-      <div class="col-4">
-        <div class="login-signup d-flex d-flex justify-content-end">
-          <div class="signup">
+      <div class="col-4 d-flex justify-content-end">
+        <div *ngIf="authService.isAuthenticated()" class="example-button-container">
+          <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+        <div class="login-sign_up d-flex d-flex justify-content-end">
+          <div *ngIf="!authService.isAuthenticated()" class="sign_up">
             <a mat-button (click)="openDialogSignUp()">
               <i class="fas fa-user-plus"></i>
               Sign Up
             </a>
           </div>
-          <div class="login">
+          <div *ngIf="!authService.isAuthenticated()" class="login">
             <a mat-button (click)="openDialogLogin()">
               <i class="fas fa-sign-in-alt"></i>
               Log In

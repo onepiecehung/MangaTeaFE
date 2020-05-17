@@ -2,11 +2,11 @@ export class User {
     email: string;
     password: string;
     username: string;
-    constructor(email, password, username?) {
-        this.email = email;
-        this.password = password;
-        if (username) {
-            this.username = username;
+    constructor(data) {
+        this.email = data.email;
+        this.password = data.password;
+        if (data.username) {
+            this.username = data.username;
         }
     }
 }

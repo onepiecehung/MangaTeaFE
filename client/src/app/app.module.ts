@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MangaResolver } from './cores/resolves/manga.resolver';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { MangaResolver } from './cores/resolves/manga.resolver';
         FormsModule,
         ReactiveFormsModule,
         MatTabsModule,
-        MatChipsModule
+        MatChipsModule,
+        MatIconModule
     ],
     providers: [
         MangaResolver

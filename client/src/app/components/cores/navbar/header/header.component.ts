@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoginSignUpComponent } from 'src/app/components/user/login-sign-up/login-sign-up.component';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ import { LoginSignUpComponent } from 'src/app/components/user/login-sign-up/logi
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -20,24 +22,24 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginSignUpComponent, {
       width: '500px',
       data: { type: 'login' },
-      position:{top: '50px'}
+      position: { top: '50px' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log("HeaderComponent -> openDialogLogin -> result", result)
     });
   }
 
-  openDialogSignUp(){
+  openDialogSignUp() {
     const dialogRef = this.dialog.open(LoginSignUpComponent, {
       width: '500px',
       data: { type: 'sign_up' },
-      position:{top: '50px'}
+      position: { top: '50px' }
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log("HeaderComponent -> openDialogSignUp -> result", result)
     });
   }
 

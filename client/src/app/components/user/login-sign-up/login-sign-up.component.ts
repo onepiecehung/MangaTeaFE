@@ -3,6 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { UserInfo } from 'src/app/types/user-info';
 
 @Component({
   selector: 'app-login-sign-up',
@@ -42,20 +43,14 @@ export class LoginSignUpComponent implements OnInit {
   submitFormLoginSignUp() {
     if (this.data.type === 'sign_up') {
       this.userService.createNewAccount(this.formLoginSignUp.value).then(response => {
-        console.log("LoginSignUpComponent -> submitFormLoginSignUp -> response", response)
-      });
+      }).catch(err => console.error(err)
+      );
     }
 
     if (this.data.type === 'login') {
-      // this.userService.loginAccount(this.formLoginSignUp.value).subscribe(response => {
-      //   // console.log(response);
-      //   localStorage.setItem('token', 'token');
-
-      // });
-      localStorage.setItem('token', 'token');
-      this.dialogRef.close();
-
-      console.log("LoginSignUpComponent -> submitFormLoginSignUp -> localStorage.getItem('token')", localStorage.getItem('token'))
+      this.userService.loginAccount(this.formLoginSignUp.value).then(response => {
+        this.dialogRef.close({ userInfo: response });
+      });
     }
   }
   onNoClick(): void {
