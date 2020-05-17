@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './auth/auth.guard';
+import { MangaResolver } from './cores/resolves/manga.resolver';
 
 
 const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+    // resolve: {
+    //   MangaResolver
+    // }
   },
   {
     path: 'user',

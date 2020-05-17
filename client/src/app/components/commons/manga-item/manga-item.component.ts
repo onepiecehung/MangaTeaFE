@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Manga } from './../../../types/manga';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-manga-item',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manga-item.component.scss']
 })
 export class MangaItemComponent implements OnInit {
-
+  @Input() mangaItem: Manga;
   constructor() { }
 
   ngOnInit(): void {
+    
+    console.log("MangaItemComponent -> ngOnInit -> mangaItem", this.mangaItem)
   }
 
 }

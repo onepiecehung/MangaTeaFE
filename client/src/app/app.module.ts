@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
+import { MangaResolver } from './cores/resolves/manga.resolver';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,9 @@ import { MatChipsModule } from '@angular/material/chips';
         MatTabsModule,
         MatChipsModule
     ],
-    providers: [],
+    providers: [
+        MangaResolver
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

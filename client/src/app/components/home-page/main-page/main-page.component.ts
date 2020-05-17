@@ -1,4 +1,4 @@
-import { Manga } from './../../../types/manga';
+import { Manga, ListMangaResponse } from './../../../types/manga';
 import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-  listManga = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  listManga: Manga[] = [];
 
   constructor(
     private mangaService: MangaService,
   ) { }
 
-  async ngOnInit(){
-    var response = await this.mangaService.loadManga(0, 0);
-    console.log("MainPageComponent -> ngOnInit -> response", response)
+  async ngOnInit() {
+    await this.mangaService.loadManga(0, 0).then(data => {
+      this.listManga = data.manga;
+    }).catch(err => console.log(err)
+    );
   }
 
 }
