@@ -17,7 +17,7 @@ export class ApiService {
   getById(url, id): Observable<any> {
     return this.http.get(`${url}/${id}`);
   }
-  create(url, body): Observable<any> {
+  postData(url, body): Observable<any> {
     return this.http.post(url, body);
   }
 

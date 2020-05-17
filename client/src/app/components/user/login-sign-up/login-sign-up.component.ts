@@ -1,3 +1,4 @@
+import { User } from './../../../types/user';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -32,16 +33,16 @@ export class LoginSignUpComponent implements OnInit {
       this.btnSubmit = 'Log In';
     }
 
-    if (this.data.type === 'signup') {
+    if (this.data.type === 'sign_up') {
       this.title = 'CREATE A NEW ACCOUNT';
       this.btnSubmit = 'Create Account';
     }
   }
 
   submitFormLoginSignUp() {
-    if (this.data.type === 'signup') {
-      this.userService.createNewAccount(this.formLoginSignUp.value).subscribe(response => {
-        console.log(response);
+    if (this.data.type === 'sign_up') {
+      this.userService.createNewAccount(this.formLoginSignUp.value).then(response => {
+        console.log("LoginSignUpComponent -> submitFormLoginSignUp -> response", response)
       });
     }
 
@@ -53,7 +54,7 @@ export class LoginSignUpComponent implements OnInit {
       // });
       localStorage.setItem('token', 'token');
       this.dialogRef.close();
-      
+
       console.log("LoginSignUpComponent -> submitFormLoginSignUp -> localStorage.getItem('token')", localStorage.getItem('token'))
     }
   }

@@ -10,7 +10,6 @@ export class MangaResolver implements Resolve<ListMangaResponse>{
     }
 
     resolve(route: ActivatedRouteSnapshot): Promise<any> {
-        console.log("MangaResolver -> route", route)
         return this.mangaService.loadManga(0, 0);
     }
 }
