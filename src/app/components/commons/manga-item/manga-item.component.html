@@ -1,6 +1,6 @@
 <div class="manga-item">
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3 col-md-5 col-sm-6 col-12">
       <div class="img-top">
         <a [routerLink]="['/manga/description', 1]">
           <img class="w-100 h-100"
@@ -12,7 +12,7 @@
         <span>{{ mangaItem.status }}</span>
       </div>
     </div>
-    <div class="col-9 info-manga">
+    <div class="col-lg-9 col-md-7 col-sm-6 col-12 info-manga">
       <div class="title d-flex flex-row align-items-end">
         <h3><a [routerLink]="['/manga/description', 1]">{{ mangaItem.name }}</a>
           <span> - Update chapter 180</span>
@@ -26,15 +26,12 @@
       </div>
       <div class="author">
         <div>
-          <a class="author-item" href="#">Manhua</a>
-          <a class="author-item" href="#">Manhua</a>
-          <a class="author-item" href="#">Manhua</a>
-          <a class="author-item" href="#">Manhua</a>
+          <a class="author-item" *ngFor="let genre of mangaItem.genres" [routerLink]="['/genres/', genre | lowercase]">{{ genre }}</a>
         </div>
       </div>
       <div class="description">
         <p>
-          {{ mangaItem.description }}
+          {{ mangaItem.description | spliceString:500 }}
         </p>
       </div>
 

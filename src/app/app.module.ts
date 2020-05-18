@@ -25,6 +25,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MangaResolver } from './cores/resolves/manga.resolver';
 import {MatIconModule} from '@angular/material/icon';
+import { SpliceStringPipe } from './pipes/splice-string.pipe';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import {MatIconModule} from '@angular/material/icon';
         AsideComponent,
         MangaItemComponent,
         HotMangaComponent,
-        GenreComponent
+        GenreComponent,
+        SpliceStringPipe
     ],
     imports: [
         BrowserModule,

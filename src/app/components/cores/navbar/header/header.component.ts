@@ -42,7 +42,4 @@ export class HeaderComponent implements OnInit {
       console.log("HeaderComponent -> openDialogSignUp -> result", result)
     });
   }
-
-
-
 }

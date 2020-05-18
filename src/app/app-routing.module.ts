@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './auth/auth.guard';
 import { MangaResolver } from './cores/resolves/manga.resolver';
+import { GenreComponent } from './components/genre/genre.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,11 @@ const routes: Routes = [
     // }
   },
   {
-    path: 'user',
+    path: 'genres/:name',
+    component: GenreComponent
+  },
+  {
+    path: 'users',
     loadChildren: () => import('./components/user/user.module').then(m => m.UserModule)
   },
   {
