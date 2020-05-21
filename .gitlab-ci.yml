@@ -1,0 +1,19 @@
+stages:
+  - build
+  - deploy
+
+build_client-artifacts:
+  stage: build
+  image: trion/ng-cli
+  before_script:
+    - npm install
+  script:
+    - npm run build:prod
+  artifacts:
+    expire_in: 2 day
+    paths:
+      - dist/
+  only:
+    refs:
+      - master
+      - develop

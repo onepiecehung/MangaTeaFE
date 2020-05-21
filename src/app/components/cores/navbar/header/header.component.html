@@ -1,0 +1,41 @@
+<div class="header">
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-4 col-12">
+        <div class="logo">
+          <h1>
+            <a routerLink=''>
+              <img src="assets/img/logo.png" alt="">
+            </a>
+          </h1>
+        </div>
+      </div>
+      <div class="col-md-4 col-12">
+        <div class="search-box">
+          <input type="text">
+        </div>
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <div *ngIf="authService.isAuthenticated()" class="example-button-container">
+          <button mat-fab color="warn" [routerLink]="['/users/profiles']" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+        <div class="login-sign_up d-flex d-flex justify-content-end">
+          <div *ngIf="!authService.isAuthenticated()" class="sign_up">
+            <a mat-button (click)="openDialogSignUp()">
+              <i class="fas fa-user-plus"></i>
+              Sign Up
+            </a>
+          </div>
+          <div *ngIf="!authService.isAuthenticated()" class="login">
+            <a mat-button (click)="openDialogLogin()">
+              <i class="fas fa-sign-in-alt"></i>
+              Log In
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
