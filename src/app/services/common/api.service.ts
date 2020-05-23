@@ -11,14 +11,19 @@ export class ApiService {
   ) {
   }
 
-  get(url): Observable<any> {
-    return this.http.get(url);
-  }
   getById(url, id): Observable<any> {
     return this.http.get(`${url}/${id}`);
   }
   postData(url, body): Observable<any> {
     return this.http.post(url, body).pipe(
+      catchError(err => {
+        return of(err.error);
+      })
+    );
+  }
+
+  getData(url): Observable<any> {
+    return this.http.get(url).pipe(
       catchError(err => {
         return of(err.error);
       })

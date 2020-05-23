@@ -1,6 +1,50 @@
 <div class="main-profile">
-    <div class="container">
-        <p>profile works!</p>
-        <p>genre works!</p>
+  <div class="container">
+    <!-- <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">User Settings</a></li>
+        <li class="breadcrumb-item active mr-auto" aria-current="page">Edit Profile</li>
+        <li><button mat-flat-button>Cancel</button></li>
+        <li class="ml-3"><button mat-flat-button color="primary">Save</button></li>
+      </ol>
+    </nav> -->
+    <!-- <hr> -->
+    <div class="row">
+      <div class="col-4">
+        <div class="section-edit-profile">Public Avatar</div>
+        <div>You can change your avatar here or remove the current avatar</div>
+      </div>
+      <div class="col-2">
+        <img class="img-fluid rounded-circle"
+          [src]="userInfo?.avatar ? userInfo.avatar : 'https://media.ngoisao.vn/resize_580/news/2018/11/26/hotgirl-1-ngoisao.vn-w600-h493.jpg'"
+          alt="">
+      </div>
+      <div class="col-6">
+        <div class="title-upload-new-avatar">Upload new avatar</div>
+        <div class="choose-file">
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile04"
+                aria-describedby="inputGroupFileAddon04">
+              <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div>
+          <button type="button" class="btn btn-outline-warning">Remove avatar</button>
+        </div>
+      </div>
     </div>
+    <hr>
+    <div class="row">
+      <div class="col-4">
+        <div class="section-edit-profile">Main settings</div>
+      </div>
+      <div class="col-8">
+        asdfasdf
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="header">
   <div class="container">
     <div class="row d-flex justify-content-between">
-      <div class="col-md-4 col-12">
+      <div class="col-md-6 col-12">
         <div class="logo">
           <h1>
             <a routerLink=''>
@@ -10,12 +10,15 @@
           </h1>
         </div>
       </div>
-      <div class="col-md-4 col-12">
+      <div class="col-md-5 col-12">
         <div class="search-box">
-          <input type="text">
+          <form class="search">
+            <input type="text" placeholder="Search.." name="search2">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
         </div>
       </div>
-      <div class="col-md-4 d-flex justify-content-end">
+      <div class="col-md-1 d-flex justify-content-end">
         <div class="profile" *ngIf="authService.isAuthenticated()">
           <div [routerLink]="['/users/profiles']">
             <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">

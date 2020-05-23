@@ -3,7 +3,7 @@ export namespace CONSTANT_API {
     GENRE:'',
     LOGIN:'',
     SIGN_UP: '',
-    USER_ME:'',
+    PROFILE:'',
     MANGA: ''
   }
 }

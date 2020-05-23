@@ -38,6 +38,7 @@ export class UserInfo {
       this.username = data.username;
       this.verifyEmail = data.verifyEmail;
       this.verifyPhone = data.verifyPhone;
+      this.avatar = (data?.avatar) ? (data.avatar) : '';
     }
   }
 }

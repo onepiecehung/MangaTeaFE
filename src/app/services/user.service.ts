@@ -30,7 +30,18 @@ export class UserService {
         if (response.status === HTTP_STATUS.OK) {
           localStorage.setItem('token', response.data.token);
           resolve(new UserInfo(response.data.user));
-        }else{
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+  getProfile() {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(CONSTANT_API.API_ENDPOINTS.PROFILE).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(new UserInfo(response.data));
+        } else {
           reject(response.data);
         }
       });

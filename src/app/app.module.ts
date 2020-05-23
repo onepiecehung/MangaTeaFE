@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/cores/navbar/navbar.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './components/cores/footer/footer.component';
 import { HeaderComponent } from './components/cores/navbar/header/header.component';
 import { MenuComponent } from './components/cores/navbar/menu/menu.component';
@@ -24,8 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
 import { MangaResolver } from './cores/resolves/manga.resolver';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { SpliceStringPipe } from './pipes/splice-string.pipe';
+import { AuthenticationInterceptor } from './auth/authentication.interceptor';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,12 @@ import { SpliceStringPipe } from './pipes/splice-string.pipe';
         MatIconModule
     ],
     providers: [
-        MangaResolver
+        MangaResolver,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthenticationInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ export namespace CONSTANT_API {
     GENRE: '',
     LOGIN: 'http://localhost:2111/v1/user/login',
     SIGN_UP: 'http://localhost:2111/v1/user/register',
-    USER_ME: 'http://localhost:2111/user/me',
+    PROFILE: 'http://localhost:2111/v1/user/me',
     MANGA: 'http://localhost:2111/v1/manga'
   }
 }
