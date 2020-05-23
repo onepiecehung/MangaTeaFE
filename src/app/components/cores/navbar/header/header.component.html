@@ -16,10 +16,10 @@
         </div>
       </div>
       <div class="col-md-4 d-flex justify-content-end">
-        <div *ngIf="authService.isAuthenticated()" class="example-button-container">
-          <button mat-fab color="warn" [routerLink]="['/users/profiles']" aria-label="Example icon button with a home icon">
-            <mat-icon>home</mat-icon>
-          </button>
+        <div class="profile" *ngIf="authService.isAuthenticated()">
+          <div [routerLink]="['/users/profiles']">
+            <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
+          </div>
         </div>
         <div class="login-sign_up d-flex d-flex justify-content-end">
           <div *ngIf="!authService.isAuthenticated()" class="sign_up">

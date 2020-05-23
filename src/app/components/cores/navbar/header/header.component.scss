@@ -1,8 +1,13 @@
 .header {
   padding: 18px 0px;
   border-bottom: 1px solid #ebebeb;
-  a{
+  a {
     text-decoration: none;
   }
-
+  .profile {
+    cursor: pointer;
+    .img-profile {
+      width: 50px;
+    }
+  }
 }
