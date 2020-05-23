@@ -9,9 +9,9 @@
             (focus)="handleFocusFormLoginSignUp('username')" (focusout)="handleFocusoutFormLoginSignUp('username')">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <div class="txt-error ml-2" *ngIf="usernameError">
+        <div class="txt-error ml-2" *ngIf="errorMessageService?.usernameError">
           <i class="fas fa-exclamation-circle"></i>
-          {{ usernameError }}
+          {{ errorMessageService?.usernameError?.message }}
         </div>
       </div>
       <div class="email mb-3">
@@ -21,9 +21,9 @@
             (focus)="handleFocusFormLoginSignUp('email')" (focusout)="handleFocusoutFormLoginSignUp('email')">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <div class="txt-error ml-2" *ngIf="emailError">
+        <div class="txt-error ml-2" *ngIf="errorMessageService?.emailError">
           <i class="fas fa-exclamation-circle"></i>
-          {{ emailError }}
+          {{ errorMessageService?.emailError?.message }}
         </div>
       </div>
       <div class="password mb-3">
@@ -36,9 +36,9 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-        <div class="txt-error ml-2" *ngIf="passwordError">
+        <div class="txt-error ml-2" *ngIf="errorMessageService?.passwordError">
           <i class="fas fa-exclamation-circle"></i>
-          {{ passwordError }}
+          {{ errorMessageService?.passwordError?.message }}
         </div>
       </div>
       <div class="password-confirm">
@@ -51,9 +51,9 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-        <div class="txt-error ml-2" *ngIf="passwordConfirmError">
+        <div class="txt-error ml-2" *ngIf="errorMessageService?.passwordConfirmError">
           <i class="fas fa-exclamation-circle"></i>
-          {{ passwordConfirmError }}
+          {{ errorMessageService?.passwordConfirmError?.message }}
         </div>
       </div>
       <div class="input-group mb-3 mt-3">

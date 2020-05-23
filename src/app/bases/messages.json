@@ -1,42 +1,57 @@
 [
   {
-    "type": "email",
+    "field": "email",
     "key": "invalid_email",
     "message": "This email is invalid"
   },
   {
-    "type": "email",
+    "field": "email",
     "key": "email_has_exists",
     "message": "An account already exists with this email"
   },
   {
-    "type": "email",
+    "field": "email",
     "key": "email_not_empty",
     "message": "Email not empty"
   },
   {
-    "type": "username",
+    "field": "username",
     "key": "username_is_not_allowed_to_be_empty",
     "message": "Username not empty"
   },
   {
-    "type": "password",
+    "field": "username",
+    "key": "username_has_exists",
+    "message": "An account already exists with this username"
+  },
+  {
+    "field": "password",
     "key": "password_is_not_allowed_to_be_empty",
     "message": "Password not empty"
   },
   {
-    "type": "password-confirm",
+    "field": "passwordConfirm",
     "key": "password_confirm_is_not_allowed_to_be_empty",
     "message": "Password confirm not empty"
   },
   {
-    "type": "password",
+    "field": "passwordConfirm",
     "key": "password_confirm_not_match",
     "message": "Your password and confirmation password do not match"
   },
   {
-    "type": "password",
+    "field": "password",
     "key": "password_length_must_be_at_least_6_characters_long",
     "message": "Password length must be at least 6 characters"
+  },
+  {
+    "field": "password",
+    "key": "password_invalid",
+    "message": "Password is incorrect"
+  },
+  {
+    "field": "email",
+    "key": "email_not_exists",
+    "message": "Email not exists"
   }
 ]

@@ -1,12 +1,12 @@
 export class ErrorMessage {
-    type: string;
+    field: string;
     key: string;
     message: string;
-    constructor(key, message, type?) {
+    constructor(key, message, field?) {
         this.key = key;
         this.message = message;
-        if (type) {
-            this.type = type;
+        if (field) {
+            this.field = field;
         }
     }
 }
