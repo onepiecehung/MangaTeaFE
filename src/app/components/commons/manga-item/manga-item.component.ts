@@ -9,9 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MangaItemComponent implements OnInit {
   @Input() mangaItem: Manga;
   constructor() { }
-  
+
   ngOnInit(): void {
-    console.log("MangaItemComponent -> mangaItem", this.mangaItem)
   }
 
 }

@@ -1,0 +1,42 @@
+[
+  {
+    "type": "email",
+    "key": "invalid_email",
+    "message": "This email is invalid"
+  },
+  {
+    "type": "email",
+    "key": "email_has_exists",
+    "message": "An account already exists with this email"
+  },
+  {
+    "type": "email",
+    "key": "email_not_empty",
+    "message": "Email not empty"
+  },
+  {
+    "type": "username",
+    "key": "username_is_not_allowed_to_be_empty",
+    "message": "Username not empty"
+  },
+  {
+    "type": "password",
+    "key": "password_is_not_allowed_to_be_empty",
+    "message": "Password not empty"
+  },
+  {
+    "type": "password-confirm",
+    "key": "password_confirm_is_not_allowed_to_be_empty",
+    "message": "Password confirm not empty"
+  },
+  {
+    "type": "password",
+    "key": "password_confirm_not_match",
+    "message": "Your password and confirmation password do not match"
+  },
+  {
+    "type": "password",
+    "key": "password_length_must_be_at_least_6_characters_long",
+    "message": "Password length must be at least 6 characters"
+  }
+]

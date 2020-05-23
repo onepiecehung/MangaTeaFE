@@ -15,7 +15,9 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    console.log("MainPageComponent -> ngOnInit -> ngOnInit")
     await this.mangaService.loadManga(0, 0).then(data => {
+      console.log("MainPageComponent -> ngOnInit -> data", data)
       this.listManga = data.manga;
     }).catch(err => console.log(err)
     );

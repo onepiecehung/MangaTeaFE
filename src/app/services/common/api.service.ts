@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable, of } from 'rxjs';
+import { catchError, tap, retry, share, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
   constructor(
     private http: HttpClient,
-  ) { }
+  ) {
+  }
 
   get(url): Observable<any> {
     return this.http.get(url);
@@ -18,7 +18,11 @@ export class ApiService {
     return this.http.get(`${url}/${id}`);
   }
   postData(url, body): Observable<any> {
-    return this.http.post(url, body);
+    return this.http.post(url, body).pipe(
+      catchError(err => {
+        return of(err.error);
+      })
+    );
   }
 
   login(url, body): Observable<any> {

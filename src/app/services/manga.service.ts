@@ -17,6 +17,7 @@ export class MangaService {
   loadManga(skip, limit): Promise<ListMangaResponse> {
     return new Promise((resolve, reject) => {
       this.apiService.get(`${CONSTANT_API.API_ENDPOINTS.MANGA}?skip=${skip}&limit=${limit}`).subscribe(response => {
+        console.log("MangaService -> response", response)
         if (response.status === 200) {
           resolve(new ListMangaResponse(response.data));
         } else {
