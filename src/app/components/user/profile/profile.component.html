@@ -1,5 +1,10 @@
 <div class="main-profile">
   <div class="container">
+    <div class="d-flex justify-content-end">
+      <button mat-raised-button>Cancel</button>
+      <button class="ml-3" (click)="updateProfile()" mat-raised-button color="primary">Save</button>
+    </div>
+
     <!-- <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -26,7 +31,7 @@
           <div class="input-group">
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="inputGroupFile04"
-                aria-describedby="inputGroupFileAddon04">
+                aria-describedby="inputGroupFileAddon04" (change)="openFileSelect($event)">
               <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
             </div>
           </div>
@@ -43,7 +48,10 @@
         <div class="section-edit-profile">Main settings</div>
       </div>
       <div class="col-8">
-        asdfasdf
+        <div class="title-change-password">Change password</div>
+        <div>
+          
+        </div>
       </div>
     </div>
   </div>

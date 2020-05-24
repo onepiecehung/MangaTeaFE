@@ -4,6 +4,7 @@ export namespace CONSTANT_API {
     LOGIN:'',
     SIGN_UP: '',
     PROFILE:'',
-    MANGA: ''
+    MANGA: '',
+    UPLOAD_PROFILE_IMG: ''
   }
 }

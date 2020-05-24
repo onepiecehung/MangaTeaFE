@@ -30,7 +30,7 @@
         <mat-form-field appearance="outline" class="w-100" style="padding: 0px; margin: 0px;">
           <mat-label>Enter your password</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
-          (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')">
+            (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -45,7 +45,8 @@
         <mat-form-field *ngIf="data.type ==='sign_up'" appearance="outline" class="w-100">
           <mat-label>Enter your password confirm</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordConfirm"
-          (focus)="handleFocusFormLoginSignUp('passwordConfirm')" (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')">
+            (focus)="handleFocusFormLoginSignUp('passwordConfirm')"
+            (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

@@ -47,4 +47,16 @@ export class UserService {
       });
     });
   }
+  uploadProfileImage(body: FormData) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(CONSTANT_API.API_ENDPOINTS.UPLOAD_PROFILE_IMG, body).subscribe(response => {
+        console.log("UserService -> uploadProfileImage -> response", response)
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(new UserInfo(response.data));
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
 }
