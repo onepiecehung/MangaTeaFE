@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getProfile().then(data => {
-      console.log("ProfileComponent -> ngOnInit -> data", data)
       this.userInfo = data;
     }).catch(err => {
       this.errorMessageService.getMessageFromKey(err.error);

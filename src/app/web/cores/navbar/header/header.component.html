@@ -1,7 +1,7 @@
 <div class="header">
   <div class="container">
-    <div class="row d-flex justify-content-between">
-      <div class="col-md-6 col-12">
+    <div nz-row nzJustify="space-around" nzAlign="middle">
+      <div nz-col nzSpan="10">
         <div class="logo">
           <h1>
             <a routerLink=''>
@@ -10,35 +10,58 @@
           </h1>
         </div>
       </div>
-      <div class="col-md-5 col-12">
-        <div class="search-box">
-          <form class="search">
-            <input type="text" placeholder="Search.." name="search2">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
+      <div nz-col nzSpan="10">
+        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+          <input type="text" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixButton>
+          <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+        </ng-template>
       </div>
-      <div class="col-md-1 d-flex justify-content-end">
+      <div nz-col nzSpan="4" class="ml-auto">
         <div class="profile" *ngIf="authService.isAuthenticated()">
           <div [routerLink]="['/users/profiles']">
             <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
           </div>
         </div>
-        <div class="login-sign_up d-flex d-flex justify-content-end">
-          <div *ngIf="!authService.isAuthenticated()" class="sign_up">
-            <a mat-button (click)="openDialogSignUp()">
+        <div *ngIf="!authService.isAuthenticated()" class="login-sign_up d-flex d-flex justify-content-end">
+          <div class="sign_up">
+            <a nz-button [nzType]="'primary'" (click)="showModalSignUp()">
               <i class="fas fa-user-plus"></i>
               Sign Up
             </a>
           </div>
-          <div *ngIf="!authService.isAuthenticated()" class="login">
-            <a mat-button (click)="openDialogLogin()">
+          <div class="login">
+            <a nz-button [nzType]="'primary'" (click)="showModalLogin()">
               <i class="fas fa-sign-in-alt"></i>
               Log In
             </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ title | uppercase }}" (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()">
+  <form nz-form [formGroup]="formLoginSignUp" class="login-form">
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="'errorMessageService?.emailError?.message'">
+        <nz-input-group>
+          <input type="text" nz-input formControlName="email" placeholder="Input email"
+            (focus)="handleFocusFormLoginSignUp('email')" (focusout)="handleFocusoutFormLoginSignUp('email')" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="{{ errorMessageService?.passwordError?.message }}">
+        <nz-input-group>
+          <input type="password" nz-input formControlName="password" placeholder="Enter your password"
+            (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>

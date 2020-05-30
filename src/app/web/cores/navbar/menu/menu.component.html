@@ -1,14 +1,20 @@
 <div class="menu">
   <div class="container">
     <div class="d-flex align-items-center">
-      <div class="menu-item"><a mat-button href="#">Home</a></div>
-      <div class="menu-item"><a mat-button href="#">Latest Update</a></div>
-      <div class="menu-item"><a mat-button href="#">Manga Directory</a></div>
-      <div class="menu-item"><a mat-button href="#">New Manga</a></div>
-      <div class="menu-item"><a mat-button href="#">Genres</a></div>
-      <!-- <div class="ml-auto">
-        <button mat-raised-button color="primary">Dark Theme</button>
-      </div> -->
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">Home</a></div>
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">Latest Update</a></div>
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">Manga Directory</a></div>
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">New Manga</a></div>
+      <div class="menu-item mr-3">
+        <a nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]='position' nz-button nzType="dashed">Genres</a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <div nz-menu class="dropdown-content">
+            <div nz-menu-item class="dropdown-item" *ngFor="let genre of genres">
+              <a>{{ genre.name }}</a>
+            </div>
+          </div>
+        </nz-dropdown-menu>
+      </div>
     </div>
   </div>
 </div>

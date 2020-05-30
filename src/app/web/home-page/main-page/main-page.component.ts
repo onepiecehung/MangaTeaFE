@@ -9,16 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
   listManga: Manga[] = [];
+  pageIndex = 1;
+  totalPage = 0;
 
   constructor(
     private mangaService: MangaService,
   ) { }
 
-  async ngOnInit() {
-    console.log("MainPageComponent -> ngOnInit -> ngOnInit")
-    await this.mangaService.loadManga(0, 0).then(data => {
-      console.log("MainPageComponent -> ngOnInit -> data", data)
+  ngOnInit() {
+    this.getListManga(this.pageIndex, 0);
+  }
+  getPageIndexChange(event) {
+    this.getListManga(event, 0);
+    this.pageIndex = event;
+  }
+
+ async getListManga(pageIndex, limit){
+    await this.mangaService.loadManga(pageIndex, limit).then(data => {
       this.listManga = data.manga;
+      this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
     );
   }

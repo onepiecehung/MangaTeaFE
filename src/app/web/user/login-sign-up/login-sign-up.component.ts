@@ -1,6 +1,5 @@
 import { User } from '../../../types/user';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { ErrorMessageService } from 'src/app/services/error-message.service';
@@ -19,8 +18,6 @@ export class LoginSignUpComponent implements OnInit {
   hide = true;
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<LoginSignUpComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private userService: UserService,
     public errorMessageService: ErrorMessageService
   ) { }
@@ -34,36 +31,36 @@ export class LoginSignUpComponent implements OnInit {
       passwordConfirm: ['', Validators.required]
 
     });
-    if (this.data.type === ACTION.LOGIN) {
-      this.title = MESSAGE.TITLE_LOGIN;
-      this.btnSubmit = MESSAGE.BTN_LOGIN;
-    }
+    // if (this.data.type === ACTION.LOGIN) {
+    //   this.title = MESSAGE.TITLE_LOGIN;
+    //   this.btnSubmit = MESSAGE.BTN_LOGIN;
+    // }
 
-    if (this.data.type === ACTION.SIGN_UP) {
-      this.title = MESSAGE.TITLE_SIGN_UP;
-      this.btnSubmit = MESSAGE.BTN_SIGN_UP;
-    }
+    // if (this.data.type === ACTION.SIGN_UP) {
+    //   this.title = MESSAGE.TITLE_SIGN_UP;
+    //   this.btnSubmit = MESSAGE.BTN_SIGN_UP;
+    // }
   }
 
   submitFormLoginSignUp() {
     var user = new User(this.formLoginSignUp.value);
-    if (this.data.type === ACTION.SIGN_UP) {
-      this.userService.createNewAccount(user).then(response => {
-      }).catch(err => {
-        this.errorMessageService.getMessageFromKey(err.error);
-      });
-    }
+    // if (this.data.type === ACTION.SIGN_UP) {
+    //   this.userService.createNewAccount(user).then(response => {
+    //   }).catch(err => {
+    //     this.errorMessageService.getMessageFromKey(err.error);
+    //   });
+    // }
 
-    if (this.data.type === ACTION.LOGIN) {
-      this.userService.loginAccount(user).then(response => {
-        this.dialogRef.close({ userInfo: response });
-      }).catch(err =>{
-        this.errorMessageService.getMessageFromKey(err.error);
-      });
-    }
+    // if (this.data.type === ACTION.LOGIN) {
+    //   this.userService.loginAccount(user).then(response => {
+    //     this.dialogRef.close({ userInfo: response });
+    //   }).catch(err =>{
+    //     this.errorMessageService.getMessageFromKey(err.error);
+    //   });
+    // }
   }
   onNoClick(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
   handleFocusFormLoginSignUp(field: string) {
 

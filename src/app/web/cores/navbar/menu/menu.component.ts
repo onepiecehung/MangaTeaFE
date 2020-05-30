@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GenreService } from 'src/app/services/genre.service';
+import { Genre } from 'src/app/types/genre';
+import { NzPlacementType } from 'ng-zorro-antd/dropdown';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  genres = Array<Genre>();
+  position: NzPlacementType = 'bottomCenter';
+  constructor(
+    public genreService: GenreService
 
-  constructor() { }
+  ) { }
 
   ngOnInit(): void {
+    this.genreService.getAllGenre().then(data => {
+      this.genres = data;
+
+    }).catch(err => console.log(err));
   }
 
 }

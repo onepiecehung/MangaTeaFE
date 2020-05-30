@@ -1,3 +1,4 @@
+import { HTTP_STATUS } from './../../constants/constant-common';
 import { Manga, ListMangaResponse } from './../types/manga';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -17,8 +18,7 @@ export class MangaService {
   loadManga(skip, limit): Promise<ListMangaResponse> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA}?skip=${skip}&limit=${limit}`).subscribe(response => {
-        console.log("MangaService -> response", response)
-        if (response.status === 200) {
+        if (response.status === HTTP_STATUS.OK) {
           resolve(new ListMangaResponse(response.data));
         } else {
           reject();

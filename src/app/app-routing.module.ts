@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { MangaResolver } from './cores/resolves/manga.resolver';
 
 
 const routes: Routes = [
