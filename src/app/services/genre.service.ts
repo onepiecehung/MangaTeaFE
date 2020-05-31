@@ -8,7 +8,7 @@ import { HTTP_STATUS } from 'src/constants/constant-common';
   providedIn: 'root'
 })
 export class GenreService {
-
+  genres: Genre[] = [];
   constructor(
     private apiService: ApiService,
 
@@ -18,11 +18,10 @@ export class GenreService {
     return new Promise((resolve, reject) => {
       this.apiService.getData(CONSTANT_API.API_ENDPOINTS.GENRE).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
-          var genres = Array<Genre>();
           response.data.forEach(genreItem => {
-            genres.push(new Genre(genreItem));
+            this.genres.push(new Genre(genreItem));
           });
-          resolve(genres);
+          resolve(this.genres);
         } else {
           reject(response.data);
         }

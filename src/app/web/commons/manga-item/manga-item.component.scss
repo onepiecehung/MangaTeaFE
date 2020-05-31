@@ -3,11 +3,8 @@
   border: 1px dashed #ebebeb;
   background: #fafafa;
   .info-manga {
-    // margin-left: -15px;
-    // margin-right: -15px;
-    padding: 0px 0px 0px 15px;
     .title {
-      font-size: 18px;
+      font-size: 22px;
       color: #999999;
       a {
         color: #fe322e;
@@ -54,4 +51,11 @@
     padding: 3px 0;
     font-weight: 700;
   }
+}
+
+.chap-update{
+  font-size: 18px;
+}
+.icon-clock{
+  color: #41a2df;
 }

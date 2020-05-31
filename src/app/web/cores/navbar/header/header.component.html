@@ -18,21 +18,22 @@
           <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
         </ng-template>
       </div>
-      <div nz-col nzSpan="4" class="ml-auto">
-        <div class="profile" *ngIf="authService.isAuthenticated()">
-          <div [routerLink]="['/users/profiles']">
-            <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
+      <div nz-col nzSpan="4">
+        <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
+          <div>
+            <img [routerLink]="['/users/profiles']" src="assets/img/img_avatar.png" alt=""
+              class="img-profile rounded-circle">
           </div>
         </div>
         <div *ngIf="!authService.isAuthenticated()" class="login-sign_up d-flex d-flex justify-content-end">
           <div class="sign_up">
-            <a nz-button [nzType]="'primary'" (click)="showModalSignUp()">
+            <a nz-button [nzType]="'link'" (click)="showModalSignUp()">
               <i class="fas fa-user-plus"></i>
               Sign Up
             </a>
           </div>
           <div class="login">
-            <a nz-button [nzType]="'primary'" (click)="showModalLogin()">
+            <a nz-button [nzType]="'link'" (click)="showModalLogin()">
               <i class="fas fa-sign-in-alt"></i>
               Log In
             </a>
@@ -46,9 +47,19 @@
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="{{ title | uppercase }}" (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()">
-  <form nz-form [formGroup]="formLoginSignUp" class="login-form">
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form">
     <nz-form-item>
-      <nz-form-control [nzErrorTip]="'errorMessageService?.emailError?.message'">
+      <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
+      <nz-form-control [nzErrorTip]="errorMessageService?.usernameError?.message">
+        <nz-input-group>
+          <input type="text" nz-input formControlName="username" placeholder="Input username"
+            (focus)="handleFocusFormLoginSignUp('username')" (focusout)="handleFocusoutFormLoginSignUp('username')" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
+      <nz-form-control [nzErrorTip]="errorMessageService?.emailError?.message">
         <nz-input-group>
           <input type="text" nz-input formControlName="email" placeholder="Input email"
             (focus)="handleFocusFormLoginSignUp('email')" (focusout)="handleFocusoutFormLoginSignUp('email')" />
@@ -56,10 +67,20 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="{{ errorMessageService?.passwordError?.message }}">
+      <nz-form-label [nzSpan]="24" nzFor="password">Password</nz-form-label>
+      <nz-form-control [nzErrorTip]="errorMessageService?.passwordError?.message">
         <nz-input-group>
           <input type="password" nz-input formControlName="password" placeholder="Enter your password"
             (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24" nzFor="passwordConfirm">Password confirm</nz-form-label>
+      <nz-form-control [nzErrorTip]="errorMessageService?.passwordConfirmError?.message">
+        <nz-input-group>
+          <input type="password" nz-input formControlName="passwordConfirm" placeholder="Enter your password confirm"
+            (focus)="handleFocusFormLoginSignUp('passwordConfirm')" (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>

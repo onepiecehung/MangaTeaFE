@@ -1,3 +1,4 @@
+import { GenreService } from 'src/app/services/genre.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,16 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class GenreComponent implements OnInit {
 
   listGenre = [];
-  constructor() { }
+  constructor(
+    public genreService: GenreService
+  ) { }
 
   ngOnInit(): void {
-    var genre = {
-      name: 'Awar',
-      value: '69696'
-    }
-    for (var i = 0; i < 100; i++) {
-      this.listGenre.push(genre);
-    }
+    this.listGenre = this.genreService.genres;
+    console.log("GenreComponent -> ngOnInit -> this.listGenre", this.listGenre)
+    // var genre = {
+    //   name: 'Awar',
+    //   value: '69696'
+    // }
+    // for (var i = 0; i < 100; i++) {
+    //   this.listGenre.push(genre);
+    // }
   }
 
 }

@@ -4,10 +4,10 @@
 		<div class="icon">-------</div>
 	</div>
 	<div class="list-genre">
-		<div class="w-50" *ngFor="let item of listGenre">
-			<span>
-				{{ item.name }} ({{ item.value}})
-			</span>
+		<div nz-row nzJustify="space-between">
+			<div nz-col nzSpan="12" *ngFor="let item of listGenre">
+				<a>{{ item.name }} </a>
+				({{ item.code}})</div>
 		</div>
 	</div>
 </div>

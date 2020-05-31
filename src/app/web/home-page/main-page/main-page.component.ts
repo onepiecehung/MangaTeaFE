@@ -24,9 +24,10 @@ export class MainPageComponent implements OnInit {
     this.pageIndex = event;
   }
 
- async getListManga(pageIndex, limit){
+  async getListManga(pageIndex, limit) {
     await this.mangaService.loadManga(pageIndex, limit).then(data => {
       this.listManga = data.manga;
+      console.log("MainPageComponent -> getListManga -> this.listManga", this.listManga)
       this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
     );

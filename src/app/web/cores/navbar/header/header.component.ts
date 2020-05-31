@@ -41,10 +41,12 @@ export class HeaderComponent implements OnInit {
   }
 
   showModalSignUp() {
+    this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_SIGN_UP;
     this.isVisible = true;
   }
   showModalLogin() {
+    this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_LOGIN;
     this.isVisible = true;
 

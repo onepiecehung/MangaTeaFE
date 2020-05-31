@@ -5,7 +5,6 @@
     text-decoration: none;
   }
   .profile {
-    cursor: pointer;
     .img-profile {
       width: 50px;
     }
@@ -44,4 +43,14 @@
     clear: both;
     display: table;
   }
+}
+.ant-btn .ant-btn-link {
+  margin: 0px;
+  padding: 0px;
+}
+.ant-col-24.ant-form-item-label {
+  padding: 0px;
+}
+.ant-form-item {
+  margin: 0px;
 }
