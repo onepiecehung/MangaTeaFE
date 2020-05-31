@@ -27,6 +27,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { MangaDescriptionComponent } from './manga/manga-description/manga-description.component';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzCommentModule } from 'ng-zorro-antd/comment';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 
 @NgModule({
@@ -60,7 +63,10 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     NzFormModule,
     NzInputModule,
     NzIconModule,
-    NzTabsModule
+    NzTabsModule,
+    NzCommentModule,
+    NzAvatarModule,
+    NzListModule
   ]
 })
 export class WebModule { }

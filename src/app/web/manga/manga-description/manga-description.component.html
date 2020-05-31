@@ -7,7 +7,8 @@
             <div class="card-body">
                 <div nz-row>
                     <div nz-col nzSpan="6">
-                        <img [src]="mangaItem.coverImage.large" class="img-fluid" [routerLink]="['/manga/', mangaItem.id,1]" alt="">
+                        <img [src]="mangaItem.coverImage.large" class="img-fluid"
+                            [routerLink]="['/manga/', mangaItem.id,1]" alt="">
                     </div>
                     <div nz-col nzSpan="18">
                         <div nz-row>
@@ -137,12 +138,23 @@
         </div>
         <div nz-row>
             <div nz-col nzSpan="24">
-                <nz-tabset>
+                <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
                     <nz-tab nzTitle="Chapters">
                         Content of Tab Pane 1
                     </nz-tab>
                     <nz-tab nzTitle="Comments">
-                        Content of Tab Pane 2
+                        <nz-list [nzDataSource]="listComment" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+                            <ng-template #item let-item>
+                                <nz-comment [nzAuthor]="item.user.username" [nzDatetime]="item.timeComment">
+                                    <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.user.avatar"></nz-avatar>
+                                    <nz-comment-content>
+                                        <p>{{ item.commentContent }}</p>
+                                    </nz-comment-content>
+                                    <nz-comment-action>Reply to</nz-comment-action>
+                                </nz-comment>
+                            </ng-template>
+
+                        </nz-list>
                     </nz-tab>
                     <nz-tab nzTitle="Covers">
                         Content of Tab Pane 3

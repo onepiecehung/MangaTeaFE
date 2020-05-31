@@ -1,10 +1,11 @@
 export namespace CONSTANT_API {
   export const API_ENDPOINTS = {
-    GENRE:'',
-    LOGIN:'',
+    GENRE: '',
+    LOGIN: '',
     SIGN_UP: '',
-    PROFILE:'',
+    PROFILE: '',
     MANGA: '',
-    UPLOAD_PROFILE_IMG: ''
+    UPLOAD_PROFILE_IMG: '',
+    COMMENT: ''
   }
 }

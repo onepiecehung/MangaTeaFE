@@ -1,7 +1,9 @@
+import { CommentService } from './../../../services/comment.service';
 import { Manga } from './../../../types/manga';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
+import { Comment } from '@angular/compiler';
 
 @Component({
   selector: 'app-manga-description',
@@ -11,10 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class MangaDescriptionComponent implements OnInit {
   mangaItem: Manga = null;
   mangaID: number;
+  listComment: Comment[] = [];
   constructor(
     private mangaService: MangaService,
     private router: ActivatedRoute,
-    private route:Router
+    private commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -22,9 +25,18 @@ export class MangaDescriptionComponent implements OnInit {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
         this.mangaItem = mangaResponse;
-        console.log("MangaDescriptionComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
       }).catch(err => console.log(err))
     });
+  }
+  changeSelectTab(event) {
+    console.log("MangaDescriptionComponent -> changeSelectTab -> event", event)
+    if (event.index === 1) {
+      this.commentService.getCommentByMangaID(2).then(commentResponse => {
+        this.listComment = commentResponse;
+        console.log("MangaDescriptionComponent -> changeSelectTab -> this.listComment", this.listComment)
+      }).catch(err => console.log(err));
+
+    }
   }
 
 }
