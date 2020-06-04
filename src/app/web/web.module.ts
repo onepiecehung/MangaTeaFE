@@ -30,6 +30,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzListModule } from 'ng-zorro-antd/list';
+import { GenrePageComponent } from './genre-page/genre-page.component';
 
 
 @NgModule({
@@ -49,7 +50,9 @@ import { NzListModule } from 'ng-zorro-antd/list';
     MangaItemComponent,
     SpliceStringPipe,
     MangaDetailComponent,
-    MangaDescriptionComponent
+    MangaDescriptionComponent,
+    GenreComponent,
+    GenrePageComponent
   ],
   imports: [
     CommonModule,

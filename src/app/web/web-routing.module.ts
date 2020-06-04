@@ -1,3 +1,4 @@
+import { GenrePageComponent } from './genre-page/genre-page.component';
 import { MangaDetailComponent } from './manga/manga-detail/manga-detail.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { WebPageComponent } from './web-page/web-page.component';
@@ -28,8 +29,8 @@ const routes: Routes = [
         component: MangaDetailComponent
       },
       {
-        path: 'genre/:id',
-        component: HomePageComponent
+        path: 'genre/:name',
+        component: GenrePageComponent
       }
     ]
   },

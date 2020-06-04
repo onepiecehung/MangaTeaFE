@@ -10,7 +10,7 @@
         <nz-dropdown-menu #menu="nzDropdownMenu">
           <div nz-menu class="dropdown-content">
             <div nz-menu-item class="dropdown-item" *ngFor="let genre of genres">
-              <a [routerLink]="['genre', genre._id]" routerLinkActive="router-link-active" >{{ genre.name }}</a>
+              <a [routerLink]="['/genre', genre.name | lowercase]" routerLinkActive="router-link-active" >{{ genre.name }}</a>
             </div>
           </div>
         </nz-dropdown-menu>

@@ -47,11 +47,11 @@ export class Manga {
     createdAt: string;
     updatedAt: string;
     constructor(mangaItem) {
-        if (mangaItem !== null) {
-            this.artist = mangaItem.artist;
-            this.author = mangaItem.author;
-            this.averageScore = mangaItem.averageScore;
-            this.bannerImage = mangaItem.bannerImage;
+        if (mangaItem) {
+            this.artist = mangaItem?.artist;
+            this.author = mangaItem?.author;
+            this.averageScore = mangaItem?.averageScore;
+            this.bannerImage = mangaItem?.bannerImage;
             this.chapter = mangaItem.chapter;
             if (mangaItem !== null && Array.isArray(mangaItem.characters)) {
                 mangaItem.characters.forEach(charactersItem => {
@@ -116,10 +116,10 @@ export class OtherName {
     userPreferred: string;
     constructor(data) {
         if (data !== null) {
-            this.romaji = data.romaji;
-            this.english = data.english;
-            this.native = data.native;
-            this.userPreferred = data.userPreferred;
+            this.romaji = data?.romaji;
+            this.english = data?.english;
+            this.native = data?.native;
+            this.userPreferred = data?.userPreferred;
         }
     }
 }
@@ -128,8 +128,8 @@ export class CoverImage {
     medium: string;
     constructor(data) {
         if (data !== null) {
-            this.large = data.large;
-            this.medium = data.medium;
+            this.large = data?.large;
+            this.medium = data?.medium;
         }
     }
 }
@@ -139,9 +139,9 @@ export class CustomDate {
     day: number;
     constructor(data) {
         if (data !== null) {
-            this.day = data.day;
-            this.month = data.month;
-            this.year = data.year;
+            this.day = data?.day;
+            this.month = data?.month;
+            this.year = data?.year;
         }
     }
 }

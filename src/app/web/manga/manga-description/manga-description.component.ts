@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { CommentService } from './../../../services/comment.service';
 import { Manga } from './../../../types/manga';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,7 +18,8 @@ export class MangaDescriptionComponent implements OnInit {
   constructor(
     private mangaService: MangaService,
     private router: ActivatedRoute,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +27,7 @@ export class MangaDescriptionComponent implements OnInit {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
         this.mangaItem = mangaResponse;
+        this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });
   }
