@@ -1,0 +1,13 @@
+<div nz-row class="admin-header" nzAlign="middle" nzJustify="center">
+    <div nz-col nzSpan="4">col-6</div>
+    <div nz-col nzSpan="10">
+        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+            <input type="text" nz-input placeholder="input search text" />
+        </nz-input-group>
+        <ng-template #suffixButton>
+            <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+        </ng-template>
+    </div>
+    <div nz-col nzSpan="4">col-6</div>
+    <div nz-col nzSpan="6">col-6</div>
+</div>

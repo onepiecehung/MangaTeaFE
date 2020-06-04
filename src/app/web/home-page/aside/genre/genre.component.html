@@ -1,0 +1,13 @@
+<div class="genre">
+	<div class="title">
+		<div class="text">GENRES</div>
+		<div class="icon">-------</div>
+	</div>
+	<div class="list-genre">
+		<div nz-row nzJustify="space-between">
+			<div nz-col nzSpan="12" *ngFor="let item of listGenre">
+				<a>{{ item.name }} </a>
+				({{ item.code}})</div>
+		</div>
+	</div>
+</div>

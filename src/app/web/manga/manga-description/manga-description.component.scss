@@ -1,0 +1,19 @@
+.main-description {
+  .card-body{
+    margin: 0px;
+    padding: 0px;
+  }
+  hr{
+    margin: 6px 0px;
+  }
+  .alt-name,
+  .author,
+  .artist,
+  .demographic,
+  .format,
+  .genre,
+  .theme,
+  .rating {
+    border-bottom: 0.5px solid #333333;
+  }
+}

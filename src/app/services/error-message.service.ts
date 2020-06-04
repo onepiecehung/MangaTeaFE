@@ -51,8 +51,11 @@ export class ErrorMessageService {
     }
   }
   handleErrorPassword(valueInput: string, passwordConfirm: string) {
+    console.log("ErrorMessageService -> handleErrorPassword -> passwordConfirm", passwordConfirm)
+    console.log("ErrorMessageService -> handleErrorPassword -> valueInput", valueInput)
     if (valueInput == '') {
       this.passwordError = this.getMessageFromFieldAndKey(ERROR_FIELD.PASSWORD, ERROR_KEY.PASSWORD.NOT_EMPTY);
+      console.log("ErrorMessageService -> handleErrorPassword -> this.passwordError", this.passwordError)
     } else if (valueInput.length < 6) {
       this.passwordError = this.getMessageFromFieldAndKey(ERROR_FIELD.PASSWORD, ERROR_KEY.PASSWORD.LENGTH);
     } else if (passwordConfirm != '' && valueInput === passwordConfirm) {
