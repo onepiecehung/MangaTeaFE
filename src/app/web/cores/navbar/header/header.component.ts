@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   title: string = '';
   formLoginSignUp: FormGroup;
 
+  isShowFormLogin = false;
+
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
@@ -44,21 +46,32 @@ export class HeaderComponent implements OnInit {
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_SIGN_UP;
     this.isVisible = true;
+    this.isShowFormLogin = false;
   }
   showModalLogin() {
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_LOGIN;
     this.isVisible = true;
-
+    this.isShowFormLogin = true;
   }
 
   handleOk(): void {
     var user = new User(this.formLoginSignUp.value);
-    this.userService.loginAccount(user).then(response => {
-      this.isVisible = false;
-    }).catch(err => {
-      this.errorMessageService.getMessageFromKey(err.error);
-    });
+    console.log("HeaderComponent -> handleOk -> user", user)
+    if (this.isShowFormLogin) {
+      this.userService.loginAccount(user).then(response => {
+        this.isVisible = false;
+      }).catch(err => {
+        this.errorMessageService.getMessageFromKey(err.error);
+      });
+    } else {
+      this.userService.createNewAccount(user).then(response => {
+        this.isVisible = false;
+      }).catch(err => {
+        this.errorMessageService.getMessageFromKey(err.error)
+      })
+    }
+
   }
 
   handleCancel(): void {

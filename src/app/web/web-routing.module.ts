@@ -26,6 +26,10 @@ const routes: Routes = [
       {
         path: 'manga/:id/:chap',
         component: MangaDetailComponent
+      },
+      {
+        path: 'genre/:id',
+        component: HomePageComponent
       }
     ]
   },
