@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
@@ -6,6 +7,8 @@ import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { User } from 'src/app/types/user';
 import { UserService } from 'src/app/services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { UserInfo } from 'src/app/types/user-info';
+import { NzPlacementType } from 'ng-zorro-antd/dropdown';
 
 @Component({
   selector: 'app-header',
@@ -18,13 +21,15 @@ export class HeaderComponent implements OnInit {
   formLoginSignUp: FormGroup;
 
   isShowFormLogin = false;
+  listOfPosition: NzPlacementType[] = ['bottomLeft', 'bottomCenter', 'bottomRight', 'topLeft', 'topCenter', 'topRight'];
 
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
     public errorMessageService: ErrorMessageService,
     private userService: UserService,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -58,10 +63,10 @@ export class HeaderComponent implements OnInit {
 
   handleOk(): void {
     var user = new User(this.formLoginSignUp.value);
-    console.log("HeaderComponent -> handleOk -> user", user)
     if (this.isShowFormLogin) {
-      this.userService.loginAccount(user).then(response => {
+      this.userService.loginAccount(user).then((userInfo: UserInfo) => {
         this.isVisible = false;
+        localStorage.setItem('role', userInfo.role);
         this.notification.create(
           'success',
           'Login success',
@@ -112,5 +117,11 @@ export class HeaderComponent implements OnInit {
         this.errorMessageService.handleErrorPasswordConfirm(valueInput, password);
         break;
     }
+  }
+
+  onClickLogout() {
+    localStorage.removeItem('role');
+    localStorage.removeItem('token');
+    this.router.navigate(['/'])
   }
 }

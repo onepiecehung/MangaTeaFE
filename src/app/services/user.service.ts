@@ -24,7 +24,7 @@ export class UserService {
     });
   }
 
-  loginAccount(account: User): Promise<any> {
+  loginAccount(account: User): Promise<UserInfo> {
     return new Promise((resolve, reject) => {
       this.apiService.postData(CONSTANT_API.API_ENDPOINTS.LOGIN, account).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {

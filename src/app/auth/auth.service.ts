@@ -11,9 +11,7 @@ export class AuthService {
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     if (token != null) {
-
       const decoded = jwt_decode(token);
-      localStorage.setItem('role', decoded['role'])
       return ((new Date().getTime() / 1000) < decoded['exp']) ? true : false;
     } else {
       return false;

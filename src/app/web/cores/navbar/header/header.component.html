@@ -20,11 +20,18 @@
       </div>
       <div nz-col nzSpan="4">
         <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
-          <div>
-            <img [routerLink]="['/users/profiles']" src="assets/img/img_avatar.png" alt=""
-              class="img-profile rounded-circle">
+          <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomCenter'">
+            <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
           </div>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item [routerLink]="['/users/profiles']">Setting</li>
+              <li nz-menu-item (click)="onClickLogout()">Logout</li>
+              <li nz-menu-item>3rd menu item length</li>
+            </ul>
+          </nz-dropdown-menu>
         </div>
+
         <div *ngIf="!authService.isAuthenticated()" class="login-sign_up d-flex d-flex justify-content-end">
           <div class="sign_up">
             <a nz-button [nzType]="'link'" (click)="showModalSignUp()">
