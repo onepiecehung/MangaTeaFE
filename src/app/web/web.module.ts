@@ -30,6 +30,7 @@ import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { GenrePageComponent } from './genre-page/genre-page.component';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { GenrePageComponent } from './genre-page/genre-page.component';
     NzTabsModule,
     NzCommentModule,
     NzAvatarModule,
-    NzListModule
+    NzListModule,
+    NzNotificationModule
   ]
 })
 export class WebModule { }

@@ -50,37 +50,57 @@
   <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
     <nz-form-item *ngIf="!isShowFormLogin">
       <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
-      <nz-form-control [nzErrorTip]="errorMessageService?.usernameError?.message">
+      <nz-form-control>
         <nz-input-group>
-          <input type="text" nz-input formControlName="username" placeholder="Input username"
-            (focus)="handleFocusFormLoginSignUp('username')" (focusout)="handleFocusoutFormLoginSignUp('username')" />
+          <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': (errorMessageService?.usernameError?.message)}" nz-input
+            formControlName="username" placeholder="Input username" (focus)="handleFocusFormLoginSignUp('username')"
+            (focusout)="handleFocusoutFormLoginSignUp('username')" />
+          <div class="invalid-feedback ml-2">
+            <i class="fas fa-exclamation-triangle"></i>
+            {{ errorMessageService?.usernameError?.message }} </div>
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
-      <nz-form-control [nzErrorTip]="errorMessageService?.emailError?.message">
+      <nz-form-control>
         <nz-input-group>
-          <input type="text" nz-input formControlName="email" placeholder="Input email"
-            (focus)="handleFocusFormLoginSignUp('email')" (focusout)="handleFocusoutFormLoginSignUp('email')" />
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': (errorMessageService?.emailError?.message)}"
+            nz-input formControlName="email" placeholder="Input email" (focus)="handleFocusFormLoginSignUp('email')"
+            (focusout)="handleFocusoutFormLoginSignUp('email')" />
+          <div class="invalid-feedback ml-2">
+            <i class="fas fa-exclamation-triangle"></i>
+            {{ errorMessageService?.emailError?.message }} </div>
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="24" nzFor="password">Password</nz-form-label>
-      <nz-form-control [nzErrorTip]="errorMessageService?.passwordError?.message">
+      <nz-form-control>
         <nz-input-group>
-          <input type="password" nz-input formControlName="password" placeholder="Enter your password"
+          <input type="password" class="form-control"
+            [ngClass]="{'is-invalid': (errorMessageService?.passwordError?.message)}" nz-input
+            formControlName="password" placeholder="Enter your password"
             (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')" />
+          <div class="invalid-feedback ml-2">
+            <i class="fas fa-exclamation-triangle"></i>
+            {{ errorMessageService?.passwordError?.message }} </div>
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item *ngIf="!isShowFormLogin">
       <nz-form-label [nzSpan]="24" nzFor="passwordConfirm">Password confirm</nz-form-label>
-      <nz-form-control [nzErrorTip]="errorMessageService?.passwordConfirmError?.message">
+      <nz-form-control>
         <nz-input-group>
-          <input type="password" nz-input formControlName="passwordConfirm" placeholder="Enter your password confirm"
-            (focus)="handleFocusFormLoginSignUp('passwordConfirm')" (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')" />
+          <input type="password" class="form-control"
+            [ngClass]="{'is-invalid': (errorMessageService?.passwordConfirmError?.message)}" nz-input
+            formControlName="passwordConfirm" placeholder="Enter your password confirm"
+            (focus)="handleFocusFormLoginSignUp('passwordConfirm')"
+            (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')" />
+          <div class="invalid-feedback ml-2">
+            <i class="fas fa-exclamation-triangle"></i>
+            {{ errorMessageService?.passwordConfirmError?.message }} </div>
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>

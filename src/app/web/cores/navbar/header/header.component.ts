@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { User } from 'src/app/types/user';
 import { UserService } from 'src/app/services/user.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-header',
@@ -23,10 +24,14 @@ export class HeaderComponent implements OnInit {
     public authService: AuthService,
     public errorMessageService: ErrorMessageService,
     private userService: UserService,
-
+    private notification: NzNotificationService
   ) { }
 
   ngOnInit(): void {
+    this.initData();
+    this.errorMessageService.clearErrorMessage();
+  }
+  initData() {
     this.formLoginSignUp = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
@@ -34,20 +39,17 @@ export class HeaderComponent implements OnInit {
       passwordConfirm: ['', Validators.required]
 
     });
-    this.errorMessageService.clearErrorMessage();
-  }
-
-  openDialogLogin() {
-
   }
 
   showModalSignUp() {
+    this.initData();
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_SIGN_UP;
     this.isVisible = true;
     this.isShowFormLogin = false;
   }
   showModalLogin() {
+    this.initData();
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_LOGIN;
     this.isVisible = true;
@@ -60,12 +62,24 @@ export class HeaderComponent implements OnInit {
     if (this.isShowFormLogin) {
       this.userService.loginAccount(user).then(response => {
         this.isVisible = false;
+        this.notification.create(
+          'success',
+          'Login success',
+          'Login account successful',
+          { nzDuration: 2000 }
+        );
       }).catch(err => {
         this.errorMessageService.getMessageFromKey(err.error);
       });
     } else {
       this.userService.createNewAccount(user).then(response => {
         this.isVisible = false;
+        this.notification.create(
+          'success',
+          'Register success',
+          'Register new account successful',
+          { nzDuration: 2000 }
+        );
       }).catch(err => {
         this.errorMessageService.getMessageFromKey(err.error)
       })

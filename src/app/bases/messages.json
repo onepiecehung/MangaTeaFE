@@ -16,6 +16,11 @@
   },
   {
     "field": "username",
+    "key": "username_length_must_be_at_least_6_characters_long",
+    "message": "Username not empty"
+  },
+  {
+    "field": "username",
     "key": "username_is_not_allowed_to_be_empty",
     "message": "Username not empty"
   },
