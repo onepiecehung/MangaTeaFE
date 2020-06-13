@@ -47,7 +47,7 @@
 
 <nz-modal [(nzVisible)]="isVisible" nzTitle="{{ title | uppercase }}" (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()">
-  <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form">
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
     <nz-form-item *ngIf="!isShowFormLogin">
       <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
       <nz-form-control [nzErrorTip]="errorMessageService?.usernameError?.message">

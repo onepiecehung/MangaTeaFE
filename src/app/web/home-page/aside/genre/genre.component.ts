@@ -15,14 +15,6 @@ export class GenreComponent implements OnInit {
 
   ngOnInit(): void {
     this.listGenre = this.genreService.genres;
-    console.log("GenreComponent -> ngOnInit -> this.listGenre", this.listGenre)
-    // var genre = {
-    //   name: 'Awar',
-    //   value: '69696'
-    // }
-    // for (var i = 0; i < 100; i++) {
-    //   this.listGenre.push(genre);
-    // }
   }
 
 }

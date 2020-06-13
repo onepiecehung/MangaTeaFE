@@ -17,15 +17,15 @@ export class MainPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getListManga(this.pageIndex, 0);
+    this.getListManga(this.pageIndex);
   }
   getPageIndexChange(event) {
-    this.getListManga(event, 0);
+    this.getListManga(event);
     this.pageIndex = event;
   }
 
-  async getListManga(pageIndex, limit) {
-    await this.mangaService.loadManga(pageIndex, limit).then(data => {
+  async getListManga(pageIndex) {
+    await this.mangaService.loadManga(pageIndex).then(data => {
       this.listManga = data.manga;
       console.log("MainPageComponent -> getListManga -> this.listManga", this.listManga)
       this.totalPage = data.total / 20;

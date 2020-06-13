@@ -1,166 +1,167 @@
 <div class="main-description mt-2">
-    <div class="container" *ngIf="mangaItem !== null">
-        <div class="card">
-            <div class="card-header">
-                {{mangaItem.otherName.english}}
-            </div>
-            <div class="card-body">
-                <div nz-row>
-                    <div nz-col nzSpan="6">
-                        <img [src]="mangaItem.coverImage.large" class="img-fluid"
-                            [routerLink]="['/manga/', mangaItem.id,1]" alt="">
-                    </div>
-                    <div nz-col nzSpan="18">
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Title ID:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Alt name(s):
-                            </div>
-                            <div nz-col nzSpan="20">
-                                {{mangaItem.otherName.english}}, {{mangaItem.otherName.native}},
-                                {{mangaItem.otherName.romaji}}, {{mangaItem.otherName.userPreferred}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Author:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Artist:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Demographic:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Content:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Genre:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                <span class="badge badge-pill badge-primary mr-2"
-                                    *ngFor="let genre of mangaItem.genres">{{genre}}</span>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Theme:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Rating:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                # {{mangaItem.id}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Pub. status:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                {{mangaItem.status}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Description:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                {{mangaItem.description}}
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div nz-row>
-                            <div nz-col nzSpan="4">
-                                Actions:
-                            </div>
-                            <div nz-col nzSpan="20">
-                                <button nz-button nzType="primary" [nzSize]="'size'" nzShape="round"><i nz-icon
-                                        nzType="upload"></i>Upload</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container" *ngIf="mangaItem !== null">
+    <div class="card">
+      <div class="card-header">
+        {{mangaItem.otherName.english}}
+      </div>
+      <div class="card-body">
         <div nz-row>
-            <div nz-col nzSpan="24">
-                <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
-                    <nz-tab nzTitle="Chapters">
-                        Content of Tab Pane 1
-                    </nz-tab>
-                    <nz-tab nzTitle="Comments">
-                        <nz-list [nzDataSource]="listComment" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
-                            <ng-template #item let-item>
-                                <nz-comment [nzAuthor]="item.user.username" [nzDatetime]="item.timeComment">
-                                    <nz-avatar nz-comment-avatar nzIcon="user" [nzSrc]="item.user.avatar"></nz-avatar>
-                                    <nz-comment-content>
-                                        <p>{{ item.commentContent }}</p>
-                                    </nz-comment-content>
-                                    <nz-comment-action>Reply to</nz-comment-action>
-                                </nz-comment>
-                            </ng-template>
-
-                        </nz-list>
-                    </nz-tab>
-                    <nz-tab nzTitle="Covers">
-                        Content of Tab Pane 3
-                    </nz-tab>
-                </nz-tabset>
+          <div nz-col nzSpan="6">
+            <img [src]="mangaItem.coverImage.large" class="img-fluid" [routerLink]="['/manga/', mangaItem.id,1]" alt="">
+          </div>
+          <div nz-col nzSpan="18">
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Title ID:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
             </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Alt name(s):
+              </div>
+              <div nz-col nzSpan="20">
+                {{mangaItem.otherName.english}}, {{mangaItem.otherName.native}},
+                {{mangaItem.otherName.romaji}}, {{mangaItem.otherName.userPreferred}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Author:
+              </div>
+              <div nz-col nzSpan="20">
+                <ng-container *ngFor="let author of mangaItem.staff">
+                  <div>{{ author.name }} </div>
+                </ng-container>
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Artist:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Demographic:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Content:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Genre:
+              </div>
+              <div nz-col nzSpan="20">
+                <span class="badge badge-pill badge-primary mr-2"
+                  *ngFor="let genre of mangaItem.genres">{{genre}}</span>
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Theme:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Rating:
+              </div>
+              <div nz-col nzSpan="20">
+                # {{mangaItem.id}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Pub. status:
+              </div>
+              <div nz-col nzSpan="20">
+                {{mangaItem.status}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Description:
+              </div>
+              <div nz-col nzSpan="20">
+                {{mangaItem.description}}
+              </div>
+            </div>
+            <hr>
+
+            <div nz-row>
+              <div nz-col nzSpan="4">
+                Actions:
+              </div>
+              <div nz-col nzSpan="20">
+                <button nz-button nzType="primary" [nzSize]="'size'" nzShape="round"><i nz-icon
+                    nzType="upload"></i>Upload</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
+          <nz-tab nzTitle="Chapters">
+            Content of Tab Pane 1
+          </nz-tab>
+          <nz-tab nzTitle="Comments">
+            <nz-list [nzDataSource]="listComment" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+              <ng-template #item let-item>
+                <nz-comment [nzAuthor]="item.user.username" [nzDatetime]="item.timeComment">
+                  <nz-avatar nz-comment-avatar [nzSrc]="item.user.avatar"></nz-avatar>
+                  <nz-comment-content>
+                    <p>{{ item.commentContent }}</p>
+                  </nz-comment-content>
+                  <nz-comment-action>Reply to</nz-comment-action>
+                </nz-comment>
+              </ng-template>
+
+            </nz-list>
+          </nz-tab>
+          <nz-tab nzTitle="Covers">
+            Content of Tab Pane 3
+          </nz-tab>
+        </nz-tabset>
+      </div>
+    </div>
+  </div>
 </div>

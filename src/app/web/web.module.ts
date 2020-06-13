@@ -10,7 +10,6 @@ import { MainPageComponent } from './home-page/main-page/main-page.component';
 import { AsideComponent } from './home-page/aside/aside.component';
 import { GenreComponent } from './home-page/aside/genre/genre.component';
 import { HotMangaComponent } from './home-page/aside/hot-manga/hot-manga.component';
-import { LoginSignUpComponent } from './user/login-sign-up/login-sign-up.component';
 import { MenuComponent } from './cores/navbar/menu/menu.component';
 import { NavbarComponent } from './cores/navbar/navbar.component';
 import { FooterComponent } from './cores/footer/footer.component';
@@ -42,7 +41,6 @@ import { GenrePageComponent } from './genre-page/genre-page.component';
     AsideComponent,
     GenreComponent,
     HotMangaComponent,
-    LoginSignUpComponent,
     MenuComponent,
     NavbarComponent,
     FooterComponent,

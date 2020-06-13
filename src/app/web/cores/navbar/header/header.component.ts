@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginSignUpComponent } from 'src/app/web/user/login-sign-up/login-sign-up.component';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
