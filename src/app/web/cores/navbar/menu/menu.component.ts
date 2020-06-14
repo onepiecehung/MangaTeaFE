@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("MenuComponent -> ngOnInit -> ngOnInit")
     this.genreService.getAllGenre().then(data => {
       this.genres = data;
 

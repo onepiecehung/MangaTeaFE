@@ -31,7 +31,13 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { GenrePageComponent } from './genre-page/genre-page.component';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { IconDefinition } from '@ant-design/icons-angular';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
+// Import what you need. RECOMMENDED. ✔️
+import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
+
+const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 @NgModule({
   declarations: [
@@ -64,12 +70,13 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
     NzButtonModule,
     NzFormModule,
     NzInputModule,
-    NzIconModule,
+    NzIconModule.forChild(icons),
     NzTabsModule,
     NzCommentModule,
     NzAvatarModule,
     NzListModule,
-    NzNotificationModule
+    NzNotificationModule,
+    NzUploadModule
   ]
 })
 export class WebModule { }

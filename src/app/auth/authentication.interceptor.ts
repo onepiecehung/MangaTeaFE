@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 export class AuthenticationInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     var token = localStorage.getItem('token');
-    console.log("AuthenticationInterceptor -> token", token)
     if (token != null) {
       request = request.clone({
         setHeaders: {
