@@ -28,8 +28,13 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this.apiService.postData(CONSTANT_API.API_ENDPOINTS.LOGIN, account).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
+          const userInfo = new UserInfo(response.data.user);
           localStorage.setItem('token', response.data.token);
-          resolve(new UserInfo(response.data.user));
+          localStorage.setItem('status', userInfo.status);
+          localStorage.setItem('role', userInfo.role);
+          localStorage.setItem('email', userInfo.email);
+          localStorage.setItem('point', userInfo.point + '');
+          resolve(userInfo);
         } else {
           reject(response.data);
         }

@@ -33,9 +33,13 @@ import { GenrePageComponent } from './genre-page/genre-page.component';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import {MatButtonModule} from '@angular/material/button';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 // Import what you need. RECOMMENDED. ✔️
 import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
+import { ModalUploadComponent } from './commons/modal-upload/modal-upload.component';
+import { UploadChapterComponent } from './manga/upload-chapter/upload-chapter.component';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
@@ -57,7 +61,9 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     MangaDetailComponent,
     MangaDescriptionComponent,
     GenreComponent,
-    GenrePageComponent
+    GenrePageComponent,
+    ModalUploadComponent,
+    UploadChapterComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +82,9 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzAvatarModule,
     NzListModule,
     NzNotificationModule,
-    NzUploadModule
+    NzUploadModule,
+    MatButtonModule,
+    DragDropModule
   ]
 })
 export class WebModule { }

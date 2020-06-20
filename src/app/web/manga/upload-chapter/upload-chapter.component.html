@@ -1,0 +1,52 @@
+<div>
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center my-2">
+      <div class="page-item">
+        Upload chapter
+      </div>
+      <div>
+        <button mat-raised-button color="primary">
+          <i class="far fa-save mr-2"></i>
+          Save</button>
+      </div>
+    </div>
+    <ng-container *ngIf="imgURLs.length == 0">
+      <div class="container-upload my-3">
+        <div class="card w-100">
+          <div class="card-body">
+            <div class="form-upload">
+              <form enctype="multipart/form-data" class="w-100 h-100">
+                <div class="file-input">
+                  <input class="file-input" (change)="handleFileInput($event.target.files)" id="file_input" type="file"
+                    style="opacity: 0;" multiple>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <!-- <ng-container *ngIf="imgURLs.length > 0" cdkDropListGroup>
+            <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let imgURL of imgURLs" cdkDrag>
+                    <img id="blah" [src]="imgURL" alt="your image" width="100px" />
+                </div>
+            </div>
+        </ng-container> -->
+    <ng-container *ngIf="imgURLs.length > 0">
+      <div #contenedor class="categories shadow" cdkDropListGroup>
+        <ng-container *ngFor="let url of imgURLs;let i=index">
+          <div class="categories-item" cdkDropList cdkDropListOrientation="horizontal"
+            [cdkDropListData]="{item:url,index:i}" (cdkDropListDropped)="drop($event)">
+            <div class="inner" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              <!-- {{item}} -->
+              <img  class="img-fluid" [src]="url" alt="your image"/>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+  </div>
+</div>

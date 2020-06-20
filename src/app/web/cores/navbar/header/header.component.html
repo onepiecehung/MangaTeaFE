@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header shadow">
   <div class="container">
     <div nz-row nzJustify="space-around" nzAlign="middle">
       <div nz-col nzSpan="10">
@@ -59,7 +59,7 @@
       <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
       <nz-form-control>
         <nz-input-group>
-          <input type="text" class="form-control"
+          <input type="text" class="form-control" #username
             [ngClass]="{'is-invalid': (errorMessageService?.usernameError?.message)}" nz-input
             formControlName="username" placeholder="Input username" (focus)="handleFocusFormLoginSignUp('username')"
             (focusout)="handleFocusoutFormLoginSignUp('username')" />
@@ -73,7 +73,7 @@
       <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
       <nz-form-control>
         <nz-input-group>
-          <input type="text" class="form-control" [ngClass]="{'is-invalid': (errorMessageService?.emailError?.message)}"
+          <input type="text" class="form-control" #email [ngClass]="{'is-invalid': (errorMessageService?.emailError?.message)}"
             nz-input formControlName="email" placeholder="Input email" (focus)="handleFocusFormLoginSignUp('email')"
             (focusout)="handleFocusoutFormLoginSignUp('email')" />
           <div class="invalid-feedback ml-2">

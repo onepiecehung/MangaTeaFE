@@ -1,3 +1,4 @@
+import { UploadChapterComponent } from './manga/upload-chapter/upload-chapter.component';
 import { GenrePageComponent } from './genre-page/genre-page.component';
 import { MangaDetailComponent } from './manga/manga-detail/manga-detail.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -25,8 +26,12 @@ const routes: Routes = [
         component: MangaDescriptionComponent
       },
       {
-        path: 'manga/:id/:chap',
+        path: 'manga/:id/chapter/:id',
         component: MangaDetailComponent
+      },
+      {
+        path: 'manga/:id/upload-chapter',
+        component: UploadChapterComponent
       },
       {
         path: 'genre/:name',

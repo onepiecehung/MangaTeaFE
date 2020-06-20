@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
   isVisible = false;
   title: string = '';
   formLoginSignUp: FormGroup;
+
+  @ViewChild('username') usernameRef: ElementRef;
+  @ViewChild('email') emailRef: ElementRef
 
   isShowFormLogin = false;
   listOfPosition: NzPlacementType[] = ['bottomLeft', 'bottomCenter', 'bottomRight', 'topLeft', 'topCenter', 'topRight'];
@@ -52,6 +55,7 @@ export class HeaderComponent implements OnInit {
     this.title = MESSAGE.TITLE_SIGN_UP;
     this.isVisible = true;
     this.isShowFormLogin = false;
+    // this.usernameRef.nativeElement.focus();
   }
   showModalLogin() {
     this.initData();
@@ -59,6 +63,7 @@ export class HeaderComponent implements OnInit {
     this.title = MESSAGE.TITLE_LOGIN;
     this.isVisible = true;
     this.isShowFormLogin = true;
+    // this.emailRef.nativeElement.focus();
   }
 
   handleOk(): void {
