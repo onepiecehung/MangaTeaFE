@@ -17,6 +17,7 @@ export class GenreService {
   getAllGenre(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(CONSTANT_API.API_ENDPOINTS.GENRE).subscribe(response => {
+        JSON.stringify(response);
         if (response.status === HTTP_STATUS.OK) {
           response.data.forEach(genreItem => {
             this.genres.push(new Genre(genreItem));
