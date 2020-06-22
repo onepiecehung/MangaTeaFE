@@ -6,6 +6,7 @@ export namespace CONSTANT_API {
     PROFILE: '',
     MANGA: '',
     UPLOAD_PROFILE_IMG: '',
-    COMMENT: ''
+    COMMENT: '',
+    CHAPTER: ''
   }
 }
