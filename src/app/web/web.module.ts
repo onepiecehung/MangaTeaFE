@@ -40,6 +40,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
 import { ModalUploadComponent } from './commons/modal-upload/modal-upload.component';
 import { UploadChapterComponent } from './manga/upload-chapter/upload-chapter.component';
+import { ChapterDetailComponent } from './manga/chapter-detail/chapter-detail.component';
 
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
@@ -63,7 +64,8 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     GenreComponent,
     GenrePageComponent,
     ModalUploadComponent,
-    UploadChapterComponent
+    UploadChapterComponent,
+    ChapterDetailComponent
   ],
   imports: [
     CommonModule,

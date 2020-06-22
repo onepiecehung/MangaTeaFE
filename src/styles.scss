@@ -30,3 +30,6 @@ $app-manga-recommender-system-theme: mat-light-theme($app-manga-recommender-syst
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.router-link-active{
+    color: red;
+}

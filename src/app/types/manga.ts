@@ -11,6 +11,24 @@ export class ListMangaResponse {
     }
   }
 }
+
+
+export class MangaDetail {
+  manga: Manga;
+  chapter: Chapter[] = [];
+
+  constructor(manga, chapters) {
+    if (manga) {
+      this.manga = manga
+    }
+    if (Array.isArray(chapters)) {
+      chapters.forEach(chapter => {
+        this.chapter.push(new Chapter(chapter));
+      });
+    }
+  }
+}
+
 export class Manga {
   otherName: OtherName;
   coverImage: CoverImage;
@@ -185,6 +203,48 @@ export class Staff {
       this._id = data._id;
       this.id = data.id;
       this.name = data.name;
+    }
+  }
+}
+
+export class Chapter {
+  chapterNumber: number;
+  createBy: number;
+  createdAt: string;
+  groupTranslation: number;
+  language: number;
+  mangaID: number;
+  name: number;
+  photo: string[] = [];
+  photoAw3: string[] = [];
+  photoDrive: string[] = [];
+  photoImgur: string;
+  photoKIT: string[] = [];
+  status: string;
+  updateBy: number;
+  updatedAt: string;
+  view: number;
+  _id: number;
+
+  constructor(data) {
+    if (data) {
+      this.chapterNumber = data.chapterNumber;
+      this.createBy = data.createBy;
+      this.createdAt = data.createAt;
+      this.groupTranslation = data.groupTranslation;
+      this.language = data.language;
+      this.mangaID = data.mangaID;
+      this.name = data.name;
+      this.photo = data.photo;
+      this.photoAw3 = data.photoAw3;
+      this.photoDrive = data.photoDrive;
+      this.photoImgur = data.photoImgur;
+      this.photoKIT = data.photoKIT;
+      this.status = data.status;
+      this.updateBy = data.updateBy;
+      this.updatedAt = data.updatedAt;
+      this.view = data.view;
+      this._id = data._id;
     }
   }
 }

@@ -1,5 +1,5 @@
 <div class="main-description mt-2">
-  <div class="container">
+  <div class="container" *ngIf="mangaItem !== null">
     <div class="card">
       <div class="card-header">
         {{mangaItem.otherName.english}}
@@ -129,7 +129,7 @@
                 Actions:
               </div>
               <div nz-col nzSpan="20">
-                <button mat-raised-button color="primary" [routerLink]="['upload-chapter']"  >Upload</button>
+                <button mat-raised-button color="primary" [routerLink]="['upload-chapter']">Upload</button>
                 <!-- <button nz-button (click)="onClickUploadChapter()"><i nz-icon nzType="upload"></i>Upload</button> -->
               </div>
 
@@ -142,7 +142,27 @@
       <div nz-col nzSpan="24">
         <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
           <nz-tab nzTitle="Chapters">
-            Content of Tab Pane 1
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let chapter of listChapter; let index = index" [routerLink]="['/chapter', chapter._id]" routerLinkActive="router-link-active"  [state]="chapter">
+                    <th scope="row">{{ index +1 }}</th>
+                    <td>{{ chapter.name }}</td>
+                    <td>{{ chapter.view }}</td>
+                    <td>@mdo</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
           </nz-tab>
           <nz-tab nzTitle="Comments">
             <nz-list [nzDataSource]="listComment" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">

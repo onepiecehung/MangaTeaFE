@@ -1,7 +1,7 @@
 <div class="main-profile">
   <div class="container">
-    <div class="d-flex justify-content-end">
-      <button mat-raised-button>Cancel</button>
+    <div class="d-flex justify-content-end mt-2">
+      <button mat-raised-button color="warn">Cancel</button>
       <button class="ml-3" (click)="updateProfile()" mat-raised-button color="primary">Save</button>
     </div>
 
@@ -15,13 +15,13 @@
       </ol>
     </nav> -->
     <!-- <hr> -->
-    <div class="row">
+    <div class="row d-flex justify-content-end">
       <div class="col-4">
         <div class="section-edit-profile">Public Avatar</div>
         <div>You can change your avatar here or remove the current avatar</div>
       </div>
       <div class="col-2">
-        <img class="img-fluid rounded-circle"
+        <img class="rounded-circle" width="150px" height="150px"
           [src]="userInfo?.avatar ? userInfo.avatar : 'https://media.ngoisao.vn/resize_580/news/2018/11/26/hotgirl-1-ngoisao.vn-w600-h493.jpg'"
           alt="">
       </div>

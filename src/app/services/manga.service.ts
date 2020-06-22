@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from './../../constants/constant-common';
-import { Manga, ListMangaResponse } from './../types/manga';
+import { Manga, ListMangaResponse, MangaDetail } from './../types/manga';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from './common/api.service';
@@ -29,11 +29,12 @@ export class MangaService {
 
   }
 
-  getMangaByID(id: number): Promise<Manga> {
+  getMangaByID(id: number): Promise<MangaDetail> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA}?id=${id}`).subscribe(response => {
+        console.log("response", response)
         if (response.status === HTTP_STATUS.OK) {
-          resolve(new Manga(response.data));
+          resolve(new MangaDetail(response.data.manga, response.data.chapter));
         } else {
           reject();
         }

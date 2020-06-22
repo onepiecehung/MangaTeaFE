@@ -1,6 +1,6 @@
 import { Title } from '@angular/platform-browser';
 import { CommentService } from './../../../services/comment.service';
-import { Manga } from './../../../types/manga';
+import { Manga, Chapter } from './../../../types/manga';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +27,9 @@ export class MangaDescriptionComponent implements OnInit {
   mangaItem: Manga = null;
   mangaID: number;
   listComment: Comment[] = [];
+  listChapter: Chapter[] = [];
   isShowPageUploadChapter = false;
+  chapter: Chapter;
   constructor(
     private mangaService: MangaService,
     private router: ActivatedRoute,
@@ -39,20 +41,23 @@ export class MangaDescriptionComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
-        this.mangaItem = mangaResponse;
+        this.mangaItem = mangaResponse.manga;
+        this.listChapter = mangaResponse.chapter;
         this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });
   }
   changeSelectTab(event) {
-    console.log("MangaDescriptionComponent -> changeSelectTab -> event", event)
     if (event.index === 1) {
       this.commentService.getCommentByMangaID(2).then(commentResponse => {
         this.listComment = commentResponse;
-        console.log("MangaDescriptionComponent -> changeSelectTab -> this.listComment", this.listComment)
       }).catch(err => console.log(err));
 
     }
+  }
+
+  onClickChapter(chapter: Chapter, index: number) {
+
   }
 
   onClickUploadChapter() {
