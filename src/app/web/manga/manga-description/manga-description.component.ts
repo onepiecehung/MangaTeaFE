@@ -29,7 +29,7 @@ export class MangaDescriptionComponent implements OnInit {
   listComment: Comment[] = [];
   listChapter: Chapter[] = [];
   isShowPageUploadChapter = false;
-  chapter: Chapter;
+  chapter: Chapter = null;
   constructor(
     private mangaService: MangaService,
     private router: ActivatedRoute,
@@ -57,7 +57,7 @@ export class MangaDescriptionComponent implements OnInit {
   }
 
   onClickChapter(chapter: Chapter, index: number) {
-
+    this.chapter = chapter;
   }
 
   onClickUploadChapter() {
