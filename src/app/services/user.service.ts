@@ -2,7 +2,7 @@ import { User } from '../types/user';
 import { ApiService } from './common/api.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CONSTANT_API } from 'src/constants/constant-api.dev';
+import { CONSTANT_API } from 'src/constants/constant-api';
 import { UserInfo } from '../types/user-info';
 import { HTTP_STATUS } from 'src/constants/constant-common';
 @Injectable({

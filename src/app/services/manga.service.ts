@@ -3,7 +3,7 @@ import { Manga, ListMangaResponse, MangaDetail } from './../types/manga';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from './common/api.service';
-import { CONSTANT_API } from 'src/constants/constant-api.dev';
+import { CONSTANT_API } from 'src/constants/constant-api';
 import { rejects } from 'assert';
 
 @Injectable({
