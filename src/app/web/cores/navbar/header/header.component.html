@@ -35,13 +35,13 @@
         <div *ngIf="!authService.isAuthenticated()" class="login-sign_up d-flex d-flex justify-content-end">
           <div class="sign_up">
             <a nz-button [nzType]="'link'" (click)="showModalSignUp()">
-              <i class="fas fa-user-plus"></i>
+              <i class="fas fa-user-plus mr-1"></i>
               Sign Up
             </a>
           </div>
           <div class="login">
             <a nz-button [nzType]="'link'" (click)="showModalLogin()">
-              <i class="fas fa-sign-in-alt"></i>
+              <i class="fas fa-sign-in-alt mr-1"></i>
               Log In
             </a>
           </div>
@@ -52,64 +52,77 @@
   </div>
 </div>
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ title | uppercase }}" (nzOnCancel)="handleCancel()"
-  (nzOnOk)="handleOk()">
-  <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
-    <nz-form-item *ngIf="!isShowFormLogin">
-      <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
-      <nz-form-control>
-        <nz-input-group>
-          <input type="text" class="form-control" #username
-            [ngClass]="{'is-invalid': (errorMessageService?.usernameError?.message)}" nz-input
-            formControlName="username" placeholder="Input username" (focus)="handleFocusFormLoginSignUp('username')"
-            (focusout)="handleFocusoutFormLoginSignUp('username')" />
-          <div class="invalid-feedback ml-2">
-            <i class="fas fa-exclamation-triangle"></i>
-            {{ errorMessageService?.usernameError?.message }} </div>
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
-      <nz-form-control>
-        <nz-input-group>
-          <input type="text" class="form-control" #email [ngClass]="{'is-invalid': (errorMessageService?.emailError?.message)}"
-            nz-input formControlName="email" placeholder="Input email" (focus)="handleFocusFormLoginSignUp('email')"
-            (focusout)="handleFocusoutFormLoginSignUp('email')" />
-          <div class="invalid-feedback ml-2">
-            <i class="fas fa-exclamation-triangle"></i>
-            {{ errorMessageService?.emailError?.message }} </div>
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label [nzSpan]="24" nzFor="password">Password</nz-form-label>
-      <nz-form-control>
-        <nz-input-group>
-          <input type="password" class="form-control"
-            [ngClass]="{'is-invalid': (errorMessageService?.passwordError?.message)}" nz-input
-            formControlName="password" placeholder="Enter your password"
-            (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')" />
-          <div class="invalid-feedback ml-2">
-            <i class="fas fa-exclamation-triangle"></i>
-            {{ errorMessageService?.passwordError?.message }} </div>
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item *ngIf="!isShowFormLogin">
-      <nz-form-label [nzSpan]="24" nzFor="passwordConfirm">Password confirm</nz-form-label>
-      <nz-form-control>
-        <nz-input-group>
-          <input type="password" class="form-control"
-            [ngClass]="{'is-invalid': (errorMessageService?.passwordConfirmError?.message)}" nz-input
-            formControlName="passwordConfirm" placeholder="Enter your password confirm"
-            (focus)="handleFocusFormLoginSignUp('passwordConfirm')"
-            (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')" />
-          <div class="invalid-feedback ml-2">
-            <i class="fas fa-exclamation-triangle"></i>
-            {{ errorMessageService?.passwordConfirmError?.message }} </div>
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-  </form>
+
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()">
+  <ng-template #modalTitle>
+   {{ title | uppercase }}
+  </ng-template>
+
+  <ng-template #modalContent>
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
+      <nz-form-item *ngIf="!isShowFormLogin">
+        <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" class="form-control" #username
+              [ngClass]="{'is-invalid': (errorMessageService?.usernameError?.message)}" nz-input
+              formControlName="username" placeholder="Input username" (focus)="handleFocusFormLoginSignUp('username')"
+              (focusout)="handleFocusoutFormLoginSignUp('username')" />
+            <div class="invalid-feedback ml-2">
+              <i class="fas fa-exclamation-triangle"></i>
+              {{ errorMessageService?.usernameError?.message }} </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="text" class="form-control" #email
+              [ngClass]="{'is-invalid': (errorMessageService?.emailError?.message)}" nz-input formControlName="email"
+              placeholder="Input email" (focus)="handleFocusFormLoginSignUp('email')"
+              (focusout)="handleFocusoutFormLoginSignUp('email')" />
+            <div class="invalid-feedback ml-2">
+              <i class="fas fa-exclamation-triangle"></i>
+              {{ errorMessageService?.emailError?.message }} </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="password">Password</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="password" class="form-control"
+              [ngClass]="{'is-invalid': (errorMessageService?.passwordError?.message)}" nz-input
+              formControlName="password" placeholder="Enter your password"
+              (focus)="handleFocusFormLoginSignUp('password')" (focusout)="handleFocusoutFormLoginSignUp('password')" />
+            <div class="invalid-feedback ml-2">
+              <i class="fas fa-exclamation-triangle"></i>
+              {{ errorMessageService?.passwordError?.message }} </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item *ngIf="!isShowFormLogin">
+        <nz-form-label [nzSpan]="24" nzFor="passwordConfirm">Password confirm</nz-form-label>
+        <nz-form-control>
+          <nz-input-group>
+            <input type="password" class="form-control"
+              [ngClass]="{'is-invalid': (errorMessageService?.passwordConfirmError?.message)}" nz-input
+              formControlName="passwordConfirm" placeholder="Enter your password confirm"
+              (focus)="handleFocusFormLoginSignUp('passwordConfirm')"
+              (focusout)="handleFocusoutFormLoginSignUp('passwordConfirm')" />
+            <div class="invalid-feedback ml-2">
+              <i class="fas fa-exclamation-triangle"></i>
+              {{ errorMessageService?.passwordConfirmError?.message }} </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">OK</button>
+  </ng-template>
 </nz-modal>

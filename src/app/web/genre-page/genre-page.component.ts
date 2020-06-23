@@ -1,4 +1,4 @@
-import { ListMangaResponse } from './../../types/manga';
+import { ListMangaResponse, Manga } from './../../types/manga';
 import { MangaService } from './../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./genre-page.component.scss']
 })
 export class GenrePageComponent implements OnInit {
-
+  listManga: Manga[] = [];
   constructor(
     private mangaService: MangaService,
     private route: ActivatedRoute
@@ -20,6 +20,7 @@ export class GenrePageComponent implements OnInit {
       let genreName = params['name'];
       this.mangaService.loadListMangaByGenreName(genreName).then((response: ListMangaResponse) => {
         console.log("GenrePageComponent -> ngOnInit -> response", response)
+        this.listManga = response.manga;
 
       })
     })
