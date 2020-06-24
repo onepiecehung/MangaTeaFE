@@ -1,7 +1,8 @@
 <div class="genre-page">
   <div class="container">
-    <div *ngIf="listManga.length == 0" class="not_found_data">
-      <img src="assets/img/not_found_data.png" alt="">
+    <div *ngIf="listManga.length == 0" class="not_found_data d-flex justify-content-between">
+      <div> <img src="assets/img/not_found_data.png" alt="">
+      </div>
     </div>
     <ng-container *ngIf="listManga.length > 0">
       <div *ngFor="let item of listManga; first as isFirst">

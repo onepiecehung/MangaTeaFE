@@ -3,9 +3,7 @@
     <div class="col-lg-3 col-md-5 col-sm-6 col-12">
       <div class="img-top">
         <a [routerLink]="['/manga', mangaItem.id]">
-          <img class="w-100 h-100"
-            [src]="mangaItem.coverImage.large"
-            alt="">
+          <img class="w-100 h-100" [src]="mangaItem.coverImage.large" alt="">
         </a>
       </div>
       <div class="ongoing">
@@ -15,18 +13,21 @@
     <div class="col-lg-9 col-md-7 col-sm-6 col-12 info-manga">
       <div class="title d-flex flex-row align-items-end">
         <div><a [routerLink]="['/manga', mangaItem.id]">{{ mangaItem.name }}</a>
-          <span class="chap-update"> - Update chapter 180</span>
+          <span class="chap-update" *ngIf="mangaItem?.chapter.length"> - Update chapter
+            {{ mangaItem?.chapter.length}}</span>
         </div>
       </div>
       <div class="hour-first-chap d-flex flex-row align-items-end justify-content-between">
         <div><i class="far fa-clock icon-clock"></i> {{ mangaItem.updatedAt }} ago</div>
-        <div>
-          <a href="#">First Chapter</a>
+        <div *ngIf="mangaItem?.chapter[0]?._id">
+          <a [routerLink]="['/chapter/', mangaItem?.chapter[0]?._id]">First Chapter</a>
         </div>
       </div>
       <div class="author">
         <div>
-          <a class="author-item" *ngFor="let genre of mangaItem.genres" [routerLink]="['/genres/', genre]">{{ genre }}</a>
+          <ng-container *ngFor="let genre of mangaItem.genres">
+            <a class="author-item" [routerLink]="['/genres/', genre]">{{ genre }}</a>
+          </ng-container>
         </div>
       </div>
       <div class="description">
@@ -38,16 +39,27 @@
       <div class="chaps">
         <div>
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-            <div><a href="#">Chap 3</a></div>
-            <div>Feb-22-2020</div>
+            <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -1]?._id">
+              <div><a [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -1]?._id]">
+                  {{ mangaItem?.chapter[mangaItem.chapter.length -1]?.name }} </a></div>
+              <div>{{ mangaItem?.chapter[mangaItem.chapter.length -1]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+            </ng-container>
           </div>
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-            <div><a href="#">Chap 2</a></div>
-            <div>Feb-21-2020</div>
+            <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -2]?._id">
+              <div><a
+                  [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.name }}</a>
+              </div>
+              <div>{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+            </ng-container>
           </div>
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-            <div><a href="#">Chap 1</a></div>
-            <div>Feb-15-2020</div>
+            <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -3]?._id">
+              <div><a
+                  [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.name }}</a>
+              </div>
+              <div>{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+            </ng-container>
           </div>
         </div>
       </div>

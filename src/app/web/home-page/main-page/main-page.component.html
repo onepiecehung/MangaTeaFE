@@ -1,8 +1,18 @@
-<div *ngFor="let item of listManga; first as isFirst">
-    <div class="mt-2 manga-item">
-        <app-manga-item [mangaItem]="item"></app-manga-item>
+<div>
+  <div class="my-3">
+    <div class="page-title">LATEST UPDATES</div>
+    <div class="icon">
+      <i class="fas fa-star"></i>
+      <div></div>
     </div>
-</div>
-<div class="my-3 d-flex justify-content-center">
-        <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="totalPage" (nzPageIndexChange)="getPageIndexChange($event)"></nz-pagination>
+  </div>
+  <div *ngFor="let item of listManga; first as isFirst">
+    <div class="mt-2 manga-item">
+      <app-manga-item [mangaItem]="item"></app-manga-item>
+    </div>
+  </div>
+  <div class="my-3 d-flex justify-content-center">
+    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="totalPage" (nzPageIndexChange)="getPageIndexChange($event)">
+    </nz-pagination>
+  </div>
 </div>
