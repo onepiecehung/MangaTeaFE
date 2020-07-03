@@ -1,4 +1,4 @@
-import { UserInfo } from './user-info';
+import { UserInfo } from './user-info.model';
 export class Comment {
   _id: number;
   isEdit: boolean;

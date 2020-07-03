@@ -1,5 +1,5 @@
-import { ChapterService } from './../../../services/chapter.service';
-import { Chapter } from './../../../types/manga';
+import { ChapterService } from './../../services/chapter.service';
+import { Chapter } from '../../models/manga.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,6 +19,7 @@ export class ChapterDetailComponent implements OnInit {
     this.router.params.subscribe(params => {
       const chapterId = params['id'];
       this.chapterService.getChapterByID(chapterId).then((chapter: Chapter) => {
+        console.log("ChapterDetailComponent -> ngOnInit -> chapter", chapter)
         this.chapter = chapter;
       }).catch(err => console.log(err))
     });

@@ -1,4 +1,4 @@
-import { ListMangaResponse } from './../../types/manga';
+import { ListMangaResponse } from '../../models/manga.model';
 import { MangaService } from './../../services/manga.service';
 import { Resolve, ActivatedRouteSnapshot } from "@angular/router";
 import { Injectable } from '@angular/core';

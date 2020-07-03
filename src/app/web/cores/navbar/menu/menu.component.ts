@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GenreService } from 'src/app/services/genre.service';
-import { Genre } from 'src/app/types/genre';
+import { Genre } from 'src/app/models/genre.model';
 import { NzPlacementType } from 'ng-zorro-antd/dropdown';
 
 @Component({

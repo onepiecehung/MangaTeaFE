@@ -1,13 +1,13 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ErrorMessageService } from 'src/app/services/error-message.service';
-import { User } from 'src/app/types/user';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { UserInfo } from 'src/app/types/user-info';
+import { UserInfo } from 'src/app/models/user-info.model';
 import { NzPlacementType } from 'ng-zorro-antd/dropdown';
 
 @Component({

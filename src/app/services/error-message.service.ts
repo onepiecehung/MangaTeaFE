@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import messages from '../bases/messages.json';
-import { ErrorMessage } from '../types/error-message';
+import { ErrorMessage } from '../models/error-message.model';
 import { ERROR_KEY, ERROR_FIELD } from 'src/constants/constant-common';
 
 @Injectable({

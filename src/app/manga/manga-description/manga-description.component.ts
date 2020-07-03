@@ -1,10 +1,9 @@
+import { CommentService } from './../../services/comment.service';
+import { MangaService } from './../../services/manga.service';
+import { Manga, Chapter } from '../../models/manga.model';
 import { Title } from '@angular/platform-browser';
-import { CommentService } from './../../../services/comment.service';
-import { Manga, Chapter } from './../../../types/manga';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
-import { Comment } from '../../../types/comment';
 import { UploadFile, UploadChangeParam } from 'ng-zorro-antd/upload';
 
 
@@ -32,13 +31,14 @@ export class MangaDescriptionComponent implements OnInit {
   chapter: Chapter = null;
   constructor(
     private mangaService: MangaService,
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
     private commentService: CommentService,
     private titleService: Title,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.router.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
         this.mangaItem = mangaResponse.manga;
@@ -116,6 +116,12 @@ export class MangaDescriptionComponent implements OnInit {
     if (status === 'done') {
     } else if (status === 'error') {
     }
+  }
+
+  handleGoToChapterDetail(chapterId: number) {
+    const url = `manga/${this.mangaID}/chapter/${chapterId}`;
+    console.log("handleGoToChapterDetail -> url", url)
+    this.router.navigate['/'];
   }
 
 }

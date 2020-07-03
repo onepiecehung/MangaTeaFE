@@ -1,4 +1,4 @@
-import { Manga } from '../../../types/manga';
+import { Manga } from '../../../models/manga.model';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

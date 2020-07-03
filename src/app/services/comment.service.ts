@@ -3,7 +3,7 @@ import { ApiService } from './common/api.service';
 import { Injectable } from '@angular/core';
 import { CONSTANT_API } from 'src/constants/constant-api';
 import { HTTP_STATUS } from 'src/constants/constant-common';
-import { Comment } from 'src/app/types/comment';
+import { Comment } from 'src/app/models/comment.model';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,9 +1,9 @@
-import { User } from '../types/user';
+import { User } from '../models/user.model';
 import { ApiService } from './common/api.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CONSTANT_API } from 'src/constants/constant-api';
-import { UserInfo } from '../types/user-info';
+import { UserInfo } from '../models/user-info.model';
 import { HTTP_STATUS } from 'src/constants/constant-common';
 @Injectable({
   providedIn: 'root'

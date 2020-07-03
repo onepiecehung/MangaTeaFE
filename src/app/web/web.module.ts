@@ -1,4 +1,4 @@
-import { MangaDetailComponent } from './manga/manga-detail/manga-detail.component';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -24,24 +24,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-import { MangaDescriptionComponent } from './manga/manga-description/manga-description.component';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzCommentModule } from 'ng-zorro-antd/comment';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzListModule } from 'ng-zorro-antd/list';
 import { GenrePageComponent } from './genre-page/genre-page.component';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import {MatButtonModule} from '@angular/material/button';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 
-// Import what you need. RECOMMENDED. ✔️
 import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
 import { ModalUploadComponent } from './commons/modal-upload/modal-upload.component';
-import { UploadChapterComponent } from './manga/upload-chapter/upload-chapter.component';
-import { ChapterDetailComponent } from './manga/chapter-detail/chapter-detail.component';
-
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
 
 @NgModule({
@@ -59,13 +49,9 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     HeaderComponent,
     MangaItemComponent,
     SpliceStringPipe,
-    MangaDetailComponent,
-    MangaDescriptionComponent,
     GenreComponent,
     GenrePageComponent,
     ModalUploadComponent,
-    UploadChapterComponent,
-    ChapterDetailComponent
   ],
   imports: [
     CommonModule,
@@ -79,14 +65,11 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzFormModule,
     NzInputModule,
     NzIconModule.forChild(icons),
-    NzTabsModule,
-    NzCommentModule,
-    NzAvatarModule,
-    NzListModule,
+
     NzNotificationModule,
     NzUploadModule,
     MatButtonModule,
-    DragDropModule
+    RouterModule
   ]
 })
 export class WebModule { }

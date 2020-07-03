@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from './../../constants/constant-common';
-import { Manga, ListMangaResponse, MangaDetail } from './../types/manga';
+import { Manga, ListMangaResponse, MangaDetail } from '../models/manga.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from './common/api.service';

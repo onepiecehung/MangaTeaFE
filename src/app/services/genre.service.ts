@@ -1,4 +1,4 @@
-import { Genre } from './../types/genre';
+import { Genre } from '../models/genre.model';
 import { Injectable } from '@angular/core';
 import { ApiService } from './common/api.service';
 import { CONSTANT_API } from 'src/constants/constant-api';

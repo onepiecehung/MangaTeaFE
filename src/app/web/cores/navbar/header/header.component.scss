@@ -5,7 +5,8 @@ h1{
 .header {
   padding: 0px 0px;
   border-bottom: 1px solid #ebebeb;
-  background-color: #3f51b5;
+  background-color: #fff;
+  color: #111111;
   a {
     text-decoration: none;
   }
@@ -60,7 +61,7 @@ h1{
   margin: 0px;
 }
 .sign_up, .login{
-  color: white;
+  color: #111111;
   font-weight: bolder;
   .fas{
     color: #ff8e1c;

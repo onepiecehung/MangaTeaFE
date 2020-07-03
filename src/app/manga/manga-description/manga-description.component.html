@@ -5,37 +5,38 @@
         {{mangaItem.otherName.english}}
       </div>
       <div class="card-body">
-        <div nz-row>
-          <div nz-col nzSpan="6">
+        <div class="row">
+      
+          <div class="col-4">
             <img [src]="mangaItem.coverImage.large" class="img-fluid" [routerLink]="['/manga/', mangaItem.id,1]" alt="">
           </div>
-          <div nz-col nzSpan="18">
-            <div nz-row>
-              <div nz-col nzSpan="4">
+          <div class="col-8">
+            <div class="row">
+              <div class="col-4">
                 Title ID:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Alt name(s):
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 {{mangaItem.otherName.english}}, {{mangaItem.otherName.native}},
                 {{mangaItem.otherName.romaji}}, {{mangaItem.otherName.userPreferred}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Author:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 <ng-container *ngFor="let author of mangaItem.staff">
                   <div>{{ author.name }} </div>
                 </ng-container>
@@ -43,92 +44,92 @@
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Artist:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Demographic:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Content:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Genre:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 <span class="badge badge-pill badge-primary mr-2"
                   *ngFor="let genre of mangaItem.genres">{{genre}}</span>
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Theme:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Rating:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 # {{mangaItem.id}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Pub. status:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 {{mangaItem.status}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Description:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 {{mangaItem.description}}
               </div>
             </div>
             <hr>
 
-            <div nz-row>
-              <div nz-col nzSpan="4">
+            <div class="row">
+              <div class="col-4">
                 Actions:
               </div>
-              <div nz-col nzSpan="20">
+              <div class="col-8">
                 <button mat-raised-button color="primary" [routerLink]="['upload-chapter']">Upload</button>
                 <!-- <button nz-button (click)="onClickUploadChapter()"><i nz-icon nzType="upload"></i>Upload</button> -->
               </div>
@@ -138,8 +139,8 @@
         </div>
       </div>
     </div>
-    <div nz-row>
-      <div nz-col nzSpan="24">
+    <div class="row">
+      <div class="col-12">
         <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
           <nz-tab nzTitle="Chapters">
             <div class="table-responsive">
@@ -153,7 +154,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let chapter of listChapter; let index = index" [routerLink]="['/chapter/', chapter._id]" routerLinkActive="router-link-active"  >
+                  <tr *ngFor="let chapter of listChapter; let index = index"
+                    (click)="handleGoToChapterDetail(chapter._id)">
                     <th scope="row">{{ index +1 }}</th>
                     <td>{{ chapter.name }}</td>
                     <td>{{ chapter.view }}</td>

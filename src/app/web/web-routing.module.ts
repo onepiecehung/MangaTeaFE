@@ -1,12 +1,8 @@
-import { ChapterDetailComponent } from './manga/chapter-detail/chapter-detail.component';
-import { UploadChapterComponent } from './manga/upload-chapter/upload-chapter.component';
 import { GenrePageComponent } from './genre-page/genre-page.component';
-import { MangaDetailComponent } from './manga/manga-detail/manga-detail.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { WebPageComponent } from './web-page/web-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MangaDescriptionComponent } from './manga/manga-description/manga-description.component';
 
 
 const routes: Routes = [
@@ -23,16 +19,19 @@ const routes: Routes = [
         loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },
       {
-        path: 'manga/:id',
-        component: MangaDescriptionComponent
-      },
-      {
-        path: 'chapter/:id',
-        component: ChapterDetailComponent
-      },
-      {
-        path: 'manga/:id/upload-chapter',
-        component: UploadChapterComponent
+        path: 'manga',
+        loadChildren: () => import('../manga/manga.module').then(m => m.MangaModule)
+        // component: MangaDescriptionComponent,
+        // children: [
+        //   {
+        //     path: 'upload-chapter',
+        //     component: UploadChapterComponent
+        //   },
+        //   {
+        //     path: 'chapter/:chapterId',
+        //     component: ChapterDetailComponent
+        //   }
+        // ]
       },
       {
         path: 'genre/:name',

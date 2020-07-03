@@ -1,4 +1,4 @@
-import { Manga, ListMangaResponse } from '../../../types/manga';
+import { Manga, ListMangaResponse } from '../../../models/manga.model';
 import { MangaService } from '../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 
