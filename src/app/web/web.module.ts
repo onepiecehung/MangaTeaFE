@@ -29,7 +29,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { IconDefinition } from '@ant-design/icons-angular';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import {MatButtonModule} from '@angular/material/button';
-
+import { NzCardModule } from 'ng-zorro-antd/card';
 import { AccountBookFill, AlertFill, AlertOutline } from '@ant-design/icons-angular/icons';
 import { ModalUploadComponent } from './commons/modal-upload/modal-upload.component';
 const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
@@ -65,7 +65,7 @@ const icons: IconDefinition[] = [ AccountBookFill, AlertOutline, AlertFill ];
     NzFormModule,
     NzInputModule,
     NzIconModule.forChild(icons),
-
+    NzCardModule,
     NzNotificationModule,
     NzUploadModule,
     MatButtonModule,

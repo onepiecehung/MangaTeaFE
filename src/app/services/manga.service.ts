@@ -54,4 +54,16 @@ export class MangaService {
     });
   }
 
+  loadCarousel(): Promise<ListMangaResponse> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_HOME}?slide=${true}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(new ListMangaResponse(response.data));
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
 }

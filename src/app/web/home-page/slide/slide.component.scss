@@ -25,6 +25,32 @@
       background: #fff;
     }
   }
+  .icon-next-prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      text-decoration: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      border: 1px #ffffff solid;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      i {
+        font-weight: bold;
+        color: #ffffff;
+      }
+    }
+    a:hover {
+      background-color: #ffffff;
+      cursor: pointer;
+      i {
+        color: #009fdf;
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -61,7 +87,8 @@
     margin-right: 0;
   }
   /* show 2 items */
-  .carousel-inner .active + .carousel-item {
+  .carousel-inner .active + .carousel-item 
+  {
     display: block;
   }
   .carousel-inner
@@ -155,7 +182,8 @@
   }
   /* Show 5th slide on lg if col-lg-3 */
   .carousel-inner
-    .active.col-lg-3.carousel-item
+    .active.col-lg-3
+    .carousel-item
     + .carousel-item
     + .carousel-item
     + .carousel-item

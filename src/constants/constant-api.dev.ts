@@ -7,7 +7,8 @@ export namespace CONSTANT_API {
     MANGA: 'http://localhost:2111/v1/manga',
     UPLOAD_PROFILE_IMG: 'http://localhost:2111/v1/user/upload-avatar',
     COMMENT: 'http://localhost:2111/v1/comment',
-    CHAPTER: 'http://localhost:2111/v1/chapter'
+    CHAPTER: 'http://localhost:2111/v1/chapter',
+    MANGA_HOME: 'http://localhost:2111/v1//manga/home',
 
   }
 }

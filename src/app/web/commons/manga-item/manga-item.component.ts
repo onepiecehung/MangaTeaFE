@@ -11,8 +11,6 @@ export class MangaItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
-    console.log("MangaItemComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
   }
 
 }
