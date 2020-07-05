@@ -9,27 +9,22 @@
         </div>
       </div>
       <div class="icon-next-prev">
-        <a href="#carouselExampleInterval" role="button" data-slide="prev">
+        <a href="#carousel-example" role="button" data-slide="prev">
           <i class="fas fa-chevron-left"></i>
         </a>
-        <a class="ml-2" href="#carouselExampleInterval" role="button" data-slide="next">
+        <a class="ml-2" href="#carousel-example" role="button" data-slide="next">
           <i class="fas fa-chevron-right"></i>
         </a>
       </div>
     </div>
-    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner" role="listbox">
+    <div id="carousel-example" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto d-flex justify-content-between" role="listbox">
         <ng-container *ngFor="let slideItem of slideManga; let index = index">
-          <div class="carousel-item col-lg-2 col-md-4 col-sm-6" [ngClass]="{'active': index == 1}">
-            <div class="card">
-              <img [src]="slideItem.coverImage.large" class="d-block w-100" height="300px">
-              <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
+            <img [src]="slideItem.coverImage.large" class="img-fluid mx-auto d-block" alt="img1">
           </div>
-        </ng-container>
 
+        </ng-container>
       </div>
     </div>
   </div>
