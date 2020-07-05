@@ -20,7 +20,7 @@
       <div class="hour-first-chap d-flex flex-row align-items-end justify-content-between">
         <div><i class="far fa-clock icon-clock"></i> {{ mangaItem.updatedAt }} ago</div>
         <div *ngIf="mangaItem?.chapter[0]?._id">
-          <a [routerLink]="['/chapter/', mangaItem?.chapter[0]?._id]">First Chapter</a>
+          <a [routerLink]="['/manga/',mangaItem.id, 'chapter', mangaItem?.chapter[0]?._id]">First Chapter</a>
         </div>
       </div>
       <div class="author">
@@ -40,7 +40,7 @@
         <div>
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
             <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -1]?._id">
-              <div><a [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -1]?._id]">
+              <div><a [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -1]?._id]">
                   {{ mangaItem?.chapter[mangaItem.chapter.length -1]?.name }} </a></div>
               <div>{{ mangaItem?.chapter[mangaItem.chapter.length -1]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
             </ng-container>
@@ -48,7 +48,7 @@
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
             <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -2]?._id">
               <div><a
-                  [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.name }}</a>
+                  [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.name }}</a>
               </div>
               <div>{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
             </ng-container>
@@ -56,7 +56,7 @@
           <div class="chap-item d-flex flex-row align-items-end justify-content-between">
             <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -3]?._id">
               <div><a
-                  [routerLink]="['/chapter/', mangaItem?.chapter[mangaItem.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.name }}</a>
+                  [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.name }}</a>
               </div>
               <div>{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
             </ng-container>

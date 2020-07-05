@@ -1,7 +1,7 @@
-import { Manga } from './../../../models/manga.model';
-import { MangaService } from './../../../services/manga.service';
+
 import { Component, OnInit } from '@angular/core';
-import { ListMangaResponse } from 'src/app/models/manga.model';
+import { ListMangaResponse, Manga } from 'src/app/models/manga.model';
+import { MangaService } from 'src/app/services/manga.service';
 
 @Component({
   selector: 'app-slide',

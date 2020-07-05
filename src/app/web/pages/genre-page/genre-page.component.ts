@@ -1,7 +1,7 @@
-import { ListMangaResponse, Manga } from '../../models/manga.model';
-import { MangaService } from './../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MangaService } from 'src/app/services/manga.service';
+import { Manga, ListMangaResponse } from 'src/app/models/manga.model';
 
 @Component({
   selector: 'app-genre-page',

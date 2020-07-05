@@ -1,6 +1,7 @@
-import { Manga, ListMangaResponse } from '../../../models/manga.model';
-import { MangaService } from '../../../services/manga.service';
+
 import { Component, OnInit } from '@angular/core';
+import { Manga } from 'src/app/models/manga.model';
+import { MangaService } from 'src/app/services/manga.service';
 
 @Component({
   selector: 'app-main-page',

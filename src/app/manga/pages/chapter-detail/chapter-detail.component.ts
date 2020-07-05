@@ -1,7 +1,7 @@
-import { ChapterService } from './../../services/chapter.service';
-import { Chapter } from '../../models/manga.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Chapter } from 'src/app/models/manga.model';
+import { ChapterService } from 'src/app/services/chapter.service';
 
 @Component({
   selector: 'app-chapter-detail',

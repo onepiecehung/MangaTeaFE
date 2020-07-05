@@ -11,10 +11,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MangaRoutingModule } from './manga-routing.module';
-import { MangaDescriptionComponent } from './manga-description/manga-description.component';
-import { MangaDetailComponent } from './manga-detail/manga-detail.component';
-import { ChapterDetailComponent } from './chapter-detail/chapter-detail.component';
-import { UploadChapterComponent } from './upload-chapter/upload-chapter.component';
+import { MangaDetailComponent } from './pages/manga-detail/manga-detail.component';
+import { MangaDescriptionComponent } from './pages/manga-description/manga-description.component';
+import { UploadChapterComponent } from './pages/upload-chapter/upload-chapter.component';
+import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.component';
 
 
 @NgModule({
@@ -22,7 +22,7 @@ import { UploadChapterComponent } from './upload-chapter/upload-chapter.componen
     MangaDetailComponent,
     MangaDescriptionComponent,
     UploadChapterComponent,
-    ChapterDetailComponent
+    ChapterDetailComponent,
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
-import { ChapterService } from './../../services/chapter.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
+import { ChapterService } from 'src/app/services/chapter.service';
 
 @Component({
   selector: 'app-upload-chapter',

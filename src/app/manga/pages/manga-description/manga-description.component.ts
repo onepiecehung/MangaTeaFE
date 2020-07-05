@@ -1,6 +1,6 @@
-import { CommentService } from './../../services/comment.service';
-import { MangaService } from './../../services/manga.service';
-import { Manga, Chapter } from '../../models/manga.model';
+import { CommentService } from '.././../../services/comment.service';
+import { MangaService } from '.././../../services/manga.service';
+import { Manga, Chapter } from '../../../models/manga.model';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';

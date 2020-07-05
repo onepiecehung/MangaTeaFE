@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MangaDescriptionComponent } from './manga-description/manga-description.component';
-import { UploadChapterComponent } from './upload-chapter/upload-chapter.component';
-import { ChapterDetailComponent } from './chapter-detail/chapter-detail.component';
+import { MangaDescriptionComponent } from './pages/manga-description/manga-description.component';
+import { UploadChapterComponent } from './pages/upload-chapter/upload-chapter.component';
+import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.component';
 
 
 const routes: Routes = [
@@ -14,13 +14,12 @@ const routes: Routes = [
         path: 'upload-chapter',
         component: UploadChapterComponent
       },
+      {
+        path: 'chapter/:chapterId',
+        component: ChapterDetailComponent
+      }
     ]
   },
-
-  {
-    path: 'chapter/:chapterId',
-    component: ChapterDetailComponent
-  }
 ];
 
 @NgModule({
