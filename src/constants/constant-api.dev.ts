@@ -9,6 +9,6 @@ export namespace CONSTANT_API {
     COMMENT: 'http://localhost:2111/v1/comment',
     CHAPTER: 'http://localhost:2111/v1/chapter',
     MANGA_HOME: 'http://localhost:2111/v1//manga/home',
-
+    GROUP_TRANSLATE: 'http://localhost:2111/v1/group'
   }
 }

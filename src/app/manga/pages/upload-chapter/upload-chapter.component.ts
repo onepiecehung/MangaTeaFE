@@ -1,15 +1,16 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ActivatedRoute } from '@angular/router';
 import { ChapterService } from 'src/app/services/chapter.service';
+import { GroupTranslate } from 'src/app/models/group-translate.model';
 
 @Component({
   selector: 'app-upload-chapter',
   templateUrl: './upload-chapter.component.html',
   styleUrls: ['./upload-chapter.component.scss']
 })
-export class UploadChapterComponent implements OnInit {
+export class UploadChapterComponent implements OnInit, AfterViewInit {
 
   imgURLs = new Array<string>();
   fileList: File[] = [];
@@ -28,8 +29,7 @@ export class UploadChapterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("daaaaaaaaaaaaaaaaaaaaa");
-    
+
     this.route.params.subscribe(params => {
       this.mangaID = params.id;
     });
@@ -38,6 +38,12 @@ export class UploadChapterComponent implements OnInit {
       chapterNumber: ['', [Validators.required]],
       groupTranslation: ['', [Validators.required]],
       language: ['', [Validators.required]]
+    })
+  }
+
+  ngAfterViewInit(): void {
+    this.chapterService.getAllGroupTranslate().then((data: GroupTranslate[]) => {
+      console.log("UploadChapterComponent -> ngAfterViewInit -> data", data)
     })
   }
 
