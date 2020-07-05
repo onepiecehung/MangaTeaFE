@@ -1,3 +1,4 @@
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { NzListModule } from 'ng-zorro-antd/list';
@@ -35,7 +36,8 @@ import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.co
     NzListModule,
     ReactiveFormsModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    NzButtonModule
   ],
 
 })

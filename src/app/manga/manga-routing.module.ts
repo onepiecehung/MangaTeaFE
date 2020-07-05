@@ -9,17 +9,15 @@ const routes: Routes = [
   {
     path: ':id',
     component: MangaDescriptionComponent,
-    children: [
-      {
-        path: 'upload-chapter',
-        component: UploadChapterComponent
-      },
-      {
-        path: 'chapter/:chapterId',
-        component: ChapterDetailComponent
-      }
-    ]
   },
+  {
+    path: ':id/upload-chapter',
+    component: UploadChapterComponent
+  },
+  {
+    path: ':id/chapter/:chapterId',
+    component: ChapterDetailComponent
+  }
 ];
 
 @NgModule({

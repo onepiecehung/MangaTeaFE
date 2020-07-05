@@ -118,10 +118,4 @@ export class MangaDescriptionComponent implements OnInit {
     }
   }
 
-  handleGoToChapterDetail(chapterId: number) {
-    const url = `manga/${this.mangaID}/chapter/${chapterId}`;
-    console.log("handleGoToChapterDetail -> url", url)
-    this.router.navigate['/'];
-  }
-
 }
