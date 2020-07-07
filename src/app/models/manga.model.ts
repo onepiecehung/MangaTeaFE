@@ -64,8 +64,10 @@ export class Manga {
   createdAt: string;
   updatedAt: string;
   lastUpdatedChapter: string;
+  _id: number;
   constructor(mangaItem) {
     if (mangaItem) {
+      this._id = mangaItem._id;
       this.artist = mangaItem?.artist;
       this.averageScore = mangaItem?.averageScore;
       this.bannerImage = mangaItem?.bannerImage;
@@ -210,10 +212,9 @@ export class Staff {
 
 export class Chapter {
   chapterNumber: number;
-  createBy: number;
   createdAt: string;
   groupTranslation: number;
-  language: number;
+  language: Language;
   mangaID: number;
   name: number;
   photo: string[] = [];
@@ -224,6 +225,7 @@ export class Chapter {
   status: string;
   updateBy: number;
   updatedAt: string;
+  createBy: User;
   view: number;
   _id: number;
 
@@ -248,4 +250,17 @@ export class Chapter {
       this._id = data._id;
     }
   }
+}
+
+export class Language {
+  _id: number;
+  language: string;
+  nativeName: string;
+  alpha2Code: string;
+  flag: string;
+}
+
+class User {
+  _id: number;
+  username: string;
 }

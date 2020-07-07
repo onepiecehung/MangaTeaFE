@@ -16,6 +16,7 @@ import { MangaDetailComponent } from './pages/manga-detail/manga-detail.componen
 import { MangaDescriptionComponent } from './pages/manga-description/manga-description.component';
 import { UploadChapterComponent } from './pages/upload-chapter/upload-chapter.component';
 import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.component';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.co
     ReactiveFormsModule,
     MatButtonModule,
     RouterModule,
-    NzButtonModule
+    NzButtonModule,
+    NzInputModule
   ],
 
 })

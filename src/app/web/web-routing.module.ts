@@ -16,6 +16,10 @@ const routes: Routes = [
         component: HomePageComponent
       },
       {
+        path: 'latest-update',
+        component: HomePageComponent
+      },
+      {
         path: 'users',
         loadChildren: () => import('../user/user.module').then(m => m.UserModule)
       },

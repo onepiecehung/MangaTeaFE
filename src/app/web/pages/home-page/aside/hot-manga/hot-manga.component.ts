@@ -1,3 +1,5 @@
+import { HotManga } from './../../../../../models/response/hot-manga.model';
+import { MangaService } from './../../../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotMangaComponent implements OnInit {
 
-  listHostManga = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  constructor() { }
+  listHostManga: HotManga[] = [];
+  constructor(
+    private mangaService: MangaService
+  ) { }
 
   ngOnInit(): void {
+    this.mangaService.getListHotManga().then(data => {
+      this.listHostManga = data;
+      console.log("HotMangaComponent -> ngOnInit -> this.listHostManga", this.listHostManga)
+    });
   }
 
 }

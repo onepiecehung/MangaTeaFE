@@ -1,3 +1,5 @@
+import { NewComment } from './../../../models/request/new-comment.model';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommentService } from '.././../../services/comment.service';
 import { MangaService } from '.././../../services/manga.service';
 import { Manga, Chapter } from '../../../models/manga.model';
@@ -29,15 +31,21 @@ export class MangaDescriptionComponent implements OnInit {
   listChapter: Chapter[] = [];
   isShowPageUploadChapter = false;
   chapter: Chapter = null;
+  form: FormGroup;
+  isLoadingSubmit = false;
   constructor(
     private mangaService: MangaService,
     private route: ActivatedRoute,
     private commentService: CommentService,
     private titleService: Title,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      commentContent: ['', Validators.required]
+    })
     this.route.params.subscribe(params => {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
@@ -47,9 +55,13 @@ export class MangaDescriptionComponent implements OnInit {
       }).catch(err => console.log(err))
     });
   }
+  get f() {
+    return this.form.controls;
+  }
   changeSelectTab(event) {
+
     if (event.index === 1) {
-      this.commentService.getCommentByMangaID(2).then(commentResponse => {
+      this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
         this.listComment = commentResponse;
       }).catch(err => console.log(err));
 
@@ -120,6 +132,29 @@ export class MangaDescriptionComponent implements OnInit {
   handleGotoChapterDetail(chapterID) {
     const url = `/manga/${this.mangaID}/chapter/${chapterID}`;
     this.router.navigate([url]);
+  }
+
+  get checkDisableUploadBtn() {
+    const point = Number(localStorage.getItem('point'));
+    return (point >= 100) ? false : true;
+  }
+
+  onSubmitFormComment() {
+    this.isLoadingSubmit = true;
+    const bodyComment: NewComment = {
+      type: 'MANGA',
+      mangaID: this.mangaID,
+      commentContent: this.form.value.commentContent
+    };
+    this.commentService.newComment(bodyComment).then((data: Comment) => {
+      console.log("onSubmitFormComment -> data", data)
+      this.listComment.push(data);
+      this.form = this.formBuilder.group({
+        commentContent: ['', Validators.required]
+      })
+      this.isLoadingSubmit = false;
+    })
+
   }
 
 }

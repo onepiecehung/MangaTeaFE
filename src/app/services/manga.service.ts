@@ -1,3 +1,4 @@
+import { HotManga } from './../models/response/hot-manga.model';
 import { HTTP_STATUS } from './../../constants/constant-common';
 import { Manga, ListMangaResponse, MangaDetail } from '../models/manga.model';
 import { Observable } from 'rxjs';
@@ -66,4 +67,19 @@ export class MangaService {
     });
   }
 
+  getListHotManga(): Promise<HotManga[]> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_HOME}?trending=${-1}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          let listManga: HotManga[] = [];
+          response.data.manga.forEach(item => {
+            listManga.push(new HotManga(item));
+          });
+          resolve(listManga);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
 }

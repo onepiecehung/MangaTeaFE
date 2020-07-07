@@ -12,10 +12,10 @@
       <div class="manga-item">
         <div class="row">
           <div class="col-6">
-            <img class="w-100 h-100" src="assets/img/manga-item.jfif" alt="">
+            <img class="w-100 h-100" [src]="item.coverImage.medium" alt="">
           </div>
           <div class="col-6 desc">
-            <div class="name"><a href="#">The Female Hero and the Shota Orc</a></div>
+            <div class="name"><a href="#">{{ item.name }} </a></div>
             <div class="ongoging">Ongoing</div>
             <div class="chap"><a href="#">Chapter 93</a></div>
           </div>
