@@ -19,7 +19,6 @@ export class GenrePageComponent implements OnInit {
     this.route.params.subscribe(params => {
       let genreName = params['name'];
       this.mangaService.loadListMangaByGenreName(genreName).then((response: ListMangaResponse) => {
-        console.log("GenrePageComponent -> ngOnInit -> response", response)
         this.listManga = response.manga;
 
       })

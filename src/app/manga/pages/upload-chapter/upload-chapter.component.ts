@@ -43,7 +43,6 @@ export class UploadChapterComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.chapterService.getAllGroupTranslate().then((data: GroupTranslate[]) => {
-      console.log("UploadChapterComponent -> ngAfterViewInit -> data", data)
     })
   }
 
@@ -75,7 +74,6 @@ export class UploadChapterComponent implements OnInit, AfterViewInit {
     this.chapterUpload.append('groupTranslation', this.formUploadChapter.value.groupTranslation);
     this.chapterUpload.append('language', this.formUploadChapter.value.language);
     this.chapterService.uploadChapter(this.chapterUpload).then(data => {
-      console.log("UploadChapterComponent -> clickUploadChapter -> data", data)
     }).catch(err => {
       console.log("UploadChapterComponent -> clickUploadChapter -> err", err)
     })

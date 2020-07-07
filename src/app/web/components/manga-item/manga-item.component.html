@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="hour-first-chap d-flex flex-row align-items-end justify-content-between">
-        <div><i class="far fa-clock icon-clock"></i> {{ mangaItem.updatedAt }} ago</div>
+        <div><i class="far fa-clock icon-clock"></i> {{ mangaItem.lastUpdatedChapter }} ago</div>
         <div *ngIf="mangaItem?.chapter[0]?._id">
           <a [routerLink]="['/manga/',mangaItem.id, 'chapter', mangaItem?.chapter[0]?._id]">First Chapter</a>
         </div>

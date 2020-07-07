@@ -1,6 +1,6 @@
 <div class="main-description mt-2">
   <div class="container" *ngIf="mangaItem !== null">
-    <div class="card shadow">
+    <div class="card">
       <div class="card-header">
         {{mangaItem.otherName.english}}
       </div>
@@ -145,8 +145,8 @@
         <nz-tabset [nzSize]="'large'" (nzSelectChange)="changeSelectTab($event)">
           <nz-tab nzTitle="Chapters">
             <div class="table-responsive">
-              <table class="table table-sm shadow">
-                <thead class="thead-dark">
+              <table class="table table-sm">
+                <thead class="thead-light">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
@@ -155,7 +155,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let chapter of listChapter; let index = index" [routerLink]="['/chapter', chapter._id]">
+                  <tr *ngFor="let chapter of listChapter; let index = index" (click)="handleGotoChapterDetail(chapter?._id)">
                     <th scope="row">{{ index +1 }}</th>
                     <td>{{ chapter.name }}</td>
                     <td>{{ chapter.view }}</td>

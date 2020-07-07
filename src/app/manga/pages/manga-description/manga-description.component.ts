@@ -111,11 +111,15 @@ export class MangaDescriptionComponent implements OnInit {
   handleChange({ file, fileList }: UploadChangeParam): void {
     const status = file.status;
     if (status !== 'uploading') {
-      console.log(file, fileList);
     }
     if (status === 'done') {
     } else if (status === 'error') {
     }
+  }
+
+  handleGotoChapterDetail(chapterID) {
+    const url = `/manga/${this.mangaID}/chapter/${chapterID}`;
+    this.router.navigate([url]);
   }
 
 }

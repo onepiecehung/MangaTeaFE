@@ -63,6 +63,7 @@ export class Manga {
   staff: Staff[] = [];
   createdAt: string;
   updatedAt: string;
+  lastUpdatedChapter: string;
   constructor(mangaItem) {
     if (mangaItem) {
       this.artist = mangaItem?.artist;
@@ -108,16 +109,16 @@ export class Manga {
       }
       this.totalChapter = mangaItem.totalChapter;
       this.trending = mangaItem.trending;
-      var timeUpdate = Date.parse(mangaItem.updatedAt);
+      var timeUpdate = Date.parse(mangaItem.lastUpdatedChapter);
       var now = Math.floor(new Date().getTime());
       var relativeTime = now - timeUpdate;
 
       if (Math.floor(relativeTime / (1000 * 60 * 60 * 24)) > 1) {
-        this.updatedAt = Math.floor(relativeTime / (1000 * 60 * 60 * 24)) + ' days';
+        this.lastUpdatedChapter = Math.floor(relativeTime / (1000 * 60 * 60 * 24)) + ' days';
       } else if (Math.floor(relativeTime / (1000 * 60 * 60)) > 1) {
-        this.updatedAt = Math.floor(relativeTime / (1000 * 60 * 60)) + ' hours';
+        this.lastUpdatedChapter = Math.floor(relativeTime / (1000 * 60 * 60)) + ' hours';
       } else if (Math.floor(relativeTime / (1000 * 60)) > 1) {
-        this.updatedAt = Math.floor(relativeTime / (1000 * 60)) + ' minutes';
+        this.lastUpdatedChapter = Math.floor(relativeTime / (1000 * 60)) + ' minutes';
       }
       this.userFollowedID = mangaItem.userFollowedID;
     }

@@ -17,9 +17,9 @@ export class ChapterDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
-      const chapterId = params['id'];
-      this.chapterService.getChapterByID(chapterId).then((chapter: Chapter) => {
-        console.log("ChapterDetailComponent -> ngOnInit -> chapter", chapter)
+      const chapterId = params['chapterId'];
+      const mangaID = params['id'];
+      this.chapterService.getChapterByID(mangaID,chapterId).then((chapter: Chapter) => {
         this.chapter = chapter;
       }).catch(err => console.log(err))
     });
