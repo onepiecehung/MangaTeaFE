@@ -1,7 +1,6 @@
 stages:
   - build
   - deploy
-  - production
 
 build_client-artifacts:
   stage: build
@@ -19,7 +18,7 @@ build_client-artifacts:
       - master
       - develop
 deploy:
-  stage: production
+  stage: deploy
   dependencies:
     - build
   before_script:
