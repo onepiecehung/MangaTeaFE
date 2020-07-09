@@ -18,7 +18,7 @@ build_client-artifacts:
     refs:
       - master
       - develop
-deploy_production:
+deploy:
   stage: production
   dependencies:
     - build
