@@ -30,7 +30,7 @@ deploy:
     - chmod 600  ~/.ssh/id_rsa
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - - scp -r dist/app-manga-recommender-system/* ubuntu@$DEPLOY_SERVER:/var/www/html/
+    - - scp -r dist/app-manga-recommender-system/* ubuntu@$DEPLOY_SERVER:/var/www/html
   environment:
     name: production
     # Exposes a button that when clicked take you to the defined
