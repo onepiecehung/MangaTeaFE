@@ -19,8 +19,8 @@ build_client-artifacts:
       - develop
 deploy:
   stage: deploy
-  dependencies:
-    - build
+#   dependencies:
+#     - build
   before_script:
   # Generates to connect to the AWS unit the SSH key.
     - mkdir -p ~/.ssh
