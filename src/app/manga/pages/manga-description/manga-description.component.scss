@@ -1,9 +1,9 @@
 .main-description {
-  .card-body{
+  .card-body {
     margin: 0px;
     padding: 0px;
   }
-  hr{
+  hr {
     margin: 6px 0px;
   }
   .alt-name,
@@ -16,4 +16,18 @@
   .rating {
     border-bottom: 0.5px solid #333333;
   }
+}
+
+.chapter-name {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.chapter-name:hover{
+  color: #0056b3;
+  text-decoration: underline;
 }

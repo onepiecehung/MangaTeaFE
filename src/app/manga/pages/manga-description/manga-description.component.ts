@@ -50,7 +50,9 @@ export class MangaDescriptionComponent implements OnInit {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
         this.mangaItem = mangaResponse.manga;
+        console.log("MangaDescriptionComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
         this.listChapter = mangaResponse.chapter;
+        console.log("MangaDescriptionComponent -> ngOnInit ->  this.listChapter",  this.listChapter)
         this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });

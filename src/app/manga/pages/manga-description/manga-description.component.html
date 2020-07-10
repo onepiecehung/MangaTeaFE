@@ -2,14 +2,15 @@
   <div class="container" *ngIf="mangaItem !== null">
     <div class="card">
       <div class="card-header">
-        {{mangaItem.otherName.english}}
+        {{mangaItem.name}}
       </div>
       <div class="card-body">
         <div class="row">
 
           <div class="col-4">
-            <img [src]="mangaItem.coverImage.large" class="img-fluid"
-              [routerLink]="['/manga/',mangaItem?.id,'chapter', mangaItem?.chapter[0]?._id]" alt="">
+            <a [routerLink]="['/manga/',mangaItem?._id,'chapter', listChapter[0]?._id]">
+              <img [src]="mangaItem.coverImage.large" class="img-fluid w-100" alt="">
+            </a>
           </div>
           <div class="col-8">
             <div class="row">
@@ -157,10 +158,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let chapter of listChapter; let index = index"
-                    (click)="handleGotoChapterDetail(chapter?._id)">
+                  <tr *ngFor="let chapter of listChapter; let index = index">
                     <th scope="row">{{ index +1 }}</th>
-                    <td>{{ chapter.name }}</td>
+                    <td><a class="chapter-name" (click)="handleGotoChapterDetail(chapter?._id)">{{ chapter.name }}</a>
+                    </td>
                     <td>{{ chapter.view }}</td>
                     <td> <img [src]="chapter.language.flag" width="40px" alt=""> {{ chapter.language.nativeName }}</td>
                     <td> {{ chapter.createBy.username }} </td>
@@ -184,13 +185,14 @@
               </ng-template>
             </nz-list>
             <div>
-              <form [formGroup]="form"  >
+              <form [formGroup]="form">
                 <div>
                   <textarea rows="4" [nzAutosize]="{ minRows: 4}" nz-input formControlName="commentContent"></textarea>
                 </div>
                 <div class="d-flex justify-content-end mt-2">
-                  <button nz-button (click)="onSubmitFormComment()" [nzLoading]="isLoadingSubmit" class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="(f.commentContent.errors?.required)"
-                    >Send</button>
+                  <button nz-button (click)="onSubmitFormComment()" [nzLoading]="isLoadingSubmit"
+                    class="login-form-button login-form-margin" [nzType]="'primary'"
+                    [disabled]="(f.commentContent.errors?.required)">Send</button>
                 </div>
               </form>
             </div>

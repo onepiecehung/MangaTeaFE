@@ -5,9 +5,11 @@
         Upload chapter
       </div>
       <div>
+        <button mat-raised-button class="mr-2" (click)="onClickCancel()">Cancel</button>
         <button mat-raised-button color="primary" [disabled]="formError.chapterNumber.errors || 
           formError.chapterNumber.errors || 
-          formError.groupTranslation.errors || formError.language.errors || imgURLs.length == 0" (click)="clickUploadChapter()">
+          formError.groupTranslation.errors || formError.language.errors || imgURLs.length == 0"
+          (click)="clickUploadChapter()">
           <i class="far fa-save mr-2"></i>
           Save</button>
       </div>
@@ -18,52 +20,83 @@
         Information
       </div>
       <div class="card-body">
-        <form [formGroup]="formUploadChapter">
+        <form [formGroup]="formUploadChapter" nz-form [nzLayout]="'vertical'">
           <div class="form-row mb-3">
             <div class="col-md-6">
-              <label for="name">Chapter Name</label>
-              <input type="text" class="form-control"
-                [ngClass]="{'is-invalid': (formError.name.errors?.required && formError.name.touched)}" id="name"
-                formControlName="name" placeholder="Chapter name">
-              <div class="invalid-feedback">
-                <ng-container *ngIf="formError.name.touched && formError.name.errors?.required">
-                  Chapter name not null
-                </ng-container>
-              </div>
+              <nz-form-item>
+                <nz-form-label>Chapter Name</nz-form-label>
+                <nz-form-control>
+                  <input nz-input formControlName="name" nzSize="large" placeholder="Chapter name"
+                    [ngClass]="{'is-invalid': (formError.name.errors?.required && formError.name.touched)}" />
+                  <div class="invalid-feedback ml-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Chapter name not null
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
             </div>
             <div class="col-md-6">
-              <label for="chapterNumber">Chapter number</label>
-              <input type="text" class="form-control" id="chapterNumber" placeholder="Chapter number"
-                [ngClass]="{'is-invalid': (formError.chapterNumber.errors?.required && formError.chapterNumber.touched)}"
-                formControlName="chapterNumber">
-              <div class="invalid-feedback">
-                <ng-container *ngIf="formError.chapterNumber.touched && formError.chapterNumber.errors?.required">
-                  Chapter number not null
-                </ng-container>
-              </div>
+              <nz-form-item>
+                <nz-form-label>Chapter number</nz-form-label>
+                <nz-form-control>
+                  <input nz-input nzSize="large"
+                    [ngClass]="{'is-invalid': (formError.chapterNumber.errors?.required && formError.chapterNumber.touched)}"
+                    formControlName="chapterNumber" placeholder="Chapter number" />
+                  <div class="invalid-feedback ml-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Chapter number not null
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
             </div>
           </div>
           <div class="form-row mb-3">
             <div class="col-md-6">
-              <label for="groupTranslation">Group Translation</label>
-              <input type="text" class="form-control" id="groupTranslation" formControlName="groupTranslation"
+              <nz-form-item>
+                <nz-form-label>Group Translation</nz-form-label>
+
+                <nz-select nzShowSearch nzAllowClear nzSize="large"
                 [ngClass]="{'is-invalid': (formError.groupTranslation.errors?.required && formError.groupTranslation.touched)}"
-                placeholder="Group Translation">
-              <div class="invalid-feedback">
-                <ng-container *ngIf="formError.groupTranslation.touched && formError.groupTranslation.errors?.required">
+                nzPlaceHolder="Group Translation" formControlName="groupTranslation">
+                  <ng-container *ngFor="let group of groupTranslates">
+                    <nz-option nzCustomContent [nzLabel]="group.name" [nzValue]="group._id">
+                      {{ group.name }}
+                    </nz-option>
+                  </ng-container>
+                </nz-select>
+                <div class="invalid-feedback ml-2">
+                  <i class="fas fa-exclamation-triangle"></i>
                   Group Translation not null
-                </ng-container>
-              </div>
+                </div>
+              </nz-form-item>
             </div>
             <div class="col-md-6">
-              <label for="language">Language</label>
-              <input type="text" class="form-control" id="language" placeholder="Language" formControlName="language"
-                [ngClass]="{'is-invalid': (formError.language.errors?.required && formError.language.touched)}">
-              <div class="invalid-feedback">
-                <ng-container *ngIf="formError.language.touched && formError.language.errors?.required">
+              <nz-form-item>
+                <nz-form-label>Language</nz-form-label>
+                <nz-select nzShowSearch nzAllowClear nzSize="large"
+                  [ngClass]="{'is-invalid': (formError.language.errors?.required && formError.language.touched)}"
+                  nzPlaceHolder="Select language" formControlName="language">
+                  <ng-container *ngFor="let country of countries">
+                    <nz-option nzCustomContent [nzLabel]="country.name" [nzValue]="country._id">
+                      <img [src]="country.flag" class="mr-2" alt="" width="25px">
+                      {{ country.name }}
+                    </nz-option>
+                  </ng-container>
+                </nz-select>
+                <div class="invalid-feedback ml-2">
+                  <i class="fas fa-exclamation-triangle"></i>
                   Language not null
-                </ng-container>
-              </div>
+                </div>
+                <!-- <nz-form-control>
+                  <input nz-input formControlName="language"
+                    [ngClass]="{'is-invalid': (formError.language.errors?.required && formError.language.touched)}"
+                    nzSize="large" placeholder="Language" />
+                  <div class="invalid-feedback ml-2">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Language not null
+                  </div>
+                </nz-form-control> -->
+              </nz-form-item>
             </div>
           </div>
         </form>

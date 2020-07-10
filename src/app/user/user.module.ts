@@ -7,10 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button'; 
 import { ProfileComponent } from './pages/profile/profile.component';
+import { UserMangaComponent } from './pages/user-manga/user-manga.component';
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    UserMangaComponent
   ],
   imports: [
     CommonModule,

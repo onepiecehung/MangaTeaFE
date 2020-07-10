@@ -9,6 +9,7 @@ export namespace CONSTANT_API {
     COMMENT: 'https://api.mangatea.live/v1/comment',
     CHAPTER: 'https://api.mangatea.live/v1/chapter',
     MANGA_HOME: 'https://api.mangatea.live/v1//manga/home',
-    GROUP_TRANSLATE: 'https://api.mangatea.live/v1/group'
+    GROUP_TRANSLATE: 'https://api.mangatea.live/v1/group',
+    COUNTRY: 'http://localhost:2111/v1/country'
   }
 }

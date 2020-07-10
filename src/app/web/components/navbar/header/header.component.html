@@ -20,12 +20,13 @@
       </div>
       <div nz-col nzSpan="4">
         <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
-          <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomCenter'">
+          <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
             <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
           </div>
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu>
               <li nz-menu-item [routerLink]="['/users/profiles']">Setting</li>
+              <li nz-menu-item [routerLink]="['/users/manga']">Manga user</li>
               <li nz-menu-item (click)="onClickLogout()">Logout</li>
               <li nz-menu-item>3rd menu item length</li>
             </ul>

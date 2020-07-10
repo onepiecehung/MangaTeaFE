@@ -1,4 +1,4 @@
-import { SharedModule } from './../shared.module';
+import { MangaDiscussionComponent } from './components/manga-discussion/manga-discussion.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,8 +18,10 @@ import { MangaDescriptionComponent } from './pages/manga-description/manga-descr
 import { UploadChapterComponent } from './pages/upload-chapter/upload-chapter.component';
 import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { MangaDiscussionComponent } from './components/manga-discussion/manga-discussion.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SharedModule } from '../shared.module';
 
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { MangaDiscussionComponent } from './components/manga-discussion/manga-di
     MangaDescriptionComponent,
     UploadChapterComponent,
     ChapterDetailComponent,
-    MangaDiscussionComponent,
+    MangaDiscussionComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,9 @@ import { MangaDiscussionComponent } from './components/manga-discussion/manga-di
     RouterModule,
     NzButtonModule,
     NzInputModule,
-    SharedModule
+    SharedModule,
+    NzSelectModule,
+    NzFormModule
   ],
 
 })
