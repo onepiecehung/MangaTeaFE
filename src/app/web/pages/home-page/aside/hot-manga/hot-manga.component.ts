@@ -17,7 +17,6 @@ export class HotMangaComponent implements OnInit {
   ngOnInit(): void {
     this.mangaService.getListHotManga().then(data => {
       this.listHostManga = data;
-      console.log("HotMangaComponent -> ngOnInit -> this.listHostManga", this.listHostManga)
     });
   }
 

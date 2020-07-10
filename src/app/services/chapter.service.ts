@@ -1,3 +1,4 @@
+import { Country } from './../models/response/country.model';
 import { GroupTranslate } from './../models/group-translate.model';
 import { ApiService } from './common/api.service';
 import { Injectable } from '@angular/core';
@@ -33,6 +34,7 @@ export class ChapterService {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.CHAPTER}`, chapterUpload).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
+          resolve();
         } else {
           reject();
         }
@@ -51,6 +53,22 @@ export class ChapterService {
             });
           }
           resolve(groupTranslate);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  getAllCountry(): Promise<Country[]> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.COUNTRY}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          let countries: Country[] = [];
+          response.data?.forEach(country => {
+            countries.push(new Country(country));
+          });
+          resolve(countries);
         } else {
           reject();
         }

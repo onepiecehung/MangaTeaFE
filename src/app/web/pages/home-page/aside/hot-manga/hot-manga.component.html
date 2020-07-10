@@ -17,7 +17,13 @@
           <div class="col-6 desc">
             <div class="name"><a href="#">{{ item.name }} </a></div>
             <div class="ongoging">Ongoing</div>
-            <div class="chap"><a href="#">Chapter 93</a></div>
+            <div class="chap">
+              <ng-container *ngIf="item?.chapter[item.chapter.length -1]?._id">
+                <a
+                  [routerLink]="['/manga/',item.id,'chapter', item?.chapter[item.chapter.length -1]?._id]">
+                  {{ item?.chapter[item.chapter.length -1]?.name }} </a>
+              </ng-container>
+            </div>
           </div>
         </div>
       </div>

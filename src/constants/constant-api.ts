@@ -9,6 +9,7 @@ export namespace CONSTANT_API {
     COMMENT: '',
     CHAPTER: '',
     MANGA_HOME: '',
-    GROUP_TRANSLATE: ''
+    GROUP_TRANSLATE: '',
+    COUNTRY: ''
   }
 }
