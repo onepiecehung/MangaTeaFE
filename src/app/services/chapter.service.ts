@@ -63,7 +63,7 @@ export class ChapterService {
   getAllCountry(): Promise<Country[]> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.COUNTRY}`).subscribe(response => {
-        if (response.status === HTTP_STATUS.CREATED) {
+        if (response.status === HTTP_STATUS.OK) {
           let countries: Country[] = [];
           response.data?.forEach(country => {
             countries.push(new Country(country));
