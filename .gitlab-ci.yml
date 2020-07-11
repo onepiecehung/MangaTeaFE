@@ -17,20 +17,20 @@ build_client-artifacts:
     refs:
       - master
       - develop
-deploy:
-  stage: deploy
+# deploy:
+#   stage: deploy
 #   dependencies:
 #     - build
-  before_script:
+#   before_script:
   # Generates to connect to the AWS unit the SSH key.
-    - mkdir -p ~/.ssh
-    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    # - mkdir -p ~/.ssh
+    # - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
   # Sets the permission to 600 to prevent a problem with AWS
   # that it's too unprotected
-    - chmod 600  ~/.ssh/id_rsa
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  script:
-    - scp -r dist/app-manga-recommender-system/* ubuntu@$DEPLOY_SERVER:/var/www/html
-  environment:
-    name: production
+    # - chmod 600  ~/.ssh/id_rsa
+    # - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+#   script:
+    # - scp -r dist/app-manga-recommender-system/* ubuntu@$DEPLOY_SERVER:/var/www/html
+#   environment:
+    # name: production
     # Exposes a button that when clicked take you to the defined
