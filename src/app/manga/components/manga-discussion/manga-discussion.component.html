@@ -1,1 +1,31 @@
-<p>manga-discussion works!</p>
+<div class="slide">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="hot-update">HOT UPDATES </div>
+          <div class="icon">
+            <i class="fas fa-star"></i>
+            <div></div>
+          </div>
+        </div>
+        <div class="icon-next-prev">
+          <a href="#carousel-example" role="button" data-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a class="ml-2" href="#carousel-example" role="button" data-slide="next">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+      <div id="carousel-example" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner row w-100 mx-auto d-flex justify-content-between" role="listbox">
+          <ng-container *ngFor="let slideItem of slideManga; let index = index">
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
+              <img [src]="slideItem.coverImage.large" class="img-fluid mx-auto d-block" alt="img1">
+            </div>
+  
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>

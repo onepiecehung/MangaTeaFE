@@ -1,0 +1,54 @@
+<div class="filter">
+  <div class="filter-header d-flex justify-content-between align-items-center">
+    <div>
+      <div class="page-title">FILTER
+        <span class="icon-filter">
+          <i class="fas fa-filter"></i>
+        </span>
+      </div>
+      <div class="icon">
+        <i class="fas fa-star"></i>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div class="icon-expand" (click)="isShowBodyFilter = !isShowBodyFilter">
+        <i *ngIf="isShowBodyFilter" class="fas fa-angle-double-up"></i>
+        <i *ngIf="!isShowBodyFilter" class="fas fa-angle-double-down"></i>
+      </div>
+    </div>
+  </div>
+  <div class="filter-body" *ngIf="isShowBodyFilter">
+    <div class="filter-by-genre">
+      <div class="filter-text-title my-3">
+        Genres:
+      </div>
+      <div>
+        <div class="list-genre">
+          <div class="genre-item" *ngFor="let genre of genres; let index = index">
+
+            <label class="container">{{ genre.name }}
+              <input type="checkbox" [id]="genre._id" (change)="changeStatusGenre($event, genre.name)">
+              <span class="checkmark" [for]="genre._id"></span>
+            </label>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="filter-by-status">
+      <div class="filter-text-title my-3">
+        Status:
+      </div>
+    </div>
+    <div class="btn-action">
+      <div class="d-flex justify-content-end">
+        <button nz-button [nzSize]="large" class="mr-3" nzType="default" (click)="onClickClear()">Clear</button>
+        <button nz-button [nzSize]="large" nzType="default" class="btn-apply" (click)="onClickApply()">Apply</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>

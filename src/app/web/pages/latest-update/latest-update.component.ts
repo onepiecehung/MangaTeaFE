@@ -1,23 +1,28 @@
-
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
-import { Manga } from 'src/app/models/manga.model';
 import { MangaService } from 'src/app/services/manga.service';
+import { Manga } from 'src/app/models/manga.model';
+
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-latest-update',
+  templateUrl: './latest-update.component.html',
+  styleUrls: ['./latest-update.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class LatestUpdateComponent implements OnInit {
+
   listManga: Manga[] = [];
   pageIndex = 1;
   totalPage = 0;
 
   constructor(
     private mangaService: MangaService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Latest Update');
+
     this.getListManga(this.pageIndex);
   }
   getPageIndexChange(event) {
@@ -32,5 +37,4 @@ export class MainPageComponent implements OnInit {
     }).catch(err => console.log(err)
     );
   }
-
 }

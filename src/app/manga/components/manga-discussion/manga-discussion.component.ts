@@ -1,3 +1,5 @@
+import { Manga, ListMangaResponse } from './../../../models/manga.model';
+import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MangaDiscussionComponent implements OnInit {
 
-  constructor() { }
+  slideManga: Manga[] = [];
+  constructor(
+    private mangaService: MangaService
+  ) { }
 
   ngOnInit(): void {
+    this.mangaService.loadCarousel().then((data: ListMangaResponse) => {
+      this.slideManga = data.manga;
+    })
   }
 
 }
