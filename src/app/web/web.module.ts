@@ -35,6 +35,9 @@ import { GenreComponent } from './components/aside/genre/genre.component';
 import { LatestUpdateComponent } from './pages/latest-update/latest-update.component';
 import { LayoutHomeComponent } from './components/layout-home/layout-home.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
@@ -74,6 +77,9 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzUploadModule,
     MatButtonModule,
     RouterModule,
+    NzRadioModule,
+    NzSwitchModule,
+    NzSelectModule,
     NzIconModule.forChild(icons),
   ]
 })

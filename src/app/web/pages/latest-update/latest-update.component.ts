@@ -1,3 +1,4 @@
+import { FilterModel } from './../../../models/filter.model';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
@@ -37,8 +38,13 @@ export class LatestUpdateComponent implements OnInit {
     }).catch(err => console.log(err)
     );
   }
-  getFilterModel(filter) {
-    console.log("LatestUpdateComponent -> getFilterModel -> filter", filter)
-
+  async getFilterModel(filter: FilterModel) {
+    
+    this.pageIndex = 1;
+    await this.mangaService.filterManga(this.pageIndex, filter).then(data => {
+      this.listManga = data.manga;
+      this.totalPage = data.total / 20;
+    }).catch(err => console.log(err)
+    );
   }
 }

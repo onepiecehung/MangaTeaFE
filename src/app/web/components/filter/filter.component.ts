@@ -16,6 +16,12 @@ export class FilterComponent implements OnInit {
 
   genres: Genre[] = [];
   genreSelected: string[] = [];
+  statusManga = '';
+  country = '';
+  isAdult = false;
+  fromYearEnd = null;
+  toYearEnd = null;
+  listYear = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020];
   constructor(
     public genreService: GenreService,
   ) { }
@@ -34,12 +40,25 @@ export class FilterComponent implements OnInit {
   }
 
   onClickClear() {
+    this.statusManga = '';
+    this.country = '';
+    this.isAdult = false;
     this.genreSelected = [];
+    this.fromYearEnd = null;
+    this.toYearEnd = null;
+    this.genres.forEach(val => {
+      val.checked = false
+    });
   }
 
   onClickApply() {
-    const filter:FilterModel = {
+    const filter: FilterModel = {
       genre: this.genreSelected,
+      country: this.country,
+      status: this.statusManga,
+      isAdult: this.isAdult,
+      toYearEnd: this.toYearEnd,
+      fromYearEnd: this.fromYearEnd
     }
     this.eventFilter.emit(filter);
   }

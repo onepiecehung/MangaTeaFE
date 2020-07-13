@@ -28,7 +28,8 @@
           <div class="genre-item" *ngFor="let genre of genres; let index = index">
 
             <label class="container" [for]="genre._id">{{ genre.name }}
-              <input type="checkbox" [id]="genre._id" (change)="changeStatusGenre($event, genre.name)">
+              <input type="checkbox" [id]="genre._id" [(ngModel)]="genre.checked"
+                (change)="changeStatusGenre($event, genre.name)">
               <span class="checkmark"></span>
             </label>
 
@@ -37,9 +38,61 @@
 
       </div>
     </div>
-    <div class="filter-by-status">
-      <div class="filter-text-title my-3">
-        Status:
+    <div class="filter-by-status-country-adult">
+      <div class="row">
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Status:</span>
+            <br>
+            <nz-radio-group [(ngModel)]="statusManga" nzButtonStyle="solid">
+              <label nz-radio-button nzValue="FINISHED">FINISHED</label>
+              <label nz-radio-button nzValue="RELEASING">RELEASING</label>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Country:</span>
+            <br>
+            <nz-radio-group [(ngModel)]="country" nzButtonStyle="solid">
+              <label nz-radio-button nzValue="JP">JAPAN</label>
+              <label nz-radio-button nzValue="KR">Korea</label>
+              <label nz-radio-button nzValue="CN">China</label>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Manga Adult:</span>
+            <br>
+            <nz-switch [(ngModel)]="isAdult"></nz-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-by-year">
+      <div class="row">
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Start year:</span>
+            <br>
+            <nz-select nzAllowClear nzPlaceHolder="Select year" [(ngModel)]="fromYearEnd">
+              <nz-option *ngFor="let year of listYear" [nzLabel]="year" [nzValue]="year">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>End year:</span>
+            <br>
+            <nz-select nzAllowClear nzPlaceHolder="Select year" [(ngModel)]="toYearEnd">
+              <nz-option *ngFor="let year of listYear" [nzLabel]="year" [nzValue]="year">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
       </div>
     </div>
     <div class="btn-action">
