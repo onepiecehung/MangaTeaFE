@@ -1,5 +1,6 @@
+import { FilterModel } from './../../../models/filter.model';
 import { Genre } from './../../../models/genre.model';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GenreService } from 'src/app/services/genre.service';
 
@@ -10,6 +11,7 @@ import { GenreService } from 'src/app/services/genre.service';
 })
 export class FilterComponent implements OnInit {
 
+  @Output() eventFilter = new EventEmitter();
   isShowBodyFilter = false;
 
   genres: Genre[] = [];
@@ -36,6 +38,9 @@ export class FilterComponent implements OnInit {
   }
 
   onClickApply() {
-
+    const filter:FilterModel = {
+      genre: this.genreSelected,
+    }
+    this.eventFilter.emit(filter);
   }
 }

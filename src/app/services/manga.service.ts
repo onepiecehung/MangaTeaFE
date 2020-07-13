@@ -1,3 +1,4 @@
+import { FilterModel } from './../models/filter.model';
 import { HotManga } from './../models/response/hot-manga.model';
 import { HTTP_STATUS } from './../../constants/constant-common';
 import { Manga, ListMangaResponse, MangaDetail } from '../models/manga.model';
@@ -81,5 +82,19 @@ export class MangaService {
         }
       });
     });
+  }
+
+
+  filterManga(skip: number, filter: FilterModel): Promise<ListMangaResponse> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA}?skip=${skip}&sort=${1}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(new ListMangaResponse(response.data));
+        } else {
+          reject();
+        }
+      });
+    });
+
   }
 }

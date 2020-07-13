@@ -46,7 +46,7 @@
 
   .list-genre {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     .genre-item {
       width: calc(100% / 5);

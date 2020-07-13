@@ -27,9 +27,9 @@
         <div class="list-genre">
           <div class="genre-item" *ngFor="let genre of genres; let index = index">
 
-            <label class="container">{{ genre.name }}
+            <label class="container" [for]="genre._id">{{ genre.name }}
               <input type="checkbox" [id]="genre._id" (change)="changeStatusGenre($event, genre.name)">
-              <span class="checkmark" [for]="genre._id"></span>
+              <span class="checkmark"></span>
             </label>
 
           </div>
@@ -44,8 +44,8 @@
     </div>
     <div class="btn-action">
       <div class="d-flex justify-content-end">
-        <button nz-button [nzSize]="large" class="mr-3" nzType="default" (click)="onClickClear()">Clear</button>
-        <button nz-button [nzSize]="large" nzType="default" class="btn-apply" (click)="onClickApply()">Apply</button>
+        <button nz-button [nzSize]="'large'" class="mr-3" nzType="default" (click)="onClickClear()">Clear</button>
+        <button nz-button [nzSize]="'large'" nzType="default" class="btn-apply" (click)="onClickApply()">Apply</button>
 
       </div>
 

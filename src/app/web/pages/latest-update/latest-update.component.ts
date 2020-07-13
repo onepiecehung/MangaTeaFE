@@ -37,4 +37,8 @@ export class LatestUpdateComponent implements OnInit {
     }).catch(err => console.log(err)
     );
   }
+  getFilterModel(filter) {
+    console.log("LatestUpdateComponent -> getFilterModel -> filter", filter)
+
+  }
 }
