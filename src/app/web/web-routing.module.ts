@@ -1,3 +1,6 @@
+import { GenreResolver } from './../resolves/genre.resolver';
+import { LayoutHomeComponent } from './components/layout-home/layout-home.component';
+import { LatestUpdateComponent } from './pages/latest-update/latest-update.component';
 
 import { WebPageComponent } from './web-page.component';
 import { NgModule } from '@angular/core';
@@ -13,11 +16,21 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomePageComponent
+        component: LayoutHomeComponent,
+
+        children: [
+          {
+            path: '',
+            component: HomePageComponent
+          },
+        ]
       },
       {
         path: 'latest-update',
-        component: HomePageComponent
+        component: LatestUpdateComponent,
+        // resolve: {
+        //   load: GenreResolver
+        // },
       },
       {
         path: 'users',
@@ -38,6 +51,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [GenreResolver]
 })
 export class WebRoutingModule { }

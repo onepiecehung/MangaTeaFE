@@ -1,0 +1,107 @@
+<div class="filter">
+  <div class="filter-header d-flex justify-content-between align-items-center">
+    <div>
+      <div class="page-title">FILTER
+        <span class="icon-filter">
+          <i class="fas fa-filter"></i>
+        </span>
+      </div>
+      <div class="icon">
+        <i class="fas fa-star"></i>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <div class="icon-expand" (click)="isShowBodyFilter = !isShowBodyFilter">
+        <i *ngIf="isShowBodyFilter" class="fas fa-angle-double-up"></i>
+        <i *ngIf="!isShowBodyFilter" class="fas fa-angle-double-down"></i>
+      </div>
+    </div>
+  </div>
+  <div class="filter-body" *ngIf="isShowBodyFilter">
+    <div class="filter-by-genre">
+      <div class="filter-text-title my-3">
+        Genres:
+      </div>
+      <div>
+        <div class="list-genre">
+          <div class="genre-item" *ngFor="let genre of genres; let index = index">
+
+            <label class="container" [for]="genre._id">{{ genre.name }}
+              <input type="checkbox" [id]="genre._id" [(ngModel)]="genre.checked"
+                (change)="changeStatusGenre($event, genre.name)">
+              <span class="checkmark"></span>
+            </label>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="filter-by-status-country-adult">
+      <div class="row">
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Status:</span>
+            <br>
+            <nz-radio-group [(ngModel)]="statusManga" nzButtonStyle="solid">
+              <label nz-radio-button nzValue="FINISHED">FINISHED</label>
+              <label nz-radio-button nzValue="RELEASING">RELEASING</label>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Country:</span>
+            <br>
+            <nz-radio-group [(ngModel)]="country" nzButtonStyle="solid">
+              <label nz-radio-button nzValue="JP">JAPAN</label>
+              <label nz-radio-button nzValue="KR">Korea</label>
+              <label nz-radio-button nzValue="CN">China</label>
+            </nz-radio-group>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Manga Adult:</span>
+            <br>
+            <nz-switch [(ngModel)]="isAdult"></nz-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-by-year">
+      <div class="row">
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Start year:</span>
+            <br>
+            <nz-select nzAllowClear nzPlaceHolder="Select year" [(ngModel)]="fromYearEnd">
+              <nz-option *ngFor="let year of listYear" [nzLabel]="year" [nzValue]="year">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>End year:</span>
+            <br>
+            <nz-select nzAllowClear nzPlaceHolder="Select year" [(ngModel)]="toYearEnd">
+              <nz-option *ngFor="let year of listYear" [nzLabel]="year" [nzValue]="year">
+              </nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-action">
+      <div class="d-flex justify-content-end">
+        <button nz-button [nzSize]="'large'" class="mr-3" nzType="default" (click)="onClickClear()">Clear</button>
+        <button nz-button [nzSize]="'large'" nzType="default" class="btn-apply" (click)="onClickApply()">Apply</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>

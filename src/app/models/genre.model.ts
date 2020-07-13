@@ -5,6 +5,7 @@ export class Genre {
   nsfw: string;
   _id: number;
   code: string;
+  checked: boolean;
   constructor(data) {
     if (data) {
       this.name = data.name;
@@ -13,6 +14,7 @@ export class Genre {
       this.nsfw = data.nsfw;
       this._id = data._id;
       this.code = data.code;
+      this.checked = false;
     }
   }
 }

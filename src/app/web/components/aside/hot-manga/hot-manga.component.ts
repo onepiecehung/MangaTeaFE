@@ -1,6 +1,6 @@
-import { HotManga } from './../../../../../models/response/hot-manga.model';
-import { MangaService } from './../../../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
+import { MangaService } from 'src/app/services/manga.service';
+import { HotManga } from 'src/app/models/response/hot-manga.model';
 
 @Component({
   selector: 'app-hot-manga',

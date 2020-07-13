@@ -15,12 +15,12 @@
             <img class="w-100 h-100" [src]="item.coverImage.medium" alt="">
           </div>
           <div class="col-6 desc">
-            <div class="name"><a href="#">{{ item.name }} </a></div>
+            <div class="name"><a [routerLink]="['/manga/',item._id,'chapter', item?.chapter[0]?._id]">{{ item.name }} </a></div>
             <div class="ongoging">Ongoing</div>
             <div class="chap">
               <ng-container *ngIf="item?.chapter[item.chapter.length -1]?._id">
                 <a
-                  [routerLink]="['/manga/',item.id,'chapter', item?.chapter[item.chapter.length -1]?._id]">
+                  [routerLink]="['/manga/',item._id,'chapter', item?.chapter[item.chapter.length -1]?._id]">
                   {{ item?.chapter[item.chapter.length -1]?.name }} </a>
               </ng-container>
             </div>

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit {
   formLoginSignUp: FormGroup;
 
   @ViewChild('username') usernameRef: ElementRef;
-  @ViewChild('email') emailRef: ElementRef
+  @ViewChild('email') emailRef: ElementRef;
+
+  @Output() eventSearchMangaByName = new EventEmitter();
 
   isShowFormLogin = false;
   listOfPosition: NzPlacementType[] = ['bottomLeft', 'bottomCenter', 'bottomRight', 'topLeft', 'topCenter', 'topRight'];
@@ -128,5 +130,11 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('role');
     localStorage.removeItem('token');
     this.router.navigate(['/'])
+  }
+
+  searchMangaByName(mangaName: HTMLInputElement) {
+    if (mangaName.value !== null && mangaName.value !== '') {
+      this.eventSearchMangaByName.emit(mangaName.value);
+    }
   }
 }

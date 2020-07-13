@@ -1,14 +1,17 @@
+import { FilterModel } from './../../../models/filter.model';
 import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { Manga } from 'src/app/models/manga.model';
 
+
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  selector: 'app-latest-update',
+  templateUrl: './latest-update.component.html',
+  styleUrls: ['./latest-update.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class LatestUpdateComponent implements OnInit {
+
   listManga: Manga[] = [];
   pageIndex = 1;
   totalPage = 0;
@@ -19,7 +22,7 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Home page');
+    this.titleService.setTitle('Latest Update');
 
     this.getListManga(this.pageIndex);
   }
@@ -30,6 +33,15 @@ export class HomePageComponent implements OnInit {
 
   async getListManga(pageIndex) {
     await this.mangaService.loadManga(pageIndex).then(data => {
+      this.listManga = data.manga;
+      this.totalPage = data.total / 20;
+    }).catch(err => console.log(err)
+    );
+  }
+  async getFilterModel(filter: FilterModel) {
+    
+    this.pageIndex = 1;
+    await this.mangaService.filterManga(this.pageIndex, filter).then(data => {
       this.listManga = data.manga;
       this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
