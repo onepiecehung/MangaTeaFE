@@ -96,7 +96,8 @@ export class MangaService {
     filter.isAdult ? (params += ('&isAdult=' + filter.isAdult)) : '';
     filter.fromYearEnd ? (params += ('&fromYearEnd=' + filter.fromYearEnd)) : '';
     filter.toYearEnd ? (params += ('&toYearEnd=' + filter.toYearEnd)) : '';
-
+    filter.format ? (params +=('&params=' + filter.format)) : '';
+    filter.authorName ? (params += ('&authorName=' + filter.authorName)) : '';
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA}?skip=${skip}${params}`).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {

@@ -18,6 +18,8 @@ export class FilterComponent implements OnInit {
   genreSelected: string[] = [];
   statusManga = '';
   country = '';
+  format = '';
+  authorName = '';
   isAdult = false;
   fromYearEnd = null;
   toYearEnd = null;
@@ -46,6 +48,8 @@ export class FilterComponent implements OnInit {
     this.genreSelected = [];
     this.fromYearEnd = null;
     this.toYearEnd = null;
+    this.format = '';
+    this.authorName = '';
     this.genres.forEach(val => {
       val.checked = false
     });
@@ -58,7 +62,9 @@ export class FilterComponent implements OnInit {
       status: this.statusManga,
       isAdult: this.isAdult,
       toYearEnd: this.toYearEnd,
-      fromYearEnd: this.fromYearEnd
+      fromYearEnd: this.fromYearEnd,
+      format: this.format,
+      authorName: this.authorName,
     }
     this.eventFilter.emit(filter);
   }

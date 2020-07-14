@@ -72,7 +72,7 @@
     </div>
     <div class="filter-by-year">
       <div class="row">
-        <div class="col-4">
+        <div class="col-3">
           <div class="filter-text-title my-3">
             <span>Start year:</span>
             <br>
@@ -83,7 +83,7 @@
           </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-3">
           <div class="filter-text-title my-3">
             <span>End year:</span>
             <br>
@@ -91,6 +91,28 @@
               <nz-option *ngFor="let year of listYear" [nzLabel]="year" [nzValue]="year">
               </nz-option>
             </nz-select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="filter-text-title my-3">
+            <span>Format:</span>
+            <br>
+            <nz-radio-group [(ngModel)]="format" nzButtonStyle="solid">
+              <label nz-radio-button nzValue="MANGA">MANGA</label>
+              <label nz-radio-button nzValue="ONE_SHOT">ONE_SHOT</label>
+              <label nz-radio-button nzValue="NOVEL">NOVEL</label>
+            </nz-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-by-author">
+      <div class="row">
+        <div class="col-6">
+          <div class="filter-text-title my-3">
+            <span>Manga Adult:</span>
+            <br>
+            <input nz-input placeholder="Search by author name" [(ngModel)]="authorName" />
           </div>
         </div>
       </div>

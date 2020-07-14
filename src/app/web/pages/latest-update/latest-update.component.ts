@@ -39,7 +39,8 @@ export class LatestUpdateComponent implements OnInit {
     );
   }
   async getFilterModel(filter: FilterModel) {
-    
+    console.log("LatestUpdateComponent -> getFilterModel -> filter", filter)
+
     this.pageIndex = 1;
     await this.mangaService.filterManga(this.pageIndex, filter).then(data => {
       this.listManga = data.manga;

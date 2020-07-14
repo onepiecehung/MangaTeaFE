@@ -5,4 +5,6 @@ export class FilterModel {
     isAdult?: boolean;
     fromYearEnd?: number;
     toYearEnd?: number;
+    format?: string;
+    authorName?:string;
 }
