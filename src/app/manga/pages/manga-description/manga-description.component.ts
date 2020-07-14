@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { NewComment } from './../../../models/request/new-comment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommentService } from '.././../../services/comment.service';
@@ -39,7 +40,8 @@ export class MangaDescriptionComponent implements OnInit {
     private commentService: CommentService,
     private titleService: Title,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class MangaDescriptionComponent implements OnInit {
         this.mangaItem = mangaResponse.manga;
         console.log("MangaDescriptionComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
         this.listChapter = mangaResponse.chapter;
-        console.log("MangaDescriptionComponent -> ngOnInit ->  this.listChapter",  this.listChapter)
+        console.log("MangaDescriptionComponent -> ngOnInit ->  this.listChapter", this.listChapter)
         this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });
@@ -127,7 +129,8 @@ export class MangaDescriptionComponent implements OnInit {
     if (status !== 'uploading') {
     }
     if (status === 'done') {
-    } else if (status === 'error') {
+    }
+    else if (status === 'error') {
     }
   }
 
@@ -138,6 +141,7 @@ export class MangaDescriptionComponent implements OnInit {
 
   get checkDisableUploadBtn() {
     const point = Number(localStorage.getItem('point'));
+    console.log("getcheckDisableUploadBtn -> point", point)
     return (point >= 100) ? false : true;
   }
 

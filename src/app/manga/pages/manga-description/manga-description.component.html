@@ -163,7 +163,7 @@
                     <td><a class="chapter-name" (click)="handleGotoChapterDetail(chapter?._id)">{{ chapter.name }}</a>
                     </td>
                     <td>{{ chapter.view }}</td>
-                    <td> <img [src]="chapter.language.flag" width="40px" alt=""> {{ chapter.language.nativeName }}</td>
+                    <td> <img [src]="chapter.language.flag" width="30px" [alt]="chapter.language.nativeName" [title]="chapter.language.nativeName" ></td>
                     <td> {{ chapter.createBy.username }} </td>
                     <td> {{ chapter.updatedAt |  date:'MMM dd, yyyy' }} </td>
                   </tr>
@@ -184,7 +184,7 @@
                 </nz-comment>
               </ng-template>
             </nz-list>
-            <div>
+            <div *ngIf="authService.isAuthenticated()">
               <form [formGroup]="form">
                 <div>
                   <textarea rows="4" [nzAutosize]="{ minRows: 4}" nz-input formControlName="commentContent"></textarea>

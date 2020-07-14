@@ -129,6 +129,9 @@ export class HeaderComponent implements OnInit {
   onClickLogout() {
     localStorage.removeItem('role');
     localStorage.removeItem('token');
+    localStorage.removeItem('status');
+    localStorage.removeItem('email');
+    localStorage.removeItem('point');
     this.router.navigate(['/'])
   }
 

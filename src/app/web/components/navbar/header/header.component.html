@@ -1,7 +1,7 @@
 <div class="header shadow">
   <div class="container">
     <div nz-row nzJustify="space-around" nzAlign="middle">
-      <div class="col-5">
+      <div class="col-lg-4 col-md-4">
         <div class="logo">
           <h1>
             <a routerLink=''>
@@ -10,7 +10,7 @@
           </h1>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-lg-5 col-md-4">
         <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
           <input type="text" nz-input placeholder="Input manga name" #mangaName (keyup.enter)="searchMangaByName(mangaName)" />
         </nz-input-group>
@@ -18,7 +18,7 @@
           <button nz-button nzType="primary" nzSize="large" (click)="searchMangaByName(mangaName)" nzSearch>Search</button>
         </ng-template>
       </div>
-      <div class="col-2">
+      <div class="col-lg-3 col-md-4">
         <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
           <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
             <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
