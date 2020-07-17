@@ -15,8 +15,10 @@ export class MangaDiscussionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.mangaService.loadCarousel().then((data: ListMangaResponse) => {
-      this.slideManga = data.manga;
+    console.log("MangaDiscussionComponent -> ngOnInit -> void")
+    this.mangaService.getMangaDiscussion(3).then((data: Manga[]) => {
+    console.log("MangaDiscussionComponent -> ngOnInit -> data", data)
+      this.slideManga = data;
     })
   }
 

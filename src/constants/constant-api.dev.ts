@@ -10,6 +10,7 @@ export namespace CONSTANT_API {
     CHAPTER: 'http://localhost:2111/v1/chapter',
     MANGA_HOME: 'http://localhost:2111/v1/manga/home',
     GROUP_TRANSLATE: 'http://localhost:2111/v1/group',
-    COUNTRY: 'http://localhost:2111/v1/country'
+    COUNTRY: 'http://localhost:2111/v1/country',
+    MANGA_DISCUSSION: 'http://localhost:2111/v1/manga/suggestion'
   }
 }

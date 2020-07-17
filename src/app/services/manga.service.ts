@@ -69,6 +69,25 @@ export class MangaService {
     });
   }
 
+  getMangaDiscussion(mangaID: number): Promise<Manga[]> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_DISCUSSION}?id=${mangaID}&tag=${true}&description=${true}&genre=${true}`).subscribe(response => {
+        console.log("getMangaDiscussion -> response", response)
+        if (response.status === HTTP_STATUS.OK) {
+          let mangaDiscussions: Manga[] = [];
+          if(response.data){
+            response.data.forEach(element => {
+              mangaDiscussions.push(new Manga(element));
+            });
+          }
+          resolve(mangaDiscussions);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
   getListHotManga(): Promise<HotManga[]> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_HOME}?trending=${-1}`).subscribe(response => {
@@ -96,7 +115,7 @@ export class MangaService {
     filter.isAdult ? (params += ('&isAdult=' + filter.isAdult)) : '';
     filter.fromYearEnd ? (params += ('&fromYearEnd=' + filter.fromYearEnd)) : '';
     filter.toYearEnd ? (params += ('&toYearEnd=' + filter.toYearEnd)) : '';
-    filter.format ? (params +=('&params=' + filter.format)) : '';
+    filter.format ? (params += ('&params=' + filter.format)) : '';
     filter.authorName ? (params += ('&authorName=' + filter.authorName)) : '';
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA}?skip=${skip}${params}`).subscribe(response => {

@@ -10,6 +10,7 @@ export namespace CONSTANT_API {
     CHAPTER: '',
     MANGA_HOME: '',
     GROUP_TRANSLATE: '',
-    COUNTRY: ''
+    COUNTRY: '',
+    MANGA_DISCUSSION: '',
   }
 }

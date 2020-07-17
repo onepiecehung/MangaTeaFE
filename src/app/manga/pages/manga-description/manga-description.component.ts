@@ -141,7 +141,6 @@ export class MangaDescriptionComponent implements OnInit {
 
   get checkDisableUploadBtn() {
     const point = Number(localStorage.getItem('point'));
-    console.log("getcheckDisableUploadBtn -> point", point)
     return (point >= 100) ? false : true;
   }
 
