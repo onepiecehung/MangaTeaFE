@@ -18,6 +18,7 @@ export class SlideComponent implements OnInit {
   ngOnInit(): void {
     this.mangaService.loadCarousel().then((data: ListMangaResponse) => {
       this.slideManga = data.manga;
+      console.log("SlideComponent -> ngOnInit -> this.slideManga", this.slideManga)
     })
   }
 

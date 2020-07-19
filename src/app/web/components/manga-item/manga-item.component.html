@@ -17,7 +17,7 @@
             <div class="col-12">
               <div><a [routerLink]="['/manga', mangaItem.id]">{{ mangaItem.name }}</a>
                 <span class="chap-update" *ngIf="mangaItem?.chapter.length"> - Update chapter
-                  {{ mangaItem?.chapter.length}}</span>
+                  {{ mangaItem?.chapter[mangaItem?.chapter.length - 1]?.chapterNumber}}</span>
               </div>
             </div>
             <!-- <div class="col-2 d-flex justify-content-end">

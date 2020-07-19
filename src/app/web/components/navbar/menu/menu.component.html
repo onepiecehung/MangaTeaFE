@@ -1,8 +1,11 @@
 <div class="menu">
   <div class="container">
+
     <div class="d-flex align-items-center">
-      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a></div>
-      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/latest-update']" routerLinkActive="router-link-active" >Latest Update</a></div>
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/']"
+          routerLinkActive="router-link-active">Home</a></div>
+      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/latest-update']"
+          routerLinkActive="router-link-active">Latest Update</a></div>
       <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">Manga Directory</a></div>
       <div class="menu-item mr-3"><a nz-button nzType="dashed" href="#">New Manga</a></div>
       <div class="menu-item mr-3">
@@ -10,11 +13,13 @@
         <nz-dropdown-menu #menu="nzDropdownMenu">
           <div nz-menu class="dropdown-content">
             <div nz-menu-item class="dropdown-item" *ngFor="let genre of genres">
-              <a [routerLink]="['/genre', genre.name]" routerLinkActive="router-link-active" >{{ genre.name | lowercase }}</a>
+              <a [routerLink]="['/genre', genre.name]"
+                routerLinkActive="router-link-active">{{ genre.name | lowercase }}</a>
             </div>
           </div>
         </nz-dropdown-menu>
       </div>
     </div>
+
   </div>
 </div>

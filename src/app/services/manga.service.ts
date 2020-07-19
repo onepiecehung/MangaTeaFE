@@ -8,6 +8,7 @@ import { ApiService } from './common/api.service';
 import { CONSTANT_API } from 'src/constants/constant-api';
 import { rejects } from 'assert';
 import { HttpParams } from '@angular/common/http';
+import { MangaDiscussion } from '../models/manga-discussion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -69,15 +70,15 @@ export class MangaService {
     });
   }
 
-  getMangaDiscussion(mangaID: number): Promise<Manga[]> {
+  getMangaDiscussion(mangaID: number): Promise<MangaDiscussion[]> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_DISCUSSION}?id=${mangaID}&tag=${true}&description=${true}&genre=${true}`).subscribe(response => {
         console.log("getMangaDiscussion -> response", response)
         if (response.status === HTTP_STATUS.OK) {
-          let mangaDiscussions: Manga[] = [];
+          let mangaDiscussions: MangaDiscussion[] = [];
           if(response.data){
             response.data.forEach(element => {
-              mangaDiscussions.push(new Manga(element));
+              mangaDiscussions.push(new MangaDiscussion(element));
             });
           }
           resolve(mangaDiscussions);

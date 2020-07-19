@@ -8,6 +8,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
   templateUrl: './chapter-detail.component.html',
   styleUrls: ['./chapter-detail.component.scss']
 })
+
 export class ChapterDetailComponent implements OnInit {
   chapter: Chapter;
   constructor(

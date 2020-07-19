@@ -1,11 +1,11 @@
 <div class="manga-detail">
     <div class="container" *ngIf="chapter">
-        <div class="list-img-manga-detail" *ngFor="let photo of chapter.photo">
+        <div class="list-img-manga-detail">
             <div class="item">
-                <img [src]="photo" alt="" class="img-fluid w-100 mb-2">
+                <img *ngFor="let photo of chapter.photo"  [lazyLoad]="photo" alt="" class="img-fluid w-100 mb-2">
             </div>
         </div>
-        <app-manga-discussion></app-manga-discussion>
-        <app-comment></app-comment>
+        <!-- <app-manga-discussion></app-manga-discussion>
+        <app-comment></app-comment> -->
     </div>
 </div>

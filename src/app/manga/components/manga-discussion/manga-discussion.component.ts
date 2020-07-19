@@ -1,6 +1,7 @@
 import { Manga, ListMangaResponse } from './../../../models/manga.model';
 import { MangaService } from './../../../services/manga.service';
 import { Component, OnInit } from '@angular/core';
+import { MangaDiscussion } from 'src/app/models/manga-discussion.model';
 
 @Component({
   selector: 'app-manga-discussion',
@@ -9,16 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MangaDiscussionComponent implements OnInit {
 
-  slideManga: Manga[] = [];
+  mangaDiscussion: MangaDiscussion[] = [];
   constructor(
     private mangaService: MangaService
   ) { }
 
   ngOnInit(): void {
-    console.log("MangaDiscussionComponent -> ngOnInit -> void")
-    this.mangaService.getMangaDiscussion(3).then((data: Manga[]) => {
+    this.mangaService.getMangaDiscussion(3).then((data: MangaDiscussion[]) => {
     console.log("MangaDiscussionComponent -> ngOnInit -> data", data)
-      this.slideManga = data;
+      this.mangaDiscussion = data;
     })
   }
 

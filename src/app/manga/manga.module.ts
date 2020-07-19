@@ -20,6 +20,7 @@ import { ChapterDetailComponent } from './pages/chapter-detail/chapter-detail.co
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SharedModule } from '../shared.module';
+import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 
@@ -47,7 +48,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzInputModule,
     SharedModule,
     NzSelectModule,
-    NzFormModule
+    NzFormModule,
+    LazyLoadImageModule.forRoot(ScrollHooks)
   ],
 
 })

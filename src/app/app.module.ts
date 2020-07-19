@@ -18,7 +18,8 @@ import { AuthenticationInterceptor } from './auth/authentication.interceptor';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+
   ],
   providers: [
 

@@ -15,9 +15,19 @@
     </div>
     <div id="carousel-example" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner row w-100 mx-auto d-flex justify-content-between" role="listbox">
-        <ng-container *ngFor="let slideItem of slideManga; let index = index">
+        <ng-container *ngFor="let manga of mangaDiscussion; let index = index">
           <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
-            <img [src]="slideItem.coverImage.large" class="img-fluid mx-auto d-block" alt="img1">
+            <div>
+              <a [routerLink]="['/manga', manga._id]">
+                <img [src]="manga.coverImage.large" width="200px" height="280px" alt="img1">
+              </a>
+              <div class="slide-title">
+                <div class="manga-name mt-2">
+                  <a [routerLink]="['/manga', manga.id]"> {{ manga?.name }}</a>
+                </div>
+                
+              </div>
+            </div>
           </div>
 
         </ng-container>
