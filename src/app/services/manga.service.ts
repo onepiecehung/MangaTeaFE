@@ -9,6 +9,7 @@ import { CONSTANT_API } from 'src/constants/constant-api';
 import { rejects } from 'assert';
 import { HttpParams } from '@angular/common/http';
 import { MangaDiscussion } from '../models/manga-discussion.model';
+import { MangaUser } from '../models/response/manga-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,7 @@ export class MangaService {
         console.log("getMangaDiscussion -> response", response)
         if (response.status === HTTP_STATUS.OK) {
           let mangaDiscussions: MangaDiscussion[] = [];
-          if(response.data){
+          if (response.data) {
             response.data.forEach(element => {
               mangaDiscussions.push(new MangaDiscussion(element));
             });
@@ -128,5 +129,17 @@ export class MangaService {
       });
     });
 
+  }
+
+  loadMangaUser(param: string): Promise<MangaUser> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MEMBER}?${param}=${1}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject();
+        }
+      });
+    });
   }
 }

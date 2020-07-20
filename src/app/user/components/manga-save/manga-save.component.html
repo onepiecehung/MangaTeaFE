@@ -1,0 +1,12 @@
+<div *ngIf="mangaSaved" class="manga-saved">
+    <ng-container *ngFor="let item of mangaSaved.manga">
+      <div class="mb-2">
+        <a [routerLink]="['/manga', item._id]">
+          <img width="200px" height="280px" [src]="item?.coverImage?.large" alt="">
+        </a>
+        <div style="width: 200px;">
+          <a [routerLink]="['/manga', item._id]">{{ item?.name }} </a>
+        </div>
+      </div>
+    </ng-container>
+  </div>

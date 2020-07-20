@@ -12,5 +12,6 @@ export namespace CONSTANT_API {
     GROUP_TRANSLATE: '',
     COUNTRY: '',
     MANGA_DISCUSSION: '',
+    MEMBER: ''
   }
 }

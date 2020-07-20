@@ -11,6 +11,7 @@ export namespace CONSTANT_API {
     MANGA_HOME: 'https://api.mangatea.live/v1//manga/home',
     GROUP_TRANSLATE: 'https://api.mangatea.live/v1/group',
     COUNTRY: 'http://localhost:2111/v1/country',
-    MANGA_DISCUSSION: 'http://localhost:2111/v1/manga/suggestion'
+    MANGA_DISCUSSION: 'http://localhost:2111/v1/manga/suggestion',
+    MEMBER: 'http://localhost:2111/v1/member/user'
   }
 }
