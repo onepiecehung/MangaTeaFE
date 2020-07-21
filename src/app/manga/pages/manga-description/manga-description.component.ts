@@ -66,6 +66,7 @@ export class MangaDescriptionComponent implements OnInit {
 
     if (event.index === 1) {
       this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
+        console.log("MangaDescriptionComponent -> changeSelectTab -> commentResponse", commentResponse)
         this.listComment = commentResponse;
       }).catch(err => console.log(err));
 
@@ -152,8 +153,12 @@ export class MangaDescriptionComponent implements OnInit {
       commentContent: this.form.value.commentContent
     };
     this.commentService.newComment(bodyComment).then((data: Comment) => {
-      console.log("onSubmitFormComment -> data", data)
-      this.listComment.push(data);
+      
+      this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
+        this.listComment = commentResponse;
+      }).catch(err => console.log(err));
+
+
       this.form = this.formBuilder.group({
         commentContent: ['', Validators.required]
       })

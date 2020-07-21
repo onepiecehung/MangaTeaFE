@@ -1,12 +1,17 @@
 <div *ngIf="mangaSaved" class="manga-saved">
-    <ng-container *ngFor="let item of mangaSaved.manga">
-      <div class="mb-2">
+  <ng-container *ngFor="let item of mangaSaved.manga">
+    <div class="mb-2">
+      <div class="img-manga">
         <a [routerLink]="['/manga', item._id]">
           <img width="200px" height="280px" [src]="item?.coverImage?.large" alt="">
         </a>
-        <div style="width: 200px;">
-          <a [routerLink]="['/manga', item._id]">{{ item?.name }} </a>
-        </div>
+        <span class="icon-remove" title="Remove item" (click)="removeItem(item._id, index)">
+          <i class="fas fa-times "></i>
+        </span>
       </div>
-    </ng-container>
-  </div>
+      <div style="width: 200px;">
+        <a [routerLink]="['/manga', item._id]">{{ item?.name }} </a>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -142,4 +142,54 @@ export class MangaService {
       });
     });
   }
+
+  onAddToFavorite(mangaID: number) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.ADD_FAVORITE}?idManga=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  removeMangaFavorite(mangaID) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.REMOVE_FAVORITE}?idManga=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  
+  onSaveManga(mangaID: number) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.SAVE_MANGA}?idManga=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  removeMangaSaved(mangaID) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.UNSAVED_MANGA}?idManga=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+  
 }

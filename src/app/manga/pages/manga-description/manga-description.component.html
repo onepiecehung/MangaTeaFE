@@ -175,12 +175,12 @@
           <nz-tab nzTitle="Comments">
             <nz-list [nzDataSource]="listComment" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
               <ng-template #item let-item>
-                <nz-comment [nzAuthor]="item.user.username" [nzDatetime]="item.timeComment">
+                <nz-comment [nzAuthor]="item.user.username" [nzDatetime]="item.timeComment | date: 'dd-MM-yyyy hh:ss'">
                   <nz-avatar nz-comment-avatar [nzSrc]="item.user.avatar"></nz-avatar>
                   <nz-comment-content>
                     <p>{{ item.commentContent }}</p>
                   </nz-comment-content>
-                  <nz-comment-action>Reply to</nz-comment-action>
+                  <!-- <nz-comment-action>Reply to</nz-comment-action> -->
                 </nz-comment>
               </ng-template>
             </nz-list>

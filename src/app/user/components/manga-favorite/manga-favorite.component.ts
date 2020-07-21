@@ -17,7 +17,13 @@ export class MangaFavoriteComponent implements OnInit {
     const param = 'mangaFavorite';
     this.mangaService.loadMangaUser(param).then((response: MangaUser) => {
       this.mangaFavorite = response;
-      console.log("MangaFavoriteComponent -> ngOnInit -> this.mangaFavorite", this.mangaFavorite)
+    })
+  }
+
+  removeItem(mangaID: number, index:number) {
+    this.mangaService.removeMangaFavorite(mangaID).then(response => {
+      console.log("MangaFavoriteComponent -> removeItem -> response", response)
+      this.mangaFavorite.manga.splice(index ,1);
     })
   }
 

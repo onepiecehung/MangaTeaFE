@@ -20,4 +20,10 @@ export class MangaSaveComponent implements OnInit {
       this.mangaSaved = response;
     })
   }
+
+  removeItem(mangaID: number, index:number) {
+    this.mangaService.removeMangaSaved(mangaID).then(response => {
+      this.mangaSaved.manga.splice(index ,1);
+    })
+  }
 }

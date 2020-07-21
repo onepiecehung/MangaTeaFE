@@ -1,9 +1,16 @@
 <div *ngIf="mangaFavorite" class="manga-favorite">
-  <ng-container *ngFor="let item of mangaFavorite.manga">
+  <ng-container *ngFor="let item of mangaFavorite.manga; let index = index">
     <div class="mb-2">
-      <a [routerLink]="['/manga', item._id]">
-        <img width="200px" height="280px" [src]="item?.coverImage?.large" alt="">
-      </a>
+      <div class="img-manga">
+        <a [routerLink]="['/manga', item._id]">
+          <img width="200px" height="280px" [src]="item?.coverImage?.large" alt="">
+        </a>
+        <span class="icon-remove" title="Remove item" (click)="removeItem(item._id, index)">
+          <i class="fas fa-times "></i>
+        </span>
+
+      </div>
+
       <div style="width: 200px;">
         <a [routerLink]="['/manga', item._id]">{{ item?.name }} </a>
       </div>

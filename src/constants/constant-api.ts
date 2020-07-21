@@ -12,6 +12,10 @@ export namespace CONSTANT_API {
     GROUP_TRANSLATE: '',
     COUNTRY: '',
     MANGA_DISCUSSION: '',
-    MEMBER: ''
+    MEMBER: '',
+    ADD_FAVORITE: '',
+    REMOVE_FAVORITE: '',
+    SAVE_MANGA: '',
+    UNSAVED_MANGA:''
   }
 }

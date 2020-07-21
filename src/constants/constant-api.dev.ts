@@ -12,6 +12,11 @@ export namespace CONSTANT_API {
     GROUP_TRANSLATE: 'http://localhost:2111/v1/group',
     COUNTRY: 'http://localhost:2111/v1/country',
     MANGA_DISCUSSION: 'http://localhost:2111/v1/manga/suggestion',
-    MEMBER: 'http://localhost:2111/v1/member/user'
+    MEMBER: 'http://localhost:2111/v1/member/user',
+    ADD_FAVORITE: 'http://localhost:2111/v1/member/add-to-favorite',
+    REMOVE_FAVORITE: 'http://localhost:2111/v1/member/remove-from-favorite',
+    SAVE_MANGA: 'http://localhost:2111/v1/member/save-manga',
+    UNSAVED_MANGA:'http://localhost:2111/v1/member/unsaved-manga'
+
   }
 }
