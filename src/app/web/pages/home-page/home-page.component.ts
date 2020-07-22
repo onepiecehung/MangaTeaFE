@@ -2,6 +2,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { Manga } from 'src/app/models/manga.model';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home-page',
@@ -15,12 +16,13 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private mangaService: MangaService,
-    private titleService: Title
+    private titleService: Title,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    
     this.titleService.setTitle('Home page');
-
     this.getListManga(this.pageIndex);
   }
   getPageIndexChange(event) {
@@ -29,10 +31,12 @@ export class HomePageComponent implements OnInit {
   }
 
   async getListManga(pageIndex) {
+    this.spinner.show('AppSpinner');
     await this.mangaService.loadManga(pageIndex).then(data => {
       this.listManga = data.manga;
       this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
     );
+    this.spinner.hide('AppSpinner');
   }
 }

@@ -1,5 +1,5 @@
 <div *ngIf="mangaSaved" class="manga-saved">
-  <ng-container *ngFor="let item of mangaSaved.manga">
+  <ng-container *ngFor="let item of mangaSaved.manga; let index = index">
     <div class="mb-2">
       <div class="img-manga">
         <a [routerLink]="['/manga', item._id]">

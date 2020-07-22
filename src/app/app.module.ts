@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationInterceptor } from './auth/authentication.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { AuthenticationInterceptor } from './auth/authentication.interceptor';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-
+    NgxSpinnerModule
   ],
   providers: [
 
@@ -30,6 +31,6 @@ import { AuthenticationInterceptor } from './auth/authentication.interceptor';
     },
     , Title,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -7,6 +7,7 @@ import { ChapterService } from 'src/app/services/chapter.service';
 import { GroupTranslate } from 'src/app/models/group-translate.model';
 import { Location } from '@angular/common';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-upload-chapter',
   templateUrl: './upload-chapter.component.html',
@@ -31,6 +32,7 @@ export class UploadChapterComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private location: Location,
     private notification: NzNotificationService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -77,12 +79,14 @@ export class UploadChapterComponent implements OnInit, AfterViewInit {
   }
 
   clickUploadChapter() {
+    this.spinner.show('AppSpinner');
     this.chapterUpload.append('name', this.formUploadChapter.value.name);
     this.chapterUpload.append('chapterNumber', this.formUploadChapter.value.chapterNumber);
     this.chapterUpload.append('mangaID', this.mangaID);
     this.chapterUpload.append('groupTranslation', this.formUploadChapter.value.groupTranslation);
     this.chapterUpload.append('language', this.formUploadChapter.value.language);
     this.chapterService.uploadChapter(this.chapterUpload).then(data => {
+      this.spinner.hide('AppSpinner');
       this.notification.create(
         'success',
         'Upload success',

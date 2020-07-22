@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UploadFile, UploadChangeParam } from 'ng-zorro-antd/upload';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -41,16 +42,19 @@ export class MangaDescriptionComponent implements OnInit {
     private titleService: Title,
     private router: Router,
     private formBuilder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
+    this.spinner.show('AppSpinner');
     this.form = this.formBuilder.group({
       commentContent: ['', Validators.required]
     })
     this.route.params.subscribe(params => {
       this.mangaID = params['id'];
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
+        this.spinner.hide('AppSpinner');
         this.mangaItem = mangaResponse.manga;
         console.log("MangaDescriptionComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
         this.listChapter = mangaResponse.chapter;
