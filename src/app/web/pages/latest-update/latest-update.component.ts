@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { Manga } from 'src/app/models/manga.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -15,10 +16,12 @@ export class LatestUpdateComponent implements OnInit {
   listManga: Manga[] = [];
   pageIndex = 1;
   totalPage = 0;
+  filter: FilterModel = null;
 
   constructor(
     private mangaService: MangaService,
-    private titleService: Title
+    private titleService: Title,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -27,25 +30,38 @@ export class LatestUpdateComponent implements OnInit {
     this.getListManga(this.pageIndex);
   }
   getPageIndexChange(event) {
-    this.getListManga(event);
     this.pageIndex = event;
+    console.log("LatestUpdateComponent -> getPageIndexChange -> this.filter", this.filter)
+    if (this.filter) {
+      this.getDataFilter();
+    } else {
+      this.getListManga(event);
+    }
   }
 
   async getListManga(pageIndex) {
+    this.spinner.show('AppSpinner');
     await this.mangaService.loadManga(pageIndex).then(data => {
       this.listManga = data.manga;
       this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
     );
+    this.spinner.hide('AppSpinner');
   }
-  async getFilterModel(filter: FilterModel) {
-    console.log("LatestUpdateComponent -> getFilterModel -> filter", filter)
 
+  async getDataFilter() {
+    this.spinner.show('AppSpinner');
     this.pageIndex = 1;
-    await this.mangaService.filterManga(this.pageIndex, filter).then(data => {
+    await this.mangaService.filterManga(this.pageIndex, this.filter).then(data => {
       this.listManga = data.manga;
       this.totalPage = data.total / 20;
     }).catch(err => console.log(err)
     );
+    this.spinner.hide('AppSpinner');
+  }
+
+  getFilterModel(filter: FilterModel) {
+    this.filter = filter;
+    this.getDataFilter();
   }
 }
