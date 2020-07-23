@@ -59,6 +59,8 @@ export class MangaDescriptionComponent implements OnInit {
         this.isLoading = false;
         this.mangaItem = mangaResponse.manga;
         this.listChapter = mangaResponse.chapter;
+        this.listChapter.sort((a, b) => (a.chapterNumber > b.chapterNumber) ? 1 : -1);
+
         this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });
@@ -157,7 +159,7 @@ export class MangaDescriptionComponent implements OnInit {
       commentContent: this.form.value.commentContent
     };
     this.commentService.newComment(bodyComment).then((data: Comment) => {
-      
+
       this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
         this.listComment = commentResponse;
       }).catch(err => console.log(err));
