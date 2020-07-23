@@ -32,13 +32,13 @@
         text-decoration: none;
       }
     }
-    .description{
+    .description {
       font-size: 14px;
-      p{
+      p {
         margin-bottom: 0px;
       }
     }
-    .chaps{
+    .chaps {
       font-size: 13px;
       color: #888888;
     }
@@ -53,9 +53,34 @@
   }
 }
 
-.chap-update{
+.chap-update {
   font-size: 18px;
 }
-.icon-clock{
+.icon-clock {
   color: #41a2df;
+}
+.icon-setting {
+  visibility: hidden;
+}
+.manga-item:hover {
+  .icon-setting {
+    visibility: visible;
+  }
+}
+.icon-setting:hover {
+  cursor: pointer;
+}
+.icon-setting {
+  font-size: 18px;
+  // width: 30px;
+  // height: 30px;
+  border-radius: 50%;
+  padding: 4px 10px;
+  color: #111;
+  font-weight: bolder;
+  border: 0.5px solid #ff8e1c;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
