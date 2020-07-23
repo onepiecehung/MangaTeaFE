@@ -22,14 +22,12 @@
             </div>
             <div class="col-1 d-flex justify-content-end" nz-dropdown [nzDropdownMenu]="menu"
               [nzPlacement]="'bottomRight'" [nzTrigger]="'click'">
-              <span style="font-size: 18px;">
-                <i class="fas fa-ellipsis-v"></i>
-              </span>
+              <i class="fas fa-ellipsis-v icon-setting"></i>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
                   <li nz-menu-item (click)="onAddToFavorite()">Add to favorite</li>
                   <li nz-menu-item (click)="onSaveManga()">Save</li>
-                  <li nz-menu-item >Test</li>
+                  <li nz-menu-item>Test</li>
                   <li nz-menu-item>Test</li>
                 </ul>
               </nz-dropdown-menu>

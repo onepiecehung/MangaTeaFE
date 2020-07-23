@@ -35,6 +35,7 @@ export class MangaDescriptionComponent implements OnInit {
   chapter: Chapter = null;
   form: FormGroup;
   isLoadingSubmit = false;
+  isLoading = true;
   constructor(
     private mangaService: MangaService,
     private route: ActivatedRoute,
@@ -47,18 +48,17 @@ export class MangaDescriptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.spinner.show('AppSpinner');
     this.form = this.formBuilder.group({
       commentContent: ['', Validators.required]
     })
     this.route.params.subscribe(params => {
       this.mangaID = params['id'];
+      this.spinner.show('AppSpinner');
       this.mangaService.getMangaByID(this.mangaID).then(mangaResponse => {
         this.spinner.hide('AppSpinner');
+        this.isLoading = false;
         this.mangaItem = mangaResponse.manga;
-        console.log("MangaDescriptionComponent -> ngOnInit -> this.mangaItem", this.mangaItem)
         this.listChapter = mangaResponse.chapter;
-        console.log("MangaDescriptionComponent -> ngOnInit ->  this.listChapter", this.listChapter)
         this.titleService.setTitle(this.mangaItem.name);
       }).catch(err => console.log(err))
     });
@@ -67,11 +67,11 @@ export class MangaDescriptionComponent implements OnInit {
     return this.form.controls;
   }
   changeSelectTab(event) {
-
     if (event.index === 1) {
+      this.isLoading = true;
       this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
-        console.log("MangaDescriptionComponent -> changeSelectTab -> commentResponse", commentResponse)
         this.listComment = commentResponse;
+        this.isLoading = false;
       }).catch(err => console.log(err));
 
     }

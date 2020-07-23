@@ -28,7 +28,8 @@ import { MangaUploadComponent } from './components/manga-upload/manga-upload.com
     ChapterHistoryReadingComponent,
     ChapterUploadComponent,
     MangaFavoriteComponent,
-    MangaUploadComponent
+    MangaUploadComponent,
+    
   ],
   imports: [
     CommonModule,
