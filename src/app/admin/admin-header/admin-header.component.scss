@@ -1,5 +1,71 @@
 .admin-header {
-  height: 48px;
-  background-color: #4267b2;
+  height: 70px;
+  background-color: #ffffff;
   padding: 5px;
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  justify-content: space-between;
+  .left {
+    .input-group{
+      width: 70%;
+    }
+    width: 50%;
+    .form-search{
+      width: 70%;
+    }
+    .form-search:active{
+      border-color: #d3dcf7;
+    }
+    .btn-search{
+      background-color: #4e73df;
+      color: #ffffff;
+      i{
+        font-size: 18px;
+        font-weight: bolder;
+      }
+    }
+  }
+  .right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .notification{
+      color: #d4ddee;
+      display: flex;
+      div{
+        width: 45px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-weight: bolder;
+        font-size: 25px;
+      }
+    }
+    .divider{
+      width: 1px;
+      background-color: #e3e6f0;
+      margin: 0px 16px;
+      height: 35px;
+    }
+    .admin-profile{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .img-profile{
+        .user-name{
+          font-weight: bold;
+          font-size: 20px;
+        }
+        img{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 }

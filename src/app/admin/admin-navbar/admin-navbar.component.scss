@@ -1,4 +1,30 @@
 .admin-navbar {
-  padding: 5px;
-  
+  padding: 8px 16px;
+  .divider{
+    height: 1px;
+    background-color: #6888e4;
+    width: 100%;
+  }
+  .logo-admin{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    img{
+      height: 30px;
+      width: auto;
+    }
+  }
+  .navbar-item{
+    width: 100%;
+    padding: 10px 0px;
+    color: #dce3f7;
+    font-size: 17px;
+    display: flex;
+  }
+  .dashboard{
+    width: 100%;
+    height: auto;
+    padding: 5px 0px;
+  }
 }

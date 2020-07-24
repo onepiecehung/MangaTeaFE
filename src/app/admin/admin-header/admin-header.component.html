@@ -1,13 +1,37 @@
-<div nz-row class="admin-header" nzAlign="middle" nzJustify="center">
-    <div nz-col nzSpan="4">col-6</div>
-    <div nz-col nzSpan="10">
-        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-            <input type="text" nz-input placeholder="input search text" />
-        </nz-input-group>
-        <ng-template #suffixButton>
-            <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
-        </ng-template>
+<div class="admin-header shadow">
+    <div class="left">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small form-search" placeholder="Search for...">
+            <div class="input-group-append">
+                <button class="btn btn-search" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
     </div>
-    <div nz-col nzSpan="4">col-6</div>
-    <div nz-col nzSpan="6">col-6</div>
+    <div class="right">
+        <div class="notification">
+            <div>
+                <i class="fas fa-bell"></i>
+            </div>
+            <div>
+                <i class="far fa-envelope"></i>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="admin-profile" nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
+            <div class="user-name mr-2">
+                User name
+            </div>
+            <div class="img-profile">
+                <img src="https://media.ngoisao.vn/resize_580/news/2018/11/26/hotgirl-1-ngoisao.vn-w600-h493.jpg"
+                    alt="">
+            </div>
+        </div>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>2nd menu item length</li>
+                <li nz-menu-item>3rd menu item length</li>
+                <li nz-menu-item (click)="onClickLogout()">Logout</li>
+            </ul>
+        </nz-dropdown-menu>
+    </div>
 </div>

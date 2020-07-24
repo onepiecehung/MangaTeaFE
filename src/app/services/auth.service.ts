@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 @Injectable({
@@ -6,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 export class AuthService {
 
   constructor(
+    private router: Router,
   ) { }
 
   public isAuthenticated(): boolean {

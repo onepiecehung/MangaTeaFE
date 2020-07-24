@@ -73,13 +73,16 @@ export class HeaderComponent implements OnInit {
     if (this.isShowFormLogin) {
       this.userService.loginAccount(user).then((userInfo: UserInfo) => {
         this.isVisible = false;
-        localStorage.setItem('role', userInfo.role);
         this.notification.create(
           'success',
           'Login success',
           'Login account successful',
           { nzDuration: 2000 }
         );
+        if (userInfo.role === 'ROOT') {
+          console.log("HeaderComponent -> handleOk -> userInfo.role ", userInfo.role)
+          this.router.navigate(['admin']);
+        }
       }).catch(err => {
         this.errorMessageService.getMessageFromKey(err.error);
       });

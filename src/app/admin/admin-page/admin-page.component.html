@@ -1,16 +1,11 @@
-<div>
-    <div nz-row>
-        <div nz-col nzSpan="24">
-            <app-admin-header></app-admin-header>
-        </div>
+<div class="admin-page">
+  <div class="left">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div class="right">
+    <app-admin-header></app-admin-header>
+    <div class="admin-content">
+      <router-outlet></router-outlet>
     </div>
-
-    <div nz-row nzSpan=24>
-        <div nz-col nzSpan="4">
-            <app-admin-navbar></app-admin-navbar>
-        </div>
-        <div nz-col nzSpan="20" style="padding: 15px;">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
+  </div>
 </div>
