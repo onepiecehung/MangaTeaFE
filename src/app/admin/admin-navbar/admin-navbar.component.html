@@ -5,9 +5,16 @@
     </div>
     <div class="divider"></div>
     <div class="dashboard">
-        <a class="navbar-item">
+        <a class="navbar-item" [routerLink]="['/admin']" routerLinkActive="router-link-active">
             <i class="fas fa-cog mr-3"></i>
             <div>Dashboard</div>
+        </a>
+    </div>
+    <div class="divider"></div>
+    <div class="dashboard">
+        <a class="navbar-item" [routerLink]="['/admin/manga-chapter']" routerLinkActive="router-link-active">
+            <i class="fas fa-cog mr-3"></i>
+            <div>Chapter</div>
         </a>
     </div>
     <div class="divider"></div>

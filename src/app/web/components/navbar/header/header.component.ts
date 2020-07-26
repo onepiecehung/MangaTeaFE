@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
           'Login account successful',
           { nzDuration: 2000 }
         );
-        if (userInfo.role === 'ROOT') {
+        if (userInfo.role === '_ROOT') {
           console.log("HeaderComponent -> handleOk -> userInfo.role ", userInfo.role)
           this.router.navigate(['admin']);
         }

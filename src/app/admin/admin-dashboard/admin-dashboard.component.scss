@@ -1,0 +1,54 @@
+.admin-dashboard {
+  .admin-title-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    .title{
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .info-system{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .total-manga{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      border: 1px solid #e3e6f0;
+      padding: 20px;
+      border-radius: 0.35rem;
+      border-left: 0.25rem solid #4e73df;
+      margin-bottom: 15px;
+      .info{
+        display: flex;
+        flex-direction: column;
+        .title-info{
+          font-size: 15px;
+          color: #4e73df;
+          margin-bottom: 5px;
+        }
+        .value{
+          font-size: 17px;
+          font-weight: bold;
+        }
+      }
+      .icon{
+        font-size: 35px;
+        font-weight: bolder;
+        color: #dddfeb;
+      }
+    }
+  }
+}
+.col-md-6 {
+  max-width: 49%;
+}
+.col-xl-3 {
+  max-width: 24%;
+}
