@@ -16,6 +16,7 @@ export namespace CONSTANT_API {
     ADD_FAVORITE: '',
     REMOVE_FAVORITE: '',
     SAVE_MANGA: '',
-    UNSAVED_MANGA:''
+    UNSAVED_MANGA:'',
+    RATING: ''
   }
 }

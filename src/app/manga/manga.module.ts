@@ -21,6 +21,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SharedModule } from '../shared.module';
 import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 
@@ -49,6 +50,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     SharedModule,
     NzSelectModule,
     NzFormModule,
+    NzRateModule,
     LazyLoadImageModule.forRoot(ScrollHooks)
   ],
 

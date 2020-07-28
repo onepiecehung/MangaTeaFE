@@ -1,3 +1,4 @@
+import { Rate } from './../../../models/request/rating.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { NewComment } from './../../../models/request/new-comment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UploadFile, UploadChangeParam } from 'ng-zorro-antd/upload';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { RatingService } from 'src/app/services/rating.service';
 
 
 
@@ -36,6 +38,7 @@ export class MangaDescriptionComponent implements OnInit {
   form: FormGroup;
   isLoadingSubmit = false;
   isLoading = true;
+  rating = 10;
   constructor(
     private mangaService: MangaService,
     private route: ActivatedRoute,
@@ -44,7 +47,8 @@ export class MangaDescriptionComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private ratingService: RatingService
   ) { }
 
   ngOnInit(): void {
@@ -171,6 +175,18 @@ export class MangaDescriptionComponent implements OnInit {
       this.isLoadingSubmit = false;
     })
 
+  }
+
+  onChangeRating(rating) {
+    let ratingRequest: Rate = {
+      rateNumber: rating,
+      mangaID: this.mangaID,
+      typeRating: 'MANGA'
+    }
+    this.ratingService.rating(ratingRequest).then(response => {
+      console.log("onChangeRating -> response", response)
+
+    })
   }
 
 }

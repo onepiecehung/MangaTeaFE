@@ -8,6 +8,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationInterceptor } from './auth/authentication.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import en from '@angular/common/locales/en';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 
 
 @NgModule({
@@ -29,7 +31,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
       useClass: AuthenticationInterceptor,
       multi: true,
     },
-    , Title,
+    {
+      provide: NZ_I18N,
+      useValue: en_US
+    },
+    Title,
   ],
   bootstrap: [AppComponent],
 })

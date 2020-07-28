@@ -131,9 +131,19 @@
               <div class="col-4">
                 Actions:
               </div>
-              <div class="col-8">
-                <button nz-button nzType="default" [disabled]="checkDisableUploadBtn"
-                  [routerLink]="['upload-chapter']"><i class="fas fa-upload mr-2"></i>Upload</button>
+              <div class="col-8 actions">
+                <div>
+                  <div>Rating manga</div>
+                  <nz-rate [(ngModel)]="rating" (ngModelChange)="onChangeRating($event)" [nzCount]="10">
+                  </nz-rate>
+                </div>
+                <div class="mt-3 mb-2">
+                  <div>Upload chapter</div>
+                  <button nz-button nzType="default" [disabled]="checkDisableUploadBtn"
+                    [routerLink]="['upload-chapter']"><i class="fas fa-upload mr-2"></i>Upload</button>
+                </div>
+
+
               </div>
 
             </div>
