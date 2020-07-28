@@ -48,7 +48,29 @@
     });
 
   </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB2L9kGMCpEZwwVsfxIbipztjxjUoXxr2s",
+    authDomain: "app-manga-recommender-system.firebaseapp.com",
+    databaseURL: "https://app-manga-recommender-system.firebaseio.com",
+    projectId: "app-manga-recommender-system",
+    storageBucket: "app-manga-recommender-system.appspot.com",
+    messagingSenderId: "296429709157",
+    appId: "1:296429709157:web:f65a7499f400c1a3bf238c",
+    measurementId: "G-PY7VFBBLGT"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>
 
 </html>
