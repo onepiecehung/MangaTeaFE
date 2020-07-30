@@ -8,7 +8,6 @@ import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -22,6 +21,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SharedModule } from '../shared.module';
 import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
 import { NzRateModule } from 'ng-zorro-antd/rate';
+import { ChartsModule } from 'ng2-charts';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 
@@ -51,6 +51,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzSelectModule,
     NzFormModule,
     NzRateModule,
+    ChartsModule,
     LazyLoadImageModule.forRoot(ScrollHooks)
   ],
 

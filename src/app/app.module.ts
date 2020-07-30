@@ -10,6 +10,7 @@ import { AuthenticationInterceptor } from './auth/authentication.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import en from '@angular/common/locales/en';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
   ],
   providers: [
 

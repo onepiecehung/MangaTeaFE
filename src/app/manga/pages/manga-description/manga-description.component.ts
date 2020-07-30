@@ -7,11 +7,12 @@ import { MangaService } from '.././../../services/manga.service';
 import { Manga, Chapter } from '../../../models/manga.model';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { UploadFile, UploadChangeParam } from 'ng-zorro-antd/upload';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RatingService } from 'src/app/services/rating.service';
-
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 
 
 
@@ -28,7 +29,7 @@ function getBase64(file: File): Promise<string | ArrayBuffer | null> {
   templateUrl: './manga-description.component.html',
   styleUrls: ['./manga-description.component.scss']
 })
-export class MangaDescriptionComponent implements OnInit {
+export class MangaDescriptionComponent implements OnInit, AfterViewInit {
   mangaItem: Manga = null;
   mangaID: number;
   listComment: Comment[] = [];
@@ -38,7 +39,20 @@ export class MangaDescriptionComponent implements OnInit {
   form: FormGroup;
   isLoadingSubmit = false;
   isLoading = true;
-  rating = 10;
+  rating = 0;
+
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  barChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].reverse();
+  barChartType: ChartType = 'horizontalBar';
+  barChartLegend = true;
+  barChartPlugins = [];
+  arrRating: number[] = [];
+  barChartData: ChartDataSets[] = [
+    { data: this.arrRating, label: 'User rating' },
+  ];
+
   constructor(
     private mangaService: MangaService,
     private route: ActivatedRoute,
@@ -48,7 +62,7 @@ export class MangaDescriptionComponent implements OnInit {
     private formBuilder: FormBuilder,
     public authService: AuthService,
     private spinner: NgxSpinnerService,
-    private ratingService: RatingService
+    private ratingService: RatingService,
   ) { }
 
   ngOnInit(): void {
@@ -69,6 +83,23 @@ export class MangaDescriptionComponent implements OnInit {
       }).catch(err => console.log(err))
     });
   }
+
+  ngAfterViewInit(): void {
+    this.ratingService.getRatingManga(this.mangaID).then(data => {
+      this.arrRating.push(data['rating']['1']);
+      this.arrRating.push(data['rating']['2']);
+      this.arrRating.push(data['rating']['3']);
+      this.arrRating.push(data['rating']['4']);
+      this.arrRating.push(data['rating']['5']);
+      this.arrRating.push(data['rating']['6']);
+      this.arrRating.push(data['rating']['7']);
+      this.arrRating.push(data['rating']['8']);
+      this.arrRating.push(data['rating']['9']);
+      this.arrRating.push(data['rating']['10']);
+      this.arrRating.reverse();
+    })
+  }
+
   get f() {
     return this.form.controls;
   }
@@ -183,8 +214,8 @@ export class MangaDescriptionComponent implements OnInit {
       mangaID: this.mangaID,
       typeRating: 'MANGA'
     }
+    console.log("onChangeRating -> ratingRequest", ratingRequest)
     this.ratingService.rating(ratingRequest).then(response => {
-      console.log("onChangeRating -> response", response)
 
     })
   }

@@ -16,7 +16,19 @@ export class RatingService {
   rating(rateRequest: Rate) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(CONSTANT_API.API_ENDPOINTS.RATING, rateRequest).subscribe(response => {
-        if (response.status === HTTP_STATUS.OK || response.status === HTTP_STATUS.CREATED) {
+        if (response.status === HTTP_STATUS.OK || response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+  getRatingManga(mangaID: number){
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.RATING}?idManga=${mangaID}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK || response.status === HTTP_STATUS.OK) {
           resolve(response.data);
         } else {
           reject(response.data);
