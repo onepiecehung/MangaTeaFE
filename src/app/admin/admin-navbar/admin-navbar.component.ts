@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
 
+  showManageManga = false;
+  showManageUser = false;
   constructor() { }
 
   ngOnInit(): void {

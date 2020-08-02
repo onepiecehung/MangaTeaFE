@@ -1,0 +1,12 @@
+.manage-manga {
+  .admin-title-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}

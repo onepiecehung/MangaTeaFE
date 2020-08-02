@@ -1,28 +1,69 @@
 <div class="admin-navbar">
     <div class="logo-admin">
-        <img src="https://vnn-imgs-f.vgcloud.vn/2018/10/04/08/than-hinh-nong-bong-kho-roi-mat-cua-hot-girl-ngu-gat-2.jpg"
-            alt="">
+        <div><img src="assets/img/logo.png" alt=""></div>
+        <div class="admin-text">Admin</div>
+        <div></div>
     </div>
     <div class="divider"></div>
     <div class="dashboard">
-        <a class="navbar-item" [routerLink]="['/admin']" routerLinkActive="router-link-active">
-            <i class="fas fa-cog mr-3"></i>
-            <div>Dashboard</div>
+        <a class="navbar-item"
+            [ngClass]="{'router-link-active': (showManageManga === false && showManageUser === false)}"
+            [routerLink]="['/admin']" (click)="showManageManga = false; showManageUser =false">
+            <div>
+                <i class="fas fa-cog mr-3"></i>
+                <div>Dashboard</div>
+            </div>
         </a>
     </div>
     <div class="divider"></div>
     <div class="dashboard">
-        <a class="navbar-item" [routerLink]="['/admin/manga-chapter']" routerLinkActive="router-link-active">
-            <i class="fas fa-cog mr-3"></i>
-            <div>Chapter</div>
+        <a class="navbar-item" [ngClass]="{'router-link-active': (showManageManga === true)}"
+            (click)="showManageManga = !showManageManga; showManageUser =false">
+            <div>
+                <i class="fas fa-folder mr-3"></i>
+                <div>Manage Manga</div>
+            </div>
+            <div>
+                <i *ngIf="!showManageManga" class="fas fa-chevron-right"></i>
+                <i *ngIf="showManageManga" class="fas fa-chevron-down"></i>
+            </div>
         </a>
+        <div class="manage-menu" *ngIf="showManageManga">
+            <a [routerLink]="['/admin/manage-manga']" routerLinkActive="item-menu-active">List manga</a>
+            <a>New manga</a>
+            <a>Manga deleted</a>
+
+        </div>
     </div>
     <div class="divider"></div>
     <div class="dashboard">
-        <a class="navbar-item" [routerLink]="['/admin/manga-chapter']" routerLinkActive="router-link-active">
-            <i class="fas fa-cog mr-3"></i>
-            <div>Manage Manga</div>
+        <a class="navbar-item" [ngClass]="{'router-link-active': (showManageUser === true)}"
+            (click)="showManageUser = !showManageUser; showManageManga = false">
+            <div>
+                <i class="fas fa-user-friends mr-3"></i>
+                <div>Manage User</div>
+            </div>
+            <div>
+                <i *ngIf="!showManageUser" class="fas fa-chevron-right"></i>
+                <i *ngIf="showManageUser" class="fas fa-chevron-down"></i>
+            </div>
         </a>
+        <div class="manage-menu" *ngIf="showManageUser">
+            <a [routerLink]="['/admin/manage-user']" routerLinkActive="item-menu-active">List user</a>
+            <a>Users deleted</a>
+
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="dashboard">
+        <a class="navbar-item">
+            <div>
+                <i class="fas fa-clock mr-3"></i>
+                <div>Audit trail</div>
+            </div>
+
+        </a>
+
     </div>
     <div class="divider"></div>
 </div>

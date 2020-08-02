@@ -9,10 +9,12 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { ChartsModule } from 'ng2-charts';
+import { ManageMangaComponent } from './manage-manga/manage-manga.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
 @NgModule({
-  declarations: [AdminPageComponent, AdminHeaderComponent, AdminNavbarComponent, AdminDashboardComponent],
+  declarations: [AdminPageComponent, AdminHeaderComponent, AdminNavbarComponent, AdminDashboardComponent, ManageMangaComponent, ManageUserComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

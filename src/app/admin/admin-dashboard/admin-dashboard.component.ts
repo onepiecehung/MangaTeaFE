@@ -56,14 +56,15 @@ export class AdminDashboardComponent implements OnInit {
     this.adminService.getAdminDashboard(param).then(data => {
       Object.keys(data.genres).forEach(label => {
         this.pieChartLabels.push(label);
-        this.pieChartData.push(Math.round(data['genres'][label] / data['total']  * 100));
+        this.pieChartData.push(Math.round(data['genres'][label] / data['total'] * 100));
       });
     });
 
     param = "percentMaleAndFemale=1";
     this.adminService.getAdminDashboard(param).then(data => {
-      this.pieChartDataSex.push(data['male']);
-      this.pieChartDataSex.push(data['female']);
+      console.log("AdminDashboardComponent -> ngOnInit -> data", data)
+      this.pieChartDataSex.push((data['male'] / data['total']) * 100);
+      this.pieChartDataSex.push((data['female'] / data['total']) * 100);
     });
 
     param = "gender=MALE";
