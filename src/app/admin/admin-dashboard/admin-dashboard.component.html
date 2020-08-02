@@ -1,4 +1,5 @@
-<div class="admin-dashboard">
+<app-spinner [loading]="isLoading"></app-spinner>
+<div *ngIf="!isLoading" class="admin-dashboard">
     <div class="admin-title-page">
         <div class="title">
             Dashboard
@@ -11,10 +12,10 @@
         <div class="col-xl-3 col-md-6 total-manga shadow">
             <div class="info">
                 <div class="title-info">
-                    Total manga
+                    Total user
                 </div>
                 <div class="value">
-                    200000
+                    {{ dashboardInfo.totalUser }}
                 </div>
             </div>
             <div class="icon">
@@ -27,7 +28,7 @@
                     Total manga
                 </div>
                 <div class="value">
-                    200000
+                    {{ dashboardInfo.totalManga }}
                 </div>
             </div>
             <div class="icon">
@@ -37,10 +38,10 @@
         <div class="col-xl-3 col-md-6 total-manga shadow">
             <div class="info">
                 <div class="title-info">
-                    Total manga
+                    Total chapter
                 </div>
                 <div class="value">
-                    200000
+                    {{ dashboardInfo.totalChapter }}
                 </div>
             </div>
             <div class="icon">
@@ -50,15 +51,46 @@
         <div class="col-xl-3 col-md-6 total-manga shadow">
             <div class="info">
                 <div class="title-info">
-                    Total manga
+                    Total group
                 </div>
                 <div class="value">
-                    200000
+                    {{ dashboardInfo.totalGroup }}
                 </div>
             </div>
             <div class="icon">
                 <i class="fas fa-dollar-sign"></i>
             </div>
         </div>
+    </div>
+    <div>
+        <canvas baseChart 
+            [data]="pieChartData" 
+            [labels]="pieChartLabels" 
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+        </canvas>
+    </div>
+    <div>
+        <canvas baseChart 
+            [data]="pieChartDataSex" 
+            [labels]="pieChartLabelsSex" 
+            [chartType]="pieChartTypeSex"
+            [options]="pieChartOptionsSex"
+            [plugins]="pieChartPluginsSex"
+            [legend]="pieChartLegendSex">
+        </canvas>
+    </div>
+    <div>
+        <canvas 
+            baseChart 
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+        </canvas>
     </div>
 </div>

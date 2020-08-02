@@ -40,6 +40,7 @@ export class MangaDescriptionComponent implements OnInit, AfterViewInit {
   isLoadingSubmit = false;
   isLoading = true;
   rating = 0;
+  showChart = false;
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -85,19 +86,7 @@ export class MangaDescriptionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.ratingService.getRatingManga(this.mangaID).then(data => {
-      this.arrRating.push(data['rating']['1']);
-      this.arrRating.push(data['rating']['2']);
-      this.arrRating.push(data['rating']['3']);
-      this.arrRating.push(data['rating']['4']);
-      this.arrRating.push(data['rating']['5']);
-      this.arrRating.push(data['rating']['6']);
-      this.arrRating.push(data['rating']['7']);
-      this.arrRating.push(data['rating']['8']);
-      this.arrRating.push(data['rating']['9']);
-      this.arrRating.push(data['rating']['10']);
-      this.arrRating.reverse();
-    })
+
   }
 
   get f() {
@@ -218,6 +207,27 @@ export class MangaDescriptionComponent implements OnInit, AfterViewInit {
     this.ratingService.rating(ratingRequest).then(response => {
 
     })
+  }
+
+  showChartUserRating() {
+    this.showChart = !this.showChart;
+    if (this.showChart === true) {
+      this.isLoading = true;
+      this.ratingService.getRatingManga(this.mangaID).then(data => {
+        this.arrRating.push(data['rating']['1']);
+        this.arrRating.push(data['rating']['2']);
+        this.arrRating.push(data['rating']['3']);
+        this.arrRating.push(data['rating']['4']);
+        this.arrRating.push(data['rating']['5']);
+        this.arrRating.push(data['rating']['6']);
+        this.arrRating.push(data['rating']['7']);
+        this.arrRating.push(data['rating']['8']);
+        this.arrRating.push(data['rating']['9']);
+        this.arrRating.push(data['rating']['10']);
+        this.arrRating.reverse();
+        this.isLoading = false;
+      })
+    }
   }
 
 }
