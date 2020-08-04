@@ -11,8 +11,10 @@ import { Label, SingleDataSet } from 'ng2-charts';
 export class AdminDashboardComponent implements OnInit {
 
   dashboardInfo: any;
-  isLoading = true;
-
+  isLoadingSystemInfo = true;
+  isLoadingChartGenre = true;
+  isLoadingChartMangaSex = true;
+  isLoadingChartGenreSex = true;
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -50,6 +52,7 @@ export class AdminDashboardComponent implements OnInit {
     let param = "total=1";
     this.adminService.getAdminDashboard(param).then(data => {
       this.dashboardInfo = data;
+      this.isLoadingSystemInfo = false;
     });
 
     param = 'mostViewGenre=1';
@@ -58,13 +61,14 @@ export class AdminDashboardComponent implements OnInit {
         this.pieChartLabels.push(label);
         this.pieChartData.push(Math.round(data['genres'][label] / data['total'] * 100));
       });
+      this.isLoadingChartGenre = false;
     });
 
     param = "percentMaleAndFemale=1";
     this.adminService.getAdminDashboard(param).then(data => {
-      console.log("AdminDashboardComponent -> ngOnInit -> data", data)
       this.pieChartDataSex.push((data['male'] / data['total']) * 100);
       this.pieChartDataSex.push((data['female'] / data['total']) * 100);
+      this.isLoadingChartMangaSex = false;
     });
 
     param = "gender=MALE";
@@ -84,8 +88,8 @@ export class AdminDashboardComponent implements OnInit {
         this.barChartLabels.push(label);
         genreForFemale.push(data['genres'][label]);
       });
-      this.barChartData.push({ data: genreForFemale, label: 'Female' })
-      this.isLoading = false;
+      this.barChartData.push({ data: genreForFemale, label: 'Female' });
+      this.isLoadingChartGenreSex = false;
     });
 
   }

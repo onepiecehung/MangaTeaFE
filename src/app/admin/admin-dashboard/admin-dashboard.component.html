@@ -1,95 +1,106 @@
-<app-spinner [loading]="isLoading"></app-spinner>
-<div *ngIf="!isLoading" class="admin-dashboard">
+<div class="admin-dashboard">
     <div class="admin-title-page">
         <div class="title">
             Dashboard
         </div>
         <div>
-            <button type="button" class="btn btn-primary">Button</button>
+            <!-- <button type="button" class="btn btn-primary">Button</button> -->
         </div>
     </div>
-    <div class="info-system">
-        <div class="col-xl-3 col-md-6 total-manga shadow">
-            <div class="info">
-                <div class="title-info">
-                    Total user
+    <div class="info-system" [ngClass]="{'d-flex justify-content-center': isLoadingSystemInfo}">
+        <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoadingSystemInfo"></nz-spin>
+        <ng-container *ngIf="!isLoadingSystemInfo">
+            <div class="col-xl-3 col-md-6 total-manga shadow">
+                <div class="info">
+                    <div class="title-info">
+                        Total user
+                    </div>
+                    <div class="value">
+                        {{ dashboardInfo.totalUser }}
+                    </div>
                 </div>
-                <div class="value">
-                    {{ dashboardInfo.totalUser }}
-                </div>
-            </div>
-            <div class="icon">
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 total-manga shadow">
-            <div class="info">
-                <div class="title-info">
-                    Total manga
-                </div>
-                <div class="value">
-                    {{ dashboardInfo.totalManga }}
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
             </div>
-            <div class="icon">
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 total-manga shadow">
-            <div class="info">
-                <div class="title-info">
-                    Total chapter
+            <div class="col-xl-3 col-md-6 total-manga shadow">
+                <div class="info">
+                    <div class="title-info">
+                        Total manga
+                    </div>
+                    <div class="value">
+                        {{ dashboardInfo.totalManga }}
+                    </div>
                 </div>
-                <div class="value">
-                    {{ dashboardInfo.totalChapter }}
-                </div>
-            </div>
-            <div class="icon">
-                <i class="fas fa-dollar-sign"></i>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6 total-manga shadow">
-            <div class="info">
-                <div class="title-info">
-                    Total group
-                </div>
-                <div class="value">
-                    {{ dashboardInfo.totalGroup }}
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
             </div>
-            <div class="icon">
-                <i class="fas fa-dollar-sign"></i>
+            <div class="col-xl-3 col-md-6 total-manga shadow">
+                <div class="info">
+                    <div class="title-info">
+                        Total chapter
+                    </div>
+                    <div class="value">
+                        {{ dashboardInfo.totalChapter }}
+                    </div>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
             </div>
-        </div>
+            <div class="col-xl-3 col-md-6 total-manga shadow">
+                <div class="info">
+                    <div class="title-info">
+                        Total group
+                    </div>
+                    <div class="value">
+                        {{ dashboardInfo.totalGroup }}
+                    </div>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+        </ng-container>
     </div>
     <div class="card">
         <div class="card-header">
             Genre
         </div>
-        <div class="card-body">
-            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
-                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
-            </canvas>
+        <div class="card-body" [ngClass]="{'d-flex justify-content-center': isLoadingChartGenre}">
+            <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoadingChartGenre"></nz-spin>
+            <ng-container *ngIf="!isLoadingChartGenre">
+                <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                    [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                </canvas>
+            </ng-container>
         </div>
     </div>
     <div class="card mt-3">
         <div class="card-header">
             Manga male/female
         </div>
-        <div class="card-body">
-            <canvas baseChart [data]="pieChartDataSex" [labels]="pieChartLabelsSex" [chartType]="pieChartTypeSex"
-                [options]="pieChartOptionsSex" [plugins]="pieChartPluginsSex" [legend]="pieChartLegendSex">
-            </canvas>
+        <div class="card-body" [ngClass]="{'d-flex justify-content-center': isLoadingChartMangaSex}">
+            <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoadingChartMangaSex"></nz-spin>
+            <ng-container *ngIf="!isLoadingChartMangaSex">
+                <canvas baseChart [data]="pieChartDataSex" [labels]="pieChartLabelsSex" [chartType]="pieChartTypeSex"
+                    [options]="pieChartOptionsSex" [plugins]="pieChartPluginsSex" [legend]="pieChartLegendSex">
+                </canvas>
+            </ng-container>
         </div>
     </div>
     <div class="card mt-3">
         <div class="card-header">
             Genre male/female
         </div>
-        <div class="card-body">
-            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
-            </canvas>
+        <div class="card-body" [ngClass]="{'d-flex justify-content-center': isLoadingChartGenreSex}">
+            <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoadingChartGenreSex"></nz-spin>
+            <ng-container *ngIf="!isLoadingChartGenreSex">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </ng-container>
         </div>
     </div>
 </div>

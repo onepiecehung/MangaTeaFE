@@ -11,16 +11,27 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { ChartsModule } from 'ng2-charts';
 import { ManageMangaComponent } from './manage-manga/manage-manga.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 
 @NgModule({
-  declarations: [AdminPageComponent, AdminHeaderComponent, AdminNavbarComponent, AdminDashboardComponent, ManageMangaComponent, ManageUserComponent],
+  declarations: [
+    AdminPageComponent,
+    AdminHeaderComponent,
+    AdminNavbarComponent,
+    AdminDashboardComponent,
+    ManageMangaComponent,
+    ManageUserComponent
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NzDropDownModule,
     ChartsModule,
-    SharedModule
+    SharedModule,
+    NzModalModule,
+    NzSpinModule
   ]
 })
 export class AdminModule { }
