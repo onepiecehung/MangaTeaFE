@@ -13,7 +13,11 @@ import { ManageMangaComponent } from './manage-manga/manage-manga.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzIconModule } from 'ng-zorro-antd/icon'; 
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { ManageUserDeletedComponent } from './manage-user/manage-user-deleted/manage-user-deleted.component';
+import { ManageUserBlockedComponent } from './manage-user/manage-user-blocked/manage-user-blocked.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     AdminNavbarComponent,
     AdminDashboardComponent,
     ManageMangaComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    ManageUserDeletedComponent,
+    ManageUserBlockedComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +37,10 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     ChartsModule,
     SharedModule,
     NzModalModule,
-    NzSpinModule
+    NzSpinModule,
+    NzTableModule,
+    NzIconModule,
+    NzNotificationModule
   ]
 })
 export class AdminModule { }

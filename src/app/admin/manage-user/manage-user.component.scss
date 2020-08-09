@@ -1,13 +1,18 @@
 .manage-user {
-    .admin-title-page {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-      .title {
-        font-weight: bold;
-        font-size: 20px;
-      }
+  .admin-title-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    .title {
+      font-weight: bold;
+      font-size: 20px;
     }
   }
-  
+}
+
+.ant-table tfoot > tr > td {
+  position: relative;
+  padding: 1px;
+  overflow-wrap: break-word;
+}

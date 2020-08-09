@@ -23,4 +23,28 @@ export class AdminService {
       });
     });
   }
+
+  getUsers(params) {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.ADMIN_USER}?${params}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+  blockUser(body){
+    return new Promise((resolve, reject) => {
+      this.apiService.putData(`${CONSTANT_API.API_ENDPOINTS.ADMIN_BLOCK_USER}`, body).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
 }

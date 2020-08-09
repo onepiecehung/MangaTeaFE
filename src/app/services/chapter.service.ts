@@ -23,7 +23,7 @@ export class ChapterService {
         if (response.status === HTTP_STATUS.OK) {
           resolve(new Chapter(response.data.chapter));
         } else {
-          reject();
+          reject(response.data);
         }
       });
     });
@@ -34,18 +34,19 @@ export class ChapterService {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.CHAPTER}`, chapterUpload).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
-          resolve();
+          resolve(response.data);
         } else {
-          reject();
+          reject(response.data);
         }
       });
     });
   }
 
-  getAllGroupTranslate(): Promise<GroupTranslate[]> {
+  getAllGroupTranslate(params?): Promise<GroupTranslate[]> {
     return new Promise((resolve, reject) => {
-      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.GROUP_TRANSLATE}`).subscribe(response => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.GROUP_TRANSLATE}?${params}`).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
+          console.log("response", response)
           let groupTranslate: GroupTranslate[] = [];
           if (Array.isArray(response.data.groupTranslation) && response.data.groupTranslation.length > 0) {
             response.data.groupTranslation.forEach(group => {
@@ -53,6 +54,30 @@ export class ChapterService {
             });
           }
           resolve(groupTranslate);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  newGroupTranslate(body): Promise<GroupTranslate> {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.GROUP_TRANSLATE}`, body).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+  getDetailGroupTranslate(params?): Promise<GroupTranslate> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.GROUP_TRANSLATE}?${params}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
         } else {
           reject();
         }

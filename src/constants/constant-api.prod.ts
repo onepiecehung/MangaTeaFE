@@ -17,7 +17,8 @@ export namespace CONSTANT_API {
     REMOVE_FAVORITE: 'http://localhost:2111/v1/member/remove-from-favorite',
     SAVE_MANGA: 'http://localhost:2111/v1/member/save-manga',
     UNSAVED_MANGA:'http://localhost:2111/v1/member/unsaved-manga',
-    RATING: 'http://localhost:2111/v1/rating'
-
+    RATING: 'http://localhost:2111/v1/rating',
+    ADMIN_USER: 'http://localhost:2111/v1/user/find',
+    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin'
   }
 }

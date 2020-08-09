@@ -1,3 +1,5 @@
+import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
+import { GroupTranslateComponent } from './pages/group-translate/group-translate.component';
 import { GenreResolver } from './../resolves/genre.resolver';
 import { LayoutHomeComponent } from './components/layout-home/layout-home.component';
 import { LatestUpdateComponent } from './pages/latest-update/latest-update.component';
@@ -7,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { GenrePageComponent } from './pages/genre-page/genre-page.component';
+import { GroupTranslateDetailComponent } from './pages/group-translate/group-translate-detail/group-translate-detail.component';
 
 
 const routes: Routes = [
@@ -28,9 +31,18 @@ const routes: Routes = [
       {
         path: 'latest-update',
         component: LatestUpdateComponent,
-        // resolve: {
-        //   load: GenreResolver
-        // },
+      },
+      {
+        path: 'group-translate',
+        component: GroupTranslateComponent
+      },
+      {
+        path: 'group-translate/:id',
+        component: GroupTranslateDetailComponent
+      },
+      {
+        path: 'new-group-translate',
+        component: NewGroupTranslateComponent
       },
       {
         path: 'users',

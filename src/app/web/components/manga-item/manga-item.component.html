@@ -20,7 +20,7 @@
                   {{ mangaItem?.chapter[mangaItem?.chapter.length - 1]?.chapterNumber}}</span>
               </div>
             </div>
-            <div class="col-1 d-flex justify-content-end" nz-dropdown [nzDropdownMenu]="menu"
+            <div class="col-1 d-flex justify-content-end align-items-start" nz-dropdown [nzDropdownMenu]="menu"
               [nzPlacement]="'bottomRight'" [nzTrigger]="'click'">
               <i class="fas fa-ellipsis-v icon-setting"></i>
               <nz-dropdown-menu #menu="nzDropdownMenu">

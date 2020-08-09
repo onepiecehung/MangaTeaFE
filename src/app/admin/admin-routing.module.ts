@@ -1,3 +1,5 @@
+import { ManageUserBlockedComponent } from './manage-user/manage-user-blocked/manage-user-blocked.component';
+import { ManageUserDeletedComponent } from './manage-user/manage-user-deleted/manage-user-deleted.component';
 import { ManageMangaComponent } from './manage-manga/manage-manga.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
@@ -20,8 +22,16 @@ const routes: Routes = [
         component: ManageMangaComponent
       },
       {
-        path: 'manage-user',
+        path: 'manage-users',
         component: ManageUserComponent
+      },
+      {
+        path: 'manage-users-deleted',
+        component: ManageUserDeletedComponent
+      },
+      {
+        path: 'manage-users-blocked',
+        component: ManageUserBlockedComponent
       }
     ]
   }

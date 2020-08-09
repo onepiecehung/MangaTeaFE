@@ -38,6 +38,9 @@ import { FilterComponent } from './components/filter/filter.component';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { GroupTranslateComponent } from './pages/group-translate/group-translate.component';
+import { GroupTranslateDetailComponent } from './pages/group-translate/group-translate-detail/group-translate-detail.component';
+import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
@@ -60,6 +63,9 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     LatestUpdateComponent,
     LayoutHomeComponent,
     FilterComponent,
+    GroupTranslateComponent,
+    GroupTranslateDetailComponent,
+    NewGroupTranslateComponent,
   ],
   imports: [
     CommonModule,

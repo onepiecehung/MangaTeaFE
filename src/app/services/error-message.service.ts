@@ -10,6 +10,7 @@ export class ErrorMessageService {
 
   errorMessage: ErrorMessage;
   usernameError: ErrorMessage;
+  groupNameError: ErrorMessage;
   emailError: ErrorMessage;
   passwordError: ErrorMessage;
   passwordConfirmError: ErrorMessage;

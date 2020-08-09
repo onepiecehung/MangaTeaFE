@@ -19,5 +19,7 @@ export namespace CONSTANT_API {
     UNSAVED_MANGA:'',
     RATING: '',
     DASHBOARD: '',
+    ADMIN_USER: '',
+    ADMIN_BLOCK_USER: ''
   }
 }

@@ -1,0 +1,27 @@
+// .manga-item {
+//   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+//     0 1px 10px 0 rgba(0, 0, 0, 0.12);
+// }
+.page-title {
+    text-transform: uppercase;
+    color: #4d5e70;
+    font-size: 24px;
+    line-height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bolder;
+  }
+  .icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: red;
+    left: 0;
+    font-size: 14px;
+    div {
+      margin-left: 8px;
+      width: 100px;
+      height: 3px;
+      background: red;
+    }
+  }
+  

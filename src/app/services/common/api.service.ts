@@ -22,6 +22,14 @@ export class ApiService {
     );
   }
 
+  putData(url, body): Observable<any> {
+    return this.http.put(url, body).pipe(
+      catchError(err => {
+        return of(err.error);
+      })
+    );
+  }
+
   getData(url): Observable<any> {
     return this.http.get(url).pipe(
       catchError(err => {
