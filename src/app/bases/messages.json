@@ -58,5 +58,10 @@
     "field": "email",
     "key": "email_not_exists",
     "message": "Email not exists"
+  },
+  {
+    "field": "groupName",
+    "key": "Group_translation_is_exist.",
+    "message": "Group name already exists with this group name"
   }
 ]

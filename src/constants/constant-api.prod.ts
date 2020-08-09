@@ -18,7 +18,8 @@ export namespace CONSTANT_API {
     SAVE_MANGA: 'http://localhost:2111/v1/member/save-manga',
     UNSAVED_MANGA:'http://localhost:2111/v1/member/unsaved-manga',
     RATING: 'http://localhost:2111/v1/rating',
-    DASHBOARD: 'http://localhost:2111/v1/admin/dashboard'
-
+    DASHBOARD: 'http://localhost:2111/v1/admin/dashboard',
+    ADMIN_USER: 'http://localhost:2111/v1/user/find',
+    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin'
   }
 }

@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="page-title d-flex align-items-center justify-content-between mt-2">
+    <div class="title">
+      New Manga
+    </div>
+    <div class="btn-action">
+      <button nz-button nzType="default" class="mr-2" nzDanger (click)="onClickCancel()">Cancel</button>
+      <button nz-button nzType="primary" (click)="onClickNewGroupTranslate()">Save</button>
+    </div>
+  </div>
+  <div class="form-new-group mt-2">
+    <div class="card">
+      <div class="body">
+        <div class="card-header">
+          <i class="fas fa-users"></i>
+          Manga Info
+        </div>
+        <div class="card-body p-0">
+          <form [formGroup]="formGroupTranslate">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th style="width: 30%;" scope="row">
+                    <i class="fas fa-users mr-1"></i>
+                    Name
+                  </th>
+                  <td>
+                    <input nz-input [ngClass]="{'is-invalid': (errorMessageService?.groupNameError?.message)}"
+                      nzSize="large" formControlName="name" placeholder="Group name" />
+                    <div class="invalid-feedback ml-2">
+                      <i class="fas fa-exclamation-triangle"></i>
+                      {{ errorMessageService?.groupNameError?.message }} </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-globe-asia mr-1"></i>
+                    Language
+                  </th>
+                  <td>
+                    <nz-select nzShowSearch nzAllowClear nzSize="large" nzServerSearch
+                      formControlName="language" class="w-100 text-left" nzPlaceHolder="Select language">
+                      <ng-container *ngFor="let country of countries">
+                        <nz-option nzCustomContent [nzLabel]="country.name" [nzValue]="country._id">
+                          <img [src]="country.flag" class="mr-2" alt="" width="25px">
+                          {{ country.name }}
+                        </nz-option>
+                      </ng-container>
+                    </nz-select>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-external-link-alt mr-1"></i>
+                    Website
+                  </th>
+                  <td>
+                    <input nz-input nzSize="large" formControlName="web"
+                      placeholder="(include http:// or https://) (Optional)" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><i class="fab fa-discord mr-1"></i>Discord</th>
+                  <td> <input nz-input nzSize="large" formControlName="discord"
+                      placeholder="(include http:// or https://) (Optional)" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Email</th>
+                  <td> <input nz-input nzSize="large" formControlName="email" placeholder="Email (Optional)" /></td>
+                </tr>
+                <tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-receipt mr-1"></i>
+                    Description
+                  </th>
+                  <td>
+                    <textarea formControlName="about" nz-input placeholder="Description for group"
+                      [nzAutosize]="{ minRows: 5 }"></textarea>
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Author</th>
+                  <td> <input nz-input nzSize="large" placeholder="Email (Optional)" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Artist</th>
+                  <td> <input nz-input nzSize="large" placeholder="Email (Optional)" /></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Pub. status</th>
+                  <td>
+                    <nz-select ngModel="lucy">
+                      <nz-option nzValue="jack" nzLabel="Jack">asdf</nz-option>
+                      <nz-option nzValue="lucy" nzLabel="Lucy">asdf</nz-option>
+                      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled>asdfaf</nz-option>
+                    </nz-select>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Demographic</th>
+                  <td>
+                    <nz-select ngModel="lucy">
+                      <nz-option nzValue="jack" nzLabel="Jack">fsadf</nz-option>
+                      <nz-option nzValue="lucy" nzLabel="Lucy">asdf</nz-option>
+                      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled>asdf</nz-option>
+                    </nz-select>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

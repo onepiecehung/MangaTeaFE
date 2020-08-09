@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="my-3 d-flex justify-content-between align-items-center">
+    <div>
+      <div class="page-title">GROUP TRANSLATE</div>
+      <div class="icon">
+        <i class="fas fa-star"></i>
+        <div></div>
+      </div>
+    </div>
+    <div>
+      <a nz-button nzType="primary" [routerLink]="'/new-group-translate'">New Group</a>
+    </div>
+  </div>
+  <div class="table-responsive list-chapter mt-2">
+    <table class="table table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col" title="Language"><i class="fas fa-globe-asia"></i></th>
+          <th scope="col" title="Group name"><i class="fas fa-users"></i></th>
+          <th scope="col" title="User create group"><i class="fas fa-user"></i></th>
+          <th scope="col" title="Description"><i class="fas fa-receipt"></i></th>
+          <th style="width: 10%;" scope="col" title="Last update"><i class="fas fa-calendar-alt"></i></th>
+          <th scope="col" title="Total view"><i class="fas fa-eye"></i></th>
+          <th scope="col" title="Website/Discord"><i class="fas fa-link"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let group of groupTranslates; let index = index">
+
+          <td> <img
+              src="https://cdn.ip2location.com/assets/img/flags/{{group?.language[0]?.alpha2Code | lowercase  }}.png"
+              [alt]="group?.language[0]?.alpha2Code"></td>
+          <td><a [routerLink]="[group?._id]">{{group.name}}</a></td>
+          <td>{{group.createBy.username}}</td>
+          <td>{{group.about}}</td>
+          <td>{{ getDateUpdateFormat(group.updatedAt) }} </td>
+          <td>{{group.view}}</td>
+          <td>
+            <div class="d-flex justify-content-around">
+              <a [href]="group.email" target="blank" class="mr-2"><i class="fas fa-envelope"></i></a>
+              <a [href]="group.web" target="blank" class="mr-2"><i class="fas fa-external-link-alt"></i></a>
+              <a [href]="group.discord" target="blank"><i class="fab fa-discord"></i></a>
+            </div>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <!-- <div *ngFor="let item of listManga; first as isFirst">
+      <div class="mt-3 manga-item">
+        <app-manga-item [mangaItem]="item"></app-manga-item>
+      </div>
+    </div>
+    <div class="my-3 d-flex justify-content-center">
+      <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="totalPage" (nzPageIndexChange)="getPageIndexChange($event)">
+      </nz-pagination>
+    </div> -->
+</div>
