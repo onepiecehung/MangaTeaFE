@@ -26,6 +26,19 @@ export class GroupTranslateComponent implements OnInit {
     });
   }
 
+  getDateUpdateFormat(dateTime: string) {
+    var timeUpdate = Date.parse(dateTime);
+    var now = Math.floor(new Date().getTime());
+    var relativeTime = now - timeUpdate;
+    if (Math.floor(relativeTime / (1000 * 60 * 60 * 24)) > 1) {
+      return Math.floor(relativeTime / (1000 * 60 * 60 * 24)) + ' days';
+    } else if (Math.floor(relativeTime / (1000 * 60 * 60)) > 1) {
+      return Math.floor(relativeTime / (1000 * 60 * 60)) + ' hours';
+    } else if (Math.floor(relativeTime / (1000 * 60)) > 1) {
+      return Math.floor(relativeTime / (1000 * 60)) + ' minutes';
+    }
+  }
+
 
 
 }

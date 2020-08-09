@@ -22,7 +22,8 @@ export class GroupTranslateDetailComponent implements OnInit {
       let id: number = params['id'];
       let param: string = `populate=true&id=${id}`
       this.chapterService.getDetailGroupTranslate(param).then(data => {
-        this.group =data;
+        this.group = data;
+        console.log("GroupTranslateDetailComponent -> ngOnInit -> this.group", this.group)
         this.spinner.hide('AppSpinner');
       });
     });

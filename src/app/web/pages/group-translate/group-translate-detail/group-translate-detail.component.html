@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="group">
   <div class="row mt-2">
     <div class="card">
       <div class="card-header">
-        asdf
+        Avatar group
       </div>
       <div class="card-body p-0">
         <img src="https://i.imgur.com/1iZlhIQ.jpg" class="img-fluid" alt="">
@@ -11,7 +11,7 @@
 
   </div>
   <div class="row mt-2">
-    <div class="col-6 p-0">
+    <div class="col-6 pl-0">
       <div class="card">
         <div class="card-header">
           <i class="fas fa-info-circle"></i>
@@ -35,14 +35,18 @@
               </tr>
               <tr>
                 <th scope="row">Links:</th>
-                <td>Larry</td>
+                <td>
+                  <a [href]="group.email" target="blank" class="mr-2"><i class="fas fa-envelope"></i></a>
+                  <a [href]="group.web" target="blank" class="mr-2"><i class="fas fa-external-link-alt"></i></a>
+                  <a [href]="group.discord" target="blank"><i class="fab fa-discord"></i></a>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <div class="col-6 p-0">
+    <div class="col-6 pr-0">
       <div class="card">
         <div class="card-header">
           <i class="fas fa-user"></i>

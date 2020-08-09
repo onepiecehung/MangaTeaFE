@@ -1,3 +1,4 @@
+import { NewMangaComponent } from './pages/new-manga/new-manga.component';
 import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
 import { GroupTranslateComponent } from './pages/group-translate/group-translate.component';
 import { GenreResolver } from './../resolves/genre.resolver';
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'new-group-translate',
         component: NewGroupTranslateComponent
+      },
+      {
+        path: 'new-manga',
+        component: NewMangaComponent
       },
       {
         path: 'users',
