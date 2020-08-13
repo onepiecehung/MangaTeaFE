@@ -19,6 +19,8 @@ export namespace CONSTANT_API {
     UNSAVED_MANGA:'http://localhost:2111/v1/member/unsaved-manga',
     RATING: 'http://localhost:2111/v1/rating',
     ADMIN_USER: 'http://localhost:2111/v1/user/find',
-    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin'
+    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin',
+    GROUP_TRANSLATE_UPLOAD_AVATAR: 'http://localhost:2111/v1/group/upload/'
+
   }
 }

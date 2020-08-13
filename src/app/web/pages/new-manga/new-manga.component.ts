@@ -28,9 +28,6 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.chapterService.getAllCountry().then((data: Country[]) => {
-      this.countries = data;
-    });
     this.formGroupTranslate = this.formBuilder.group({
       name: ['', [Validators.required]],
       language: ['', [Validators.required]],
@@ -41,6 +38,10 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
     })
   }
   ngAfterViewInit(): void {
+
+    this.chapterService.getAllCountry().then((data: Country[]) => {
+      this.countries = data;
+    });
   }
   onClickCancel() {
     this.location.back();

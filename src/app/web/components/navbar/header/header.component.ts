@@ -8,7 +8,6 @@ import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { UserInfo } from 'src/app/models/user-info.model';
-import { NzPlacementType } from 'ng-zorro-antd/dropdown';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +18,7 @@ export class HeaderComponent implements OnInit {
   isVisible = false;
   title: string = '';
   formLoginSignUp: FormGroup;
+  userInfo: UserInfo;
 
   @ViewChild('username') usernameRef: ElementRef;
   @ViewChild('email') emailRef: ElementRef;
@@ -26,7 +26,6 @@ export class HeaderComponent implements OnInit {
   @Output() eventSearchMangaByName = new EventEmitter();
 
   isShowFormLogin = false;
-  listOfPosition: NzPlacementType[] = ['bottomLeft', 'bottomCenter', 'bottomRight', 'topLeft', 'topCenter', 'topRight'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -73,16 +72,13 @@ export class HeaderComponent implements OnInit {
     if (this.isShowFormLogin) {
       this.userService.loginAccount(user).then((userInfo: UserInfo) => {
         this.isVisible = false;
+        this.userInfo = userInfo;
         this.notification.create(
           'success',
           'Login success',
           'Login account successful',
           { nzDuration: 2000 }
         );
-        if (userInfo.role === '_ROOT') {
-          console.log("HeaderComponent -> handleOk -> userInfo.role ", userInfo.role)
-          this.router.navigate(['admin']);
-        }
       }).catch(err => {
         this.errorMessageService.getMessageFromKey(err.error);
       });

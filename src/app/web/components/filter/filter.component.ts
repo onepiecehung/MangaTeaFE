@@ -53,6 +53,7 @@ export class FilterComponent implements OnInit {
     this.genres.forEach(val => {
       val.checked = false
     });
+    this.eventFilter.emit(null);
   }
 
   onClickApply() {
