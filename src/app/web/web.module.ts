@@ -42,6 +42,9 @@ import { GroupTranslateComponent } from './pages/group-translate/group-translate
 import { GroupTranslateDetailComponent } from './pages/group-translate/group-translate-detail/group-translate-detail.component';
 import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
 import { NewMangaComponent } from './pages/new-manga/new-manga.component';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+
+
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 
 @NgModule({
@@ -88,6 +91,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzRadioModule,
     NzSwitchModule,
     NzSelectModule,
+    NzDatePickerModule,
     NzIconModule.forChild(icons),
   ]
 })

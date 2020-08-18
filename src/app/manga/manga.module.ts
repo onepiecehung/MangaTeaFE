@@ -22,6 +22,7 @@ import { SharedModule } from '../shared.module';
 import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { ChartsModule } from 'ng2-charts';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 
@@ -52,6 +53,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzFormModule,
     NzRateModule,
     ChartsModule,
+    NzEmptyModule,
     LazyLoadImageModule.forRoot(ScrollHooks)
   ],
 

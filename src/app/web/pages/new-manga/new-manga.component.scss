@@ -1,9 +1,127 @@
 table {
-    th,
-    td {
-      border: none;
-      text-align: right;
-      justify-content: center;
-    }
+  th,
+  td {
+    border: none;
+    text-align: right;
+    justify-content: center;
   }
-  
+}
+
+.file-input-banner {
+  position: relative;
+}
+
+.file-input-banner {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px dashed #ced4da;
+  border-radius: 0.25rem;
+  height: 200px;
+}
+.file-input-banner::after {
+  pointer-events: none;
+  position: absolute;
+  content: "";
+  display: block;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(../../../../assets/img/upload_file.png);
+  top: 60px;
+  left: 0;
+  width: 50px;
+  right: 0;
+  height: 56px;
+}
+.file-input-banner::before {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  right: 0;
+  height: 57px;
+  content: "Select image banner";
+  display: block;
+  margin: 0 auto;
+  color: #2ea591;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
+//
+.file-input-cover {
+  position: relative;
+}
+
+.file-input-cover {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px dashed #ced4da;
+  border-radius: 0.25rem;
+  height: 200px;
+}
+.file-input-cover::after {
+  pointer-events: none;
+  position: absolute;
+  content: "";
+  display: block;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(../../../../assets/img/upload_file.png);
+  top: 60px;
+  left: 0;
+  width: 50px;
+  right: 0;
+  height: 56px;
+}
+.file-input-cover::before {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  right: 0;
+  height: 57px;
+  content: "Select image cover";
+  display: block;
+  margin: 0 auto;
+  color: #2ea591;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.page-title {
+  text-transform: uppercase;
+  color: #4d5e70;
+  font-size: 24px;
+  line-height: 30px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bolder;
+}
+.icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: red;
+  left: 0;
+  font-size: 14px;
+  div {
+    margin-left: 8px;
+    width: 100px;
+    height: 3px;
+    background: red;
+  }
+}

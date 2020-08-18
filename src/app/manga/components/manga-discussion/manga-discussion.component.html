@@ -4,7 +4,7 @@
       <div>
         <div class="hot-update">Recommended for you</div>
       </div>
-      <div class="icon-next-prev">
+      <div class="icon-next-prev" *ngIf="mangaDiscussion.length > 0">
         <a href="#carousel-example" role="button" data-slide="prev">
           <i class="fas fa-chevron-left"></i>
         </a>
@@ -29,7 +29,11 @@
               </div>
             </div>
           </div>
-
+        </ng-container>
+        <ng-container *ngIf="mangaDiscussion.length === 0">
+          <div class="d-flex justify-content-center w-100">
+            <nz-empty></nz-empty>
+          </div>
         </ng-container>
       </div>
     </div>
