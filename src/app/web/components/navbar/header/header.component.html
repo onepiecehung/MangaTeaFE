@@ -21,7 +21,7 @@
       <div class="col-lg-3 col-md-4">
         <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
           <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
-            <img src="assets/img/img_avatar.png" alt="" class="img-profile rounded-circle">
+            <img [src]="userInfo?.avatar ? userInfo?.avatar : 'assets/img/img_avatar.png'" alt="" class="img-profile rounded-circle">
           </div>
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu>

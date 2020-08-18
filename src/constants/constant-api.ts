@@ -1,4 +1,4 @@
-export namespace CONSTANT_API {
+ export namespace CONSTANT_API {
   export const API_ENDPOINTS = {
     GENRE: '',
     LOGIN: '',
@@ -20,6 +20,7 @@ export namespace CONSTANT_API {
     RATING: '',
     DASHBOARD: '',
     ADMIN_USER: '',
-    ADMIN_BLOCK_USER: ''
+    ADMIN_BLOCK_USER: '',
+    GROUP_TRANSLATE_UPLOAD_AVATAR: ''
   }
 }

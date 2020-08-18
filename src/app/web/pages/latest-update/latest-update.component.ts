@@ -61,7 +61,12 @@ export class LatestUpdateComponent implements OnInit {
   }
 
   getFilterModel(filter: FilterModel) {
-    this.filter = filter;
-    this.getDataFilter();
+    if(filter !== null){
+      this.filter = filter;
+      this.getDataFilter();
+    }else{
+      this.getListManga(1);
+
+    }
   }
 }

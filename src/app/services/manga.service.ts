@@ -167,7 +167,7 @@ export class MangaService {
     });
   }
 
-  
+
   onSaveManga(mangaID: number) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.SAVE_MANGA}?idManga=${mangaID}`, null).subscribe(response => {
@@ -191,5 +191,19 @@ export class MangaService {
       });
     });
   }
-  
+
+  createNewManga(data: FormData) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.MANGA}`, data).subscribe(response => {
+        console.log("createNewManga -> response", response)
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+
 }

@@ -20,6 +20,8 @@ export namespace CONSTANT_API {
     RATING: 'http://localhost:2111/v1/rating',
     DASHBOARD: 'http://localhost:2111/v1/admin/dashboard',
     ADMIN_USER: 'http://localhost:2111/v1/user/find',
-    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin'
+    ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin',
+    GROUP_TRANSLATE_UPLOAD_AVATAR: 'http://localhost:2111/v1/group/upload/'
+
   }
 }

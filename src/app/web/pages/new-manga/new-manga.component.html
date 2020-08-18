@@ -1,7 +1,11 @@
 <div class="container">
-  <div class="page-title d-flex align-items-center justify-content-between mt-2">
-    <div class="title">
-      New Manga
+  <div class="my-3 page-title d-flex align-items-center justify-content-between mt-2">
+    <div>
+      <div class="page-title">GROUP TRANSLATE</div>
+      <div class="icon">
+        <i class="fas fa-star"></i>
+        <div></div>
+      </div>
     </div>
     <div class="btn-action">
       <button nz-button nzType="default" class="mr-2" nzDanger (click)="onClickCancel()">Cancel</button>
@@ -9,14 +13,43 @@
     </div>
   </div>
   <div class="form-new-group mt-2">
-    <div class="card">
+    <div class="card mt-2">
+      <div class="card-header">
+        <strong>Image</strong>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <div class="file-input-banner" *ngIf="!urlImgBanner">
+              <input class="file-input-banner" (change)="handleChangeImageBanner($event.target.files)"
+                id="file_input_banner" type="file" style="opacity: 0;">
+            </div>
+            <div *ngIf="urlImgBanner">
+              <img [src]="urlImgBanner" class="img-fluid" style="width: 427px; height: 200px;" alt="">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="file-input-cover" *ngIf="!urlImgCover">
+              <input class="file-input-cover" (change)="handleChangeImageCover($event.target.files)"
+                id="file_input_cover" type="file" style="opacity: 0;">
+            </div>
+            <div *ngIf="urlImgCover">
+              <img [src]="urlImgCover" class="img-fluid" style="width: 427px; height: 200px;" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-2">
       <div class="body">
         <div class="card-header">
-          <i class="fas fa-users"></i>
-          Manga Info
+          <strong>
+            <i class="fas fa-users"></i>
+            Manga Info
+          </strong>
         </div>
         <div class="card-body p-0">
-          <form [formGroup]="formGroupTranslate">
+          <form [formGroup]="formNewManga">
             <table class="table">
               <tbody>
                 <tr>
@@ -39,17 +72,48 @@
                     Language
                   </th>
                   <td>
-                    <nz-select nzShowSearch nzAllowClear nzSize="large" nzServerSearch
-                      formControlName="language" class="w-100 text-left" nzPlaceHolder="Select language">
-                      <ng-container *ngFor="let country of countries">
-                        <nz-option nzCustomContent [nzLabel]="country.name" [nzValue]="country._id">
-                          <img [src]="country.flag" class="mr-2" alt="" width="25px">
-                          {{ country.name }}
-                        </nz-option>
-                      </ng-container>
+                    <nz-select nzShowSearch nzAllowClear nzSize="large" nzServerSearch formControlName="language"
+                      class="w-100 text-left" nzPlaceHolder="Select language">
+                      <nz-option nzCustomContent [nzLabel]="'Japan'" [nzValue]="'JP'">
+                        <img class="mr-2" width="25px" src="https://cdn.ip2location.com/assets/img/flags/jp.png"
+                          alt="Japan">
+                        Japan
+                      </nz-option>
+                      <nz-option nzCustomContent [nzLabel]="'Korea'" [nzValue]="'KR'">
+                        <img class="mr-2" width="25px" src="https://cdn.ip2location.com/assets/img/flags/kr.png"
+                          alt="Korea">
+                        Korea
+                      </nz-option>
+                      <nz-option nzCustomContent [nzLabel]="'China'" [nzValue]="'CN'">
+                        <img class="mr-2" width="25px" src="https://cdn.ip2location.com/assets/img/flags/cn.png"
+                          alt="China">
+                        China
+                      </nz-option>
                     </nz-select>
                   </td>
 
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-globe-asia mr-1"></i>
+                    Start date
+                  </th>
+                  <td>
+
+                    <nz-date-picker formControlName="startDate" [nzSize]="'large'" class="w-100"
+                      (ngModelChange)="onChange($event)"></nz-date-picker>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-globe-asia mr-1"></i>
+                    End date
+                  </th>
+                  <td>
+
+                    <nz-date-picker formControlName="endDate" [nzSize]="'large'" class="w-100"
+                      (ngModelChange)="onChange($event)"></nz-date-picker>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">
@@ -82,37 +146,6 @@
 
                   </td>
                 </tr>
-
-                <tr>
-                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Author</th>
-                  <td> <input nz-input nzSize="large" placeholder="Email (Optional)" /></td>
-                </tr>
-                <tr>
-                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Artist</th>
-                  <td> <input nz-input nzSize="large" placeholder="Email (Optional)" /></td>
-                </tr>
-                <tr>
-                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Pub. status</th>
-                  <td>
-                    <nz-select ngModel="lucy">
-                      <nz-option nzValue="jack" nzLabel="Jack">asdf</nz-option>
-                      <nz-option nzValue="lucy" nzLabel="Lucy">asdf</nz-option>
-                      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled>asdfaf</nz-option>
-                    </nz-select>
-                  </td>
-                </tr>
-
-                <tr>
-                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Demographic</th>
-                  <td>
-                    <nz-select ngModel="lucy">
-                      <nz-option nzValue="jack" nzLabel="Jack">fsadf</nz-option>
-                      <nz-option nzValue="lucy" nzLabel="Lucy">asdf</nz-option>
-                      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled>asdf</nz-option>
-                    </nz-select>
-                  </td>
-                </tr>
-
               </tbody>
             </table>
           </form>

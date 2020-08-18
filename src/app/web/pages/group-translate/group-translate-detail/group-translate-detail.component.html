@@ -1,11 +1,19 @@
 <div class="container" *ngIf="group">
   <div class="row mt-2">
-    <div class="card">
-      <div class="card-header">
-        Avatar group
+    <div class="card w-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <strong>Avatar group</strong>
+        </div>
+        <div>
+          <nz-upload nzListType="picture" nzName="avatar" [nzData]="getExtraData" (nzChange)="onChange($event)"
+            [nzAction]="host">
+            <button nz-button><i nz-icon nzType="upload"></i>Upload</button>
+          </nz-upload>
+        </div>
       </div>
       <div class="card-body p-0">
-        <img src="https://i.imgur.com/1iZlhIQ.jpg" class="img-fluid" alt="">
+        <img [src]="group?.avatar" class="img-fluid" alt="">
       </div>
     </div>
 
@@ -14,8 +22,8 @@
     <div class="col-6 pl-0">
       <div class="card">
         <div class="card-header">
-          <i class="fas fa-info-circle"></i>
-          Group info
+          <i class="fas fa-info-circle mr-1"></i>
+          <strong>Group info</strong>
         </div>
         <div class="card-body p-0">
           <table class="table table-sm">
@@ -26,7 +34,7 @@
                 <td> {{ group._id }}</td>
               </tr>
               <tr>
-                <th scope="row">Alt name:	</th>
+                <th scope="row">Alt name: </th>
                 <td>{{ group.name }}</td>
               </tr>
               <tr>
@@ -49,8 +57,8 @@
     <div class="col-6 pr-0">
       <div class="card">
         <div class="card-header">
-          <i class="fas fa-user"></i>
-          Member info
+          <i class="fas fa-user mr-1"></i>
+          <strong>Member info</strong>
         </div>
         <div class="card-body p-0">
           <table class="table table-sm">
@@ -61,7 +69,7 @@
                 <td> {{ group._id }}</td>
               </tr>
               <tr>
-                <th scope="row">Alt name:	</th>
+                <th scope="row">Alt name: </th>
                 <td>{{ group.name }}</td>
               </tr>
               <tr>

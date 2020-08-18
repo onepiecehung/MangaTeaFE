@@ -33,7 +33,7 @@
           <td><a [routerLink]="[group?._id]">{{group.name}}</a></td>
           <td>{{group.createBy.username}}</td>
           <td>{{group.about}}</td>
-          <td>{{ getDateUpdateFormat(group.updatedAt) }} </td>
+          <td>{{ getDateUpdateFormat(group.updatedAt) }} ago</td>
           <td>{{group.view}}</td>
           <td>
             <div class="d-flex justify-content-around">
