@@ -12,23 +12,26 @@
       </div>
       <div class="col-lg-5 col-md-4">
         <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-          <input type="text" nz-input placeholder="Input manga name" #mangaName (keyup.enter)="searchMangaByName(mangaName)" />
+          <input type="text" nz-input placeholder="Input manga name" #mangaName
+            (keyup.enter)="searchMangaByName(mangaName)" />
         </nz-input-group>
         <ng-template #suffixButton>
-          <button nz-button nzType="primary" nzSize="large" (click)="searchMangaByName(mangaName)" nzSearch>Search</button>
+          <button nz-button nzType="primary" nzSize="large" (click)="searchMangaByName(mangaName)"
+            nzSearch>Search</button>
         </ng-template>
       </div>
       <div class="col-lg-3 col-md-4">
         <div class="profile d-flex flex-row-reverse" *ngIf="authService.isAuthenticated()">
           <div nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'">
-            <img [src]="userInfo?.avatar ? userInfo?.avatar : 'assets/img/img_avatar.png'" alt="" class="img-profile rounded-circle">
+            <img [src]="userInfo?.avatar ? userInfo?.avatar : 'assets/img/img_avatar.png'" alt=""
+              class="img-profile rounded-circle">
           </div>
           <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu>
+              <li nz-menu-item [routerLink]="['/admin']">Admin</li>
               <li nz-menu-item [routerLink]="['/users/profiles']">Setting</li>
               <li nz-menu-item [routerLink]="['/users/manga/manga-favorite']">Manga user</li>
               <li nz-menu-item (click)="onClickLogout()">Logout</li>
-              <li nz-menu-item [routerLink]="['/admin']">Admin</li>
             </ul>
           </nz-dropdown-menu>
         </div>
@@ -54,16 +57,16 @@
 </div>
 
 
-<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" style="width: 400px;" [nzContent]="modalContent" [nzFooter]="modalFooter"
   (nzOnCancel)="handleCancel()">
   <ng-template #modalTitle>
-   {{ title | uppercase }}
+    {{ title | uppercase }}
   </ng-template>
 
   <ng-template #modalContent>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
       <nz-form-item *ngIf="!isShowFormLogin">
-        <nz-form-label [nzSpan]="24" nzFor="username">User name</nz-form-label>
+        <nz-form-label [nzSpan]="24" nzFor="username"><strong>User name</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
             <input type="text" class="form-control" #username
@@ -77,7 +80,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="24" nzFor="email">Email</nz-form-label>
+        <nz-form-label [nzSpan]="24" nzFor="email"><strong>Email</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
             <input type="text" class="form-control" #email
@@ -91,7 +94,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label [nzSpan]="24" nzFor="password">Password</nz-form-label>
+        <nz-form-label [nzSpan]="24" nzFor="password"><strong>Password</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
             <input type="password" class="form-control"
@@ -105,7 +108,7 @@
         </nz-form-control>
       </nz-form-item>
       <nz-form-item *ngIf="!isShowFormLogin">
-        <nz-form-label [nzSpan]="24" nzFor="passwordConfirm">Password confirm</nz-form-label>
+        <nz-form-label [nzSpan]="24" nzFor="passwordConfirm"><strong>Password confirm</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
             <input type="password" class="form-control"
@@ -120,6 +123,12 @@
         </nz-form-control>
       </nz-form-item>
     </form>
+    <div *ngIf="!isShowFormLogin" class="text-right mt-2">
+      <span>
+        <a class="text-danger">Forgot password?
+        </a>
+      </span>
+    </div>
   </ng-template>
 
   <ng-template #modalFooter>

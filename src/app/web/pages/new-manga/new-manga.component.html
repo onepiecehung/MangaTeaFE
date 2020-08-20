@@ -1,7 +1,7 @@
 <div class="container">
   <div class="my-3 page-title d-flex align-items-center justify-content-between mt-2">
     <div>
-      <div class="page-title">GROUP TRANSLATE</div>
+      <div class="page-title">NEW MANGA</div>
       <div class="icon">
         <i class="fas fa-star"></i>
         <div></div>
@@ -68,6 +68,33 @@
                 </tr>
                 <tr>
                   <th scope="row">
+                    Other name
+                  </th>
+                  <td>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="Romaji">Romaji</span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="romaji">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="English">English</span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="english">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="Native">Native</span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="native">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="UserPreferred">User
+                          Preferred</span>
+                      </div>
+                      <input type="text" class="form-control" formControlName="userPreferred">
+                    </div>
+                  </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">
                     <i class="fas fa-globe-asia mr-1"></i>
                     Language
                   </th>
@@ -96,12 +123,34 @@
                 <tr>
                   <th scope="row">
                     <i class="fas fa-globe-asia mr-1"></i>
+                    Genre
+                  </th>
+                  <td>
+                    <nz-select class="w-100 text-left" nzAllowClear nzShowSearch nzServerSearch nzSize="large"
+                      nzMode="multiple" nzPlaceHolder="Select genre" formControlName="genre"
+                      [(ngModel)]="listOfSelectedValue">
+                      <!-- <nz-option *ngFor="let option of listOfOption" [nzLabel]="option" [nzValue]="option"
+                        [nzHide]="!isNotSelected(option)"></nz-option> -->
+
+                      <ng-container *ngFor="let g of genres">
+                        <nz-option *ngIf="!isLoading" [nzHide]="!isNotSelected(g.name)" [nzValue]="g.name"
+                          [nzLabel]="g.name"></nz-option>
+                      </ng-container>
+                      <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+                        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
+                      </nz-option>
+                    </nz-select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    <i class="fas fa-globe-asia mr-1"></i>
                     Start date
                   </th>
                   <td>
 
-                    <nz-date-picker formControlName="startDate" [nzSize]="'large'" class="w-100"
-                      (ngModelChange)="onChange($event)"></nz-date-picker>
+                    <nz-date-picker formControlName="startDate" [nzSize]="'large'" [nzPlaceHolder]="'Select start date'"
+                      class="w-100" (ngModelChange)="onChange($event)"></nz-date-picker>
                   </td>
                 </tr>
                 <tr>
@@ -111,8 +160,8 @@
                   </th>
                   <td>
 
-                    <nz-date-picker formControlName="endDate" [nzSize]="'large'" class="w-100"
-                      (ngModelChange)="onChange($event)"></nz-date-picker>
+                    <nz-date-picker formControlName="endDate" [nzPlaceHolder]="'Select end date'" [nzSize]="'large'"
+                      class="w-100" (ngModelChange)="onChange($event)"></nz-date-picker>
                   </td>
                 </tr>
                 <tr>
@@ -141,7 +190,7 @@
                     Description
                   </th>
                   <td>
-                    <textarea formControlName="about" nz-input placeholder="Description for group"
+                    <textarea formControlName="about" nzSize="large" nz-input placeholder="Description for group"
                       [nzAutosize]="{ minRows: 5 }"></textarea>
 
                   </td>
