@@ -33,3 +33,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .router-link-active{
     color: red;
 }
+.ant-modal-header {
+    padding: 16px 24px;
+    color: rgba(0,0,0,.65);
+    background: #ffd281;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 2px 2px 0 0;
+    text-align: center;
+  }

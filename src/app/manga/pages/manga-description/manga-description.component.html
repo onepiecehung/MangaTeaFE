@@ -2,7 +2,7 @@
   <div class="container" *ngIf="mangaItem !== null">
     <div class="card">
       <div class="card-header">
-        {{mangaItem?.name}}
+        <strong>{{mangaItem?.name}}</strong>
       </div>
       <div class="card-body">
         <div class="row">
@@ -13,7 +13,7 @@
             </a>
           </div>
           <div class="col-8">
-            <div class="row">
+            <div class="row mt-2">
               <div class="col-2 font-weight-bold">
                 Title ID:
               </div>
@@ -48,51 +48,11 @@
 
             <div class="row">
               <div class="col-2 font-weight-bold">
-                Artist:
-              </div>
-              <div class="col-10">
-                # {{mangaItem?.id}}
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-2 font-weight-bold">
-                Demographic:
-              </div>
-              <div class="col-10">
-                # {{mangaItem?.id}}
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-2 font-weight-bold">
-                Content:
-              </div>
-              <div class="col-10">
-                # {{mangaItem?.id}}
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-2 font-weight-bold">
                 Genre:
               </div>
               <div class="col-10">
                 <span class="badge badge-pill badge-primary mr-2"
                   *ngFor="let genre of mangaItem?.genres">{{genre}}</span>
-              </div>
-            </div>
-            <hr>
-
-            <div class="row">
-              <div class="col-2 font-weight-bold">
-                Theme:
-              </div>
-              <div class="col-10">
-                # {{mangaItem?.id}}
               </div>
             </div>
             <hr>
