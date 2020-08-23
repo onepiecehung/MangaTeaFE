@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, ViewChildren } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { MESSAGE, FORM_FIELD, ERROR_FIELD } from 'src/constants/constant-common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { UserInfo } from 'src/app/models/user-info.model';
+import { HomePageComponent } from 'src/app/web/pages/home-page/home-page.component';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('username') usernameRef: ElementRef;
   @ViewChild('email') emailRef: ElementRef;
+  @ViewChildren(HomePageComponent) homePageComponent;
 
   @Output() eventSearchMangaByName = new EventEmitter();
 
@@ -136,7 +138,8 @@ export class HeaderComponent implements OnInit {
 
   searchMangaByName(mangaName: HTMLInputElement) {
     if (mangaName.value !== null && mangaName.value !== '') {
-      this.eventSearchMangaByName.emit(mangaName.value);
+      this.homePageComponent.searchManga('sdfsadf');
+      // this.eventSearchMangaByName.emit(mangaName.value);
     }
   }
 }

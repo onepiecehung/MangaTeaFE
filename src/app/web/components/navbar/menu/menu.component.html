@@ -17,9 +17,11 @@
           </div>
         </nz-dropdown-menu>
       </div>
-      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/group-translate']">Group Translate</a>
+      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
+          [routerLink]="['/group-translate']">Group Translate</a>
       </div>
-      <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/new-manga']">New Manga</a></div>
+      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
+          [routerLink]="['/new-manga']">New Manga</a></div>
     </div>
 
   </div>

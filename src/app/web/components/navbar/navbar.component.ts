@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getActionSearchMangaByName(value) {
+    console.log("NavbarComponent -> getActionSearchMangaByName -> value", value)
     this.eventSearchMangaByName.emit(value);
   }
 }

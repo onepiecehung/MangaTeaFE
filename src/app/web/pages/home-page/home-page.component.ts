@@ -1,5 +1,5 @@
 import { Title } from '@angular/platform-browser';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { Manga } from 'src/app/models/manga.model';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -9,10 +9,11 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit,OnChanges {
   listManga: Manga[] = [];
   pageIndex = 1;
   totalPage = 0;
+  @Input('searchValue') searchValue;
 
   constructor(
     private mangaService: MangaService,
@@ -21,10 +22,16 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     this.titleService.setTitle('Home page');
     this.getListManga(this.pageIndex);
   }
+
+  ngOnChanges(){
+    
+    console.log("HomePageComponent -> ngOnChanges -> this.searchValue", this.searchValue)
+  }
+
   getPageIndexChange(event) {
     this.getListManga(event);
     this.pageIndex = event;
@@ -38,5 +45,9 @@ export class HomePageComponent implements OnInit {
     }).catch(err => console.log(err)
     );
     this.spinner.hide('AppSpinner');
+  }
+  public searchManga(searchValue: string) {
+    console.log("HomePageComponent -> searchManga -> searchValue", searchValue)
+
   }
 }

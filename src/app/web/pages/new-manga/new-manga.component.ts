@@ -40,6 +40,8 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.genres = this.genreService.genres;
+
     this.formNewManga = this.formBuilder.group({
       name: ['', [Validators.required]],
       language: ['', [Validators.required]],
@@ -59,10 +61,10 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
 
 
   }
-  isLoading = true;
+  // isLoading = true;
   ngAfterViewInit(): void {
-    this.genreService.genres;
-    this.isLoading = false;
+    // this.genreService.genres;
+    // this.isLoading = false;
   }
 
   onClickCancel() {

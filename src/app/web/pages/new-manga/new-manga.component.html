@@ -15,7 +15,8 @@
   <div class="form-new-group mt-2">
     <div class="card mt-2">
       <div class="card-header">
-        <strong>Image</strong>
+        <strong> <i class="fas fa-images mr-1"></i>
+          Image</strong>
       </div>
       <div class="card-body">
         <div class="row">
@@ -122,7 +123,7 @@
                 </tr>
                 <tr>
                   <th scope="row">
-                    <i class="fas fa-globe-asia mr-1"></i>
+                    <i class="fas fa-tasks mr-1"></i>
                     Genre
                   </th>
                   <td>
@@ -133,18 +134,18 @@
                         [nzHide]="!isNotSelected(option)"></nz-option> -->
 
                       <ng-container *ngFor="let g of genres">
-                        <nz-option *ngIf="!isLoading" [nzHide]="!isNotSelected(g.name)" [nzValue]="g.name"
+                        <nz-option  [nzHide]="!isNotSelected(g.name)" [nzValue]="g.name"
                           [nzLabel]="g.name"></nz-option>
                       </ng-container>
-                      <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
+                      <!-- <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
                         <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
-                      </nz-option>
+                      </nz-option> -->
                     </nz-select>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">
-                    <i class="fas fa-globe-asia mr-1"></i>
+                    <i class="fas fa-calendar-alt mr-1"></i>
                     Start date
                   </th>
                   <td>
@@ -155,7 +156,7 @@
                 </tr>
                 <tr>
                   <th scope="row">
-                    <i class="fas fa-globe-asia mr-1"></i>
+                    <i class="fas fa-calendar-alt mr-1"></i>
                     End date
                   </th>
                   <td>
