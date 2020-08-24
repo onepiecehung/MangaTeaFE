@@ -12,15 +12,15 @@
         <thead>
           <tr>
             <th nzLeft>Full Name</th>
-            <th>Age</th>
-            <th>Column 1</th>
-            <th>Column 2</th>
-            <th>Column 3</th>
-            <th>Column 4</th>
-            <th>Column 5</th>
-            <th>Column 6</th>
-            <th>Column 7</th>
-            <th>Column 8</th>
+            <th>Email</th>
+            <th>Point</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Login number</th>
+            <th>Last login</th>
+            <th>Birthday</th>
             <th nzRight>Action</th>
           </tr>
         </thead>
@@ -40,7 +40,7 @@
               <a nz-button nzTrigger="click" nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'"><i nz-icon nzType="setting" nzTheme="fill"></i></a>
               <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu>
-                  <!-- <li nz-menu-item (click)="showConfirmBlockUser(user._id)">Block user</li> -->
+                  <li nz-menu-item (click)="retrieveUser(user._id)">Retrieve user</li>
                   <!-- <li nz-menu-item (click)="showConfirmDeleteUser(user._id)">Delete user</li> -->
                 </ul>
               </nz-dropdown-menu>

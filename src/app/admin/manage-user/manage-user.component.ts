@@ -64,7 +64,7 @@ export class ManageUserComponent implements OnInit {
       "id": this.userID,
       "status": 'BLOCKED'
     }
-    this.adminService.blockUser(body).then(data => {
+    this.adminService.mangaUser(body).then(data => {
       if (data === true) {
         this.loadUser();
         this.notification.create(
@@ -82,13 +82,13 @@ export class ManageUserComponent implements OnInit {
       "id": this.userID,
       "status": 'REMOVED'
     }
-    this.adminService.blockUser(body).then(data => {
+    this.adminService.mangaUser(body).then(data => {
       if (data === true) {
         this.loadUser();
         this.notification.create(
           'success',
           'Successful',
-          'Block user successful',
+          'Delete user successful',
           { nzDuration: 2000 }
         );
       }

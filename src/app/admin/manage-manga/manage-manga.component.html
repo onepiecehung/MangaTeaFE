@@ -3,7 +3,7 @@
     <div class="title">
       List manga
     </div>
-    <div>
+    <!-- <div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">New
         manga</button>
       <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
@@ -26,10 +26,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="list-manga">
-    <table class="table table-sm">
+    <!-- <table class="table table-sm">
       <thead class="thead-light">
         <tr>
           <th scope="col">#</th>
@@ -70,6 +70,48 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
+
+    <nz-table #tableData [nzData]="listManga" [nzScroll]="{ x: '100%' }" [nzLoading]="isLoading">
+      <thead>
+        <tr>
+          <th nzLeft>Full Name</th>
+          <!-- <th>Email</th>
+          <th>Point</th>
+          <th>Address</th>
+          <th>Gender</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Login number</th>
+          <th>Last login</th>
+          <th>Birthday</th>
+          <th nzRight>Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let manga of tableData.data">
+          <td nzLeft>{{ manga.name }}</td>
+          <!-- <td>{{ user.email }}</td>
+          <td>{{ user.point }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.status }}</td>
+          <td>{{ user.loginCount }}</td>
+          <td>{{ user.lastLoginAt }}</td>
+          <td>{{ user.birthday }}</td>
+          <td nzRight>
+            <a nz-button nzTrigger="click" nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'"><i nz-icon
+                nzType="setting" nzTheme="fill"></i></a>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item (click)="showConfirmBlockUser(user._id)">Block user</li>
+                <li nz-menu-item (click)="showConfirmDeleteUser(user._id)">Delete user</li>
+              </ul>
+            </nz-dropdown-menu>
+          </td> -->
+        </tr>
+      </tbody>
+    </nz-table>
   </div>
 </div>
