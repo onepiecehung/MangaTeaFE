@@ -18,7 +18,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { ManageUserDeletedComponent } from './manage-user/manage-user-deleted/manage-user-deleted.component';
 import { ManageUserBlockedComponent } from './manage-user/manage-user-blocked/manage-user-blocked.component';
-
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 @NgModule({
   declarations: [
     AdminPageComponent,
@@ -40,6 +40,7 @@ import { ManageUserBlockedComponent } from './manage-user/manage-user-blocked/ma
     NzSpinModule,
     NzTableModule,
     NzIconModule,
+    NzToolTipModule,
     NzNotificationModule
   ]
 })

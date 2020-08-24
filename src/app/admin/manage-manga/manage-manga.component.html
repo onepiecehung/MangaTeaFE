@@ -3,104 +3,52 @@
     <div class="title">
       List manga
     </div>
-    <!-- <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">New
-        manga</button>
-      <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="modal-title">Modal title</div>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
   <div class="list-manga">
-    <!-- <table class="table table-sm">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td scope="row">
-            <button type="button" class="btn btn-primary btn-sm mr-2">Update</button>
-            <button type="button" class="btn btn-danger btn-sm" (click)="showDeleteConfirm()">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>
-            <button type="button" class="btn btn-primary btn-sm mr-2">Update</button>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-          <td>
-            <button type="button" class="btn btn-primary btn-sm mr-2">Update</button>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table> -->
 
     <nz-table #tableData [nzData]="listManga" [nzScroll]="{ x: '100%' }" [nzLoading]="isLoading">
       <thead>
         <tr>
-          <th nzLeft>Full Name</th>
-          <!-- <th>Email</th>
-          <th>Point</th>
-          <th>Address</th>
-          <th>Gender</th>
-          <th>Role</th>
+          <th nzLeft>ID</th>
+          <th >Name</th>
+          <th>Image</th>
+          <th>Country</th>
+          <th>User follow</th>
+          <th>View</th>
           <th>Status</th>
-          <th>Login number</th>
-          <th>Last login</th>
-          <th>Birthday</th>
-          <th nzRight>Action</th> -->
+          <th>Genre</th>
+          <th>Description</th>
+          <!-- <th>Status</th> -->
+          <!-- <th>Login number</th> -->
+          <!-- <th>Last login</th> -->
+          <!-- <th>Birthday</th> -->
+          <!-- <th nzRight>Action</th> -->
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let manga of tableData.data">
-          <td nzLeft>{{ manga.name }}</td>
-          <!-- <td>{{ user.email }}</td>
-          <td>{{ user.point }}</td>
-          <td>{{ user.address }}</td>
-          <td>{{ user.gender }}</td>
-          <td>{{ user.role }}</td>
-          <td>{{ user.status }}</td>
-          <td>{{ user.loginCount }}</td>
+          <td nzLeft> {{ manga?._id }} </td>
+          <td >{{ manga.name }}</td>
+          <td>
+            <img [src]="manga?.coverImage.medium" alt="">
+          </td>
+          <td>
+            <img style="width: 50px;" src="https://cdn.ip2location.com/assets/img/flags/{{ manga?.countryOfOrigin | lowercase  }}.png"
+              [alt]="manga?.countryOfOrigin">
+          </td>
+          <td>{{ manga?.userFollowedID.length }}</td>
+          <td>{{ manga?.view }}</td>
+          <td>{{ manga?.status }}</td>
+          <td>
+            <ng-container *ngFor="let genre of manga?.genres"> {{ genre }} </ng-container>
+          </td>
+          <td style="white-space: nowrap; width: 100%; overflow: hidden; text-overflow: ellipsis;"
+            [nzTooltipTitle]="manga?.description" nzTooltipPlacement="bottom" nz-tooltip>{{ manga?.description }}</td>
+          <!-- <td>{{ user.status }}</td> -->
+          <!-- <td>{{ user.loginCount }}</td>
           <td>{{ user.lastLoginAt }}</td>
-          <td>{{ user.birthday }}</td>
-          <td nzRight>
+          <td>{{ user.birthday }}</td> -->
+          <!-- <td nzRight>
             <a nz-button nzTrigger="click" nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomRight'"><i nz-icon
                 nzType="setting" nzTheme="fill"></i></a>
             <nz-dropdown-menu #menu="nzDropdownMenu">

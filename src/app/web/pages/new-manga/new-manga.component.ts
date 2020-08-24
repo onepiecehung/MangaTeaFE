@@ -18,7 +18,7 @@ import { Genre } from 'src/app/models/genre.model';
   templateUrl: './new-manga.component.html',
   styleUrls: ['./new-manga.component.scss']
 })
-export class NewMangaComponent implements OnInit, AfterViewInit {
+export class NewMangaComponent implements OnInit {
 
   formNewManga: FormGroup;
   urlImgBanner = '';
@@ -61,11 +61,7 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
 
 
   }
-  // isLoading = true;
-  ngAfterViewInit(): void {
-    // this.genreService.genres;
-    // this.isLoading = false;
-  }
+
 
   onClickCancel() {
     this.location.back();
@@ -74,7 +70,7 @@ export class NewMangaComponent implements OnInit, AfterViewInit {
 
   onClickNewGroupTranslate() {
     let formData = this.formNewManga.value;
-    if (!formData?.name || !formData.language || formData.about || !formData.startDate || !formData.endDate || !this.listOfSelectedValue || this.listOfSelectedValue.length == 0) {
+    if (!formData?.name || !formData.language || !formData.about || !formData.startDate || !formData.endDate || !this.listOfSelectedValue || this.listOfSelectedValue.length == 0) {
       this.notification.create(
         'error',
         'Error',
