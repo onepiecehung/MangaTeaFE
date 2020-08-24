@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-manage-user-deleted',
@@ -13,6 +14,7 @@ export class ManageUserDeletedComponent implements OnInit {
   index;
   constructor(
     private adminService: AdminService,
+    private notification: NzNotificationService,
 
   ) { }
 
@@ -23,8 +25,26 @@ export class ManageUserDeletedComponent implements OnInit {
   loadUser() {
     let params = "status=REMOVED";
     this.adminService.getUsers(params).then(data => {
-      console.log("ManageUserDeletedComponent -> loadUser -> data", data)
       this.usersDeleted = data['user'];
+    })
+  }
+
+  retrieveUser(userID: number) {
+    this.userID
+    var body = {
+      "id": userID,
+      "status": 'INACTIVE'
+    }
+    this.adminService.mangaUser(body).then(data => {
+      if (data === true) {
+        this.loadUser();
+        this.notification.create(
+          'success',
+          'Successful',
+          'Retrieve user successful',
+          { nzDuration: 2000 }
+        );
+      }
     })
   }
 }
