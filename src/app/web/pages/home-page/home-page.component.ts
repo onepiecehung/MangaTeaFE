@@ -9,11 +9,10 @@ import { NgxSpinnerService } from "ngx-spinner";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit,OnChanges {
+export class HomePageComponent implements OnInit {
   listManga: Manga[] = [];
   pageIndex = 1;
-  totalPage = 0;
-  @Input('searchValue') searchValue;
+  total = 0;
 
   constructor(
     private mangaService: MangaService,
@@ -27,11 +26,6 @@ export class HomePageComponent implements OnInit,OnChanges {
     this.getListManga(this.pageIndex);
   }
 
-  ngOnChanges(){
-    
-    console.log("HomePageComponent -> ngOnChanges -> this.searchValue", this.searchValue)
-  }
-
   getPageIndexChange(event) {
     this.getListManga(event);
     this.pageIndex = event;
@@ -41,13 +35,9 @@ export class HomePageComponent implements OnInit,OnChanges {
     this.spinner.show('AppSpinner');
     await this.mangaService.loadManga(pageIndex).then(data => {
       this.listManga = data.manga;
-      this.totalPage = data.total / 20;
+      this.total = data.total;
     }).catch(err => console.log(err)
     );
     this.spinner.hide('AppSpinner');
-  }
-  public searchManga(searchValue: string) {
-    console.log("HomePageComponent -> searchManga -> searchValue", searchValue)
-
   }
 }

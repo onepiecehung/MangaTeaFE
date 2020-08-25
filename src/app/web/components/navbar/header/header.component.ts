@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   @ViewChild('email') emailRef: ElementRef;
   @ViewChildren(HomePageComponent) homePageComponent;
 
-  @Output() eventSearchMangaByName = new EventEmitter();
 
   isShowFormLogin = false;
 
@@ -138,8 +137,7 @@ export class HeaderComponent implements OnInit {
 
   searchMangaByName(mangaName: HTMLInputElement) {
     if (mangaName.value !== null && mangaName.value !== '') {
-      this.homePageComponent.searchManga('sdfsadf');
-      // this.eventSearchMangaByName.emit(mangaName.value);
+      this.router.navigate(['search'], { queryParams: { name: mangaName.value } });
     }
   }
 }

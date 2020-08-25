@@ -43,6 +43,7 @@ import { GroupTranslateDetailComponent } from './pages/group-translate/group-tra
 import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
 import { NewMangaComponent } from './pages/new-manga/new-manga.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
@@ -71,6 +72,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     GroupTranslateDetailComponent,
     NewGroupTranslateComponent,
     NewMangaComponent,
+    SearchPageComponent,
   ],
   imports: [
     CommonModule,

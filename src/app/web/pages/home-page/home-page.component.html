@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="my-3 d-flex justify-content-center">
-    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="totalPage" (nzPageIndexChange)="getPageIndexChange($event)">
+    <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="20" (nzPageIndexChange)="getPageIndexChange($event)">
     </nz-pagination>
   </div>
 </div>

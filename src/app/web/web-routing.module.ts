@@ -1,3 +1,4 @@
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { NewMangaComponent } from './pages/new-manga/new-manga.component';
 import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
 import { GroupTranslateComponent } from './pages/group-translate/group-translate.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'latest-update',
         component: LatestUpdateComponent,
+      },
+      {
+        path: 'search',
+        component: SearchPageComponent,
       },
       {
         path: 'group-translate',

@@ -15,7 +15,7 @@ export class LatestUpdateComponent implements OnInit {
 
   listManga: Manga[] = [];
   pageIndex = 1;
-  totalPage = 0;
+  total = 0;
   filter: FilterModel = null;
 
   constructor(
@@ -43,7 +43,7 @@ export class LatestUpdateComponent implements OnInit {
     this.spinner.show('AppSpinner');
     await this.mangaService.loadManga(pageIndex).then(data => {
       this.listManga = data.manga;
-      this.totalPage = data.total / 20;
+      this.total = data.total;
     }).catch(err => console.log(err)
     );
     this.spinner.hide('AppSpinner');
@@ -54,7 +54,7 @@ export class LatestUpdateComponent implements OnInit {
     this.pageIndex = 1;
     await this.mangaService.filterManga(this.pageIndex, this.filter).then(data => {
       this.listManga = data.manga;
-      this.totalPage = data.total / 20;
+      this.total = data.total;
     }).catch(err => console.log(err)
     );
     this.spinner.hide('AppSpinner');

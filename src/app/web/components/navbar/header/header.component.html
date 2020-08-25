@@ -12,7 +12,7 @@
       </div>
       <div class="col-lg-5 col-md-4">
         <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-          <input type="text" nz-input placeholder="Input manga name" #mangaName
+          <input type="text" nz-input placeholder="Search here..." #mangaName
             (keyup.enter)="searchMangaByName(mangaName)" />
         </nz-input-group>
         <ng-template #suffixButton>
