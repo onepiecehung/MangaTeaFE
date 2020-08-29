@@ -16,7 +16,7 @@
     <div id="carousel-example" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner row w-100 mx-auto d-flex justify-content-between" role="listbox">
         <ng-container *ngFor="let manga of mangaDiscussion; let index = index">
-          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
+          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 0}">
             <div>
               <a [routerLink]="['/manga', manga._id]">
                 <img [src]="manga.coverImage.large" width="200px" height="280px" alt="img1">
