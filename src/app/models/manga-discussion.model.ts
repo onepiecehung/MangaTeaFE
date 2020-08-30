@@ -6,10 +6,10 @@ export class MangaDiscussion {
   bannerImage: string;
   constructor(data) {
     if (data) {
-      this.coverImage = data.coverImage;
-      this._id = data._id;
-      this.name = data.name;
-      this.bannerImage = data.bannerImage;
+      this.coverImage = data?.coverImage;
+      this._id = data?._id;
+      this.name = data?.name;
+      this.bannerImage = data?.bannerImage;
     }
   }
 }

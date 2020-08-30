@@ -21,6 +21,8 @@ export namespace CONSTANT_API {
     DASHBOARD: 'http://localhost:2111/v1/admin/dashboard',
     ADMIN_USER: 'http://localhost:2111/v1/user/find',
     ADMIN_BLOCK_USER: 'http://localhost:2111/v1/user/update-profile-admin',
-    GROUP_TRANSLATE_UPLOAD_AVATAR: 'http://localhost:2111/v1/group/upload/'
+    GROUP_TRANSLATE_UPLOAD_AVATAR: 'http://localhost:2111/v1/group/upload/',
+    FORGOT_PASSWORD: 'http://localhost:2111/v1/user/forgot-password',
+    RESET_PASSWORD: 'http://localhost:2111/v1/user/reset-password',
   }
 }

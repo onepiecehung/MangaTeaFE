@@ -17,29 +17,32 @@
         </a>
       </div>
     </div>
-    <div id="carousel-example" class="carousel slide d-flex justify-content-between" data-ride="carousel">
-      <div class="carousel-inner" role="listbox">
-        <ng-container *ngFor="let slideItem of slideManga; let index = index">
-          <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
-            <div>
-              <a [routerLink]="['/manga', slideItem.id]">
-                <img [src]="slideItem.coverImage.large" width="200px" height="280px" alt="img1">
-              </a>
-              <div class="slide-title">
-                <div class="manga-name mt-2">
-                  <a [routerLink]="['/manga', slideItem.id]"> {{ slideItem?.name }}</a>
-                </div>
-                <div class="chapter-number mt-1">
-                  <a
-                    [routerLink]="['/manga/',slideItem.id,'chapter', slideItem?.chapter[slideItem.chapter.length -1]?._id]">
-                    <i class="fas fa-arrow-alt-circle-right"></i> Chapter
-                    {{ slideItem?.chapter[slideItem?.chapter?.length - 1].chapterNumber }} </a>
+    <div id="carousel-example" class="carousel slide d-flex justify-content-between"  data-ride="carousel">
+      <div class="carousel-inner" role="listbox" [ngClass]="{'d-flex justify-content-center': isLoading}">
+        <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoading"></nz-spin>
+        <ng-container *ngIf="!isLoading">
+          <ng-container *ngFor="let slideItem of slideManga; let index = index">
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3  px-0" [ngClass]="{'active': index == 1}">
+              <div>
+                <a [routerLink]="['/manga', slideItem.id]">
+                  <img [src]="slideItem.coverImage.large" width="200px" height="280px" alt="img1">
+                </a>
+                <div class="slide-title">
+                  <div class="manga-name mt-2">
+                    <a [routerLink]="['/manga', slideItem.id]"> {{ slideItem?.name }}</a>
+                  </div>
+                  <div class="chapter-number mt-1">
+                    <a
+                      [routerLink]="['/manga/',slideItem.id,'chapter', slideItem?.chapter[slideItem?.chapter.length -1]?._id]">
+                      <i class="fas fa-arrow-alt-circle-right"></i> Chapter
+                      {{ slideItem?.chapter[slideItem?.chapter?.length - 1]?.chapterNumber }} </a>
+                  </div>
                 </div>
               </div>
+  
             </div>
-
-          </div>
-
+  
+          </ng-container>
         </ng-container>
       </div>
     </div>

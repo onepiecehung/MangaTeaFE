@@ -38,7 +38,8 @@ export const MESSAGE = {
   TITLE_LOGIN: 'log in',
   BTN_LOGIN: 'Log In',
   TITLE_SIGN_UP: 'create new account',
-  BTN_SIGN_UP: 'Create Account'
+  BTN_SIGN_UP: 'Create Account',
+  RESET_PASSWORD: 'Reset Password',  
 }
 export const HTTP_STATUS = {
   OK: 200,

@@ -2,10 +2,10 @@ export class ListMangaResponse {
   manga: Manga[];
   total: number;
   constructor(data) {
-    this.total = data.total;
+    this.total = data?.total;
     this.manga = [];
-    if (data.manga !== null && Array.isArray(data.manga)) {
-      data.manga.forEach(mangaItem => {
+    if (data?.manga !== null && Array.isArray(data?.manga)) {
+      data?.manga.forEach(mangaItem => {
         this.manga.push(new Manga(mangaItem));
       });
     }
@@ -67,51 +67,51 @@ export class Manga {
   _id: number;
   constructor(mangaItem) {
     if (mangaItem) {
-      this._id = mangaItem._id;
+      this._id = mangaItem?._id;
       this.artist = mangaItem?.artist;
       this.averageScore = mangaItem?.averageScore;
       this.bannerImage = mangaItem?.bannerImage;
-      this.chapter = mangaItem.chapter;
-      if (mangaItem !== null && Array.isArray(mangaItem.characters)) {
-        mangaItem.characters.forEach(charactersItem => {
+      this.chapter = mangaItem?.chapter;
+      if (mangaItem !== null && Array.isArray(mangaItem?.characters)) {
+        mangaItem?.characters.forEach(charactersItem => {
           this.characters.push(new Character(charactersItem));
         });
       }
-      this.countryOfOrigin = mangaItem.countryOfOrigin;
-      this.coverImage = new CoverImage(mangaItem.coverImage);
-      this.createdAt = mangaItem.createdAt;
-      this.description = mangaItem.description;
-      this.endDate = new CustomDate(mangaItem.endDate);
-      this.externalLinks = mangaItem.externalLinks;
-      this.format = mangaItem.format;
-      this.genres = mangaItem.genres;
-      this.groupTranslationID = mangaItem.groupTranslationID;
-      this.idAniList = mangaItem.idAniList;
-      this.idMal = mangaItem.idMal;
-      this.id = mangaItem._id;
-      this.isAdult = mangaItem.isAdult;
-      this.lastReadAt = mangaItem.lastReadAt;
-      this.meanScore = mangaItem.meanScore;
-      this.name = mangaItem.name;
-      this.otherName = new OtherName(mangaItem.otherName);
-      this.popularity = mangaItem.popularity;
-      this.rate = mangaItem.rate;
-      this.source = mangaItem.source;
-      if (mangaItem.staff !== null && Array.isArray(mangaItem.staff)) {
-        mangaItem.staff.forEach(staffItem => {
+      this.countryOfOrigin = mangaItem?.countryOfOrigin;
+      this.coverImage = new CoverImage(mangaItem?.coverImage);
+      this.createdAt = mangaItem?.createdAt;
+      this.description = mangaItem?.description;
+      this.endDate = new CustomDate(mangaItem?.endDate);
+      this.externalLinks = mangaItem?.externalLinks;
+      this.format = mangaItem?.format;
+      this.genres = mangaItem?.genres;
+      this.groupTranslationID = mangaItem?.groupTranslationID;
+      this.idAniList = mangaItem?.idAniList;
+      this.idMal = mangaItem?.idMal;
+      this.id = mangaItem?._id;
+      this.isAdult = mangaItem?.isAdult;
+      this.lastReadAt = mangaItem?.lastReadAt;
+      this.meanScore = mangaItem?.meanScore;
+      this.name = mangaItem?.name;
+      this.otherName = new OtherName(mangaItem?.otherName);
+      this.popularity = mangaItem?.popularity;
+      this.rate = mangaItem?.rate;
+      this.source = mangaItem?.source;
+      if (mangaItem?.staff !== null && Array.isArray(mangaItem?.staff)) {
+        mangaItem?.staff.forEach(staffItem => {
           this.staff.push(new Staff(staffItem));
         });
       }
-      this.startDate = new CustomDate(mangaItem.startDate);
-      this.status = mangaItem.status;
-      if (mangaItem.tags !== null && Array.isArray(mangaItem.tags)) {
-        mangaItem.tags.forEach(tagItem => {
+      this.startDate = new CustomDate(mangaItem?.startDate);
+      this.status = mangaItem?.status;
+      if (mangaItem?.tags !== null && Array.isArray(mangaItem?.tags)) {
+        mangaItem?.tags.forEach(tagItem => {
           this.tags.push(new Tag(tagItem));
         });
       }
-      this.totalChapter = mangaItem.totalChapter;
-      this.trending = mangaItem.trending;
-      var timeUpdate = Date.parse(mangaItem.lastUpdatedChapter);
+      this.totalChapter = mangaItem?.totalChapter;
+      this.trending = mangaItem?.trending;
+      var timeUpdate = Date.parse(mangaItem?.lastUpdatedChapter);
       var now = Math.floor(new Date().getTime());
       var relativeTime = now - timeUpdate;
 
@@ -122,7 +122,7 @@ export class Manga {
       } else if (Math.floor(relativeTime / (1000 * 60)) > 1) {
         this.lastUpdatedChapter = Math.floor(relativeTime / (1000 * 60)) + ' minutes';
       }
-      this.userFollowedID = mangaItem.userFollowedID;
+      this.userFollowedID = mangaItem?.userFollowedID;
     }
 
   }
@@ -179,9 +179,9 @@ export class Tag {
   name: string;
   constructor(data) {
     if (data !== null) {
-      this._id = data._id;
-      this.isMediaSpoiler = data.isMediaSpoiler;
-      this.name = data.name;
+      this._id = data?._id;
+      this.isMediaSpoiler = data?.isMediaSpoiler;
+      this.name = data?.name;
     }
   }
 }
@@ -191,9 +191,9 @@ export class Character {
   name: string;
   constructor(data) {
     if (data !== null) {
-      this._id = data._id;
-      this.id = data.id;
-      this.name = data.name;
+      this._id = data?._id;
+      this.id = data?.id;
+      this.name = data?.name;
     }
   }
 }
@@ -203,9 +203,9 @@ export class Staff {
   name: string
   constructor(data) {
     if (data !== null) {
-      this._id = data._id;
-      this.id = data.id;
-      this.name = data.name;
+      this._id = data?._id;
+      this.id = data?.id;
+      this.name = data?.name;
     }
   }
 }
@@ -231,23 +231,23 @@ export class Chapter {
 
   constructor(data) {
     if (data) {
-      this.chapterNumber = data.chapterNumber;
-      this.createBy = data.createBy;
-      this.createdAt = data.createAt;
-      this.groupTranslation = data.groupTranslation;
-      this.language = data.language;
-      this.mangaID = data.mangaID;
-      this.name = data.name;
-      this.photo = data.photo;
-      this.photoAw3 = data.photoAw3;
-      this.photoDrive = data.photoDrive;
-      this.photoImgur = data.photoImgur;
-      this.photoKIT = data.photoKIT;
-      this.status = data.status;
-      this.updateBy = data.updateBy;
-      this.updatedAt = data.updatedAt;
-      this.view = data.view;
-      this._id = data._id;
+      this.chapterNumber = data?.chapterNumber;
+      this.createBy = data?.createBy;
+      this.createdAt = data?.createAt;
+      this.groupTranslation = data?.groupTranslation;
+      this.language = data?.language;
+      this.mangaID = data?.mangaID;
+      this.name = data?.name;
+      this.photo = data?.photo;
+      this.photoAw3 = data?.photoAw3;
+      this.photoDrive = data?.photoDrive;
+      this.photoImgur = data?.photoImgur;
+      this.photoKIT = data?.photoKIT;
+      this.status = data?.status;
+      this.updateBy = data?.updateBy;
+      this.updatedAt = data?.updatedAt;
+      this.view = data?.view;
+      this._id = data?._id;
     }
   }
 }

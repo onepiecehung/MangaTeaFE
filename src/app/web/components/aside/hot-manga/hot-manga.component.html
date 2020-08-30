@@ -7,27 +7,30 @@
     </div>
   </div>
 
-  <div class="list-manga">
-    <div *ngFor="let item of listHostManga">
-      <div class="manga-item">
-        <div class="row">
-          <div class="col-6">
-            <img class="w-100 h-100" [src]="item.coverImage.medium" alt="">
-          </div>
-          <div class="col-6 desc">
-            <div class="name"><a [routerLink]="['/manga/',item._id,'chapter', item?.chapter[0]?._id]">{{ item.name }} </a></div>
-            <div class="ongoging">Ongoing</div>
-            <div class="chap">
-              <ng-container *ngIf="item?.chapter[item.chapter.length -1]?._id">
-                <a
-                  [routerLink]="['/manga/',item._id,'chapter', item?.chapter[item.chapter.length -1]?._id]">
-                  {{ item?.chapter[item.chapter.length -1]?.name }} </a>
-              </ng-container>
+  <div class="list-manga" [ngClass]="{'d-flex justify-content-center': isLoading}">
+    <nz-spin nzSimple [nzSize]="'large'" [nzSpinning]="isLoading"></nz-spin>
+    <ng-container *ngIf="!isLoading">
+      <div *ngFor="let item of listHostManga">
+        <div class="manga-item">
+          <div class="row">
+            <div class="col-6">
+              <img class="w-100 h-100" [src]="item?.coverImage?.medium" alt="">
+            </div>
+            <div class="col-6 desc">
+              <div class="name"><a [routerLink]="['/manga/',item?._id,'chapter', item?.chapter[0]?._id]">{{ item?.name }}
+                </a></div>
+              <div class="ongoging">Ongoing</div>
+              <div class="chap">
+                <ng-container *ngIf="item?.chapter.length > 0 && item?.chapter[item?.chapter.length -1]?._id">
+                  <a [routerLink]="['/manga/',item?._id,'chapter', item?.chapter[item?.chapter.length -1]?._id]">
+                    {{ item?.chapter[item?.chapter.length -1]?.name }} </a>
+                </ng-container>
+              </div>
             </div>
           </div>
         </div>
+        <hr class="hr-item">
       </div>
-      <hr class="hr-item">
-    </div>
+    </ng-container>
   </div>
 </div>

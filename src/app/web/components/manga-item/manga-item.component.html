@@ -59,27 +59,27 @@
         <div class="chaps">
           <div>
             <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-              <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -1]?._id">
+              <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -1]?._id">
                 <div><a
-                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -1]?._id]">
-                    {{ mangaItem?.chapter[mangaItem.chapter.length -1]?.name }} </a></div>
-                <div>{{ mangaItem?.chapter[mangaItem.chapter.length -1]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -1]?._id]">
+                    {{ mangaItem?.chapter[mangaItem?.chapter.length -1]?.name }} </a></div>
+                <div>{{ mangaItem?.chapter[mangaItem?.chapter.length -1]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
               </ng-container>
             </div>
             <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-              <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -2]?._id">
+              <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -2]?._id">
                 <div><a
-                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.name }}</a>
+                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem?.chapter.length -2]?.name }}</a>
                 </div>
-                <div>{{ mangaItem?.chapter[mangaItem.chapter.length -2]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+                <div>{{ mangaItem?.chapter[mangaItem?.chapter.length -2]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
               </ng-container>
             </div>
             <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-              <ng-container *ngIf="mangaItem?.chapter[mangaItem.chapter.length -3]?._id">
+              <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -3]?._id">
                 <div><a
-                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.name }}</a>
+                    [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem?.chapter.length -3]?.name }}</a>
                 </div>
-                <div>{{ mangaItem?.chapter[mangaItem.chapter.length -3]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
+                <div>{{ mangaItem?.chapter[mangaItem?.chapter.length -3]?.updatedAt | date: 'MMM-dd-yyyy' }}</div>
               </ng-container>
             </div>
           </div>

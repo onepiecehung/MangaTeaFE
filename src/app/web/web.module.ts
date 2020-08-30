@@ -44,6 +44,8 @@ import { NewGroupTranslateComponent } from './pages/group-translate/new-group-tr
 import { NewMangaComponent } from './pages/new-manga/new-manga.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
@@ -73,6 +75,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NewGroupTranslateComponent,
     NewMangaComponent,
     SearchPageComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -94,6 +97,7 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzSwitchModule,
     NzSelectModule,
     NzDatePickerModule,
+    NzSpinModule,
     NzIconModule.forChild(icons),
   ]
 })

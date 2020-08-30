@@ -13,12 +13,12 @@ export class SlideComponent implements OnInit {
   constructor(
     private mangaService: MangaService
   ) { }
-
-
+  isLoading = true;
   ngOnInit(): void {
+    this.isLoading = true;
     this.mangaService.loadCarousel().then((data: ListMangaResponse) => {
       this.slideManga = data.manga;
-      console.log("SlideComponent -> ngOnInit -> this.slideManga", this.slideManga)
+      this.isLoading = false;
     })
   }
 
