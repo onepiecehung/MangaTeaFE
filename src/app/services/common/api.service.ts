@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, retry, share, map } from 'rxjs/operators';
 @Injectable({
@@ -14,8 +14,8 @@ export class ApiService {
   getById(url, id): Observable<any> {
     return this.http.get(`${url}/${id}`);
   }
-  postData(url, body): Observable<any> {
-    return this.http.post(url, body).pipe(
+  postData(url, body, header?): Observable<any> {
+    return this.http.post(url, body, { headers: header }).pipe(
       catchError(err => {
         return of(err.error);
       })
