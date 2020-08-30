@@ -13,10 +13,13 @@ export class HotMangaComponent implements OnInit {
   constructor(
     private mangaService: MangaService
   ) { }
-
+  isLoading = true;
   ngOnInit(): void {
+    this.isLoading = true;
     this.mangaService.getListHotManga().then(data => {
+      console.log("HotMangaComponent -> ngOnInit -> data", data)
       this.listHostManga = data;
+      this.isLoading = false;
     });
   }
 

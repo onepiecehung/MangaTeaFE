@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { NewMangaComponent } from './pages/new-manga/new-manga.component';
 import { NewGroupTranslateComponent } from './pages/group-translate/new-group-translate/new-group-translate.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'latest-update',
         component: LatestUpdateComponent,
+      },
+      {
+        path: 'resetPassword',
+        component: ResetPasswordComponent,
       },
       {
         path: 'search',

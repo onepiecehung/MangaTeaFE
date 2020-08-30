@@ -8,7 +8,7 @@ export namespace CONSTANT_API {
     UPLOAD_PROFILE_IMG: 'https://api.mangatea.live/v1/user/upload-avatar',
     COMMENT: 'https://api.mangatea.live/v1/comment',
     CHAPTER: 'https://api.mangatea.live/v1/chapter',
-    MANGA_HOME: 'https://api.mangatea.live/v1//manga/home',
+    MANGA_HOME: 'https://api.mangatea.live/v1/manga/home',
     GROUP_TRANSLATE: 'https://api.mangatea.live/v1/group',
     COUNTRY: 'https://api.mangatea.live/v1/country',
     MANGA_DISCUSSION: 'https://api.mangatea.live/v1/manga/suggestion',
@@ -21,7 +21,8 @@ export namespace CONSTANT_API {
     DASHBOARD: 'https://api.mangatea.live/v1/admin/dashboard',
     ADMIN_USER: 'https://api.mangatea.live/v1/user/find',
     ADMIN_BLOCK_USER: 'https://api.mangatea.live/v1/user/update-profile-admin',
-    GROUP_TRANSLATE_UPLOAD_AVATAR: 'https://api.mangatea.live/v1/group/upload/'
-
+    GROUP_TRANSLATE_UPLOAD_AVATAR: 'https://api.mangatea.live/v1/group/upload/',
+    FORGOT_PASSWORD: 'http://localhost:2111/v1/user/forgot-password',
+    RESET_PASSWORD: 'http://localhost:2111/v1/user/reset-password',
   }
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CONSTANT_API } from 'src/constants/constant-api';
 import { UserInfo } from '../models/user-info.model';
 import { HTTP_STATUS } from 'src/constants/constant-common';
+import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,34 @@ export class UserService {
       this.apiService.postData(CONSTANT_API.API_ENDPOINTS.SIGN_UP, user).subscribe(response => {
         if (response.status === HTTP_STATUS.OK || response.status === HTTP_STATUS.CREATED) {
           resolve(new UserInfo(response.data));
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+  changePassword(body): Promise<any> {
+    let headers = new HttpHeaders({
+      'Authorization': body['token'],
+    });
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(CONSTANT_API.API_ENDPOINTS.RESET_PASSWORD, body, headers).subscribe(response => {
+        console.log("UserService -> response", response)
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
+
+  onClickSendMailResetPassword(email): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(CONSTANT_API.API_ENDPOINTS.FORGOT_PASSWORD, { 'email': email }).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
         } else {
           reject(response.data);
         }

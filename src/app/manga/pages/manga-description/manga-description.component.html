@@ -7,27 +7,27 @@
       <div class="card-body">
         <div class="row">
 
-          <div class="col-4">
+          <div class="col-md-4 col-sm-12">
             <a [routerLink]="['/manga/',mangaItem?._id,'chapter', listChapter[0]?._id]">
               <img [src]="mangaItem?.coverImage.large" class="img-fluid w-100" alt="">
             </a>
           </div>
-          <div class="col-8">
+          <div class="col-md-8 col-sm-12">
             <div class="row mt-2">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Title ID:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 # {{mangaItem?._id}}
               </div>
             </div>
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Alt name(s):
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 {{mangaItem?.otherName?.english}}, {{mangaItem?.otherName?.native}},
                 {{mangaItem?.otherName?.romaji}}, {{mangaItem?.otherName?.userPreferred}}
               </div>
@@ -35,10 +35,10 @@
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Author:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 <ng-container *ngFor="let author of mangaItem.staff">
                   <div>{{ author?.name }} </div>
                 </ng-container>
@@ -47,10 +47,10 @@
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Genre:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 <span class="badge badge-pill badge-primary mr-2"
                   *ngFor="let genre of mangaItem?.genres">{{genre}}</span>
               </div>
@@ -58,10 +58,10 @@
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Rating:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 <i class="fas fa-chart-bar" style="cursor: pointer;" title="Chart rating" (click)="showChartUserRating()"></i>
                 <app-spinner [loading]="isLoading"></app-spinner>
 
@@ -76,33 +76,33 @@
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Pub. status:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 {{mangaItem?.status}}
               </div>
             </div>
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Description:
               </div>
-              <div class="col-10">
+              <div class="col-md-10 col-sm-9">
                 {{mangaItem?.description}}
               </div>
             </div>
             <hr>
 
             <div class="row">
-              <div class="col-2 font-weight-bold">
+              <div class="col-md-2 col-sm-3 font-weight-bold">
                 Actions:
               </div>
-              <div class="col-10 actions">
+              <div class="col-md-10 col-sm-9 actions">
                 <div>
                   <div>Rating manga</div>
-                  <nz-rate [(ngModel)]="rating" [nzDisabled]="!authService.isAuthenticated"
+                  <nz-rate [(ngModel)]="rating" [nzDisabled]="!authService.isAuthenticated()"
                     (ngModelChange)="onChangeRating($event)" [nzCount]="10">
                   </nz-rate>
                 </div>

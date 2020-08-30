@@ -65,7 +65,7 @@
 
   <ng-template #modalContent>
     <form nz-form [nzLayout]="'vertical'" [formGroup]="formLoginSignUp" class="login-form" autocomplete="on">
-      <nz-form-item *ngIf="!isShowFormLogin">
+      <nz-form-item *ngIf="!isShowFormLogin && !isShowFormResetPassword">
         <nz-form-label [nzSpan]="24" nzFor="username"><strong>User name</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
@@ -93,7 +93,7 @@
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item>
+      <nz-form-item *ngIf="!isShowFormResetPassword">
         <nz-form-label [nzSpan]="24" nzFor="password"><strong>Password</strong></nz-form-label>
         <nz-form-control>
           <nz-input-group>
@@ -123,16 +123,18 @@
         </nz-form-control>
       </nz-form-item>
     </form>
-    <div *ngIf="!isShowFormLogin" class="text-right mt-2">
+    <div *ngIf="isShowFormLogin && !isShowFormResetPassword" class="text-right mt-2">
       <span>
-        <a class="text-danger">Forgot password?
+        <a (click)="onClickForgotPassword()" class="text-danger">Forgot password?
         </a>
       </span>
     </div>
   </ng-template>
 
   <ng-template #modalFooter>
-    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
-    <button nz-button nzType="primary" (click)="handleOk()">OK</button>
+    <button nz-button nzType="default" *ngIf="!isShowFormResetPassword" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" *ngIf="!isShowFormResetPassword" (click)="handleOk()">OK</button>
+    <button nz-button nzType="primary" *ngIf="isShowFormResetPassword" (click)="onClickSendMailResetPassword()">Reset Password</button>
+
   </ng-template>
 </nz-modal>

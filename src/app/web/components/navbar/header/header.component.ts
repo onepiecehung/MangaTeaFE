@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
 
 
   isShowFormLogin = false;
+  isShowFormResetPassword = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,16 +57,18 @@ export class HeaderComponent implements OnInit {
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_SIGN_UP;
     this.isVisible = true;
+    this.isShowFormResetPassword = false;
     this.isShowFormLogin = false;
-    // this.usernameRef.nativeElement.focus();
+    this.usernameRef.nativeElement.focus();
   }
   showModalLogin() {
     this.initData();
     this.errorMessageService.clearErrorMessage();
     this.title = MESSAGE.TITLE_LOGIN;
     this.isVisible = true;
+    this.isShowFormResetPassword = false;
     this.isShowFormLogin = true;
-    // this.emailRef.nativeElement.focus();
+    this.emailRef.nativeElement.focus();
   }
 
   handleOk(): void {
@@ -101,6 +104,7 @@ export class HeaderComponent implements OnInit {
 
   handleCancel(): void {
     this.isVisible = false;
+    this.isShowFormResetPassword = false;
   }
 
   handleFocusFormLoginSignUp(field: string) {
@@ -139,5 +143,30 @@ export class HeaderComponent implements OnInit {
     if (mangaName.value !== null && mangaName.value !== '') {
       this.router.navigate(['search'], { queryParams: { name: mangaName.value } });
     }
+  }
+
+  onClickForgotPassword() {
+    this.initData();
+    this.errorMessageService.clearErrorMessage();
+    this.title = MESSAGE.RESET_PASSWORD;
+    this.isVisible = true;
+    this.isShowFormResetPassword = true;
+  }
+
+  onClickSendMailResetPassword() {
+    let email = this.formLoginSignUp.get(FORM_FIELD.EMAIL).value;
+    this.userService.onClickSendMailResetPassword(email).then(data => {
+      this.notification.create(
+        'success',
+        'Success',
+        'Please check email to confirm reset password',
+        { nzDuration: 5000 }
+      );
+      setTimeout(() => {
+        this.showModalLogin();
+      }, 5000);
+    }).catch(err => {
+
+    });
   }
 }
