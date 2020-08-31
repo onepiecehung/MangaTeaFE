@@ -33,9 +33,11 @@
                   </div>
                   <div class="chapter-number mt-1">
                     <a
-                      [routerLink]="['/manga/',slideItem.id,'chapter', slideItem?.chapter[slideItem?.chapter.length -1]?._id]">
+                      [routerLink]="['/manga/',slideItem.id]"
+                      >
                       <i class="fas fa-arrow-alt-circle-right"></i> Chapter
-                      {{ slideItem?.chapter[slideItem?.chapter?.length - 1]?.chapterNumber }} </a>
+                      {{ slideItem?.chapter[slideItem?.chapter?.length - 1]?.chapterNumber }} 
+                    </a>
                   </div>
                 </div>
               </div>
