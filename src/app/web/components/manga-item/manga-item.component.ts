@@ -1,5 +1,5 @@
 import { Manga } from '../../../models/manga.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
@@ -30,7 +30,7 @@ export class MangaItemComponent implements OnInit {
     })
   }
 
-  onSaveManga(){
+  onSaveManga() {
     this.mangaService.onSaveManga(this.mangaItem.id).then(response => {
       this.notification.create(
         'success',

@@ -1,9 +1,9 @@
 <div class="main-profile">
   <div class="container">
-    <div class="d-flex justify-content-end mt-2">
+    <!-- <div class="d-flex justify-content-end mt-2">
       <button mat-raised-button color="warn">Cancel</button>
       <button class="ml-3" (click)="updateProfile()" mat-raised-button color="primary">Save</button>
-    </div>
+    </div> -->
 
     <!-- <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -15,17 +15,17 @@
       </ol>
     </nav> -->
     <!-- <hr> -->
-    <div class="row d-flex justify-content-end">
-      <div class="col-4">
+    <div class="row d-flex justify-content-end mt-2">
+      <div class="col-md-4 col-sm-4">
         <div class="section-edit-profile">Public Avatar</div>
         <div>You can change your avatar here or remove the current avatar</div>
       </div>
-      <div class="col-2">
+      <div class="col-md-2 col-sm-4">
         <img class="rounded-circle" width="150px" height="150px"
           [src]="userInfo?.avatar ? userInfo.avatar : 'https://media.ngoisao.vn/resize_580/news/2018/11/26/hotgirl-1-ngoisao.vn-w600-h493.jpg'"
           alt="">
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-sm-4">
         <div class="title-upload-new-avatar">Upload new avatar</div>
         <div class="choose-file">
           <div class="input-group">
@@ -44,13 +44,13 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-4">
+      <div class="col-md-4 col-sm-6">
         <div class="section-edit-profile">Main settings</div>
       </div>
-      <div class="col-8">
-        <div class="title-change-password">Change password</div>
+      <div class="col-md-8 col-sm-6">
+        <div class="title-change-password">User profile</div>
         <div>
-          
+
         </div>
       </div>
     </div>

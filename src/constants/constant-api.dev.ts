@@ -24,5 +24,6 @@ export namespace CONSTANT_API {
     GROUP_TRANSLATE_UPLOAD_AVATAR: 'http://localhost:2111/v1/group/upload/',
     FORGOT_PASSWORD: 'http://localhost:2111/v1/user/forgot-password',
     RESET_PASSWORD: 'http://localhost:2111/v1/user/reset-password',
+    MANGA_UPLOAD: 'http://localhost:2111/v1/user/manga-upload',
   }
 }

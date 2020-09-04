@@ -155,6 +155,18 @@ export class MangaService {
     });
   }
 
+  loadMangaUploaded(params: string): Promise<ListMangaResponse> {
+    return new Promise((resolve, reject) => {
+      this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MANGA_UPLOAD}${params}`).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(new ListMangaResponse(response.data));
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
   onAddToFavorite(mangaID: number) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.ADD_FAVORITE}?idManga=${mangaID}`, null).subscribe(response => {

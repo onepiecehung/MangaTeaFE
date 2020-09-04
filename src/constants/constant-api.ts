@@ -1,4 +1,4 @@
- export namespace CONSTANT_API {
+export namespace CONSTANT_API {
   export const API_ENDPOINTS = {
     GENRE: '',
     LOGIN: '',
@@ -16,7 +16,7 @@
     ADD_FAVORITE: '',
     REMOVE_FAVORITE: '',
     SAVE_MANGA: '',
-    UNSAVED_MANGA:'',
+    UNSAVED_MANGA: '',
     RATING: '',
     DASHBOARD: '',
     ADMIN_USER: '',
@@ -24,5 +24,6 @@
     GROUP_TRANSLATE_UPLOAD_AVATAR: '',
     FORGOT_PASSWORD: '',
     RESET_PASSWORD: '',
+    MANGA_UPLOAD: ''
   }
 }

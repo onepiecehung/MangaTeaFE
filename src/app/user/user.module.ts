@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 import {MatButtonModule} from '@angular/material/button'; 
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -36,7 +37,8 @@ import { MangaUploadComponent } from './components/manga-upload/manga-upload.com
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    NzPaginationModule
   ]
 })
 export class UserModule { }

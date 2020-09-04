@@ -59,11 +59,7 @@
                     Name
                   </th>
                   <td>
-                    <input nz-input [ngClass]="{'is-invalid': (errorMessageService?.groupNameError?.message)}"
-                      nzSize="large" formControlName="name" placeholder="Group name" />
-                    <div class="invalid-feedback ml-2">
-                      <i class="fas fa-exclamation-triangle"></i>
-                      {{ errorMessageService?.groupNameError?.message }} </div>
+                    <input nz-input nzSize="large" formControlName="name" placeholder="Manga name" />
                   </td>
 
                 </tr>
@@ -130,16 +126,9 @@
                     <nz-select class="w-100 text-left" nzAllowClear nzShowSearch nzServerSearch nzSize="large"
                       nzMode="multiple" nzPlaceHolder="Select genre" formControlName="genre"
                       [(ngModel)]="listOfSelectedValue">
-                      <!-- <nz-option *ngFor="let option of listOfOption" [nzLabel]="option" [nzValue]="option"
-                        [nzHide]="!isNotSelected(option)"></nz-option> -->
-
                       <ng-container *ngFor="let g of genres">
-                        <nz-option  [nzHide]="!isNotSelected(g.name)" [nzValue]="g.name"
-                          [nzLabel]="g.name"></nz-option>
+                        <nz-option [nzHide]="!isNotSelected(g.name)" [nzValue]="g.name" [nzLabel]="g.name"></nz-option>
                       </ng-container>
-                      <!-- <nz-option *ngIf="isLoading" nzDisabled nzCustomContent>
-                        <i nz-icon nzType="loading" class="loading-icon"></i> Loading Data...
-                      </nz-option> -->
                     </nz-select>
                   </td>
                 </tr>

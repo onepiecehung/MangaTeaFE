@@ -34,7 +34,6 @@ export class HomePageComponent implements OnInit {
   async getListManga(pageIndex) {
     this.spinner.show('AppSpinner');
     await this.mangaService.loadManga(pageIndex).then(data => {
-      console.log("HomePageComponent -> getListManga -> data", data)
       this.listManga = data.manga;
       this.total = data.total;
       this.spinner.hide('AppSpinner');

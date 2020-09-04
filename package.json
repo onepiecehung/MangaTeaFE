@@ -24,6 +24,8 @@
     "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
+    "@ckeditor/ckeditor5-angular": "^1.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^11.2.0",
     "@angular/router": "~9.1.9",
     "@ant-design/icons": "^4.2.1",
     "bootstrap": "^4.5.0",

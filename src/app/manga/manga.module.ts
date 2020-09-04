@@ -10,6 +10,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { MangaRoutingModule } from './manga-routing.module';
 import { MangaDetailComponent } from './pages/manga-detail/manga-detail.component';
@@ -54,6 +55,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzRateModule,
     ChartsModule,
     NzEmptyModule,
+    CKEditorModule,
     LazyLoadImageModule.forRoot(ScrollHooks)
   ],
 

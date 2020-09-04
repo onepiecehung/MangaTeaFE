@@ -13,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { RatingService } from 'src/app/services/rating.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 
@@ -41,7 +42,9 @@ export class MangaDescriptionComponent implements OnInit, AfterViewInit {
   isLoading = true;
   rating = 0;
   showChart = false;
-
+  name = 'Angular';
+  editor = ClassicEditor;
+  data: any = `<p></p>`;
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -180,18 +183,14 @@ export class MangaDescriptionComponent implements OnInit, AfterViewInit {
     const bodyComment: NewComment = {
       type: 'MANGA',
       mangaID: this.mangaID,
-      commentContent: this.form.value.commentContent
+      commentContent: this.data
     };
     this.commentService.newComment(bodyComment).then((data: Comment) => {
 
       this.commentService.getCommentByMangaID(this.mangaID).then(commentResponse => {
         this.listComment = commentResponse;
       }).catch(err => console.log(err));
-
-
-      this.form = this.formBuilder.group({
-        commentContent: ['', Validators.required]
-      })
+      this.data = `<p></p>`;
       this.isLoadingSubmit = false;
     })
 
