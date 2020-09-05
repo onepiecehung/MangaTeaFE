@@ -25,8 +25,10 @@
               <input class="file-input-banner" (change)="handleChangeImageBanner($event.target.files)"
                 id="file_input_banner" type="file" style="opacity: 0;">
             </div>
-            <div *ngIf="urlImgBanner">
-              <img [src]="urlImgBanner" class="img-fluid" style="width: 427px; height: 200px;" alt="">
+            <div *ngIf="urlImgBanner" class="content_img">
+              <img [src]="urlImgBanner" class="img-fluid w-100" alt="">
+              <div (click)="removeImgBanner()" title="Remove image" class="img-text"><i class="fas fa-times"></i></div>
+
             </div>
           </div>
           <div class="col-6">
@@ -34,8 +36,9 @@
               <input class="file-input-cover" (change)="handleChangeImageCover($event.target.files)"
                 id="file_input_cover" type="file" style="opacity: 0;">
             </div>
-            <div *ngIf="urlImgCover">
-              <img [src]="urlImgCover" class="img-fluid" style="width: 427px; height: 200px;" alt="">
+            <div *ngIf="urlImgCover" class="content_img">
+              <img [src]="urlImgCover" class="img-fluid w-100" alt="">
+              <div (click)="removeImgCover()" class="img-text" title="Remove image"><i class="fas fa-times"></i></div>
             </div>
           </div>
         </div>
@@ -153,25 +156,6 @@
                     <nz-date-picker formControlName="endDate" [nzPlaceHolder]="'Select end date'" [nzSize]="'large'"
                       class="w-100" (ngModelChange)="onChange($event)"></nz-date-picker>
                   </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    <i class="fas fa-external-link-alt mr-1"></i>
-                    Website
-                  </th>
-                  <td>
-                    <input nz-input nzSize="large" formControlName="web"
-                      placeholder="(include http:// or https://) (Optional)" />
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row"><i class="fab fa-discord mr-1"></i>Discord</th>
-                  <td> <input nz-input nzSize="large" formControlName="discord"
-                      placeholder="(include http:// or https://) (Optional)" /></td>
-                </tr>
-                <tr>
-                  <th scope="row"> <i class="fas fa-envelope mr-1"></i>Email</th>
-                  <td> <input nz-input nzSize="large" formControlName="email" placeholder="Email (Optional)" /></td>
                 </tr>
                 <tr>
                 <tr>

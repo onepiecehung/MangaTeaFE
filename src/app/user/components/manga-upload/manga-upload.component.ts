@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { Manga } from 'src/app/models/manga.model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manga-upload',
@@ -14,7 +16,9 @@ export class MangaUploadComponent implements OnInit {
   total = 0;
   constructor(
     private mangaService: MangaService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private notification: NzNotificationService,
+    private router: Router,
 
   ) { }
 
@@ -37,5 +41,21 @@ export class MangaUploadComponent implements OnInit {
       this.total = response.total;
       this.spinner.hide('AppSpinner');
     })
+  }
+  
+  onDeleteManga(mangaID: number, index:number) {
+    // this.mangaService.removeMangaFavorite(mangaID).then(response => {
+    //   this.notification.create(
+    //     'success',
+    //     'Successful',
+    //     'Block user successful',
+    //     { nzDuration: 2000 }
+    //   );
+    //   this.listManga.splice(index ,1);
+    // })
+  }
+
+  onUpdateManga(mangaID: number, index:number) {
+    this.router.navigate([`/new-manga?edit=${true}&id=${mangaID}`])
   }
 }

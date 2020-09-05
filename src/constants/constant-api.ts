@@ -24,6 +24,7 @@ export namespace CONSTANT_API {
     GROUP_TRANSLATE_UPLOAD_AVATAR: '',
     FORGOT_PASSWORD: '',
     RESET_PASSWORD: '',
-    MANGA_UPLOAD: ''
+    MANGA_UPLOAD: '',
+    REMOVE_HISTORY_READING: ''
   }
 }

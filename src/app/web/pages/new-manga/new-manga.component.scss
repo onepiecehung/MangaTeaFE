@@ -131,3 +131,25 @@ input:focus {
   outline: 0;
   box-shadow: 0 0 0 2px rgba(24,144,255,.2);
 }
+
+.content_img {
+  .img-text {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+    color: red;
+    opacity: 0;
+    font-size: 30px;
+    visibility: hidden;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  &:hover {
+    .img-text {
+      cursor: pointer;
+      visibility: visible;
+      opacity: 1;
+      max-width: 100%;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MangaService } from 'src/app/services/manga.service';
 import { MangaUser, Manga } from 'src/app/models/response/manga-user.model';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-manga-history-reading',
@@ -15,8 +16,8 @@ export class MangaHistoryReadingComponent implements OnInit {
   total = 0;
   constructor(
     private mangaService: MangaService,
-    private spinner: NgxSpinnerService
-
+    private spinner: NgxSpinnerService,
+    private notification: NzNotificationService,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,18 @@ export class MangaHistoryReadingComponent implements OnInit {
       this.listManga = response.manga;
       this.total = response.total;
       this.spinner.hide('AppSpinner');
+    })
+  }
+
+  removeItem(mangaID: number, index:number) {
+    this.mangaService.removeMangaHistoryReading(mangaID).then(response => {
+      this.notification.create(
+        'success',
+        'Successful',
+        'Block user successful',
+        { nzDuration: 2000 }
+      );
+      this.listManga.splice(index ,1);
     })
   }
 }

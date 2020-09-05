@@ -143,11 +143,11 @@ export class MangaService {
 
   }
 
-  loadMangaUser(param: string): Promise<MangaUser> {
+  loadMangaUser(param: string): Promise<ListMangaResponse> {
     return new Promise((resolve, reject) => {
       this.apiService.getData(`${CONSTANT_API.API_ENDPOINTS.MEMBER}?${param}=${1}`).subscribe(response => {
         if (response.status === HTTP_STATUS.OK) {
-          resolve(response.data);
+          resolve(new ListMangaResponse(response.data));
         } else {
           reject();
         }
@@ -182,6 +182,18 @@ export class MangaService {
   removeMangaFavorite(mangaID) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.REMOVE_FAVORITE}?idManga=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.CREATED) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  removeMangaHistoryReading(mangaID) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.REMOVE_HISTORY_READING}?idManga=${mangaID}`, null).subscribe(response => {
         if (response.status === HTTP_STATUS.CREATED) {
           resolve(response);
         } else {

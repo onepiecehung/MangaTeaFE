@@ -8,9 +8,10 @@ import { ErrorMessageService } from 'src/app/services/error-message.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { ChapterService } from 'src/app/services/chapter.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GenreService } from 'src/app/services/genre.service';
 import { Genre } from 'src/app/models/genre.model';
+import { Manga } from 'src/app/models/manga.model';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class NewMangaComponent implements OnInit {
   urlImgCover = '';
   newManga: FormData = new FormData();
   genres = Array<Genre>();
-
+  manga: Manga;
   constructor(
     private chapterService: ChapterService,
     private location: Location,
@@ -35,37 +36,51 @@ export class NewMangaComponent implements OnInit {
     private notification: NzNotificationService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    public genreService: GenreService
+    public genreService: GenreService,
+    private route: ActivatedRoute,
 
   ) { }
 
   ngOnInit(): void {
     this.genres = this.genreService.genres;
+    this.initForm();
+    this.route.queryParams.subscribe(params => {
+      if (params['edit'] == 'true' && params['id']) {
+        this.mangaService.getMangaByID(params['id']).then(data => {
+          this.manga = data.manga;
+          this.urlImgBanner = this.manga.bannerImage;
+          this.urlImgCover = this.manga.coverImage.medium;
+          this.initForm(this.manga);
+        })
+      }
 
-    this.formNewManga = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      language: ['', [Validators.required]],
-      genre: [],
-      romaji: [''],
-      english: [''],
-      native: [''],
-      userPreferred: [''],
-      startDate: [null],
-      endDate: [null],
-      web: ['', [Validators.required]],
-      discord: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      about: ['', [Validators.required]],
-    })
-
-
+    });
 
   }
-
+  initForm(data?: Manga) {
+    this.formNewManga = this.formBuilder.group({
+      name: [data ? data.name : '', [Validators.required]],
+      language: [data ? data.countryOfOrigin : '', [Validators.required]],
+      genre: [data ? data.genres : []],
+      romaji: [data ? data.otherName.romaji : ''],
+      english: [data ? data.otherName.english : ''],
+      native: [data ? data.otherName.native : ''],
+      userPreferred: [data ? data.otherName.userPreferred : ''],
+      startDate: [data ? (data.startDate ? new Date(data.startDate.year, data.startDate.month - 1, data.startDate.day) : null) : null],
+      endDate: [data ? (data.endDate ? new Date(data.endDate.year, data.endDate.month - 1, data.endDate.day) : null) : null],
+      about: [data ? data.description : '', [Validators.required]],
+    });
+  }
 
   onClickCancel() {
     this.location.back();
 
+  }
+  removeImgCover() {
+    this.urlImgCover = '';
+  }
+  removeImgBanner() {
+    this.urlImgBanner = '';
   }
 
   onClickNewGroupTranslate() {
@@ -115,7 +130,6 @@ export class NewMangaComponent implements OnInit {
         { nzDuration: 2000 }
       );
       this.router.navigate([`/manga/${data['_id']}`])
-      // this.location.back();
     })
   }
 

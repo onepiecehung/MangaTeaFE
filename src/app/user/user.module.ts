@@ -17,6 +17,7 @@ import { ChapterHistoryReadingComponent } from './components/chapter-history-rea
 import { ChapterUploadComponent } from './components/chapter-upload/chapter-upload.component';
 import { MangaFavoriteComponent } from './components/manga-favorite/manga-favorite.component';
 import { MangaUploadComponent } from './components/manga-upload/manga-upload.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MangaUploadComponent } from './components/manga-upload/manga-upload.com
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzDropDownModule
   ]
 })
 export class UserModule { }

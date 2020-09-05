@@ -1,4 +1,4 @@
-<ng-container *ngFor="let mangaItem of listManga">
+<ng-container *ngFor="let mangaItem of listManga; let index = index">
   <div class="manga-item mb-2">
     <div class="row">
       <div class="col-lg-3 col-md-5 col-sm-6 col-12">
@@ -21,7 +21,17 @@
                     {{ mangaItem?.chapter[mangaItem?.chapter.length - 1]?.chapterNumber}}</span>
                 </div>
               </div>
-
+              <div class="col-1 d-flex justify-content-end align-items-start" nz-dropdown [nzDropdownMenu]="menu"
+                [nzPlacement]="'bottomRight'" [nzTrigger]="'click'">
+                <i class="fas fa-ellipsis-v icon-setting"></i>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu>
+                    <li nz-menu-item [routerLink]="['/new-manga']" [queryParams]="{edit: true, id:mangaItem?.id}">Update manga</li>
+                    <li nz-menu-item (click)="onDeleteManga(mangaItem.id, index)">Delete manga</li>
+                    <li nz-menu-item>Test</li>
+                  </ul>
+                </nz-dropdown-menu>
+              </div>
             </div>
 
           </div>
@@ -87,6 +97,7 @@
   </div>
 </ng-container>
 <div class="my-3 d-flex justify-content-center">
-  <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="20" (nzPageIndexChange)="getPageIndexChange($event)">
+  <nz-pagination [nzPageIndex]="pageIndex" [nzTotal]="total" [nzPageSize]="20"
+    (nzPageIndexChange)="getPageIndexChange($event)">
   </nz-pagination>
 </div>

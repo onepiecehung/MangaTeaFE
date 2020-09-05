@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MangaService } from 'src/app/services/manga.service';
 import { MangaUser, Manga } from 'src/app/models/response/manga-user.model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-manga-favorite',
@@ -14,8 +15,8 @@ export class MangaFavoriteComponent implements OnInit {
   total = 0;
   constructor(
     private mangaService: MangaService,
-    private spinner: NgxSpinnerService
-
+    private spinner: NgxSpinnerService,
+    private notification: NzNotificationService,
   ) { }
 
 
@@ -39,11 +40,16 @@ export class MangaFavoriteComponent implements OnInit {
     })
   }
 
-  // removeItem(mangaID: number, index:number) {
-  //   this.mangaService.removeMangaFavorite(mangaID).then(response => {
-  //     console.log("MangaFavoriteComponent -> removeItem -> response", response)
-  //     this.mangaFavorite.manga.splice(index ,1);
-  //   })
-  // }
+  removeItem(mangaID: number, index:number) {
+    this.mangaService.removeMangaFavorite(mangaID).then(response => {
+      this.notification.create(
+        'success',
+        'Successful',
+        'Block user successful',
+        { nzDuration: 2000 }
+      );
+      this.listManga.splice(index ,1);
+    })
+  }
 
 }

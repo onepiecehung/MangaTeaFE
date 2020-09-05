@@ -22,6 +22,10 @@
       </div>
       <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
           [routerLink]="['/new-manga']">New Manga</a></div>
+
+      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
+          [routerLink]="['/users/manga/manga-upload']">Manga user</a></div>
+
     </div>
 
   </div>

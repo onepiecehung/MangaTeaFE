@@ -1,16 +1,19 @@
 <div>
   <div class="container">
     <div class="d-flex justify-content-between align-items-center my-2">
-      <div class="page-item">
-        Upload chapter
+      <div>
+        <div class="page-title">UPLOAD CHAPTER</div>
+        <div class="icon">
+          <i class="fas fa-star"></i>
+          <div></div>
+        </div>
       </div>
       <div>
-        <button mat-raised-button class="mr-2" (click)="onClickCancel()">Cancel</button>
-        <button mat-raised-button color="primary" [disabled]="formError.chapterNumber.errors || 
+        <button nz-button nzType="default" class="mr-2" nzDanger (click)="onClickCancel()">Cancel</button>
+        <button nz-button nzType="primary" [disabled]="formError.chapterNumber.errors || 
           formError.chapterNumber.errors || 
           formError.groupTranslation.errors || formError.language.errors || imgURLs.length == 0"
           (click)="clickUploadChapter()">
-          <i class="far fa-save mr-2"></i>
           Save</button>
       </div>
     </div>
@@ -24,7 +27,7 @@
           <div class="form-row mb-3">
             <div class="col-md-6">
               <nz-form-item>
-                <nz-form-label>Chapter Name</nz-form-label>
+                <nz-form-label><strong>Chapter Name</strong></nz-form-label>
                 <nz-form-control>
                   <input nz-input formControlName="name" nzSize="large" placeholder="Chapter name"
                     [ngClass]="{'is-invalid': (formError.name.errors?.required && formError.name.touched)}" />
@@ -37,7 +40,7 @@
             </div>
             <div class="col-md-6">
               <nz-form-item>
-                <nz-form-label>Chapter number</nz-form-label>
+                <nz-form-label><strong>Chapter number</strong></nz-form-label>
                 <nz-form-control>
                   <input nz-input nzSize="large"
                     [ngClass]="{'is-invalid': (formError.chapterNumber.errors?.required && formError.chapterNumber.touched)}"
@@ -53,11 +56,11 @@
           <div class="form-row mb-3">
             <div class="col-md-6">
               <nz-form-item>
-                <nz-form-label>Group Translation</nz-form-label>
+                <nz-form-label><strong>Group Translation</strong></nz-form-label>
 
                 <nz-select nzShowSearch nzAllowClear nzSize="large"
-                [ngClass]="{'is-invalid': (formError.groupTranslation.errors?.required && formError.groupTranslation.touched)}"
-                nzPlaceHolder="Group Translation" formControlName="groupTranslation">
+                  [ngClass]="{'is-invalid': (formError.groupTranslation.errors?.required && formError.groupTranslation.touched)}"
+                  nzPlaceHolder="Group Translation" formControlName="groupTranslation">
                   <ng-container *ngFor="let group of groupTranslates">
                     <nz-option nzCustomContent [nzLabel]="group.name" [nzValue]="group._id">
                       {{ group.name }}
@@ -72,7 +75,7 @@
             </div>
             <div class="col-md-6">
               <nz-form-item>
-                <nz-form-label>Language</nz-form-label>
+                <nz-form-label><strong>Language</strong></nz-form-label>
                 <nz-select nzShowSearch nzAllowClear nzSize="large"
                   [ngClass]="{'is-invalid': (formError.language.errors?.required && formError.language.touched)}"
                   nzPlaceHolder="Select language" formControlName="language">
@@ -93,7 +96,7 @@
         </form>
         <div class="form-row">
           <div class="col-12">
-            <label>Images</label>
+            <label><strong>Images</strong></label>
             <ng-container *ngIf="imgURLs.length == 0">
               <div class="container-upload my-3">
                 <div class="card w-100">
