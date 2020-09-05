@@ -22,7 +22,8 @@
                 </div>
               </div>
               <div class="col-1 d-flex justify-content-end align-items-start">
-                <i class="fas fa-trash-alt icon-setting"(click)="removeItem(mangaItem.id, index)" title="Remove this manga"></i>
+                <i class="fas fa-trash-alt icon-setting" (click)="removeItem(mangaItem.id, index)"
+                  title="Remove this manga"></i>
               </div>
 
             </div>
@@ -53,29 +54,33 @@
           <div class="chaps">
             <div>
               <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -1]">
+                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -1]?._id">
                   <div><a
-                      [routerLink]="['/manga/',mangaItem?.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -1]]">
-                      Chapter {{ mangaItem?.chapter[mangaItem?.chapter.length -1] }} </a></div>
-
+                      [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -1]?._id]">
+                      {{ mangaItem?.chapter[mangaItem?.chapter.length -1]?.name }} </a></div>
+                  <div>
+                    {{ mangaItem?.chapter[mangaItem?.chapter.length -1]?.updatedAt | date: 'MMM-dd-yyyy' }}
+                  </div>
                 </ng-container>
               </div>
               <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -2]">
+                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -2]?._id">
                   <div><a
-                      [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -2]]">
-                      Chapter {{ mangaItem?.chapter[mangaItem?.chapter.length -2] }}</a>
+                      [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -2]?._id]">{{ mangaItem?.chapter[mangaItem?.chapter.length -2]?.name }}</a>
                   </div>
-
+                  <div>
+                    {{ mangaItem?.chapter[mangaItem?.chapter.length -2]?.updatedAt | date: 'MMM-dd-yyyy' }}
+                  </div>
                 </ng-container>
               </div>
               <div class="chap-item d-flex flex-row align-items-end justify-content-between">
-                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -3]">
+                <ng-container *ngIf="mangaItem?.chapter[mangaItem?.chapter.length -3]?._id">
                   <div><a
-                      [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -3]]">
-                      Chapter {{ mangaItem?.chapter[mangaItem?.chapter.length -3] }}</a>
+                      [routerLink]="['/manga/',mangaItem.id,'chapter', mangaItem?.chapter[mangaItem?.chapter.length -3]?._id]">{{ mangaItem?.chapter[mangaItem?.chapter.length -3]?.name }}</a>
                   </div>
-
+                  <div>
+                    {{ mangaItem?.chapter[mangaItem?.chapter.length -3]?.updatedAt | date: 'MMM-dd-yyyy' }}
+                  </div>
                 </ng-container>
               </div>
             </div>

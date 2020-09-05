@@ -182,7 +182,19 @@ export class MangaService {
   removeMangaFavorite(mangaID) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.REMOVE_FAVORITE}?idManga=${mangaID}`, null).subscribe(response => {
-        if (response.status === HTTP_STATUS.CREATED) {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response);
+        } else {
+          reject();
+        }
+      });
+    });
+  }
+
+  deleteManga(mangaID) {
+    return new Promise((resolve, reject) => {
+      this.apiService.postData(`${CONSTANT_API.API_ENDPOINTS.DELETE_MANGA}?id=${mangaID}`, null).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
           resolve(response);
         } else {
           reject();

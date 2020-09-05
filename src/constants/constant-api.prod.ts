@@ -25,6 +25,7 @@ export namespace CONSTANT_API {
     FORGOT_PASSWORD: 'http://localhost:2111/v1/user/forgot-password',
     RESET_PASSWORD: 'http://localhost:2111/v1/user/reset-password',
     MANGA_UPLOAD: 'http://localhost:2111/v1/user/manga-upload',
-    REMOVE_HISTORY_READING: 'http://localhost:2111/v1/member/remove-from-history'
+    REMOVE_HISTORY_READING: 'http://localhost:2111/v1/member/remove-from-history',
+    DELETE_MANGA: 'http://localhost:2111/v1/manga/delete',
   }
 }

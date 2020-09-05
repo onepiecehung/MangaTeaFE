@@ -25,6 +25,7 @@ export namespace CONSTANT_API {
     FORGOT_PASSWORD: '',
     RESET_PASSWORD: '',
     MANGA_UPLOAD: '',
-    REMOVE_HISTORY_READING: ''
+    REMOVE_HISTORY_READING: '',
+    DELETE_MANGA: '',
   }
 }

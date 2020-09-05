@@ -3,7 +3,7 @@
 
     <div class="d-flex align-items-center">
       <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/']"
-          routerLinkActive="router-link-active">Home</a></div>
+          routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">Home</a></div>
       <div class="menu-item mr-3"><a nz-button nzType="dashed" [routerLink]="['/latest-update']"
           routerLinkActive="router-link-active">Latest Update</a></div>
       <div class="menu-item mr-3">
@@ -17,14 +17,14 @@
           </div>
         </nz-dropdown-menu>
       </div>
-      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
-          [routerLink]="['/group-translate']">Group Translate</a>
+      <div class="menu-item mr-3"><a routerLinkActive="router-link-active" [disabled]="!authService.isAuthenticated()"
+          nz-button nzType="dashed" [routerLink]="['/group-translate']">Group Translate</a>
       </div>
-      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
-          [routerLink]="['/new-manga']">New Manga</a></div>
+      <div class="menu-item mr-3"><a routerLinkActive="router-link-active" [disabled]="!authService.isAuthenticated()"
+          nz-button nzType="dashed" [routerLink]="['/new-manga']">New Manga</a></div>
 
-      <div class="menu-item mr-3"><a [disabled]="!authService.isAuthenticated()" nz-button nzType="dashed"
-          [routerLink]="['/users/manga/manga-upload']">Manga user</a></div>
+      <div class="menu-item mr-3"><a routerLinkActive="router-link-active" [disabled]="!authService.isAuthenticated()"
+          nz-button nzType="dashed" [routerLink]="['/users/manga/manga-upload']">Manga user</a></div>
 
     </div>
 
