@@ -42,7 +42,7 @@
               <nz-form-item>
                 <nz-form-label><strong>Chapter number</strong></nz-form-label>
                 <nz-form-control>
-                  <input nz-input nzSize="large"
+                  <input nz-input type="number" nzSize="large"
                     [ngClass]="{'is-invalid': (formError.chapterNumber.errors?.required && formError.chapterNumber.touched)}"
                     formControlName="chapterNumber" placeholder="Chapter number" />
                   <div class="invalid-feedback ml-2">

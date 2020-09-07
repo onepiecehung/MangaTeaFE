@@ -27,5 +27,6 @@ export namespace CONSTANT_API {
     MANGA_UPLOAD: '',
     REMOVE_HISTORY_READING: '',
     DELETE_MANGA: '',
+    UPDATE_PROFILE: ''
   }
 }

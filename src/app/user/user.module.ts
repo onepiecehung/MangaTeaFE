@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
-import {MatButtonModule} from '@angular/material/button'; 
+import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UserMangaComponent } from './pages/user-manga/user-manga.component';
 import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
@@ -18,6 +18,14 @@ import { ChapterUploadComponent } from './components/chapter-upload/chapter-uplo
 import { MangaFavoriteComponent } from './components/manga-favorite/manga-favorite.component';
 import { MangaUploadComponent } from './components/manga-upload/manga-upload.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -31,7 +39,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     ChapterUploadComponent,
     MangaFavoriteComponent,
     MangaUploadComponent,
-    
+
   ],
   imports: [
     CommonModule,
@@ -40,7 +48,15 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     ReactiveFormsModule,
     MatButtonModule,
     NzPaginationModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzFormModule,
+    NzInputModule,
+    NzSelectModule,
+    NzDatePickerModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    NzButtonModule,
   ]
 })
 export class UserModule { }

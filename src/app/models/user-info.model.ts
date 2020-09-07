@@ -18,6 +18,8 @@ export class UserInfo {
   verifyEmail: boolean;
   verifyPhone: boolean;
   avatar: string;
+  birthday: string;
+  gender: string;
   constructor(data) {
     if (data !== null) {
       this._id = data._id;
@@ -39,6 +41,8 @@ export class UserInfo {
       this.verifyEmail = data.verifyEmail;
       this.verifyPhone = data.verifyPhone;
       this.avatar = (data?.avatar) ? (data.avatar) : '';
+      this.birthday = data.birthday;
+      this.gender = data.gender;
     }
   }
 }

@@ -81,6 +81,18 @@ export class UserService {
       });
     });
   }
+
+  updateProfile(body) {
+    return new Promise((resolve, reject) => {
+      this.apiService.putData(CONSTANT_API.API_ENDPOINTS.UPDATE_PROFILE, body).subscribe(response => {
+        if (response.status === HTTP_STATUS.OK) {
+          resolve(response.data);
+        } else {
+          reject(response.data);
+        }
+      });
+    });
+  }
   uploadProfileImage(body: FormData) {
     return new Promise((resolve, reject) => {
       this.apiService.postData(CONSTANT_API.API_ENDPOINTS.UPLOAD_PROFILE_IMG, body).subscribe(response => {

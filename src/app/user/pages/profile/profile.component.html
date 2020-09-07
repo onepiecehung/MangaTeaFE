@@ -1,20 +1,15 @@
-<div class="main-profile">
+<div class="main-profile my-2">
   <div class="container">
-    <!-- <div class="d-flex justify-content-end mt-2">
-      <button mat-raised-button color="warn">Cancel</button>
-      <button class="ml-3" (click)="updateProfile()" mat-raised-button color="primary">Save</button>
-    </div> -->
+    <div class="my-3 page-title d-flex align-items-center justify-content-between mt-2">
+      <div>
+        <div class="page-title">USER SETTING</div>
+        <div class="icon">
+          <i class="fas fa-star"></i>
+          <div></div>
+        </div>
+      </div>
 
-    <!-- <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">User Settings</a></li>
-        <li class="breadcrumb-item active mr-auto" aria-current="page">Edit Profile</li>
-        <li><button mat-flat-button>Cancel</button></li>
-        <li class="ml-3"><button mat-flat-button color="primary">Save</button></li>
-      </ol>
-    </nav> -->
-    <!-- <hr> -->
+    </div>
     <div class="row d-flex justify-content-end mt-2">
       <div class="col-md-4 col-sm-4">
         <div class="section-edit-profile">Public Avatar</div>
@@ -38,7 +33,7 @@
         </div>
         <hr>
         <div>
-          <button type="button" class="btn btn-outline-warning">Remove avatar</button>
+          <!-- <button type="button" class="btn btn-outline-warning">Remove avatar</button> -->
         </div>
       </div>
     </div>
@@ -50,7 +45,93 @@
       <div class="col-md-8 col-sm-6">
         <div class="title-change-password">User profile</div>
         <div>
+          <form nz-form [nzLayout]="'vertical'" [formGroup]="formProfileUser" class="login-form" autocomplete="on">
+            <nz-form-item>
+              <nz-form-label [nzSpan]="6" nzFor="userID"><strong>User ID</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" disabled class="form-control" nz-input formControlName="id" />
 
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="email"><strong>Email</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" disabled class="form-control" nz-input formControlName="email" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="username"><strong>User name</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" class="form-control" nz-input formControlName="username"
+                    placeholder="Input username" />
+
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="address"><strong>Address</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <input type="text" class="form-control" nz-input formControlName="address" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="address"><strong>Link Social</strong></nz-form-label>
+              <mat-form-field class="example-chip-list">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let link of linkSocials" [selectable]="selectable" [removable]="removable"
+                    (removed)="remove(link)">
+                    {{link.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="about"><strong>Birthday</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <nz-date-picker formControlName="birthday" [nzSize]="'large'" [nzPlaceHolder]="'Select start date'"
+                    class="w-100"></nz-date-picker>
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="about"><strong>Gender</strong></nz-form-label>
+              <nz-form-control>
+                <nz-select nzShowSearch nzAllowClear nzSize="large" nzServerSearch formControlName="gender"
+                  class="w-100 text-left" nzPlaceHolder="Select gender">
+                  <nz-option nzCustomContent [nzLabel]="'Female'" [nzValue]="'FEMALE'">
+                    Female
+                  </nz-option>
+                  <nz-option nzCustomContent [nzLabel]="'Male'" [nzValue]="'MALE'">
+                    Male
+                  </nz-option>
+
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="24" nzFor="about"><strong>About</strong></nz-form-label>
+              <nz-form-control>
+                <nz-input-group>
+                  <textarea formControlName="about" nzSize="large" nz-input placeholder="Description for user"
+                    [nzAutosize]="{ minRows: 5 }"></textarea>
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+
+            <!-- <button nz-button nzType="default" class="mr-2" nzDanger (click)="onClickCancel()">Cancel</button> -->
+            <button nz-button nzType="primary" (click)="onClickUpdateProfileSetting()">Update profile setting</button>
+          </form>
         </div>
       </div>
     </div>
